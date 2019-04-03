@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Preguntas Frecuentes";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">@ViewBag.Title</h4>
+    </div>
+</div>
+<!-- Row start -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card-box">
+
+            <h4 class="header-title m-t-0 m-b-30">Preguntas Frecuentes</h4>
+
+            <blockquote>
+                <h4 class="text-custom">
+                    ¿Cómo recuperar las clases perdidas?
+                </h4>
+                <footer>
+                    Si no puede presentarse a clases por motivos personales en su horario establecido (3 veces) está en la obligación de avisar a secretaría y ponerse de acuerdo para poder recuperar la clase en el mismo día en cualquier horario que sea diferente al suyo.
+                </footer>
+            </blockquote>
+
+            <blockquote>
+                <h4 class="text-custom">
+                    ¿Puedo perder el semestre por faltas?
+                </h4>
+                <footer>
+                    Si falta más de <strong>10 horas (5 días)</strong>  no pasará al siguiente semestre.
+                    <br />
+                    De los 5 días permitidos de falta está consciente de que <strong>3</strong>  pueden ser justificados presentando su <ins>respectivo certificado médico y adjunto de receta o a su vez un certificado de trabajo con datos del jefe inmediato.</ins> Las siguientes faltas deberán ser asumidas.
+                    <br />
+                    En la modalidad intensiva únicamente 2 días son los permitidos para faltar y de esto solamente 1 podrá ser justificada
+                </footer>
+            </blockquote>
+
+            <blockquote>
+                <h4 class="text-custom">
+                    ¿Si falte a la evaluación como puedo recuperarla?
+                </h4>
+                <footer>
+                    Si el estudiante no pudo rendir su evaluación en la fecha prevista tendrá un plazo máximo de 8 días para realizarla, para esto debe realizar el trámite de derecho de examen tardío, caso contrario su nota será nula sin derecho a reclamo alguno.
+                </footer>
+            </blockquote>
+
+            <blockquote>
+                <h4 class="text-custom">
+                    ¿Qué plazo tengo para pagar las pensiones cada mes?
+                </h4>
+                <footer>
+                    La fecha máxima es: <strong>(5 primeros días de cada mes)</strong>, caso contrario no podrá asistir a clases hasta cubrir los valores adeudados.
+                </footer>
+            </blockquote>
+
+            <blockquote>
+                <h4 class="text-custom">
+                    Reglamento Interno
+                </h4>
+                <footer>
+                    <a href="doc/Reglamento interno alumnos.pdf" target="_blank">Reglamento Interno (Descargar)</a>
+                </footer>
+            </blockquote>
+
+        </div>
+    </div>
+
+</div>

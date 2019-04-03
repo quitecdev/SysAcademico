@@ -1,0 +1,41 @@
+﻿@model List<Model.Services.Admin.Materia>
+
+<table class="table table-hover table-striped m-0">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Descripción</th>
+            <th>Código</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            if (Model.Count != 0)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ID_MATERIA</td>
+                        <td>@item.DESCRIPCION_MATERIA</td>
+                        <td>@item.COD_MATERIA</td>
+                        <td style="width:80px">
+                            <button title="Editar" onclick="ModalForm('@Url.Action("EditarMateria", "Materia",new { id=item.ID_MATERIA})')" class="btn btn-icon waves-effect waves-light btn-custom btn-xs m-b-5"> <i class="fa fa-pencil"></i> </button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3">
+                        <p class="text-muted text-center">
+                            Ningún dato disponible en esta tabla
+                        </p>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

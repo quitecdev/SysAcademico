@@ -1,0 +1,41 @@
+﻿<div id="divReport">
+    <h2>Index</h2>
+    <p>Hello World!</p>
+
+    <div class="col-lg-3">
+        <a href="#" id="linkDownloadIText">Download IText PDF</a><br />
+        @Html.ActionLink("PDFHtml", "DownloadPDFContent", "Ejemplo")<br />
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#linkDownloadIText").click(function () {
+            var html = $('#divPdf').html(); // document.body.innerHTML;
+            $.ajax({
+                url: "/PDFHtml/DownloadPDFIText",
+                //global: false,
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    htmlContent: html,
+                }),
+                dataType: "json",
+                //processdata: false,
+                success: function (response) {
+                    if (response.Valid)
+                        window.location = "/Pdf/Report.pdf";
+                    else {
+                        alert('download failed.');
+                        alert(response.Errors);
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("XMLHttpRequest=" + XMLHttpRequest.responseText + "\ntextStatus=" + textStatus + "\nerrorThrown=" + errorThrown);
+                }
+            });
+
+
+        });
+    });
+</script>

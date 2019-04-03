@@ -1,0 +1,121 @@
+﻿@model Model.Services.Admin.Reporte_EncuestaDocente
+@{
+    ViewBag.Title = "EncuestaDocente";
+}
+<div class="content">
+    <div class="container">
+        <!-- Page-Title -->
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="page-title">Reporte Encuesta Docente</h4>
+            </div>
+        </div>
+    </div> <!-- container -->
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
+            <div class="row">
+                <div class="col-lg-12">
+                    @using (Html.BeginForm("EncuestaDocente", "Reportes", FormMethod.Post, new { @class = "form-horizontal" }))
+                    {
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Selecione un Docente</label>
+                            <div class="col-md-9">
+                                @Html.DropDownListFor(x => x.ID_DOCENTE, new SelectList(new Model.Services.Admin.Docente().cmbDocente(), "ID_DOCENTE", "APELLIDO_PATERNO_DOCENTE"), " ", new { @class = "form-control", id = "cmbGenero" })
+                                @Html.ValidationMessageFor(model => model.ID_DOCENTE, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-9">
+                                <button type="submit" class="btn btn-custom waves-effect waves-light m-b-5 btn-loding" data-loading-text="<span class='btn-label'><i class='fa fa-circle-o-notch fa-spin'></i></span> Guardar<span class='md-ripple'></span>"><span class="btn-label"><i class="fa fa-save"></i></span> Generar<span class="md-ripple"></span></button>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="col-lg-12">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@if (Model.DatosCarrera != null)
+{
+    foreach (var datosCarrera in Model.DatosCarrera)
+    {
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card-box">
+
+                    <dl class="dl-horizontal m-b-10">
+                        <dt>Sede</dt>
+                        <dd>@datosCarrera.DESCRIPCION_UNIVERSIDAD</dd>
+                        <dt>Carrera</dt>
+                        <dd>@datosCarrera.DESCRIPCION_CARRERA</dd>
+                        <dt>Materioa</dt>
+                        <dd>@datosCarrera.DESCRIPCION_MATERIA</dd>
+                        <dt>Paralelo</dt>
+                        <dd>@datosCarrera.DESCRIPCION_PARALELO</dd>
+                        <dt>Horario</dt>
+                        <dd>@datosCarrera.HORA</dd>
+                    </dl>
+                    <table class="table table-striped m-0">
+                        <thead>
+                            <tr>
+                                <th>Pregunta</th>
+                                <th class="text-center">Muy Malo</th>
+                                <th class="text-center">Malo</th>
+                                <th class="text-center">Regular</th>
+                                <th class="text-center">Bueno</th>
+                                <th class="text-center">Muy Bueno</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int total_muy_malo = 0;
+                                int total_malo = 0;
+                                int total_regular = 0;
+                                int total_bueno = 0;
+                                int total_muy_bueno = 0;
+                            }
+                            @foreach (var encuesta in datosCarrera.DatosEncuesta)
+                            {
+                                {
+
+                                    total_muy_malo = total_muy_malo + encuesta.Muy_Malo;
+                                    total_malo = total_malo + encuesta.Malo;
+                                    total_regular = total_regular + encuesta.Regular;
+                                    total_bueno = total_bueno + encuesta.Bueno;
+                                    total_muy_bueno = total_muy_bueno + encuesta.Muy_Bueno;
+                                }
+
+                                <tr>
+                                    <td>@encuesta.DESCRIPCION_PREGUNTA</td>
+                                    <td class="text-center">@encuesta.Muy_Malo</td>
+                                    <td class="text-center">@encuesta.Malo</td>
+                                    <td class="text-center">@encuesta.Regular</td>
+                                    <td class="text-center">@encuesta.Bueno</td>
+                                    <td class="text-center">@encuesta.Muy_Bueno</td>
+                                </tr>
+                            }
+                            <tr>
+                                <th class="text-right">Total</th>
+                                <th class="text-center">@total_muy_malo</th>
+                                <th class="text-center">@total_malo</th>
+                                <th class="text-center">@total_regular</th>
+                                <th class="text-center">@total_bueno</th>
+                                <th class="text-center">@total_muy_bueno</th>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div><!-- end col -->
+        </div>
+                                    }
+
+                                }

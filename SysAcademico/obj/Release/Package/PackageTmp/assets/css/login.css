@@ -1,0 +1,137 @@
+﻿body {
+    background: #f5f5f5;
+    font-family: 'Arimo', sans-serif;
+    margin: 0;
+    padding-bottom: 0;
+    overflow-x: hidden;
+    color: #797979;
+}
+
+
+.contenedor {
+    padding-left: 0px;
+}
+
+.img-fondo-contenido {
+    padding-right: 0;
+}
+
+.login-contenido {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#logo {
+    text-align: center;
+    padding: 60px 0 55px 0;
+    border-bottom: 2px solid #E0E0E0;
+    background: #fff;
+}
+
+.usuario {
+    text-align: center;
+    padding: 8px;
+}
+
+    .usuario img {
+        width: 100px;
+        height: 100px;
+        background-color: #8b1716;
+        border-radius: 50px;
+        min-height: 100px;
+        -moz-transition: background-color 0.5s ease;
+        ;
+        -o-transition: background-color 0.5s ease;
+        ;
+        -webkit-transition: background-color 0.5s ease;
+        ;
+        transition: background-color 0.5s ease;
+        ;
+    }
+
+        .usuario img:hover {
+            background-color: #d5202a !important;
+        }
+
+    .usuario h4 {
+        color: #8b1716;
+    }
+
+        .usuario h4:hover {
+            color: #d5202a !important;
+        }
+
+.login {
+    font: 14px/1.6em;
+    padding-top: 24px;
+    color: #959595;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+    .login .input-group-addon {
+        border: none;
+        background: #fff;
+    }
+
+    .login input[type=text],
+    .login input[type=password] {
+        border: none;
+        background: #fff;
+        box-shadow: none;
+        height: 36px;
+        -webkit-box-shadow: 1px 1px 2px 0px rgba(104, 104, 104, 0.4);
+        -moz-box-shadow: 1px 1px 2px 0px rgba(104, 104, 104, 0.4);
+        box-shadow: 1px 1px 2px 0px rgba(104, 104, 104, 0.4);
+    }
+
+        .login input[type=text]:focus,
+        .login input[type=password]:focus {
+            background: #f6f6f6;
+        }
+
+    .login div > div {
+        position: relative;
+        margin: 24px 0;
+    }
+
+    .login div > section {
+        margin: 0 0 20px 0;
+    }
+
+.form-group.less-space {
+    margin-bottom: 12px;
+}
+
+.form-control-login {
+    padding-left: 40px;
+}
+
+    .form-control-login + .glyphicon {
+        position: absolute;
+        left: 0;
+        top: 13%;
+        padding: 8px 0 0 12px;
+    }
+
+
+/* RESPONSIVE
+   ========================================================================= */
+
+/* Móviles en horizontal o tablets en vertical
+   ------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .img-fondo-contenido {
+        display: none;
+    }
+}
+
+/* Tablets en horizonal y escritorios normales
+   ------------------------------------------------------------------------- */
+@media (min-width: 1024px) {
+}
+
+/* Escritorios muy anchos
+   ------------------------------------------------------------------------- */
+@media (min-width: 1200px) {
+}

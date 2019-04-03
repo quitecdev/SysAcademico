@@ -1,0 +1,80 @@
+﻿@model List<Model.Services.Estudiante.EstudianteAsistencia>
+@{
+    ViewBag.Title = "Asistencia";
+}
+
+<style>
+    th {
+        background: #8b1716;
+        color: #fff;
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">@ViewBag.Title</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
+            <h4 class="header-title m-t-0 m-b-30">Mi Asistencia</h4>
+
+            <div class="table-responsive">
+                <table class="table table-hover table-striped m-0">
+                    <thead>
+                        <tr>
+                            <th>Cod.</th>
+                            <th>Sede</th>
+                            <th>Carrera</th>
+                            <th>Materia</th>
+                            <th>Paralelo</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            if (Model.Count > 0)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.ID_ASISTENCIA</td>
+                                        <td>@item.DESCRIPCION_UNIVERSIDAD</td>
+                                        <td>@item.DESCRIPCION_CARRERA</td>
+                                        <td>@item.DESCRIPCION_MATERIA</td>
+                                        <td>@item.DESCRIPCION_PARALELO</td>
+                                        <td>@item.FECHA.Value.ToShortDateString()</td>
+                                        <td>
+                                            @if (@item.ESTADO == true)
+                                            {
+                                                <span class="label label-success">Asistencia</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="label label-default">Falta</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="7">
+                                        <div class="alert alert-success">
+                                            <strong>Vaya!</strong> Usted no registra faltas actualmente.
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

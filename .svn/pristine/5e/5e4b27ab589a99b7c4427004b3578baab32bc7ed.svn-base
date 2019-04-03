@@ -1,0 +1,149 @@
+﻿@model Model.Services.Admin.Perfil
+
+@{
+    ViewBag.Title = "Mi Perfil";
+    var imagen = Model.IMG_ESTUDIANTE;
+}
+
+<style>
+    .kv-avatar .krajee-default.file-preview-frame, .kv-avatar .krajee-default.file-preview-frame:hover {
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        text-align: center;
+    }
+
+    .kv-avatar {
+        display: inline-block;
+    }
+
+        .kv-avatar .file-input {
+            display: table-cell;
+            width: 213px;
+        }
+
+    .kv-reqd {
+        color: red;
+        font-family: monospace;
+        font-weight: normal;
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">@ViewBag.Title</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
+            <div class="row">
+                @using (Html.BeginForm("Perfil", "Account", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                {
+                    <div class="col-sm-4 text-center">
+                        <div class="kv-avatar">
+                            <div class="file-loading">
+                                <input id="imagen_usuario" name="postedFile" type="file">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.ID_ESTUDIANTE)
+                        <div class="form-group">
+                            <h4 class="col-sm-3 control-label">
+                                <b>Informacion Personal</b>
+                            </h4>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Apellido Paterno</label>
+                            <div class="col-sm-6">
+                                @Html.EditorFor(model => model.APELLIDO_PATERNO_ESTUDIANTE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.APELLIDO_PATERNO_ESTUDIANTE, "", new { @class = "parsley-required" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Apellido Materno</label>
+                            <div class="col-sm-6">
+                                @Html.EditorFor(model => model.APELLIDO_MATERNO_ESTUDIANTE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.APELLIDO_MATERNO_ESTUDIANTE, "", new { @class = "parsley-required" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Primer Nombre</label>
+                            <div class="col-sm-6">
+                                @Html.EditorFor(model => model.PRIMER_NOMBRE_ESTUDIANTE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.PRIMER_NOMBRE_ESTUDIANTE, "", new { @class = "parsley-required" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Segundo Nombre</label>
+                            <div class="col-sm-6">
+                                @Html.EditorFor(model => model.SEGUNDO_NOMBRE_ESTUDIANTE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SEGUNDO_NOMBRE_ESTUDIANTE, "", new { @class = "parsley-required" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Correo</label>
+                            <div class="col-sm-6">
+                                @Html.EditorFor(model => model.CORREO_ESTUDIANTE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CORREO_ESTUDIANTE, "", new { @class = "parsley-required" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Celular</label>
+                            <div class="col-sm-6">
+                                @Html.EditorFor(model => model.CEL_ESTUDIANTE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CEL_ESTUDIANTE, "", new { @class = "parsley-required" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Dirección</label>
+                            <div class="col-sm-6">
+                                @Html.EditorFor(model => model.DIRECCION, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DIRECCION, "", new { @class = "parsley-required" })
+                            </div>
+                        </div>
+                        <div class="form-group m-b-0">
+                            <div class="col-sm-offset-3 col-sm-9">
+                                <button type="submit" id="load" class="btn btn-labeled btn-danger ripple" data-loading-text="<span class='btn-label'><i class='fa fa-circle-o-notch fa-spin'></i></span>Guardar<span class='md-ripple'></span>"><span class="btn-label"><i class="fa fa-save"></i></span> Guardar<span class="md-ripple"></span></button>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+            <hr />
+
+            @Html.Partial("_Contraseña", Model.ViewClave);
+
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+
+        var a = "@Url.Content(imagen)";
+
+        $("#imagen_usuario").fileinput({
+            overwriteInitial: true,
+            maxFileSize: 1500,
+            showClose: false,
+            showCaption: false,
+            browseLabel: '',
+            removeLabel: '',
+            browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
+            removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+            removeTitle: 'Cancel or reset changes',
+            elErrorContainer: '#kv-avatar-errors-1',
+            msgErrorClass: 'alert alert-block alert-danger',
+            defaultPreviewContent: '<img src="' + a + '" style="width: 150px; height: 150x;" ><h6 class="text-muted">Cambiar de imagen</h6>',
+            allowedFileExtensions: ["jpg", "png", "gif"]
+        });
+    </script>
+}

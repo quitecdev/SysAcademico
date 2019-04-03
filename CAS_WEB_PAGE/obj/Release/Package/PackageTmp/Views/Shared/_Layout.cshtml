@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/logo-cas.ico">
+
+    <title>CAS ACADÉMICO - @ViewBag.Title</title>
+
+    <!-- BOOTSTRAP -->
+    <link href="~/js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- REVOLUTION SLIDER MAIN STYLESHEET -->
+    <link rel="stylesheet" type="text/css" href="~/css/revolution/settings.css">
+
+    <!-- REVOLUTION SLIDER LAYERS AND NAVIGATION STYLES -->
+    <link rel="stylesheet" type="text/css" href="~/css/revolution/layers.css">
+    <link rel="stylesheet" type="text/css" href="~/css/revolution/navigation.css">
+
+    <!-- CUSTOM STYLES -->
+    <link href="~/css/style.css" rel="stylesheet">
+
+    <!-- THEME SKINS -->
+    <link id="skin" href="~/css/theme-colors/dark-red.css" rel="stylesheet">
+    <link href="~/js/style-switcher/css/style-switcher.css" rel="stylesheet">
+    <link href="~/css/line-icons/line-icons.css" rel="stylesheet">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115374194-2"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+          <script src="js/html5shiv.min.js"></script>
+          <script src="js/respond.min.js"></script>
+        <![endif]-->
+    <!--[if IE 9]>
+          <link href="css/ie.css" rel="stylesheet">
+        <![endif]-->
+</head>
+<body>
+
+    @Html.Partial("_Header")
+    @RenderBody()
+    @Html.Partial("_Footer")
+
+    <!-- jQuery -->
+    <script src="~/js/jquery.min.js"></script>
+
+    <!-- BOOTSTRAP -->
+    <script src="~/js/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- jQuery Easing -->
+    <script src="~/js/jquery.easing-1.3.min.js"></script>
+
+    <!-- REVOLUTION JS FILES -->
+    <script type="text/javascript" src="~/js/revolution/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="~/js/revolution/jquery.themepunch.revolution.min.js"></script>
+
+    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS
+        (Load Extensions only on Local File Systems !
+        The following part can be removed on Server for On Demand Loading) -->
+    <script type="text/javascript" src="~/js/revolution/revolution.extension.actions.min.js"></script>
+    <script type="text/javascript" src="~/js/revolution/revolution.extension.carousel.min.js"></script>
+    <script type="text/javascript" src="~/js/revolution/revolution.extension.kenburn.min.js"></script>
+    <script type="text/javascript" src="~/js/revolution/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript" src="~/js/revolution/revolution.extension.migration.min.js"></script>
+    <script type="text/javascript" src="~/js/revolution/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript" src="~/js/revolution/revolution.extension.parallax.min.js"></script>
+    <script type="text/javascript" src="~/js/revolution/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="~/js/revolution/revolution.extension.video.min.js"></script>
+
+
+    <!-- Parallax -->
+    <script src="~/js/parallax/jquery.parallax-1.1.3.js"></script>
+    <script src="~/js/parallax/setting.js"></script>
+
+    <!-- Owl Carousel -->
+    <script src="~/js/owlcarousel/js/owl.carousel.min.js"></script>
+    <script src="~/js/owlcarousel/js/setting.js"></script>
+
+    <!-- PrettyPhoto -->
+    <script src="~/js/prettyPhoto/js/jquery.prettyPhoto.js"></script>
+    <script src="~/js/prettyPhoto/js/setting.js"></script>
+
+    <!-- Masonry -->
+    <script src="~/js/masonry/js/masonry.min.js"></script>
+    <script src="~/js/masonry/js/masonry.filter.js"></script>
+    <script src="~/js/masonry/js/setting.js"></script>
+
+    <!-- Custom JavaScript for this theme -->
+    <script src="~/js/custom.js"></script>
+
+    <!-- Nicescroll -->
+    <script src="~/js/nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="~/js/nicescroll/settings.js"></script>
+
+    <!-- Theme option-->
+    <script src="~/js/style-switcher/js/style-switcher.js"></script>
+
+    <!-- Validation-->
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-115374194-2');
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

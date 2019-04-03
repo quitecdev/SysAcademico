@@ -1,0 +1,156 @@
+﻿
+@{
+    ViewBag.Title = "Docente";
+}
+
+<style>
+    .tblInscripcion th {
+        background: #8b1716;
+        color: #fff;
+        padding: 15px !important;
+    }
+
+    .tblInscripcion td {
+        padding: 15px !important;
+    }
+</style>
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">@ViewBag.Title</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="m-t-25"></div>
+        <button type="button" onclick="ModalForm('@Url.Action("AgregarDocente", "Docente", new { id = string.Empty })')" class="btn btn-custom waves-effect waves-light m-b-5"> <i class="fa fa-plus-circle m-r-5"></i> <span>Añadir</span> </button>
+        <div class="m-t-25"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
+            <table id="tbl_Inscripcion" class="table-datatable table dt-responsive table-striped jambo_table bulk_action tblInscripcion" style="width:100%">
+                <thead>
+                    <tr class="headings">
+                        <th class="column-title">N. Cedula</th>
+                        <th class="column-title">Apellido Paterno</th>
+                        <th class="column-title">Apellido Materno</th>
+                        <th class="column-title">Primer Nombre</th>
+                        <th class="column-title">Segundo Nombre</th>
+                        <th class="column-title">Correo</th>
+                        <th class="column-title">Clave</th>
+                        <th class="column-title"></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+@* MODAL *@
+<div class="modal fade modal-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Detalle</h4>
+            </div>
+            <div class="modal-body">
+                <div id='modal-form-content'></div>
+            </div>
+        </div>
+    </div>
+</div><!-- /.modal -->
+@* MODAL REDIRECTO*@
+<div class="modal fade modal-redirect" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Detalle</h4>
+            </div>
+            <div class="modal-body">
+                <div id='modal-redirect-content'></div>
+            </div>
+        </div>
+    </div>
+</div><!-- /.modal -->
+
+@section scripts
+{
+    <script>
+        var datatable;
+        $(document).ready(function () {
+
+            datatable = $('#tbl_Inscripcion').DataTable({
+                "ajax": "@Url.Action("getTableDocente", "Docente")",
+                "columns": [
+                  { 'data': 'ID_DOCENTE' },
+                  { 'data': 'APELLIDO_PATERNO_DOCENTE' },
+                  { 'data': 'APELLIDO_MATERNO_DOCENTE' },
+                  { 'data': 'PRIMER_NOMBRE_DOCENTE' },
+                  { 'data': 'SEGUNDO_NOMBRE_DOCENTE' },
+                  { 'data': 'CORREO_DOCENTE' },
+                  {
+                      'data': 'MODIFICAR_CLAVE', 'render': function (data, type, row, meta) {
+                          if (row.MODIFICAR_CLAVE === 1) {
+                              return "<span class='label label-success'>Encriptado</span>"
+                          }
+                          return row.CLAVE_USUARIO
+                      },
+                      'orderable': false,
+                      'width': '10%'
+                  },
+                  {
+                      'data': 'ID_DOCENTE', 'render': function (data) {
+                          return "<button  title='Editar'  type='button' onclick=ModalForm('@Url.Action("EditarDocente", "Docente")/" + data + "')  class='btn btn-icon waves-effect waves-light btn-custom btn-xs m-b-5'><em class='zmdi zmdi-edit'></em></button> " +
+                                 "<button title='Horario' type='button' onclick=ModalForm('@Url.Action("HorarioDocente", "Docente")/" + data + "')  class='btn btn-icon waves-effect waves-light btn-primary btn-xs m-b-5'> <i class='zmdi zmdi-view-subtitles'></i> </button> " +
+                                 "<button title='Repositorio' type='button' onclick=ModalForm('@Url.Action("RepositorioDocente", "Docente")/" + data + "')  class='btn btn-icon waves-effect waves-light btn-success btn-xs m-b-5'> <i class='zmdi zmdi-library'></i> </button> " +
+                                 "<button title='Notas' type='button' onclick=ModalForm('@Url.Action("NotasDocente", "Docente")/" + data + "')  class='btn btn-icon waves-effect waves-light btn-warning btn-xs m-b-5'> <i class='fa fa-edit'></i> </button> " +
+                                 "<button title='Asistencia' type='button' onclick=ModalForm('@Url.Action("AsistenciaDocente", "Docente")/" + data + "')  class='btn btn-icon waves-effect waves-light btn-inverse btn-xs m-b-5'> <i class='zmdi zmdi-assignment-o'></i> </button> " +
+                                 "<button title='Clave' type='button' onclick=ModificarClave('" + data + "')  class='btn btn-icon waves-effect waves-light btn-purple btn-xs m-b-5'> <i class='zmdi zmdi-rotate-right'></i> </button>"
+
+                      },
+                      'orderable': false,
+                      "className": "actions",
+                      'width': '150px'
+                  },
+                ],
+                "order": [[2, "desc"], [3, "desc"]],
+                "processing": true,
+                "language": {
+                    "url": "../assets/plugins/datatables/Spanish.json",
+                },
+                "order": [[0, 'asc']],
+            });
+        });
+
+        function ActualizarDetalle() {
+            datatable.ajax.reload();
+        }
+
+        function ModificarClave(_ID_USUARIO) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("ModificarClave", "Usuario")',
+                content: "application/json; charset=utf-8",
+                dataType: "json",
+                data: { ID_USUARIO: _ID_USUARIO },
+                success: function (response) {
+                    if (response.success) {
+                        ActualizarDetalle();
+                        toastr.success('Correcto', response.message, { timeOut: 5000 })
+                    }
+                    else {
+                        toastr.error(response.message, { timeOut: 5000 })
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    //alert('Error!!');
+                }
+            });
+        }
+    </script>
+}

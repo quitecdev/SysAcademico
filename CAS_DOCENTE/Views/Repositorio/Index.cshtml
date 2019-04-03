@@ -1,0 +1,59 @@
+﻿@model  List<Model.Services.Docente.CarreraIntervalo>
+@{
+    ViewBag.Title = "Repositorio";
+}
+
+<style>
+    th {
+        background: #8b1716;
+        color: #fff;
+        padding: 20px !important;
+    }
+
+    td {
+        padding: 20px !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">@ViewBag.Title</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box table-responsive">
+            @if (Model != null)
+            {
+                <table class="table table-hover table-striped m-0">
+                    <thead>
+                        <tr>
+                            <th>Sede</th>
+                            <th>Carrera</th>
+                            <th>Paralelo</th>
+                            <th>Horario</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.DESCRIPCION_UNIVERSIDAD</td>
+                                    <td>@item.DESCRIPCION_CARRERA</td>
+                                    <td>@item.DESCRIPCION_PARALELO</td>
+                                    <td>@item.DESCRIPCION_TIPO_INVERTALO</td>
+                                    <td>
+                                        @*@Html.ActionLink("Ir","", new { id = item.ID }, new { @class = "MyCustomCssClassName" })*@
+                                        <a href='@Url.Action("Vista","Repositorio")/@item.ID_SEDE/@item.ID_CARRERA/@item.ID_TIPO_INTERVALO/@item.ID_PARALELO' class="on-default edit-row text-custom"><i class="zmdi zmdi-collection-text"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+                            }
+        </div>
+    </div>
+</div>

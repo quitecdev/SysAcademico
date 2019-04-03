@@ -1,0 +1,92 @@
+﻿@model List<Model.Services.Admin.DocenteAsistencia>
+@{
+    Layout = null;
+}
+<style>
+    th {
+        background: #8b1716;
+        color: #fff;
+        padding: 15px !important;
+        font-size: 0.75em;
+    }
+
+    td {
+        padding: 15px !important;
+        font-size: 0.75em;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        var a;
+        a=$('#tbl_asistencia').DataTable();
+    });
+</script>
+<div class="row">
+    <div class="col-sm-12">
+        @if (Model != null)
+        {
+            <table id="tbl_asistencia" class="table table-hover table-striped m-0">
+                <thead>
+                    <tr>
+                        <th>Sede</th>
+                        <th>Carrera</th>
+                        <th>Materia</th>
+                        <th>Paralelo</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Count != 0)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.DESCRIPCION_UNIVERSIDAD</td>
+                                <td>@item.DESCRIPCION_CARRERA</td>
+                                <td>@item.DESCRIPCION_MATERIA</td>
+                                <td>@item.DESCRIPCION_PARALELO</td>
+                                <td>@item.FECHA_ASISTENCIA.ToShortDateString()</td>
+                                <td>@item.HORA</td>
+                                <td>
+                                    @if (item.ESTADO_ASISTENCIA.Value == 0)
+                                    {
+                                        <span class="label label-info">Proxima Asistencia</span>
+                                    }
+                                    else if (item.ESTADO_ASISTENCIA.Value == 1)
+                                    {
+                                        <span class="label label-success">Asistencia Completa</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-danger">Sin Asistencia</span>
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6">
+                                <p class="text-muted text-center">
+                                    Ningún dato disponible en esta tabla
+                                </p>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p class="text-muted text-center">
+                Ningún dato disponible en esta tabla
+            </p>
+        }
+    </div>
+</div>
+

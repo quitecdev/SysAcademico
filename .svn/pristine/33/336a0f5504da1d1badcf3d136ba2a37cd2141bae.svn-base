@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Model.Services.Admin;
+using CAS_ADMIN.Models;
+
+namespace CAS_ADMIN.Controllers
+{
+    public class EjemploController : Controller
+    {
+        Inscipcion _inscripcion = new Inscipcion();
+        // GET: Ejemplo
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult AutoCliente(string Prefix)
+        {
+            return Json(_inscripcion.BuscarInscripciones(Prefix), JsonRequestBehavior.AllowGet);
+        }
+    }
+}

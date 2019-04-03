@@ -1,0 +1,44 @@
+﻿@model List<Model.Services.Estudiante.Notificacion>
+@using System.Text.RegularExpressions;
+@if (Model != null)
+{
+
+    <ul class="list-group list-no-border user-list">
+
+        @foreach (var item in Model)
+                {
+                    if (item.ESTADO_NOTIFICACION == 0)
+                    {
+                <li class="list-group-item">
+                    <a href="javascript:void(0);" onclick="VerNotificacion(@item.ID_NOTIFICACION)" class="user-list-item">
+                        <div class="icon">
+                            <i class="zmdi zmdi-comment"></i>
+                        </div>
+                        <div class="user-desc">
+                            <span class="name">@item.ASUNTO_NOTIFICACION</span>
+                            <span class="desc">@Regex.Replace(item.TXT_NOTIFICACION, "<.*?>", String.Empty).Substring(0,35)</span>
+                            <span class="time">@item.FECHA_NOTIFICACION</span>
+                        </div>
+                    </a>
+                </li>
+                    }
+                    else
+                    {
+                <li class="list-group-item active">
+                    <a href="javascript:void(0);" onclick="VerNotificacion(@item.ID_NOTIFICACION)"class="user-list-item">
+                        <div class="icon">
+                            <i class="zmdi zmdi-comment"></i>
+                        </div>
+                        <div class="user-desc">
+                            <span class="name">@item.ASUNTO_NOTIFICACION</span>
+                            <span class="desc">@Regex.Replace(item.TXT_NOTIFICACION, "<.*?>", String.Empty).Substring(0, 35)</span>
+                            <span class="time">@item.FECHA_NOTIFICACION</span>
+                        </div>
+                    </a>
+                </li>
+                    }
+                }
+    </ul>
+
+}
+

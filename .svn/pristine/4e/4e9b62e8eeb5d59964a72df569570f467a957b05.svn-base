@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CD6879A5-94DE-4FD5-B438-E8D08DDA63D3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Model</RootNamespace>
+    <AssemblyName>Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TRACKAuditoria">
+      <HintPath>..\SysAcademico\bin\TRACKAuditoria.dll</HintPath>
+    </Reference>
+    <Reference Include="TrackError">
+      <HintPath>..\SysAcademico\bin\TrackError.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\AUX_ABREVIATURA_DIA.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_ASISTENCIA.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_AUDITORIA.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_CARPETA_ADJUNTOS.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_CARRERA.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_CARRERA_NOTA.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_CARRERA_REQUISITOS.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_CRONOGRAMA.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_CRONOGRAMA_ADJUNTO.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_CRONOGRAMA_DETALLE.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_Data.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAS_Data.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_Data.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_Data.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAS_Data.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_DIAS.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_DOCENTE.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_DOCENTE_ASISTENCIA.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_DOCENTE_MATERIA_PARALELO.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_DOCENTE_NOTAS.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_ENCUESTA.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_ESTADO_CIVIL.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_ESTUDIANTE.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_ESTUDIANTE_ASISTENCIA.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_ESTUDIANTE_DETALLE.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_ESTUDIANTE_NOTA.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_GRUPO.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_HORARIO.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_HORARIO_DETALLE.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_HORARIO_TIPO.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_INSCRIPCION.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_INSCRIPCION_DETALLE_CARRERA.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_INSCRIPCION_ESTADO.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_INSCRIPCION_FECHA.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_INTERVALO.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_INTERVALO_DETALLE.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_MATERIA.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_MENU.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_NOTA.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_NOTA_DETALLE.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_NOTA_PONDERACION.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_NOTIFICACIONES.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_PARALELO.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_PARALELO_MATERIA.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_PERIODO.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_PERSONAL.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_ROL.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_ROL_MENU.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_SALON.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_SEDE.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_SEMANA.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_TIPO_INVERTALO.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_TIPO_PAGO.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_UBICACION.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_UNIVERSIDAD.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_USUARIO.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_USUARIO_ROL.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_VISITA.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DocenteCarreraIntervalo_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DocenteHorarioDiario_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DocenteHorarioMateria_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DocenteObtenerAsistenciaEstudiantes_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DocenteObtenerAsistencia_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DocenteObtenerCarreraMateria_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DocenteObtenerEstudianteNota_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DocenteObtenerEstudianteParcial_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DocenteObtenerEstudianteValor_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DocenteObtenerHorario_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DocenteObtenerNotaDetalleEstudiante_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DocenteObtenerNotaDetalle_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DocenteObtenerNotaEstudiante_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DocenteObtenerNotaParciales_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DocenteObtenerNotas_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DocenteRepositorioAdjunto_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DocenteRepositorioCarpeta_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DocenteRepositorioSemana_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EstudianteObtenerAsistencia_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EstudianteObtenerCarreraMateria_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EstudianteObtenerCarrera_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EstudianteObtenerHorario_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EstudianteObtenerNotaDetalle_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EstudianteObtenerNotaParciales_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EstudianteObtenerPromedio_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EstudianteRepositorioAdjunto_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EstudianteRepositorioCarpeta_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EstudianteRepositorioSemana_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\InscripcionDetalleCarrera_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\NotificadorEnviaClave_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ObtenerCarreraValida_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ObtenerDocenteAsistencia_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ObtenerEstudianteNotaCarrera_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ObtenerHorarioParalelo_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ObtenerIntervaloDetalleSedeCarrera_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ObtenerIntervaloSedeCarrera_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ObtenerParaleloSedeCarrera_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Admin\Carrera.cs" />
+    <Compile Include="Services\Admin\ChangePassword.cs" />
+    <Compile Include="Services\Admin\DetalleCarrera.cs" />
+    <Compile Include="Services\Admin\Docente.cs" />
+    <Compile Include="Services\Admin\DocenteAsistencia.cs" />
+    <Compile Include="Services\Admin\DocenteHorarioMateria.cs" />
+    <Compile Include="Services\Admin\Estudiante.cs" />
+    <Compile Include="Services\Admin\EstudianteNotaCarrera.cs" />
+    <Compile Include="Services\Admin\ForgotPassword.cs" />
+    <Compile Include="Services\Admin\Inscipcion.cs" />
+    <Compile Include="Services\Admin\InscripcionDetalle.cs" />
+    <Compile Include="Services\Admin\InscripcionDetallleCarrera.cs" />
+    <Compile Include="Services\Admin\InscripcionFecha.cs" />
+    <Compile Include="Services\Admin\Intervalo.cs" />
+    <Compile Include="Services\Admin\IntervaloDetalle.cs" />
+    <Compile Include="Services\Admin\Login.cs" />
+    <Compile Include="Services\Admin\Materia.cs" />
+    <Compile Include="Services\Admin\Notificacion.cs" />
+    <Compile Include="Services\Admin\Paralelo.cs" />
+    <Compile Include="Services\Admin\Perfil.cs" />
+    <Compile Include="Services\Admin\Periodo.cs" />
+    <Compile Include="Services\Admin\Sede.cs" />
+    <Compile Include="Services\Admin\ServicesTrackError.cs" />
+    <Compile Include="Services\Admin\TipoPago.cs" />
+    <Compile Include="Services\Admin\Usuario.cs" />
+    <Compile Include="Services\CarreraEstudiante.cs" />
+    <Compile Include="Services\Docente\AsistenciaDocente.cs" />
+    <Compile Include="Services\Docente\Calificar.cs" />
+    <Compile Include="Services\Docente\CarreraIntervalo.cs" />
+    <Compile Include="Services\Docente\ChangePassword.cs" />
+    <Compile Include="Services\Docente\ForgotPassword.cs" />
+    <Compile Include="Services\Docente\HorarioDocente.cs" />
+    <Compile Include="Services\Docente\Login.cs" />
+    <Compile Include="Services\Docente\Notas.cs" />
+    <Compile Include="Services\Docente\NotasAsignadas.cs" />
+    <Compile Include="Services\Docente\Notificacion.cs" />
+    <Compile Include="Services\Docente\Perfil.cs" />
+    <Compile Include="Services\Docente\RepositorioDocente.cs" />
+    <Compile Include="Services\Docente\ServicesTrackError.cs" />
+    <Compile Include="Services\Estudiante\ChangePassword.cs" />
+    <Compile Include="Services\Estudiante\EstudianteAsistencia.cs" />
+    <Compile Include="Services\Estudiante\EstudianteNota.cs" />
+    <Compile Include="Services\Estudiante\ForgotPassword.cs" />
+    <Compile Include="Services\Estudiante\HorarioEstudiante.cs" />
+    <Compile Include="Services\Estudiante\Login.cs" />
+    <Compile Include="Services\Estudiante\Notificacion.cs" />
+    <Compile Include="Services\Estudiante\Perfil.cs" />
+    <Compile Include="Services\Estudiante\ServicesTrackError.cs" />
+    <Compile Include="Services\Estudiante\RepositorioEstudiante.cs" />
+    <Compile Include="Services\ServicesAuditoria.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Data\CAS_Data.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CAS_Data.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Data\CAS_Data.edmx.diagram">
+      <DependentUpon>CAS_Data.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\CAS_Data.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CAS_Data.edmx</DependentUpon>
+      <LastGenOutput>CAS_Data.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\CAS_Data.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CAS_Data.edmx</DependentUpon>
+      <LastGenOutput>CAS_Data.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

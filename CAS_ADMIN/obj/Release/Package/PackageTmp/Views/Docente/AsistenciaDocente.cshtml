@@ -1,0 +1,91 @@
+﻿@model List<Model.Services.Admin.DocenteAsistencia>
+@{
+    Layout = null;
+}
+<script>
+    var datatableInscripcion;
+    $(document).ready(function () {
+        datatableInscripcion = $('#tbl_asistencia').DataTable({
+            "ajax": {
+                "url": "@Url.Action("getTableDocenteAsistencia", "Docente")",
+                "data": {
+                    "ID_DOCENTE": $('#id_docente').val()
+                }
+            },
+            "columns": [
+              { 'data': 'ID_DOCENTE_ASISTENCIA' },
+              { 'data': 'DESCRIPCION_UNIVERSIDAD' },
+              { 'data': 'DESCRIPCION_CARRERA' },
+              { 'data': 'DESCRIPCION_MATERIA' },
+              { 'data': 'DESCRIPCION_PARALELO' },
+              {
+                "data": "FECHA_ASISTENCIA", 'render': function (data, type, row, meta) {
+                    return moment(row.FECHA_ASISTENCIA).format("DD/MM/YYYY");
+                }
+              },
+              { 'data': 'HORA' },
+              {
+                  "data": "ESTADO_ASISTENCIA", 'render': function (data, type, row, meta) {
+                      if (row.ESTADO_ASISTENCIA == 0) {
+                          return "<span class='label label-info'>Próxima Asistencia</span>"
+                      }
+                      else if(row.ESTADO_ASISTENCIA==1)
+                      {
+                          return "<span class='label label-success'>Asistencia Completa</span>"
+                      }
+                      else
+                      {
+                          return " <span class='label label-danger'>Sin Asistencia</span>"
+                      }
+                  },
+                  'width': '80px'
+              },
+
+            ],
+            "processing": true,
+            "language": {
+                "url": "../assets/plugins/datatables/Spanish.json",
+            },
+            "order": [[0, 'desc']],
+        });
+    });
+</script>
+
+<div class="modal-dialog" style="width:80%;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Asistencia</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="m-t-25"></div>
+                    <a href='@Url.Action("ImprimirAsistenciaDocente","Docente", new { id=@TempData["ID_DOCENTE"]})' class="btn btn-custom waves-effect waves-light m-b-5">
+                        <i class="fa fa-print m-r-5"></i> <span>Imprimir</span>
+                    </a>
+                    <div class="m-t-25"></div>
+                </div>
+                <div class="col-sm-12">
+                    @Html.Hidden("id_docente", @TempData["ID_DOCENTE"])
+                    <table id="tbl_asistencia" class="table table-hover table-striped m-0">
+                        <thead>
+                            <tr>
+                                <th> # </th>
+                                <th> Sede </th>
+                                <th>Carrera</th>
+                                <th>Materia</th>
+                                <th>Paralelo</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

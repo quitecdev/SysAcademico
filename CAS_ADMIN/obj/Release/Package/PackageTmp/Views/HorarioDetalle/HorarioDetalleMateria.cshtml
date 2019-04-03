@@ -1,0 +1,145 @@
+﻿@model Model.Services.Admin.ModelHorario
+@{
+    Layout = null;
+}
+
+<script>
+
+    $(document).ready(function () {
+
+        ActualizarDetalle();
+
+
+        //Dropdownlist Sede
+        $("#ID_INTERVALO").change(function () {
+            $("#ID_INTERVALO_DETALLE").empty();
+            $("#ID_DIAS").empty();
+            if ($("#ID_INTERVALO").val() != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("getIntervaloDetallePorIntervalo", "Intervalo")', // we are calling json method
+                    dataType: 'json',
+                    data: { id_intervalo: $("#ID_INTERVALO").val()},
+                    success: function (states) {
+                        // states contains the JSON formatted list
+                        // of states passed from the controller
+                        $("#ID_INTERVALO_DETALLE").append('<option value=""></option>');
+                        $.each(states, function (i, state) {
+                            $("#ID_INTERVALO_DETALLE").append('<option value="' + state.Value + '">' +
+                                 state.Text + '</option>');
+                            // here we are adding option for States
+
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve states.' + ex);
+                    }
+                });
+            }
+            return false;
+        })
+
+        //Dropdownlist Sede
+        $("#ID_INTERVALO_DETALLE").change(function () {
+            $("#ID_DIAS").empty();
+            if ($("#ID_INTERVALO").val() != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("getIntervaloDiaLibre", "Horario")', // we are calling json method
+                    dataType: 'json',
+                    data: { id_intervalo_detalle: $("#ID_INTERVALO_DETALLE").val(),id_paralelo_materia: @Model.ID_PARALELO_MATERIA},
+                    success: function (states) {
+                        // states contains the JSON formatted list
+                        // of states passed from the controller
+                        $("#ID_DIAS").append('<option value=""></option>');
+                        $.each(states, function (i, state) {
+                            $("#ID_DIAS").append('<option value="' + state.Value + '">' +
+                                 state.Text + '</option>');
+                            // here we are adding option for States
+
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve states.' + ex);
+                    }
+                });
+            }
+            return false;
+        })
+
+
+    });
+
+
+    function ActualizarDetalle() {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("DetalleHorarioMateria", "HorarioDetalle")',
+            data: JSON.stringify({ ID_PARALELO_MATERIA:@Model.ID_PARALELO_MATERIA }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (response) {
+                $('#partialHorarioMateria').html(response);
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+
+</script>
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Horario Materia</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    @using (Html.BeginForm("HorarioDetalleMateria", "HorarioDetalle", FormMethod.Post, new { onsubmit = "return SubmitForm(this,'" + @Url.Action("HorarioDetalleMateria", "HorarioDetalle", new { id = string.Empty }) + "')", @class = "form-horizontal" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.ID_PARALELO_MATERIA)
+                        @Html.HiddenFor(model => model.ID_SEDE)
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Horario</label>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(m => m.ID_INTERVALO, new SelectList(new Model.Services.Admin.Intervalo().ObtenerIntervaloPorSede(Model.ID_SEDE), "ID_INTERVALO", "DESCRIPCION_INTERVALO"), " ", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_INTERVALO, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Hora</label>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(m => m.ID_INTERVALO_DETALLE, new SelectList(string.Empty, "ID_INTERVALO_DETALLE", "INTERVALO"), " ", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_INTERVALO_DETALLE, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Día</label>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(m => m.ID_DIAS, new SelectList(string.Empty, "ID_DIAS", "DESCRIPCION_DIAS"), " ", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_DIAS, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-9">
+                                <button type="submit" class="btn btn-custom waves-effect waves-light m-b-5 btn-loding" data-loading-text="<span class='btn-label'><i class='fa fa-circle-o-notch fa-spin'></i></span> Guardar<span class='md-ripple'></span>"><span class="btn-label"><i class="fa fa-save"></i></span> Guardar<span class="md-ripple"></span></button>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="col-lg-12">
+                    <div id="partialHorarioMateria">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

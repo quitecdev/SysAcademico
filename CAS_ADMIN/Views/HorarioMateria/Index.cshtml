@@ -1,0 +1,290 @@
+﻿@model  Model.Services.Admin.HorarioMateria
+@{
+    ViewBag.Title = "Horario/Materia";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">@ViewBag.Title</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="m-t-25"></div>
+        <div class="m-t-25"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
+            <div class="row">
+                <div class="col-lg-12">
+                    @using (Html.BeginForm("Index", "HorarioMateria", FormMethod.Post, new { @class = "form-horizontal", id = "formHorario" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Sede</label>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(m => m.ID_SEDE, new SelectList(new Model.Services.Admin.Sede().ObtenerSede(), "ID_SEDE", "DESCRIPCION_UNIVERSIDAD"), " ", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_SEDE, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Carrera</label>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(m => m.ID_CARRERA, new SelectList(string.Empty, "ID_CARRERA", "DESCRIPCION_CARRERA"), " ", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_CARRERA, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Materia</label>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(m => m.ID_MATERIA, new SelectList(string.Empty, "ID_MATERIA", "DESCRIPCION_MATERIA"), " ", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_MATERIA, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Paralelo</label>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(m => m.ID_PARALELO, new SelectList(string.Empty, "ID_PARALELO", "DESCRIPCION_PARALELO"), " ", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_PARALELO, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Tipo Horario</label>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(m => m.ID_INTERVALO, new SelectList(string.Empty, "ID_INTERVALO", "DESCRIPCION_INTERVALO"), " ", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_INTERVALO, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-9">
+                                <button id="btn_buscar" type="button" class="btn btn-custom waves-effect waves-light m-b-5" data-loading-text="<span class='btn-label'><i class='fa fa-circle-o-notch fa-spin'></i></span> Espera<span class='md-ripple'></span>"><span class="btn-label"><i class="fa fa-search"></i></span> Buscar<span class="md-ripple"></span></button>
+                            </div>
+                        </div>
+                    }
+                </div><!-- end col -->
+                <div class="col-sm-12">
+                    <table id="tbl_HorarioMateria" class="table-datatable table dt-responsive table-striped jambo_table bulk_action tblInscripcion" style="width:100%">
+                        <thead>
+                            <tr class="headings">
+                                <th class="column-title">#</th>
+                                <th class="column-title">Sede</th>
+                                <th class="column-title">Carrera</th>
+                                <th class="column-title">Materia</th>
+                                <th class="column-title">Paralelo</th>
+                                <th class="column-title">Hora</th>
+                                <th class="column-title">Día</th>
+                                <th class="column-title"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* MODAL *@
+<div class="modal fade modal-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+
+</div>
+<!-- /.modal -->
+
+@section scripts
+{
+    <script>
+        var datatable;
+        datatable = $('#tbl_HorarioMateria').DataTable({
+            "order": [[2, "desc"], [3, "desc"]],
+            "processing": true,
+            "language": {
+                "url": "../assets/plugins/datatables/Spanish.json",
+            },
+            "order": [[1, 'asc']],
+        });
+
+        function ActualizarDetalle() {
+            datatable.ajax.reload();
+        }
+
+
+        $('#btn_buscar').click(function () {
+            $(".btn-loding").button('loading');
+            model = $('#formHorario').serialize();
+            $.validator.unobtrusive.parse("#formHorario");
+            if ($("#formHorario").valid()) {
+                datatable.destroy();
+                datatable = $('#tbl_HorarioMateria').DataTable({
+                    'ajax': {
+                        "type": "POST",
+                        "url": "@Url.Action("ObtenerDetalle", "HorarioMateria")",
+                        "data": function (d) {
+                            d.id_sede = $('#ID_SEDE').val();
+                            d.id_carrera = $('#ID_CARRERA').val();
+                            d.id_materia = $('#ID_MATERIA').val();
+                            d.id_paralelo = $('#ID_PARALELO').val();
+                            d.id_intervalo = $('#ID_INTERVALO').val();
+                        }
+                    },
+                    "columns": [
+                      { 'data': 'ID_HORARIO_DETALLE' },
+                      { 'data': 'DESCRIPCION_UNIVERSIDAD' },
+                      { 'data': 'DESCRIPCION_CARRERA' },
+                      { 'data': 'DESCRIPCION_MATERIA' },
+                      { 'data': 'DESCRIPCION_PARALELO' },
+                      { 'data': 'HORARIO' },
+                      { 'data': 'DESCRIPCION_DIAS' },
+                      {
+                          'data': 'ID_HORARIO_DETALLE', 'render': function (data, type, row, meta) {
+
+                              return "<button  title='Horario Docente'  type='button' onclick=ModalForm('@Url.Action("DocenteHorario", "HorarioMateria")/" + row.ID_HORARIO_DETALLE + "')  class='btn btn-icon waves-effect waves-light btn-custom btn-xs m-b-5'><em class='zmdi zmdi-accounts'></em></button> ";
+
+                          },
+                          'orderable': false,
+                          "className": "actions",
+                          'width': '85px'
+                      }
+                    ],
+                    "order": [[2, "desc"], [3, "desc"]],
+                    "processing": true,
+                    "language": {
+                        "url": "../assets/plugins/datatables/Spanish.json",
+                    },
+                    "order": [[1, 'asc']],
+                });
+            }
+            setTimeout(function () {
+                $(".btn-loding").button('reset');
+            }, 200);
+            return false;
+        });
+
+        $(document).ready(function () {
+
+            //Dropdownlist Sede
+            $("#ID_SEDE").change(function () {
+                $("#ID_CARRERA").empty();
+                $("#ID_MATERIA").empty();
+                $("#ID_PARALELO").empty();
+                $("#ID_INTERVALO").empty();
+                if ($("#ID_SEDE").val() != "") {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("getCarreraSede", "Carrera")', // we are calling json method
+                        dataType: 'json',
+                        data: { id_sede: $("#ID_SEDE").val() },
+                        success: function (states) {
+                            // states contains the JSON formatted list
+                            // of states passed from the controller
+                            $("#ID_CARRERA").append('<option value=""></option>');
+                            $.each(states, function (i, state) {
+                                $("#ID_CARRERA").append('<option value="' + state.Value + '">' +
+                                     state.Text + '</option>');
+                                // here we are adding option for States
+
+                            });
+                        },
+                        error: function (ex) {
+                            alert('Failed to retrieve states.' + ex);
+                        }
+                    });
+                }
+                return false;
+            })
+
+
+            //Dropdownlist Carrera
+            $("#ID_CARRERA").change(function () {
+                $("#ID_MATERIA").empty();
+                $("#ID_PARALELO").empty();
+                $("#ID_INTERVALO").empty();
+                if ($("#ID_CARRERA").val() != "") {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("getMateria", "Materia")', // we are calling json method
+                        dataType: 'json',
+                        data: { id_carrera: $("#ID_CARRERA").val() },
+                        success: function (states) {
+                            // states contains the JSON formatted list
+                            // of states passed from the controller
+                            $("#ID_MATERIA").append('<option value=""></option>');
+                            $.each(states, function (i, state) {
+                                $("#ID_MATERIA").append('<option value="' + state.Value + '">' +
+                                     state.Text + '</option>');
+                                // here we are adding option for States
+
+                            });
+                        },
+                        error: function (ex) {
+                            alert('Failed to retrieve states.' + ex);
+                        }
+                    });
+                }
+                return false;
+            })
+
+            //Dropdownlist Materia
+            $("#ID_MATERIA").change(function () {
+                $("#ID_PARALELO").empty();
+                $("#ID_INTERVALO").empty();
+                if ($("#ID_MATERIA").val() != "") {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("getParaleloSedeMateria", "Paralelo")', // we are calling json method
+                        dataType: 'json',
+                        data: { id_materia: $("#ID_MATERIA").val(), id_sede: $("#ID_SEDE").val(), estado: true },
+                        success: function (states) {
+                            // states contains the JSON formatted list
+                            // of states passed from the controller
+                            $("#ID_PARALELO").append('<option value=""></option>');
+                            $.each(states, function (i, state) {
+                                $("#ID_PARALELO").append('<option value="' + state.Value + '">' +
+                                     state.Text + '</option>');
+                                // here we are adding option for States
+
+                            });
+                        },
+                        error: function (ex) {
+                            alert('Failed to retrieve states.' + ex);
+                        }
+                    });
+                }
+                return false;
+            })
+
+
+            //Dropdownlist Paralelo
+            $("#ID_PARALELO").change(function () {
+                $("#ID_INTERVALO").empty();
+                if ($("#ID_CARRERA").val() != "") {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("getIntervaloSedeCarrera", "Intervalo")', // we are calling json method
+                        dataType: 'json',
+                        data: { id_carrera: $("#ID_CARRERA").val(), id_sede: $("#ID_SEDE").val() },
+                        success: function (states) {
+                            // states contains the JSON formatted list
+                            // of states passed from the controller
+                            $("#ID_INTERVALO").append('<option value=""></option>');
+                            $.each(states, function (i, state) {
+                                $("#ID_INTERVALO").append('<option value="' + state.Value + '">' +
+                                     state.Text + '</option>');
+                                // here we are adding option for States
+
+                            });
+                        },
+                        error: function (ex) {
+                            alert('Failed to retrieve states.' + ex);
+                        }
+                    });
+                }
+                return false;
+            })
+
+        });
+    </script>
+}

@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Model.Services.Admin;
+
+namespace CAS_ADMIN.Controllers
+{
+    public class IntervaloController : Controller
+    {
+        // GET: Intervalo
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        #region Intervalo
+        Intervalo _intervalo = new Intervalo();
+        public JsonResult getIntervaloSedeCarrera(int id_carrera, int id_sede)
+        {
+            List<SelectListItem> licities = new List<SelectListItem>();
+
+            foreach (var x in _intervalo.ObtenerIntervaloSedeCarera(id_sede, id_carrera))
+            {
+                licities.Add(new SelectListItem { Text = x.DESCRIPCION_INTERVALO, Value = x.ID_INTERVALO.ToString() });
+            }
+            return Json(new SelectList(licities, "Value", "Text", JsonRequestBehavior.AllowGet));
+        }
+        #endregion
+
+        #region IntervaloDetalle
+        IntervaloDetalle _intervaloDetalle = new IntervaloDetalle();
+        public JsonResult getIntervaloDetalleSedeCarrera(int id_carrera, int id_sede, string id_inscrip, int id_intervalo)
+        {
+            List<SelectListItem> licities = new List<SelectListItem>();
+
+            foreach (var x in _intervaloDetalle.ObtenerIntervaloCarreraSedeCarera(id_sede, id_carrera, id_inscrip, id_intervalo))
+            {
+                licities.Add(new SelectListItem { Text = x.INTERVALO, Value = x.ID_INTERVALO_DETALLE.ToString() });
+            }
+            return Json(new SelectList(licities, "Value", "Text", JsonRequestBehavior.AllowGet));
+        }
+        #endregion
+    }
+}

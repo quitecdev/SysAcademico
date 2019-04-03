@@ -1,0 +1,627 @@
+﻿@model Model.Services.Admin.ContadorWeb
+
+@{
+    ViewBag.Title = "Inicio";
+}
+
+  <!-- START REVOLUTION SLIDER 5.0 -->
+<div id="slider_container" class="rev_slider_wrapper">
+    <div id="rev-slider" class="rev_slider" data-version="5.0">
+        <ul>
+            <li data-transition="slideremovedown">
+                <!-- MAIN IMAGE -->
+                <img src="img/slider/cas/slider3_.jpg" alt="" width="1920" height="600">
+
+                <!-- LAYER NR. 1 -->
+                <div class="tp-caption captionHeadline1 highlight primary" id="slide-397-layer-2" data-x="center" data-y="top" data-voffset="200" data-width="['auto','auto','auto','auto']" data-height="['auto','auto','auto','auto']" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-start="500" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 7; white-space: nowrap;">
+                    Bienvenidos!
+                </div>
+                <!-- LAYER NR. 3 -->
+                <div class="tp-caption captionHeadline2" id="slide-397-layer-4" data-x="center" data-y="top" data-voffset="300" data-width="['auto','auto','auto','auto']" data-height="['auto','auto','auto','auto']" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-start="800" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="color: #fff;z-index: 7; white-space: nowrap;">
+                    MATRICULAS ABIERTAS
+                </div>
+                <!-- LAYER NR. 3 -->
+                <div class="tp-caption captionButtonlink hidden-xs" id="slide-399-layer-5" data-x="center" data-y="top" data-voffset="380" data-width="['auto','auto','auto','auto']" data-height="['auto','auto','auto','auto']" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-start="1200" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 6; white-space: nowrap;">
+                    <a href="@Url.Action("Index", "Inscripcion")" class="btn-e btn-e-primary"><i class="fa fa-plus"></i> Inscripción</a>
+                </div>
+            </li>
+
+            <li data-transition="slideremovedown">
+                <!-- MAIN IMAGE -->
+                <img src="img/slider/cas/slider4_.jpg" alt="" width="1920" height="600">
+
+                <!-- LAYER NR. 1 -->
+                <div class="tp-caption captionHeadline1 highlight primary" id="slide-397-layer-2" data-x="center" data-y="top" data-voffset="200" data-width="['auto','auto','auto','auto']" data-height="['auto','auto','auto','auto']" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-start="500" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 7; white-space: nowrap;">
+                    Bienvenidos!
+                </div>
+                <!-- LAYER NR. 3 -->
+                <div class="tp-caption captionHeadline2" id="slide-397-layer-4" data-x="center" data-y="top" data-voffset="300" data-width="['auto','auto','auto','auto']" data-height="['auto','auto','auto','auto']" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-start="800" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="color: #fff;z-index: 7; white-space: nowrap;">
+                    MATRICULAS ABIERTAS
+                </div>
+                <!-- LAYER NR. 3 -->
+                <div class="tp-caption captionButtonlink hidden-xs" id="slide-399-layer-5" data-x="center" data-y="top" data-voffset="380" data-width="['auto','auto','auto','auto']" data-height="['auto','auto','auto','auto']" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-start="1200" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 6; white-space: nowrap;">
+                    <a href="@Url.Action("Index", "Inscripcion")" class="btn-e btn-e-primary"><i class="fa fa-plus"></i> Inscripción</a>
+                </div>
+            </li>
+
+            <li data-transition="slideremovedown">
+                <!-- MAIN IMAGE -->
+                <img src="img/slider/cas/slider7_.jpg" alt="" width="1920" height="600">
+                <!-- LAYER NR. 1 -->
+                <div class="tp-caption captionHeadline1 highlight primary" id="slide-397-layer-2" data-x="center" data-y="top" data-voffset="200" data-width="['auto','auto','auto','auto']" data-height="['auto','auto','auto','auto']" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-start="500" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 7; white-space: nowrap;">
+                    Bienvenidos!
+                </div>
+                <!-- LAYER NR. 3 -->
+                <div class="tp-caption captionHeadline2" id="slide-397-layer-4" data-x="center" data-y="top" data-voffset="300" data-width="['auto','auto','auto','auto']" data-height="['auto','auto','auto','auto']" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-start="800" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="color: #fff;z-index: 7; white-space: nowrap;">
+                    MATRICULAS ABIERTAS
+                </div>
+                <!-- LAYER NR. 3 -->
+                <div class="tp-caption captionButtonlink hidden-xs" id="slide-399-layer-5" data-x="center" data-y="top" data-voffset="380" data-width="['auto','auto','auto','auto']" data-height="['auto','auto','auto','auto']" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-start="1200" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 6; white-space: nowrap;">
+                    <a href="@Url.Action("Index", "Inscripcion")" class="btn-e btn-e-primary"><i class="fa fa-plus"></i> Inscripción</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- END REVOLUTION SLIDER -->
+</div>
+<!-- END OF SLIDER WRAPPER -->
+<!-- START - cta primary -->
+<div class="parallax parallax-two bg4">
+    <div class="cta-wrapper cta-parallax cta-primary-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>PRÓXIMOS EVENTOS</h4>
+                    <p>Te presentamos nuestros próximos eventos</p>
+                    <a class="btn-e btn-gray" href="http://www.culinaryartschoolecuador.com/carreras/">Ver más...</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END - cta primary -->
+<!-- START - contain wrapp -->
+<div class="contain-wrapp padding-bottom-40">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="section-heading">
+                    <h3>CERTIFICACIÓN PROFESIONAL / CURSOS CORTOS</h3>
+                    <div class="divider divider-2x"></div>
+                    <p>
+                        Nuestros cursos cortos tienen el objetivo de complementar los estudios regulares y tratan temas especializados. Aquí podrán ver más detalles de los mismos.
+                    </p>
+                    <i class="fa fa-rocket"></i>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- START - Article -->
+            <div class="col-md-12">
+                <div id="gallery" class="masonry gallery" style="position: relative; height: 838.834px;">
+                    <div class="row">
+                        <!-- START - Gallery 01 -->
+                        <div data-filter="home" class="grid-item col-sm-4 col-xs-6" style="position: absolute; left: 0px; top: 0px;">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomInDown animated zoomOutDown">
+                                    <a href="img/cursos/ELABORACIÓN DE SALCHICHAS-01.jpg" data-pretty="prettyPhoto" class="zoomer">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </div>
+                                <img src="img/cursos/ELABORACIÓN DE SALCHICHAS-01.jpg" class="img-responsive" alt="">
+                            </div>
+                            <div class="img-containt text-center">
+                                <h5>Elaboración de Salchichas</h5>
+                                <strong>$30.00</strong>
+                               <ul class="img-footer">
+                                    <li style="width: 100%;"><i class="fa fa-calendar-o"></i> 17 DE MARZO</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- END - Gallery 01 -->
+
+                        <!-- START - Gallery 01 -->
+                        <div data-filter="home" class="grid-item col-sm-4 col-xs-6" style="position: absolute; left: 0px; top: 0px;">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomInDown animated zoomOutDown">
+                                    <a href="~/img/cursos/taller cocina americana.jpg" data-pretty="prettyPhoto" class="zoomer">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </div>
+                                <img src="~/img/cursos/taller cocina americana.jpg" class="img-responsive" alt="">
+                            </div>
+                            <div class="img-containt text-center">
+                                <h5>Cocina Americana</h5>
+                                <strong>$30.00</strong>
+                                <ul class="img-footer">
+                                    <li style="width: 100%;"><i class="fa fa-calendar-o"></i> 17 DE MARZO</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- END - Gallery 01 -->
+
+                        <!-- START - Gallery 01 -->
+                        <div data-filter="home" class="grid-item col-sm-4 col-xs-6" style="position: absolute; left: 0px; top: 0px;">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomInDown animated zoomOutDown">
+                                    <a href="~/img/cursos/taller parrilla argentina.jpg" data-pretty="prettyPhoto" class="zoomer">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </div>
+                                <img src="~/img/cursos/taller parrilla argentina.jpg" class="img-responsive" alt="">
+                            </div>
+                            <div class="img-containt text-center">
+                                <h5>Asado Argentino</h5>
+                                <strong>$30.00</strong>
+                                <ul class="img-footer">
+                                    <li style="width: 100%;"><i class="fa fa-calendar-o"></i> 24 DE MARZO</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- END - Gallery 01 -->
+
+                        <!-- START - Gallery 01 -->
+                        <div data-filter="home" class="grid-item col-sm-4 col-xs-6" style="position: absolute; left: 0px; top: 0px;">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomInDown animated zoomOutDown">
+                                    <a href="~/img/cursos/taller de arepas.jpg" data-pretty="prettyPhoto" class="zoomer">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </div>
+                                <img src="~/img/cursos/taller de arepas.jpg" class="img-responsive" alt="">
+                            </div>
+                            <div class="img-containt text-center">
+                                <h5>Festival de Arepas</h5>
+                                <strong>$30.00</strong>
+                                <ul class="img-footer">
+                                    <li style="width: 100%;"><i class="fa fa-calendar-o"></i> 31 DE MARZO</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- END - Gallery 01 -->
+
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+            <!-- END - Article -->
+        </div>
+    </div>
+</div>
+<!-- END - contain wrapp -->
+<!-- START - parallax -->
+@Html.Partial("_Contadores",Model)
+<!-- END - parallax -->
+<!-- START - contain wrapp -->
+<div class="contain-wrapp gray-container padding-bottom-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="section-heading">
+                    <h3>Instructores Calificados</h3>
+                    <p>El mejor equipo de instructores!</p>
+                    <i class="fa fa-user"></i>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="team" class="owl-carousel leftControls-right">
+
+                    <div class="item">
+                        <div class="thumbnail team-wrapp">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomIn">
+                                    <div class="team-network">
+                                        <a href="http://www.culinaryartschoolecuador.com/instructores-calificados/"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <img src="img/chefs/IMG_0025.jpg" class="img-responsive" alt="" />
+                            </div>
+                            <div class="caption">
+                                <h5>Juan Fernández</h5>
+                                <span class="team-position">DIRECTOR DE CULINARY ART’S SCHOOL</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumbnail team-wrapp">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomIn">
+                                    <div class="team-network">
+                                        <a href="http://www.culinaryartschoolecuador.com/instructores-calificados/"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <img src="img/chefs/IMG_0042-1.jpg" class="img-responsive" alt="" />
+                            </div>
+                            <div class="caption">
+                                <h5>Felipe Campana</h5>
+                                <span class="team-position">COORDINADOR ACADÉMICO DE LA CERTIFICACIÓN DE COCINA</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumbnail team-wrapp">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomIn">
+                                    <div class="team-network">
+                                        <a href="http://www.culinaryartschoolecuador.com/instructores-calificados/"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <img src="img/chefs/IMG_0134.jpg" class="img-responsive" alt="" />
+                            </div>
+                            <div class="caption">
+                                <h5>Mauricio Armendaris</h5>
+                                <span class="team-position">FUNDADOR ASO. DE CHEFS DEL ECUADOR</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumbnail team-wrapp">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomIn">
+                                    <div class="team-network">
+                                        <a href="http://www.culinaryartschoolecuador.com/instructores-calificados/"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <img src="img/chefs/IMG_0124.jpg" class="img-responsive" alt="" />
+                            </div>
+                            <div class="caption">
+                                <h5>Julián Vallejo</h5>
+                                <span class="team-position">INSTRUCTOR EN TÉCNICAS CULINARIAS BÁSICAS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumbnail team-wrapp">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomIn">
+                                    <div class="team-network">
+                                        <a href="http://www.culinaryartschoolecuador.com/instructores-calificados/"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <img src="img/chefs/IMG_0147.jpg" class="img-responsive" alt="" />
+                            </div>
+                            <div class="caption">
+                                <h5>Juan Armendariz</h5>
+                                <span class="team-position">INSTRUCTOR DE TÉCNICAS PROFESIONALES</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumbnail team-wrapp">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomIn">
+                                    <div class="team-network">
+                                        <a href="http://www.culinaryartschoolecuador.com/instructores-calificados/"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <img src="img/chefs/IMG_0122.jpg" class="img-responsive" alt="" />
+                            </div>
+                            <div class="caption">
+                                <h5>Andrea Parra</h5>
+                                <span class="team-position">INSTRUCTOR EN SERVICIO, ETIQUETA Y PROTOCOLO</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumbnail team-wrapp">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomIn">
+                                    <div class="team-network">
+                                        <a href="http://www.culinaryartschoolecuador.com/instructores-calificados/"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <img src="img/chefs/IMG_0073-copia.jpg" class="img-responsive" alt="" />
+                            </div>
+                            <div class="caption">
+                                <h5>Daniel Pillón</h5>
+                                <span class="team-position">INSTRUCTOR EN COCINA INTERNACIONAL</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumbnail team-wrapp">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomIn">
+                                    <div class="team-network">
+                                        <a href="http://www.culinaryartschoolecuador.com/instructores-calificados/"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <img src="img/chefs/IMG_0151.jpg" class="img-responsive" alt="" />
+                            </div>
+                            <div class="caption">
+                                <h5>Fernando Olmedo</h5>
+                                <span class="team-position">INSTRUCTOR EN COCINA ECUATORIANA</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumbnail team-wrapp">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomIn">
+                                    <div class="team-network">
+                                        <a href="http://www.culinaryartschoolecuador.com/instructores-calificados/"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <img src="img/chefs/IMG_0049.jpg" class="img-responsive" alt="" />
+                            </div>
+                            <div class="caption">
+                                <h5>Andrés Carrión</h5>
+                                <span class="team-position">INSTRUCTOR EN PROYECTOS Y COSTOS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumbnail team-wrapp">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomIn">
+                                    <div class="team-network">
+                                        <a href="http://www.culinaryartschoolecuador.com/instructores-calificados/"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <img src="img/chefs/IMG_0072.jpg" class="img-responsive" alt="" />
+                            </div>
+                            <div class="caption">
+                                <h5>Oswaldo Simbaña</h5>
+                                <span class="team-position">INSTRUCTOR DE PANADERÍA Y PASTELERÍA PROFESIONAL</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumbnail team-wrapp">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomIn">
+                                    <div class="team-network">
+                                        <a href="http://www.culinaryartschoolecuador.com/instructores-calificados/"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <img src="img/chefs/IMG_0065.jpg" class="img-responsive" alt="" />
+                            </div>
+                            <div class="caption">
+                                <h5>Patricia Simbaña</h5>
+                                <span class="team-position">INSTRUCTORA DE PASTRY DESIGNER</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumbnail team-wrapp">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomIn">
+                                    <div class="team-network">
+                                        <a href="http://www.culinaryartschoolecuador.com/instructores-calificados/"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <img src="img/chefs/IMG_0165-copia.jpg" class="img-responsive" alt="" />
+                            </div>
+                            <div class="caption">
+                                <h5>Roberto Chico</h5>
+                                <span class="team-position">INSTRUCTOR DE PANADERÍA Y PASTELERÍA PROFESIONAL</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumbnail team-wrapp">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomIn">
+                                    <div class="team-network">
+                                        <a href="http://www.culinaryartschoolecuador.com/instructores-calificados/"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <img src="img/chefs/IMG_0156-1.jpg" class="img-responsive" alt="" />
+                            </div>
+                            <div class="caption">
+                                <h5>Elías Villalba</h5>
+                                <span class="team-position">INSTRUCTOR DE PANADERÍA Y PASTELERÍA BÁSICA</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumbnail team-wrapp">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomIn">
+                                    <div class="team-network">
+                                        <a href="http://www.culinaryartschoolecuador.com/instructores-calificados/"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <img src="img/chefs/IMG_0173.jpg" class="img-responsive" alt="" />
+                            </div>
+                            <div class="caption">
+                                <h5>Edwin Simbaña</h5>
+                                <span class="team-position">INSTRUCTOR DE PANADERÍA Y PASTELERÍA BÁSICA</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumbnail team-wrapp">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomIn">
+                                    <div class="team-network">
+                                        <a href="http://www.culinaryartschoolecuador.com/instructores-calificados/"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <img src="img/chefs/IMG_0182-1.jpg" class="img-responsive" alt="" />
+                            </div>
+                            <div class="caption">
+                                <h5>Liliana Rojas</h5>
+                                <span class="team-position">INSTRUCTOR EN PASTILLAJE Y DECORACIÓN</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumbnail team-wrapp">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomIn">
+                                    <div class="team-network">
+                                        <a href="http://www.culinaryartschoolecuador.com/instructores-calificados/"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <img src="img/chefs/IMG_0139.jpg" class="img-responsive" alt="" />
+                            </div>
+                            <div class="caption">
+                                <h5>Lenin Chávez</h5>
+                                <span class="team-position">INSTRUCTOR EN PANADERÍA BÁSICA</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumbnail team-wrapp">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomIn">
+                                    <div class="team-network">
+                                        <a href="http://www.culinaryartschoolecuador.com/instructores-calificados/"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <img src="img/chefs/IMG_0198.jpg" class="img-responsive" alt="" />
+                            </div>
+                            <div class="caption">
+                                <h5>Manuel Consuegra</h5>
+                                <span class="team-position">INSTRUCTOR EN BAKING & PASTRY ART'S MANAGEMENT</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumbnail team-wrapp">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomIn">
+                                    <div class="team-network">
+                                        <a href="http://www.culinaryartschoolecuador.com/instructores-calificados/"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <img src="img/chefs/IMG_0045.jpg" class="img-responsive" alt="" />
+                            </div>
+                            <div class="caption">
+                                <h5>Cristina Grijalva</h5>
+                                <span class="team-position">PROFESORA DE BAKING & PASTRY ARTS MANAGEMENT</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumbnail team-wrapp">
+                            <div class="img-wrapper">
+                                <div class="img-caption ecadaZoomIn">
+                                    <div class="team-network">
+                                        <a href="http://www.culinaryartschoolecuador.com/instructores-calificados/"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <img src="img/chefs/Rocio-Pezantes.jpg" class="img-responsive" alt="" />
+                            </div>
+                            <div class="caption">
+                                <h5>Rocío Pesantez</h5>
+                                <span class="team-position">ESPECIALISTA EN ARTE GASTRONÓMICO Y VINOS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END - contain wrapp -->
+<!-- START - parallax -->
+
+<div class="parallax parallax-three bg-clients">
+    <div class="parallax-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 owl-column-wrapp text-center">
+                    <div id="clients" class="owl-carousel leftControls-right">
+                        <div class="item">
+                            <a href="#" class="client-logo"><img src="img/clients/setec-logo.png" class="img-reponsive" alt="" /></a>
+                        </div>
+                        <div class="item">
+                            <a href="#" class="client-logo"><img src="img/clients/aso-gastro-ecu.png" class="img-reponsive" alt="" /></a>
+                        </div>
+                        <div class="item">
+                            <a href="#" class="client-logo"><img src="img/clients/asochefs-ecu.png" class="img-reponsive" alt="" /></a>
+                        </div>
+                        <div class="item">
+                            <a href="#" class="client-logo"><img src="img/clients/nat-res-aso.png" class="img-reponsive" alt="" /></a>
+                        </div>
+                        <div class="item">
+                            <a href="#" class="client-logo"><img src="img/clients/academy-of-culinarys-logo.png" class="img-reponsive" alt="" /></a>
+                        </div>
+                        <div class="item">
+                            <a href="#" class="client-logo"><img src="img/clients/academia-culinaria-ecuador-logo.png" class="img-reponsive" alt="" /></a>
+                        </div>
+                        <div class="item">
+                            <a href="#" class="client-logo"><img src="img/clients/wacs-logo.png" class="img-reponsive" alt="" /></a>
+                        </div>
+                        <div class="item">
+                            <a href="#" class="client-logo"><img src="img/clients/aso gastro americas caribe.png" class="img-reponsive" alt="" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END - parallax -->
+
+<div class="clearfix"></div>
+
+
+@section scripts
+{
+        <!-- CUSTOM REVOLUTION JS FILES -->
+<script>
+        $(document).ready(function () {
+            $("#rev-slider").revolution({
+                sliderType: "standard",
+                sliderLayout: "auto",
+                delay: 9000,
+                navigation: {
+                    keyboardNavigation: "on",
+                    keyboard_direction: "horizontal",
+                    mouseScrollNavigation: "off",
+                    onHoverStop: "off",
+                    touch: {
+                        touchenabled: "on",
+                        swipe_threshold: 75,
+                        swipe_min_touches: 1,
+                        swipe_direction: "horizontal",
+                        drag_block_vertical: false
+                    },
+                    arrows: {
+                        style: "hephaistos",
+                        enable: true,
+                        hide_onmobile: false,
+                        hide_onleave: false,
+                        tmp: '',
+                        left: {
+                            h_align: "left",
+                            v_align: "center",
+                            h_offset: 30,
+                            v_offset: 0
+                        },
+                        right: {
+                            h_align: "right",
+                            v_align: "center",
+                            h_offset: 30,
+                            v_offset: 0
+                        }
+                    },
+                    bullets: {
+                        enable: true,
+                        hide_onmobile: false,
+                        style: "hephaistos",
+                        hide_onleave: false,
+                        direction: "horizontal",
+                        h_align: "center",
+                        v_align: "bottom",
+                        h_offset: 20,
+                        v_offset: 30,
+                        space: 5,
+                        tmp: ''
+                    }
+                },
+                startwidth: 1170,
+                startheight: 500,
+                hideThumbs: 10,
+                fullScreen: "on",
+                fullScreenAlignForce: "on"
+            });
+        });
+</script>
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RevenueReport>
+  <Data Year="2008" Period="Q1" AuditedBy="Maria Anders" DirectRevenue="12500.00" ReferralRevenue="2500.00" />
+  <Data Year="2008" Period="Q2" AuditedBy="Ana Trujillo" DirectRevenue="21000.00" ReferralRevenue="8000.00" />
+  <Data Year="2008" Period="Q3" AuditedBy="Antonio Moreno" DirectRevenue="20000.00" ReferralRevenue="5000.00" />
+  <Data Year="2008" Period="Q4" AuditedBy="Thomas Hardy" DirectRevenue="25000.00" ReferralRevenue="1200.00" />   
+</RevenueReport>

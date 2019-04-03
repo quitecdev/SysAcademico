@@ -1,0 +1,61 @@
+﻿@model List<Model.Services.Docente.NotasAsignadas>
+@{
+    Layout = null;
+}
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Calificación</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        @if (Model != null)
+            {
+                            <table class="table table-hover table-striped m-0">
+                                <thead>
+                                    <tr>
+                                        <th>Sede</th>
+                                        <th>Carrera</th>
+                                        <th>Nota</th>
+                                        <th>Hora</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.Count > 0)
+                                    {
+                                        foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@item.DESCRIPCION_UNIVERSIDAD</td>
+                                                <td>@item.DESCRIPCION_CARRERA</td>
+                                                <td>@item.DESCRIPCION_NOTA</td>
+                                                <td>@item.HORA</td>
+                                                <td>
+                                                    <button title='Ver Nota' type='button' onclick="ModalForm('@Url.Action("NotasDocenteVista","Docente")/@item.ID_SEDE/@item.ID_CARRERA/@item.ID_NOTA/@item.ID_INTERVALO_DETALLE/@item.ID_DOCENTE')" class='btn btn-icon waves-effect waves-light btn-info btn-xs m-b-5'> <i class='zmdi zmdi-eye'></i> </button>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="5">
+                                                <p class="text-muted text-center">
+                                                    Ningún dato disponible en esta tabla
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,229 @@
+﻿@model Model.Services.Docente.AsistenciaDocente
+@{
+    ViewBag.Title = "Asistencia";
+
+    if (Model.Activo != null)
+    {
+        <script type="text/javascript">
+            @*var myVar = setInterval(ObetenerTiempo, 1000);
+
+            function ObetenerTiempo() {
+                $.ajax({
+                    url: '@Url.Action("getTime", "Asistencia")',
+                    data: {},
+                    dataType: "json",
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        if (response.data != null) {
+                            $("#tiempo").text(response.data.TIEMPO +" min.")
+                            //document.getElementById("demo").innerHTML = response.data.TIEMPO;
+                        }
+                        else {
+                            location.reload();
+                        }
+                    },
+                    error: function (response) {
+                        var r = jQuery.parseJSON(response.responseText);
+                        alert("Message: " + r.Message);
+                        alert("StackTrace: " + r.StackTrace);
+                        alert("ExceptionType: " + r.ExceptionType);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            }*@
+        </script>
+    }
+
+}
+
+<style>
+    th {
+        background: #8b1716;
+        color: #fff;
+        padding: 20px !important;
+    }
+
+    td {
+        padding: 20px !important;
+    }
+</style>
+
+
+@using (Html.BeginForm("Index", "Asistencia", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="page-title">@ViewBag.Title</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <div class="row">
+                    <p id="demo"></p>
+                    @if (Model != null)
+                    {
+                        if (Model.Activo != null)
+                        {
+                            @*<div class="row">
+                                <div class="col-sm-12">
+                                    <div class="alert alert-success">
+                                        <strong>Aviso!</strong> Estimado docente usted tiene <strong><span id="tiempo"></span></strong> para completar la asistencia.
+                                    </div>
+                                </div>
+                            </div>*@
+                            if (Model.Estudiante != null)
+                            {
+                                @Html.HiddenFor(x => x.Activo.ID_DOCENTE_ASISTENCIA)
+                                @Html.HiddenFor(x => x.Activo.ID_HORARIO_DETALLE)
+
+
+                                <div id="dataexample2">
+                                    <div class="col-md-12">
+                                        <table class="table table-hover table-striped m-0">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Apellidos</th>
+                                                    <th>Nombres</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{
+                                                    int i = 0;
+                                                    foreach (var item in Model.Estudiante)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.HiddenFor(o => o.Estudiante[i].ID_ASISTENCIA)
+                                                                @Html.HiddenFor(o => o.Estudiante[i].ESTADO, new { id = "hd_" + item.ID_ASISTENCIA })
+                                                                @Html.CheckBoxFor(o => o.Estudiante[i].ESTADO.Value, new { id = item.ID_ASISTENCIA, @class = "checkBox", data_id = item.ID_ASISTENCIA })
+                                                            </td>
+                                                            <td>@Html.DisplayFor(o => o.Estudiante[i].APELLIDOS)  </td>
+                                                            <td>@Html.DisplayFor(o => o.Estudiante[i].NOMBRES)  </td>
+                                                        </tr>
+                                                        i++;
+                                                    }
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="m-t-25"></div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Observación</label>
+                                            <div class="col-md-10">
+                                                @Html.TextAreaFor(x => x.Activo.OBSERVACION, 2, 1, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="m-t-25"></div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="m-t-25"></div>
+                                        <button id="example2" class="btn btn-custom waves-effect waves-light m-b-5"> <i class="fa fa-save m-r-5"></i> <span>Guardar</span> </button>
+                                        <div class="m-t-25"></div>
+                                    </div>
+                                </div>
+                                                        }
+
+                                                    }
+                                                    else
+                                                    {
+                                                        if (Model.Horario != null )
+                                                        {
+                                                            <table class="table table-hover table-striped m-0">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Sede</th>
+                                                                        <th>Carrera</th>
+                                                                        <th>Materia</th>
+                                                                        <th>Paralelo</th>
+                                                                        <th>Hora</th>
+                                                                        <th>Estado</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @if (Model.Horario.Count != 0)
+                                                                    {
+                                                                        foreach (var item in Model.Horario)
+                                                                        {
+                                                                            <tr>
+                                                                                <td>@item.DESCRIPCION_UNIVERSIDAD</td>
+                                                                                <td>@item.DESCRIPCION_CARRERA</td>
+                                                                                <td>@item.DESCRIPCION_MATERIA</td>
+                                                                                <td>@item.DESCRIPCION_PARALELO</td>
+                                                                                <td>@item.HORA</td>
+                                                                                <td>
+                                                                                    @if (item.ESTADO_ASISTENCIA.Value == 0)
+                                                                                    {
+                                                                                        <span class="label label-info">Proxima Asistencia</span>
+                                                                                    }
+                                                                                    else if (item.ESTADO_ASISTENCIA.Value == 1)
+                                                                                    {
+                                                                                        <span class="label label-success">Asistencia Completa</span>
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        <span class="label label-danger">Sin Asistencia</span>
+                                                                                    }
+
+                                                                                </td>
+                                                                            </tr>
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <tr>
+                                                                            <td colspan="6">
+                                                                                <div class="alert alert-danger">
+                                                                                    <strong>Oh snap!</strong> Estimado Docente, el momento no tiene asistencia a registrar.
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    }
+
+                                                                </tbody>
+                                                            </table>
+                                                            }
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="alert alert-danger">
+                                                            <strong>Oh snap!</strong> Estimado Docente al momento no se encuentra asignado a una carrera, pongase en contacto con el director de carrera.
+                                                        </div>
+                                                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+                                                    }
+
+@section scripts
+    {
+    <script>
+        //$("#example2").click(function () {
+        //    $("#dataexample2").printMe({ "path": ["https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"], "title": "Horario" });
+        //});
+        $(".checkBox").click(function () {
+            var a = $(this).data('id');
+            var id = "#hd_" + a
+            if ($(this).prop('checked')) {
+                $(id).val(true)
+            }
+            else {
+                $(id).val(false)
+            }
+        });
+    </script>
+}
+
+
+
+

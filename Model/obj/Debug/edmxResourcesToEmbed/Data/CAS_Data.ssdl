@@ -1,0 +1,1015 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CAS_DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AUX_ABREVIATURA_DIA">
+    <Key>
+      <PropertyRef Name="ID_DIA_ABREVI" />
+    </Key>
+    <Property Name="ID_DIA_ABREVI" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION_ABREVI" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CAS_ASISTENCIA">
+    <Key>
+      <PropertyRef Name="ID_ASISTENCIA" />
+    </Key>
+    <Property Name="ID_ASISTENCIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION_ASISTENCIA" Type="varchar" MaxLength="50" />
+    <Property Name="FECHA_INICIO" Type="date" />
+    <Property Name="FECHA_FIN" Type="date" />
+    <Property Name="ID_PERIODO" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_AUDITORIA">
+    <Key>
+      <PropertyRef Name="AUD_ID" />
+    </Key>
+    <Property Name="AUD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USR_ID" Type="varchar" MaxLength="15" />
+    <Property Name="AUD_SESSION" Type="varchar" MaxLength="100" />
+    <Property Name="AUD_FECHA_HORA" Type="datetime" />
+    <Property Name="AUD_ACCION" Type="varchar" MaxLength="200" />
+    <Property Name="AUD_DATA" Type="varchar(max)" />
+    <Property Name="USR_CODIGO" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CAS_CARPETA_ADJUNTOS">
+    <Key>
+      <PropertyRef Name="ID_CARPETA" />
+    </Key>
+    <Property Name="ID_CARPETA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION_CARPETA" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="CAS_CARRERA">
+    <Key>
+      <PropertyRef Name="ID_CARRERA" />
+    </Key>
+    <Property Name="ID_CARRERA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION_CARRERA" Type="varchar" MaxLength="500" />
+    <Property Name="NOMBRE_TECNICO_CARRERA" Type="varchar" MaxLength="50" />
+    <Property Name="COD_CARRERA" Type="varchar" MaxLength="20" />
+    <Property Name="ID_GRUPO" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_CARRERA_NOTA">
+    <Key>
+      <PropertyRef Name="ID_CARRERA_NOTA" />
+    </Key>
+    <Property Name="ID_CARRERA_NOTA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_CARRERA" Type="int" />
+    <Property Name="ID_NOTA" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_CARRERA_REQUISITOS">
+    <Key>
+      <PropertyRef Name="ID_CARRERA_REQUISITOS" />
+    </Key>
+    <Property Name="ID_CARRERA_REQUISITOS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_CARRERA_PADRE" Type="int" />
+    <Property Name="ID_CARRERA_HIJO" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_CRONOGRAMA">
+    <Key>
+      <PropertyRef Name="ID_CRONOGRAMA" />
+    </Key>
+    <Property Name="ID_CRONOGRAMA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_CARRERA" Type="int" />
+    <Property Name="ID_SEDE" Type="int" />
+    <Property Name="ID_PERIODO" Type="int" />
+    <Property Name="ID_TIPO_INTERVALO" Type="int" />
+    <Property Name="DESCRIPCION_CRONOGRAMA" Type="varchar" MaxLength="500" />
+    <Property Name="FECHA_INICIO" Type="date" />
+    <Property Name="FECHA_FIN" Type="date" />
+    <Property Name="ID_PARALELO" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_CRONOGRAMA_ADJUNTO">
+    <Key>
+      <PropertyRef Name="ID_CRONOGRAMA_ADJUNTO" />
+    </Key>
+    <Property Name="ID_CRONOGRAMA_ADJUNTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_CRONOGRAMA_DETALLE" Type="int" />
+    <Property Name="RUTA_ADJUNTO" Type="varchar" MaxLength="500" />
+    <Property Name="ICONO_ADJUNTO" Type="varchar" MaxLength="500" />
+    <Property Name="PESO_ADJUNTO" Type="varchar" MaxLength="500" />
+    <Property Name="NOMBRE_ADJUNTO" Type="varchar" MaxLength="250" />
+    <Property Name="ID_CARPETA" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_CRONOGRAMA_DETALLE">
+    <Key>
+      <PropertyRef Name="ID_CRONOGRAMA_DETALLE" />
+    </Key>
+    <Property Name="ID_CRONOGRAMA_DETALLE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_CRONOGRAMA" Type="int" />
+    <Property Name="SEMANA_CRONOGRAMA" Type="int" />
+    <Property Name="FECHA_CRONOGRAMA" Type="date" />
+    <Property Name="TEMA" Type="varchar" MaxLength="50" />
+    <Property Name="TEMATICA" Type="varchar" MaxLength="500" />
+    <Property Name="REQUERIMIENTO" Type="varchar" MaxLength="500" />
+    <Property Name="FERIADO" Type="bit" />
+  </EntityType>
+  <EntityType Name="CAS_DESTINATARIO">
+    <Key>
+      <PropertyRef Name="ID_DESTINATARIO" />
+    </Key>
+    <Property Name="ID_DESTINATARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_USUARIO" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CAS_DIAS">
+    <Key>
+      <PropertyRef Name="ID_DIAS" />
+    </Key>
+    <Property Name="ID_DIAS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION_DIAS" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CAS_DOCENTE">
+    <Key>
+      <PropertyRef Name="ID_DOCENTE" />
+    </Key>
+    <Property Name="ID_DOCENTE" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="APELLIDO_PATERNO_DOCENTE" Type="varchar" MaxLength="250" />
+    <Property Name="APELLIDO_MATERNO_DOCENTE" Type="varchar" MaxLength="250" />
+    <Property Name="PRIMER_NOMBRE_DOCENTE" Type="varchar" MaxLength="250" />
+    <Property Name="SEGUNDO_NOMBRE_DOCENTE" Type="varchar" MaxLength="250" />
+    <Property Name="FECHA_NACIMIENTO_DOCENTE" Type="date" />
+    <Property Name="ID_ESTADO_CIVIL" Type="int" />
+    <Property Name="ID_PROVINCIA" Type="int" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="250" />
+    <Property Name="TELEF_DOCENTE" Type="varchar" MaxLength="20" />
+    <Property Name="CEL_DOCENTE" Type="varchar" MaxLength="20" />
+    <Property Name="IMG_DOCENTE" Type="varchar" MaxLength="100" />
+    <Property Name="CORREO_DOCENTE" Type="varchar" MaxLength="250" />
+    <Property Name="FECHA_INGRESO_DOCENTE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CAS_DOCENTE_ASISTENCIA">
+    <Key>
+      <PropertyRef Name="ID_DOCENTE_ASISTENCIA" />
+    </Key>
+    <Property Name="ID_DOCENTE_ASISTENCIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_HORARIO_DETALLE" Type="int" Nullable="false" />
+    <Property Name="ID_DOCENTE" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="FECHA_ASISTENCIA" Type="date" Nullable="false" />
+    <Property Name="HORA_ASISTENCIA" Type="time" Precision="7" Nullable="false" />
+    <Property Name="OBSERVACION_ASISTENCIA" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="FECHA_REGISTRO" Type="datetime" Nullable="false" />
+    <Property Name="ESTADO_ASISTENCIA" Type="int" />
+    <Property Name="ID_PERIODO" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_DOCENTE_MATERIA_PARALELO">
+    <Key>
+      <PropertyRef Name="ID_DOCENTE_MATERIA_PARALELO" />
+    </Key>
+    <Property Name="ID_DOCENTE_MATERIA_PARALELO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_DOCENTE" Type="varchar" MaxLength="20" />
+    <Property Name="ID_HORARIO_DETALLE" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_DOCENTE_NOTAS">
+    <Key>
+      <PropertyRef Name="ID_DOCENTE_NOTA" />
+    </Key>
+    <Property Name="ID_DOCENTE_NOTA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_DOCENTE" Type="varchar" MaxLength="20" />
+    <Property Name="ID_PONDERACION" Type="int" />
+    <Property Name="ID_SEDE" Type="int" />
+    <Property Name="FECHA_INICIO" Type="datetime" />
+    <Property Name="FECHA_FIN" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CAS_ENCUESTA">
+    <Key>
+      <PropertyRef Name="ID_ENCUESTA" />
+    </Key>
+    <Property Name="ID_ENCUESTA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION_ENCUESTA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ID_TIPO_INTERVALO" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_ENCUESTA_PREGUNTAS">
+    <Key>
+      <PropertyRef Name="ID_ENCUESTA_PREGUNTA" />
+    </Key>
+    <Property Name="ID_ENCUESTA_PREGUNTA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_ENCUESTA" Type="int" />
+    <Property Name="DESCRIPCION_PREGUNTA" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="CAS_ESTADO_CIVIL">
+    <Key>
+      <PropertyRef Name="ID_ESTADO_CIVIL" />
+    </Key>
+    <Property Name="ID_ESTADO_CIVIL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION_ESTADO_CIVIL" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CAS_ESTUDIANTE">
+    <Key>
+      <PropertyRef Name="ID_ESTUDIANTE" />
+    </Key>
+    <Property Name="ID_ESTUDIANTE" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="APELLIDO_PATERNO_ESTUDIANTE" Type="varchar" MaxLength="250" />
+    <Property Name="APELLIDO_MATERNO_ESTUDIANTE" Type="varchar" MaxLength="250" />
+    <Property Name="PRIMER_NOMBRE_ESTUDIANTE" Type="varchar" MaxLength="250" />
+    <Property Name="SEGUNDO_NOMBRE_ESTUDIANTE" Type="varchar" MaxLength="250" />
+    <Property Name="FECHA_NACIMIENTO_ESTUDIANTE" Type="date" />
+    <Property Name="ID_ESTADO_CIVIL" Type="int" />
+    <Property Name="ID_PROVINCIA" Type="int" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="250" />
+    <Property Name="TELEF_ESTUDIANTE" Type="varchar" MaxLength="20" />
+    <Property Name="CEL_ESTUDIANTE" Type="varchar" MaxLength="20" />
+    <Property Name="IMG_ESTUDIANTE" Type="varchar" MaxLength="100" />
+    <Property Name="CORREO_ESTUDIANTE" Type="varchar" MaxLength="250" />
+    <Property Name="FECHA_INGRESO_ESTUDIANTE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CAS_ESTUDIANTE_ASISTENCIA">
+    <Key>
+      <PropertyRef Name="ID_ASISTENCIA" />
+    </Key>
+    <Property Name="ID_ASISTENCIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_ESTUDIANTE" Type="varchar" MaxLength="50" />
+    <Property Name="FECHA" Type="date" />
+    <Property Name="ESTADO" Type="bit" />
+    <Property Name="ID_HORARIO_DETALLE" Type="int" />
+    <Property Name="ID_PERIODO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CAS_ESTUDIANTE_DETALLE">
+    <Key>
+      <PropertyRef Name="ID_ESTUDIANTE_DETALLE" />
+    </Key>
+    <Property Name="ID_ESTUDIANTE_DETALLE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_ESTUDIANTE" Type="varchar" MaxLength="20" />
+    <Property Name="ID_SEDE" Type="int" />
+    <Property Name="ID_CARRERA" Type="int" />
+    <Property Name="ID_INTERVALO" Type="int" />
+    <Property Name="ID_INTERVALO_DETALLE" Type="int" />
+    <Property Name="ID_PARALELO" Type="int" />
+    <Property Name="ID_PERIODO" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_ESTUDIANTE_NOTA">
+    <Key>
+      <PropertyRef Name="ID_ESTUDIANTE_NOTA" />
+    </Key>
+    <Property Name="ID_ESTUDIANTE_NOTA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_ESTUDIANTE" Type="varchar" MaxLength="20" />
+    <Property Name="ID_PONDERACION" Type="int" />
+    <Property Name="VALOR_NOTA" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="ID_PERIODO" Type="int" />
+    <Property Name="ID_SEDE" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_GENERO">
+    <Key>
+      <PropertyRef Name="ID_GENERO" />
+    </Key>
+    <Property Name="ID_GENERO" Type="int" Nullable="false" />
+    <Property Name="DESCRIPCION_GENERO" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CAS_GRUPO">
+    <Key>
+      <PropertyRef Name="ID_GROUPO" />
+    </Key>
+    <Property Name="ID_GROUPO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION_GRUPO" Type="varchar" MaxLength="50" />
+    <Property Name="SP_GRUPO" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CAS_HORARIO">
+    <Key>
+      <PropertyRef Name="ID_HORARIO" />
+    </Key>
+    <Property Name="ID_HORARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_INTERVALO_DETALLE" Type="int" />
+    <Property Name="ID_DIA" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_HORARIO_DETALLE">
+    <Key>
+      <PropertyRef Name="ID_HORARIO_DETALLE" />
+    </Key>
+    <Property Name="ID_HORARIO_DETALLE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PARALELO_MATERIA" Type="int" />
+    <Property Name="ID_HORARIO" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_HORARIO_TIPO">
+    <Key>
+      <PropertyRef Name="ID_HORARIO_TIPO" />
+    </Key>
+    <Property Name="ID_HORARIO_TIPO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION_HORARIO_TIPO" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="CAS_INSCRIPCION">
+    <Key>
+      <PropertyRef Name="ID_INSCRIP" />
+    </Key>
+    <Property Name="ID_INSCRIP" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="APELLIDO_PATERNO_INSCRIP" Type="varchar" MaxLength="250" />
+    <Property Name="APELLIDO_MATERNO_INSCRIP" Type="varchar" MaxLength="250" />
+    <Property Name="PRIMER_NOMBRE_INSCRIP" Type="varchar" MaxLength="250" />
+    <Property Name="SEGUNDO_NOMBRE_INSCRIP" Type="varchar" MaxLength="250" />
+    <Property Name="FECHA_NACIMIENTO_INSCRIP" Type="date" />
+    <Property Name="DESCRIPCION_NACIONALIDAD" Type="varchar" MaxLength="50" />
+    <Property Name="ID_ESTADO_CIVIL" Type="int" />
+    <Property Name="ID_CIUDAD" Type="int" />
+    <Property Name="ID_PROVINCIA" Type="int" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="250" />
+    <Property Name="TELEF_INSCRIP" Type="varchar" MaxLength="20" />
+    <Property Name="CEL_INSCRIP" Type="varchar" MaxLength="20" />
+    <Property Name="TELEF_EMER_INSCRIP" Type="varchar" MaxLength="20" />
+    <Property Name="IMG_INSCRIP" Type="varchar" MaxLength="100" />
+    <Property Name="DOC_IDENTIDAD" Type="bit" />
+    <Property Name="PAPELETA_VOT" Type="bit" />
+    <Property Name="FOTOGRAFIA" Type="bit" />
+    <Property Name="CERT_MEDICO" Type="bit" />
+    <Property Name="CORREO" Type="varchar" MaxLength="250" />
+    <Property Name="FECHA_INSCRIPCION" Type="datetime" />
+    <Property Name="ID_GENERO" Type="int" />
+    <Property Name="DISCAPACIDAD" Type="bit" />
+    <Property Name="TIPO_DISCAPACIDAD" Type="varchar" MaxLength="250" />
+    <Property Name="ACTIVIDAD_LABORAL" Type="bit" />
+  </EntityType>
+  <EntityType Name="CAS_INSCRIPCION_DETALLE_CARRERA">
+    <Key>
+      <PropertyRef Name="ID_INSCRIP_DETALLE_CARRERA" />
+    </Key>
+    <Property Name="ID_INSCRIP_DETALLE_CARRERA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_INSCRIP" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="ID_SEDE" Type="int" />
+    <Property Name="ID_CARRERA" Type="int" />
+    <Property Name="ID_INTERVALO" Type="int" />
+    <Property Name="ID_INTERVALO_DETALLE" Type="int" />
+    <Property Name="ID_TIPO_PAGO" Type="int" />
+    <Property Name="NUMERO_FACTURA" Type="varchar" MaxLength="25" />
+    <Property Name="ID_ESTATUS" Type="int" />
+    <Property Name="ID_PARALELO" Type="int" />
+    <Property Name="ID_PERIODO" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_INSCRIPCION_ESTADO">
+    <Key>
+      <PropertyRef Name="ID_INSCRIPCION_ESTADO" />
+    </Key>
+    <Property Name="ID_INSCRIPCION_ESTADO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION_ESTADO" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="CAS_INSCRIPCION_FECHA">
+    <Key>
+      <PropertyRef Name="ID_INSCRIPCION_FECHA" />
+    </Key>
+    <Property Name="ID_INSCRIPCION_FECHA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PERIODO" Type="int" />
+    <Property Name="FECHA_INICIO" Type="date" />
+    <Property Name="FECHA_FIN" Type="date" />
+  </EntityType>
+  <EntityType Name="CAS_INTERVALO">
+    <Key>
+      <PropertyRef Name="ID_INTERVALO" />
+    </Key>
+    <Property Name="ID_INTERVALO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_TIPO_INTERVALO" Type="int" />
+    <Property Name="ID_HORARIO_TIPO" Type="int" />
+    <Property Name="ID_SEDE" Type="int" />
+    <Property Name="DESCRIPCION_INTERVALO" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="CAS_INTERVALO_DETALLE">
+    <Key>
+      <PropertyRef Name="ID_INTERVALO_DETALLE" />
+    </Key>
+    <Property Name="ID_INTERVALO_DETALLE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_INTERVALO" Type="int" />
+    <Property Name="INICIO_INTERVALO" Type="time" Precision="7" />
+    <Property Name="FIN_INTERVALO" Type="time" Precision="7" />
+  </EntityType>
+  <EntityType Name="CAS_MATERIA">
+    <Key>
+      <PropertyRef Name="ID_MATERIA" />
+    </Key>
+    <Property Name="ID_MATERIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION_MATERIA" Type="varchar" MaxLength="500" />
+    <Property Name="COD_MATERIA" Type="varchar" MaxLength="20" />
+    <Property Name="ID_CARRERA" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_MENU">
+    <Key>
+      <PropertyRef Name="ID_MENU" />
+    </Key>
+    <Property Name="ID_MENU" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION_MENU" Type="varchar" MaxLength="250" />
+    <Property Name="URL_MENU" Type="varchar" MaxLength="250" />
+    <Property Name="ICONO_MENU" Type="varchar" MaxLength="250" />
+    <Property Name="ORDEN_MENU" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_NOTA">
+    <Key>
+      <PropertyRef Name="ID_NOTA" />
+    </Key>
+    <Property Name="ID_NOTA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION_NOTA" Type="varchar" MaxLength="250" />
+    <Property Name="ID_TIPO_INTERVALO" Type="int" />
+    <Property Name="ID_CARRERA" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_NOTA_DETALLE">
+    <Key>
+      <PropertyRef Name="ID_NOTA_DETALLE" />
+    </Key>
+    <Property Name="ID_NOTA_DETALLE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_NOTA" Type="int" />
+    <Property Name="DESCRIPCION_NOTA_DETALLE" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="CAS_NOTA_PONDERACION">
+    <Key>
+      <PropertyRef Name="ID_PONDERACION" />
+    </Key>
+    <Property Name="ID_PONDERACION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_NOTA_DETALLE" Type="int" />
+    <Property Name="DESCRIPCION_PONDERACION" Type="varchar" MaxLength="150" />
+    <Property Name="VALOR_PONDERACION" Type="decimal" Precision="18" Scale="4" />
+  </EntityType>
+  <EntityType Name="CAS_NOTIFICACIONES">
+    <Key>
+      <PropertyRef Name="ID_NOTIFICACION" />
+    </Key>
+    <Property Name="ID_NOTIFICACION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_USUARIO" Type="varchar" MaxLength="20" />
+    <Property Name="TXT_NOTIFICACION" Type="varchar(max)" />
+    <Property Name="ESTADO_NOTIFICACION" Type="bigint" />
+    <Property Name="FECHA_NOTIFICACION" Type="datetime" />
+    <Property Name="ID_USUARIO_REMITENTE" Type="varchar" MaxLength="25" />
+    <Property Name="ASUNTO_NOTIFICACION" Type="varchar" MaxLength="500" />
+    <Property Name="ID_PERIODO" Type="int" />
+    <Property Name="PRIORIDAD_NOTIFICACION" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_PARALELO">
+    <Key>
+      <PropertyRef Name="ID_PARALELO" />
+    </Key>
+    <Property Name="ID_PARALELO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION_PARALELO" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="CAS_PARALELO_MATERIA">
+    <Key>
+      <PropertyRef Name="ID_PARALELO_MATERIA" />
+    </Key>
+    <Property Name="ID_PARALELO_MATERIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PARALELO" Type="int" />
+    <Property Name="ID_MATERIA" Type="int" />
+    <Property Name="ID_SEDE" Type="int" />
+    <Property Name="ESTADO_ASIGANACION" Type="bit" />
+    <Property Name="MAX_ASIGANDO" Type="int" />
+    <Property Name="PARALELO_UNIFICADO" Type="bit" />
+  </EntityType>
+  <EntityType Name="CAS_PERIODO">
+    <Key>
+      <PropertyRef Name="ID_PERIODO" />
+    </Key>
+    <Property Name="ID_PERIODO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION_PERIODO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FECHA_INICIO" Type="date" Nullable="false" />
+    <Property Name="FECHA_FIN" Type="date" Nullable="false" />
+    <Property Name="ESTADO" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_PERSONAL">
+    <Key>
+      <PropertyRef Name="ID_PERSONAL" />
+    </Key>
+    <Property Name="ID_PERSONAL" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="APELLIDO_PATERNO_PERSONAL" Type="varchar" MaxLength="250" />
+    <Property Name="APELLIDO_MATERNO_PERSONAL" Type="varchar" MaxLength="250" />
+    <Property Name="PRIMER_NOMBRE_PERSONAL" Type="varchar" MaxLength="250" />
+    <Property Name="SEGUNDO_NOMBRE_PERSONAL" Type="varchar" MaxLength="250" />
+    <Property Name="FECHA_NACIMIENTO_PERSONAL" Type="date" />
+    <Property Name="ID_ESTADO_CIVIL" Type="int" />
+    <Property Name="ID_PROVINCIA" Type="int" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="250" />
+    <Property Name="TELEF_PERSONAL" Type="varchar" MaxLength="20" />
+    <Property Name="CEL_PERSONAL" Type="varchar" MaxLength="20" />
+    <Property Name="IMG_PERSONAL" Type="varchar" MaxLength="100" />
+    <Property Name="CORREO_PERSONAL" Type="varchar" MaxLength="250" />
+    <Property Name="FECHA_INGRESO_PERSONAL" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CAS_RESPUESTA_ENCUESTA_DOCENTE">
+    <Key>
+      <PropertyRef Name="ID_ENCUESTA_RESPUESTA" />
+    </Key>
+    <Property Name="ID_ENCUESTA_RESPUESTA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_ENCUESTA_PREGUNTA" Type="int" />
+    <Property Name="ID_ESTUDIANTE" Type="varchar" MaxLength="50" />
+    <Property Name="ID_DOCENTE" Type="varchar" MaxLength="50" />
+    <Property Name="ID_CARRERA" Type="int" />
+    <Property Name="ID_MATERIA" Type="int" />
+    <Property Name="ID_INTERVALO_DETALLE" Type="int" />
+    <Property Name="ID_PARALELO" Type="int" />
+    <Property Name="VALOR_RESPUESTA" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_ROL">
+    <Key>
+      <PropertyRef Name="ID_ROL" />
+    </Key>
+    <Property Name="ID_ROL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION_ROL" Type="varchar" MaxLength="50" />
+    <Property Name="DIRECTIVA_ROL" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CAS_ROL_MENU">
+    <Key>
+      <PropertyRef Name="ID_ROL_MENU" />
+    </Key>
+    <Property Name="ID_ROL_MENU" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_ROL" Type="int" />
+    <Property Name="ID_MENU" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_SALON">
+    <Key>
+      <PropertyRef Name="ID_SALON" />
+    </Key>
+    <Property Name="ID_SALON" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION_SALON" Type="varchar" MaxLength="250" />
+    <Property Name="ID_SEDE" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_SEDE">
+    <Key>
+      <PropertyRef Name="ID_SEDE" />
+    </Key>
+    <Property Name="ID_SEDE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_UNIVERSIDAD" Type="int" />
+    <Property Name="DESCRIPCION_UNIVERSIDAD" Type="varchar" MaxLength="250" />
+    <Property Name="COD_SEDE" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="CAS_SEMANA">
+    <Key>
+      <PropertyRef Name="ID_SEMANA" />
+    </Key>
+    <Property Name="ID_SEMANA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION_SEMANA" Type="varchar" MaxLength="50" />
+    <Property Name="ID_PERIODO" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_TIPO_INVERTALO">
+    <Key>
+      <PropertyRef Name="ID_TIPO_INTERVALO" />
+    </Key>
+    <Property Name="ID_TIPO_INTERVALO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION_TIPO_INVERTALO" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CAS_TIPO_PAGO">
+    <Key>
+      <PropertyRef Name="ID_TIPO_PAGO" />
+    </Key>
+    <Property Name="ID_TIPO_PAGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION_TIPO_PAGO" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CAS_UBICACION">
+    <Key>
+      <PropertyRef Name="UBI_ID" />
+    </Key>
+    <Property Name="UBI_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PAIS_ID" Type="int" />
+    <Property Name="UBI_CIUDAD" Type="varchar" MaxLength="100" />
+    <Property Name="UBI_PROVINCIA" Type="varchar" MaxLength="100" />
+    <Property Name="UBI_CANTON" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="CAS_UNIVERSIDAD">
+    <Key>
+      <PropertyRef Name="ID_UNIVERSIDAD" />
+    </Key>
+    <Property Name="ID_UNIVERSIDAD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION_UNIVERSIDAD" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="CAS_USUARIO">
+    <Key>
+      <PropertyRef Name="ID_USUARIO" />
+    </Key>
+    <Property Name="ID_USUARIO" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="COD_USUARIO" Type="varchar" MaxLength="50" />
+    <Property Name="CLAVE_USUARIO" Type="varchar" MaxLength="50" />
+    <Property Name="ESTADO_USUARIO" Type="int" />
+    <Property Name="MODIFICAR_CLAVE" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_USUARIO_ROL">
+    <Key>
+      <PropertyRef Name="ID_USUARIO_ROL" />
+    </Key>
+    <Property Name="ID_USUARIO_ROL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_USUARIO" Type="varchar" MaxLength="15" />
+    <Property Name="ID_ROL" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_VISITA">
+    <Key>
+      <PropertyRef Name="ID_VISITA" />
+    </Key>
+    <Property Name="ID_VISITA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IP" Type="varchar" MaxLength="50" />
+    <Property Name="FECHA" Type="datetime" />
+  </EntityType>
+  <Function Name="ActualizarDetalleNotas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_INSCRIP_DETALLE_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DocenteDatosCarreraMateria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DocenteDatosEncuestaRespuesta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="ID_MATERIA" Type="int" Mode="In" />
+    <Parameter Name="ID_INTERVALO_DETALLE" Type="int" Mode="In" />
+    <Parameter Name="ID_PARALELO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DocenteHorarioMateria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="InscripcionDetalleCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_INSCRIP" Type="varchar" Mode="In" />
+    <Parameter Name="ID_INSCRIP_DETALLE_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerCarreraValida" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_INSCRIP" Type="varchar" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerCronogramaDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_CRONOGRAMA" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerDiaLibreHorario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_INTERVALO_DETALLE" Type="int" Mode="In" />
+    <Parameter Name="ID_PARALELO_MATERIA" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerDocenteAsignadoHorarioMateria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_HORARIO_DETALLE" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerDocenteAsistencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerEstudianteAsistenciaCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_INSCRIP_DETALLE_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerEstudianteNotaCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_INSCRIP_DETALLE_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerEstudianteNotaDetalleCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_INSCRIP_DETALLE_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="ID_NOTA_DETALLE" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerHorarioDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_PARALELO_MATERIA" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerHorarioMateria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="ID_MATERIA" Type="int" Mode="In" />
+    <Parameter Name="ID_PARALELO" Type="int" Mode="In" />
+    <Parameter Name="ID_INTERVALO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerHorarioParalelo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_PARALELO_MATERIA" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerIntervaloDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_INTERVALO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerIntervaloDetalleSedeCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+    <Parameter Name="ID_INSCRIP" Type="varchar" Mode="In" />
+    <Parameter Name="ID_INTERVALO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerIntervaloPorSede" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerIntervaloSedeCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerParaleloSedeCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+    <Parameter Name="ID_INTERVALO" Type="int" Mode="In" />
+    <Parameter Name="ID_INTERVALO_DETALLE" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerRutaAdjunto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_CRONOGRAMA_DETALLE" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="EstudianteFuncionNotaFinal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="decimal">
+    <Parameter Name="ID_ESTUDIANTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="ID_TIPO_INTERVALO" Type="int" Mode="In" />
+  </Function>
+  <Function Name="NotificadorEnviaClave" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_USUARIO" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GenerarDetalleCronograma_Intensivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FECHA_INICIO" Type="datetime" Mode="In" />
+    <Parameter Name="FECHA_FIN" Type="datetime" Mode="In" />
+    <Parameter Name="ID_CRONOGRAMA" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GenerarDetalleCronograma_Regular" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FECHA_INICIO" Type="datetime" Mode="In" />
+    <Parameter Name="FECHA_FIN" Type="datetime" Mode="In" />
+    <Parameter Name="ID_CRONOGRAMA" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DocenteCarreraIntervalo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
+    <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DocenteHorarioDiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
+    <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DocenteObtenerAsistencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
+    <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DocenteObtenerAsistenciaEstudiantes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
+    <Parameter Name="ID_HORARIO_DETALLE" Type="int" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DocenteObtenerCarreraMateria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
+    <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DocenteObtenerDatosReporteDocente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
+    <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="ID_PARALELO" Type="int" Mode="In" />
+    <Parameter Name="ID_INTERVALO_DETALLE" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DocenteObtenerEstudianteParcial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
+    <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="ID_NOTA" Type="int" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="ID_INTERVALO_DETALLE" Type="int" Mode="In" />
+    <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_ESTUDIANTE" Type="varchar" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DocenteObtenerEstudianteValor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
+    <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="ID_NOTA" Type="int" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="ID_INTERVALO_DETALLE" Type="int" Mode="In" />
+    <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_ESTUDIANTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_NOTA_DETALLE" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DocenteObtenerHorario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
+    <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DocenteObtenerNotaDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
+    <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="ID_NOTA" Type="int" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="ID_INTERVALO_DETALLE" Type="int" Mode="In" />
+    <Parameter Name="ID_NOTA_DETALLE" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DocenteObtenerNotaDetalleEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
+    <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="ID_NOTA" Type="int" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="ID_INTERVALO_DETALLE" Type="int" Mode="In" />
+    <Parameter Name="ID_ESTUDIANTE" Type="varchar" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DocenteObtenerNotaEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
+    <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="ID_NOTA" Type="int" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="ID_INTERVALO_DETALLE" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DocenteObtenerNotaParciales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
+    <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="ID_NOTA" Type="int" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="ID_INTERVALO_DETALLE" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DocenteObtenerNotas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
+    <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DocenteRepositorioAdjunto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
+    <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="SEMANA_CRONOGRAMA" Type="int" Mode="In" />
+    <Parameter Name="ID_TIPO_INTERVALO" Type="int" Mode="In" />
+    <Parameter Name="ID_CARPETA" Type="int" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="ID_CRONOGRAMA" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DocenteRepositorioCarpeta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="SEMANA_CRONOGRAMA" Type="int" Mode="In" />
+    <Parameter Name="ID_CRONOGRAMA" Type="int" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DocenteRepositorioSemana" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
+    <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="ID_TIPO_INTERVALO" Type="int" Mode="In" />
+    <Parameter Name="ID_PARALELO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="EstudianteObtenerAsistencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ESTUDIANTE">
+    <Parameter Name="ID_ESTUDIANTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="EstudianteObtenerCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ESTUDIANTE">
+    <Parameter Name="ID_ESTUDIANTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="EstudianteObtenerCarreraMateria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ESTUDIANTE">
+    <Parameter Name="ID_ESTUDIANTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="EstudianteObtenerCarreraReporteDocente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ESTUDIANTE">
+    <Parameter Name="ID_ESTUDIANTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="EstudianteObtenerHorario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ESTUDIANTE">
+    <Parameter Name="ID_ESTUDIANTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="EstudianteObtenerNotaDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ESTUDIANTE">
+    <Parameter Name="ID_NOTA_DETALLE" Type="int" Mode="In" />
+    <Parameter Name="ID_ESTUDIANTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="EstudianteObtenerNotaParciales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ESTUDIANTE">
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="ID_TIPO_INTERVALO" Type="int" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="EstudianteObtenerPromedio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ESTUDIANTE">
+    <Parameter Name="ID_ESTUDIANTE" Type="varchar" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="EstudianteRepositorioAdjunto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ESTUDIANTE">
+    <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="SEMANA_CRONOGRAMA" Type="int" Mode="In" />
+    <Parameter Name="ID_TIPO_INTERVALO" Type="int" Mode="In" />
+    <Parameter Name="ID_CARPETA" Type="int" Mode="In" />
+    <Parameter Name="ID_PARALELO" Type="int" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="EstudianteRepositorioCarpeta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ESTUDIANTE">
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="SEMANA_CRONOGRAMA" Type="int" Mode="In" />
+    <Parameter Name="ID_CRONOGRAMA" Type="int" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="EstudianteRepositorioSemana" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ESTUDIANTE">
+    <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="ID_TIPO_INTERVALO" Type="int" Mode="In" />
+    <Parameter Name="ID_PARALELO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <EntityContainer Name="CAS_DataModelStoreContainer">
+    <EntitySet Name="AUX_ABREVIATURA_DIA" EntityType="Self.AUX_ABREVIATURA_DIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_ASISTENCIA" EntityType="Self.CAS_ASISTENCIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_AUDITORIA" EntityType="Self.CAS_AUDITORIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_CARPETA_ADJUNTOS" EntityType="Self.CAS_CARPETA_ADJUNTOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_CARRERA" EntityType="Self.CAS_CARRERA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_CARRERA_NOTA" EntityType="Self.CAS_CARRERA_NOTA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_CARRERA_REQUISITOS" EntityType="Self.CAS_CARRERA_REQUISITOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_CRONOGRAMA" EntityType="Self.CAS_CRONOGRAMA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_CRONOGRAMA_ADJUNTO" EntityType="Self.CAS_CRONOGRAMA_ADJUNTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_CRONOGRAMA_DETALLE" EntityType="Self.CAS_CRONOGRAMA_DETALLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_DESTINATARIO" EntityType="Self.CAS_DESTINATARIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_DIAS" EntityType="Self.CAS_DIAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_DOCENTE" EntityType="Self.CAS_DOCENTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_DOCENTE_ASISTENCIA" EntityType="Self.CAS_DOCENTE_ASISTENCIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_DOCENTE_MATERIA_PARALELO" EntityType="Self.CAS_DOCENTE_MATERIA_PARALELO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_DOCENTE_NOTAS" EntityType="Self.CAS_DOCENTE_NOTAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_ENCUESTA" EntityType="Self.CAS_ENCUESTA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_ENCUESTA_PREGUNTAS" EntityType="Self.CAS_ENCUESTA_PREGUNTAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_ESTADO_CIVIL" EntityType="Self.CAS_ESTADO_CIVIL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_ESTUDIANTE" EntityType="Self.CAS_ESTUDIANTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_ESTUDIANTE_ASISTENCIA" EntityType="Self.CAS_ESTUDIANTE_ASISTENCIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_ESTUDIANTE_DETALLE" EntityType="Self.CAS_ESTUDIANTE_DETALLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_ESTUDIANTE_NOTA" EntityType="Self.CAS_ESTUDIANTE_NOTA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_GENERO" EntityType="Self.CAS_GENERO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_GRUPO" EntityType="Self.CAS_GRUPO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_HORARIO" EntityType="Self.CAS_HORARIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_HORARIO_DETALLE" EntityType="Self.CAS_HORARIO_DETALLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_HORARIO_TIPO" EntityType="Self.CAS_HORARIO_TIPO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_INSCRIPCION" EntityType="Self.CAS_INSCRIPCION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_INSCRIPCION_DETALLE_CARRERA" EntityType="Self.CAS_INSCRIPCION_DETALLE_CARRERA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_INSCRIPCION_ESTADO" EntityType="Self.CAS_INSCRIPCION_ESTADO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_INSCRIPCION_FECHA" EntityType="Self.CAS_INSCRIPCION_FECHA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_INTERVALO" EntityType="Self.CAS_INTERVALO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_INTERVALO_DETALLE" EntityType="Self.CAS_INTERVALO_DETALLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_MATERIA" EntityType="Self.CAS_MATERIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_MENU" EntityType="Self.CAS_MENU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_NOTA" EntityType="Self.CAS_NOTA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_NOTA_DETALLE" EntityType="Self.CAS_NOTA_DETALLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_NOTA_PONDERACION" EntityType="Self.CAS_NOTA_PONDERACION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_NOTIFICACIONES" EntityType="Self.CAS_NOTIFICACIONES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_PARALELO" EntityType="Self.CAS_PARALELO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_PARALELO_MATERIA" EntityType="Self.CAS_PARALELO_MATERIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_PERIODO" EntityType="Self.CAS_PERIODO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_PERSONAL" EntityType="Self.CAS_PERSONAL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_RESPUESTA_ENCUESTA_DOCENTE" EntityType="Self.CAS_RESPUESTA_ENCUESTA_DOCENTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_ROL" EntityType="Self.CAS_ROL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_ROL_MENU" EntityType="Self.CAS_ROL_MENU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_SALON" EntityType="Self.CAS_SALON" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_SEDE" EntityType="Self.CAS_SEDE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_SEMANA" EntityType="Self.CAS_SEMANA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_TIPO_INVERTALO" EntityType="Self.CAS_TIPO_INVERTALO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_TIPO_PAGO" EntityType="Self.CAS_TIPO_PAGO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_UBICACION" EntityType="Self.CAS_UBICACION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_UNIVERSIDAD" EntityType="Self.CAS_UNIVERSIDAD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_USUARIO" EntityType="Self.CAS_USUARIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_USUARIO_ROL" EntityType="Self.CAS_USUARIO_ROL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_VISITA" EntityType="Self.CAS_VISITA" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,77 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Model.Data;
+using System.Data.Entity.Core.Objects;
+
+namespace Model.Services.Admin
+{
+    public class Carrera
+    {
+        public int ID_CARRERA { get; set; }
+        public string DESCRIPCION_CARRERA { get; set; }
+        public string NOMBRE_TECNICO_CARRERA { get; set; }
+        public string COD_CARRERA { get; set; }
+        public Nullable<int> ID_GRUPO { get; set; }
+
+        public List<Carrera> ObtenerCarreraValidaEstudiante(string ID_INSCRIP)
+        {
+            List<Carrera> carrera = new List<Carrera>();
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    ObjectParameter outID = new ObjectParameter("outID", typeof(int));
+                    ObjectParameter outMensaje = new ObjectParameter("outMensaje", typeof(string));
+
+                    carrera = ctx.SP_ObtenerCarreraValida(ID_INSCRIP, null, outMensaje, outID)
+                            .Select(x=> new Carrera {
+                                ID_CARRERA = x.ID_CARRERA,
+                                DESCRIPCION_CARRERA = x.DESCRIPCION_CARRERA,
+                                NOMBRE_TECNICO_CARRERA = x.NOMBRE_TECNICO_CARRERA,
+                                COD_CARRERA = x.COD_CARRERA,
+                                ID_GRUPO = x.ID_GRUPO
+                            }).ToList();
+                }
+                return carrera;
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return carrera;
+            }
+        }
+
+        public List<Carrera> ObtenerCarrera()
+        {
+            List<Carrera> carrera = new List<Carrera>();
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    ObjectParameter outID = new ObjectParameter("outID", typeof(int));
+                    ObjectParameter outMensaje = new ObjectParameter("outMensaje", typeof(string));
+
+                    carrera = ctx.CAS_CARRERA
+                            .Select(x => new Carrera
+                            {
+                                ID_CARRERA = x.ID_CARRERA,
+                                DESCRIPCION_CARRERA = x.DESCRIPCION_CARRERA,
+                                NOMBRE_TECNICO_CARRERA = x.NOMBRE_TECNICO_CARRERA,
+                                COD_CARRERA = x.COD_CARRERA,
+                                ID_GRUPO = x.ID_GRUPO
+                            }).ToList();
+                }
+                return carrera;
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return carrera;
+            }
+        }
+
+    }
+}

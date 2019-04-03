@@ -1,0 +1,1390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8040EF94-AF5B-4AD2-878D-36349E68EF21}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SysAcademico</RootNamespace>
+    <AssemblyName>SysAcademico</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.70.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.0.5022.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=4.1.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51206.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="TRACKAuditoria, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\TRACKAuditoria.dll</HintPath>
+    </Reference>
+    <Reference Include="TrackError, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\TrackError.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AdminCarreras.aspx" />
+    <Content Include="AdminCronograma.aspx" />
+    <Content Include="AdminCronogramaDetalle.aspx" />
+    <Content Include="AdminDocenteMateria.aspx" />
+    <Content Include="AdminDocenteNota.aspx" />
+    <Content Include="AdminDocentes.aspx" />
+    <Content Include="AdminHorario.aspx" />
+    <Content Include="AdminHorarioMateria.aspx" />
+    <Content Include="AdminInscripcion.aspx" />
+    <Content Include="AdminIntervalos.aspx" />
+    <Content Include="AdminIntervalosDetalle.aspx" />
+    <Content Include="AdminMateriaParalelo.aspx" />
+    <Content Include="AdminMaterias.aspx" />
+    <Content Include="AdminNotas.aspx" />
+    <Content Include="AdminNotasDetalle.aspx" />
+    <Content Include="AdminNotasPonderacion.aspx" />
+    <Content Include="AdminNotificacion.aspx" />
+    <Content Include="AdminParalelo.aspx" />
+    <Content Include="AdminUsuarios.aspx" />
+    <Content Include="Asistencia.aspx" />
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\components.css" />
+    <Content Include="assets\css\core.css" />
+    <Content Include="assets\css\icons.css" />
+    <Content Include="assets\css\login.css" />
+    <Content Include="assets\css\menu.css" />
+    <Content Include="assets\css\pages.css" />
+    <Content Include="assets\css\responsive.css" />
+    <Content Include="assets\images\administrativo.png" />
+    <Content Include="assets\images\CAS-logo.png" />
+    <Content Include="assets\images\cursos\certifprofesional2-700x330.jpg" />
+    <Content Include="assets\images\cursos\coc1-700x330.jpg" />
+    <Content Include="assets\images\cursos\emp-700x330.jpg" />
+    <Content Include="assets\images\cursos\emp2-700x330.jpg" />
+    <Content Include="assets\images\cursos\sa-700x330.jpg" />
+    <Content Include="assets\images\cursos\sus-700x330.jpg" />
+    <Content Include="assets\images\docente.png" />
+    <Content Include="assets\images\estudiante.png" />
+    <Content Include="assets\images\IMG_0042.jpg" />
+    <Content Include="assets\images\logo-cas.png" />
+    <Content Include="assets\images\logo-culinary.png" />
+    <Content Include="assets\images\multiple-arrow.png" />
+    <Content Include="assets\images\proximos-cursos.jpg" />
+    <Content Include="assets\images\slider1.jpg" />
+    <Content Include="assets\images\slider2.jpg" />
+    <Content Include="assets\images\slider4.jpg" />
+    <Content Include="assets\images\slider5.jpg" />
+    <Content Include="assets\images\slider7.jpg" />
+    <Content Include="assets\images\slider\1.JPG" />
+    <Content Include="assets\images\slider\2.JPG" />
+    <Content Include="assets\images\slider\3.JPG" />
+    <Content Include="assets\images\slider\4.JPG" />
+    <Content Include="assets\images\slider\5.JPG" />
+    <Content Include="assets\images\slider\6.JPG" />
+    <Content Include="assets\images\slider\7.JPG" />
+    <Content Include="assets\images\slider\8.JPG" />
+    <Content Include="assets\images\slider\9.JPG" />
+    <Content Include="assets\images\thumbnail\1.jpg" />
+    <Content Include="assets\images\thumbnail\2.jpg" />
+    <Content Include="assets\images\thumbnail\3.jpg" />
+    <Content Include="assets\images\thumbnail\4.jpg" />
+    <Content Include="assets\images\users\1718160160.png" />
+    <Content Include="assets\images\users\1718160167.jpg" />
+    <Content Include="assets\images\users\1718160169.jpg" />
+    <Content Include="assets\images\usuario.png" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\detect.js" />
+    <Content Include="assets\js\fastclick.js" />
+    <Content Include="assets\js\General.js" />
+    <Content Include="assets\js\jquery.app.js" />
+    <Content Include="assets\js\jquery.blockUI.js" />
+    <Content Include="assets\js\jquery.core.js" />
+    <Content Include="assets\js\jquery.min.js" />
+    <Content Include="assets\js\jquery.nicescroll.js" />
+    <Content Include="assets\js\jquery.numeric.js" />
+    <Content Include="assets\js\jquery.scrollTo.min.js" />
+    <Content Include="assets\js\jquery.slimscroll.js" />
+    <Content Include="assets\js\modernizr.min.js" />
+    <Content Include="assets\js\waves.js" />
+    <Content Include="assets\js\wow.min.js" />
+    <Content Include="assets\pages\jquery.chartist.init.js" />
+    <Content Include="assets\pages\jquery.dashboard.js" />
+    <Content Include="assets\pages\jquery.datatables.editable.init.js" />
+    <Content Include="assets\pages\jquery.datatables.init.js" />
+    <Content Include="assets\pages\jquery.fileuploads.init.js" />
+    <Content Include="assets\pages\jquery.flot.init.js" />
+    <Content Include="assets\pages\jquery.gmaps.js" />
+    <Content Include="assets\pages\jquery.Inscripcion.js" />
+    <Content Include="assets\pages\jquery.morris.init.js" />
+    <Content Include="assets\pages\jquery.Pricipal.js" />
+    <Content Include="assets\pages\jquery.sweet-alert.init.js" />
+    <Content Include="assets\pages\jquery.ui-sliders.js" />
+    <Content Include="assets\pages\jquery.widgets.js" />
+    <Content Include="assets\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker.min.css" />
+    <Content Include="assets\plugins\bootstrap-datepicker\dist\js\bootstrap-datepicker.min.js" />
+    <Content Include="assets\plugins\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="assets\plugins\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\.gitignore" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\css\fileinput.css" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\css\fileinput.min.css" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\examples\index.html" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\img\loading-sm.gif" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\img\loading.gif" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\fileinput.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\fileinput.min.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\ar.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\bg.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\ca.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\cr.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\cz.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\da.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\de.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\el.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\es.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\fa.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\fi.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\fr.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\hu.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\id.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\it.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\ja.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\kr.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\kz.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\LANG.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\nl.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\pl.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\pt-BR.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\pt.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\ro.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\ru.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\sk.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\sl.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\sv.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\th.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\tr.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\uk.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\vi.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\zh-TW.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\locales\zh.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\plugins\canvas-to-blob.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\plugins\canvas-to-blob.min.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\plugins\purify.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\plugins\purify.min.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\plugins\sortable.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\js\plugins\sortable.min.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\themes\explorer\theme.css" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\themes\explorer\theme.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\themes\fa\theme.js" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\themes\gly\theme.js" />
+    <Content Include="assets\plugins\bootstrap-inputmask\bootstrap-inputmask.min.js" />
+    <Content Include="assets\plugins\bootstrap-maxlength\bootstrap-maxlength.min.js" />
+    <Content Include="assets\plugins\bootstrap-sweetalert\sweet-alert.css" />
+    <Content Include="assets\plugins\bootstrap-sweetalert\sweet-alert.min.js" />
+    <Content Include="assets\plugins\bootstrap-tagsinput\dist\bootstrap-tagsinput.css" />
+    <Content Include="assets\plugins\bootstrap-tagsinput\dist\bootstrap-tagsinput.min.js" />
+    <Content Include="assets\plugins\bootstrap-touchspin\dist\jquery.bootstrap-touchspin.min.css" />
+    <Content Include="assets\plugins\bootstrap-touchspin\dist\jquery.bootstrap-touchspin.min.js" />
+    <Content Include="assets\plugins\bootstrap-wizard\jquery.bootstrap.wizard.js" />
+    <Content Include="assets\plugins\chartist\dist\chartist-plugin-tooltip.min.js" />
+    <Content Include="assets\plugins\chartist\dist\chartist.js" />
+    <Content Include="assets\plugins\chartist\dist\chartist.min.css" />
+    <Content Include="assets\plugins\chartist\dist\chartist.min.js" />
+    <Content Include="assets\plugins\counterup\jquery.counterup.min.js" />
+    <Content Include="assets\plugins\custombox\dist\custombox.min.css" />
+    <Content Include="assets\plugins\custombox\dist\custombox.min.js" />
+    <Content Include="assets\plugins\custombox\dist\legacy.min.js" />
+    <Content Include="assets\plugins\datatables\buttons.bootstrap.min.css" />
+    <Content Include="assets\plugins\datatables\buttons.bootstrap.min.js" />
+    <Content Include="assets\plugins\datatables\buttons.html5.min.js" />
+    <Content Include="assets\plugins\datatables\buttons.print.min.js" />
+    <Content Include="assets\plugins\datatables\dataTables.bootstrap.js" />
+    <Content Include="assets\plugins\datatables\dataTables.buttons.min.js" />
+    <Content Include="assets\plugins\datatables\dataTables.fixedHeader.min.js" />
+    <Content Include="assets\plugins\datatables\dataTables.keyTable.min.js" />
+    <Content Include="assets\plugins\datatables\dataTables.responsive.min.js" />
+    <Content Include="assets\plugins\datatables\dataTables.scroller.min.js" />
+    <Content Include="assets\plugins\datatables\fixedHeader.bootstrap.min.css" />
+    <Content Include="assets\plugins\datatables\jquery.dataTables.min.css" />
+    <Content Include="assets\plugins\datatables\jquery.dataTables.min.js" />
+    <Content Include="assets\plugins\datatables\jszip.min.js" />
+    <Content Include="assets\plugins\datatables\pdfmake.min.js" />
+    <Content Include="assets\plugins\datatables\responsive.bootstrap.min.css" />
+    <Content Include="assets\plugins\datatables\responsive.bootstrap.min.js" />
+    <Content Include="assets\plugins\datatables\scroller.bootstrap.min.css" />
+    <Content Include="assets\plugins\datatables\vfs_fonts.js" />
+    <Content Include="assets\plugins\flot-chart\jquery.flot.crosshair.js" />
+    <Content Include="assets\plugins\flot-chart\jquery.flot.js" />
+    <Content Include="assets\plugins\flot-chart\jquery.flot.pie.js" />
+    <Content Include="assets\plugins\flot-chart\jquery.flot.resize.js" />
+    <Content Include="assets\plugins\flot-chart\jquery.flot.selection.js" />
+    <Content Include="assets\plugins\flot-chart\jquery.flot.stack.js" />
+    <Content Include="assets\plugins\flot-chart\jquery.flot.time.js" />
+    <Content Include="assets\plugins\flot-chart\jquery.flot.tooltip.min.js" />
+    <Content Include="assets\plugins\gmaps\gmaps.js" />
+    <Content Include="assets\plugins\gmaps\gmaps.min.js" />
+    <Content Include="assets\plugins\ion-rangeslider\ion.rangeSlider.css" />
+    <Content Include="assets\plugins\ion-rangeslider\ion.rangeSlider.min.js" />
+    <Content Include="assets\plugins\ion-rangeslider\ion.rangeSlider.skinFlat.css" />
+    <Content Include="assets\plugins\ion-rangeslider\sprite-skin-flat.png" />
+    <Content Include="assets\plugins\isotope\js\isotope.pkgd.min.js" />
+    <Content Include="assets\plugins\jquery-circliful\css\jquery.circliful.css" />
+    <Content Include="assets\plugins\jquery-circliful\js\jquery.circliful.min.js" />
+    <Content Include="assets\plugins\jquery-datatables-editable\datatables.css" />
+    <Content Include="assets\plugins\jquery-datatables-editable\jquery.dataTables.js" />
+    <Content Include="assets\plugins\jquery-knob\jquery.knob.js" />
+    <Content Include="assets\plugins\jquery-quicksearch\jquery.quicksearch.js" />
+    <Content Include="assets\plugins\jquery-sparkline\jquery.sparkline.min.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\css\bootstrap.min.css" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\css\docs.css" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\css\font-awesome-ie7.min.css" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\css\font-awesome.min.css" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\css\font\fontawesome-webfont.svg" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\css\old\bootstrap.min.css" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\css\old\docs.css" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\ico\apple-touch-icon-114-precomposed.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\ico\apple-touch-icon-144-precomposed.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\ico\apple-touch-icon-57-precomposed.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\ico\apple-touch-icon-72-precomposed.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\ico\favicon.ico" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\ico\favicon.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\img\bootstrap-jquery-plugins-01.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\img\bootstrap-jquery-plugins-02.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\img\bootstrap-js-components.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\img\bs-docs-masthead-pattern.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\js\demo-extra.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\js\demo-map.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\js\demo.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\js\docs.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\js\google-code-prettify\prettify.css" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\js\google-code-prettify\prettify.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\js\vendor\bootstrap.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\js\vendor\holder.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\js\vendor\html5shiv.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\js\vendor\jquery-1.9.1.min.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\js\vendor\jquery-migrate-1.2.1.min.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\js\vendor\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\js\vendor\less-1.4.2.min.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\js\vendor\respond.min.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\components.html" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\images\ui-bg_flat_0_999999_40x100.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\images\ui-bg_glass_75_ffffff_1x400.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\images\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\images\ui-icons_222222_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\images\ui-icons_428bca_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\images\ui-icons_454545_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\images\ui-icons_555555_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\images\ui-icons_888888_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\images\ui-icons_999999_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\images\ui-icons_f0ad4e_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\images\ui-icons_f6cf3b_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\jquery-ui-1.10.3.custom.css" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\jquery-ui-1.10.3.theme.css" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\css\custom-theme\jquery.ui.1.10.3.ie.css" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\extra.html" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\index.html" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\style.min.css" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\style2.min.css" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\theme-custom\colorPallet.txt" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\map.html" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\server.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\sidebyside\sidebyside.html" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\theme\base\components.html" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\theme\base\extra.html" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\theme\base\index.html" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\theme\base\map.html" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\theme\united\components.html" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\theme\united\extra.html" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\theme\united\index.html" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\theme\united\map.html" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\gmap3\gmap3.min.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\demo.html" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid.overrides.css" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\css\ellipsis-xbl.xml" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\css\ui.jqgrid.css" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\Changes.txt" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-ar.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-bg.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-bg1251.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-cat.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-cn.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-cs.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-da.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-de.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-dk.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-el.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-en.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-es.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-fa.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-fi.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-fr.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-gl.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-he.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-hr.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-hr1250.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-hu.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-id.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-is.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-it.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-ja.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-kr.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-lt.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-mne.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-nl.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-no.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-pl.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-pt-br.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-pt.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-ro.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-ru.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-sk.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-sr-latin.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-sr.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-sv.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-th.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-tr.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-tw.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-ua.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\i18n\grid.locale-vi.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\install.txt" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\jquery-1.9.0.min.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\jquery.jqGrid.min.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\js\jquery.jqGrid.src.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\plugins\grid.addons.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\plugins\grid.postext.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\plugins\grid.setcolumns.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\plugins\jquery.contextmenu.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\plugins\jquery.searchFilter.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\plugins\jquery.tablednd.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\plugins\searchFilter.css" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\plugins\ui.multiselect.css" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\plugins\ui.multiselect.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\css\ellipsis-xbl.xml" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\css\ui.jqgrid.css" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\css\ui.multiselect.css" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\grid.base.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\grid.celledit.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\grid.common.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\grid.custom.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\grid.filter.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\grid.formedit.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\grid.grouping.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\grid.import.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\grid.inlinedit.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\grid.jqueryui.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\grid.loader.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\grid.subgrid.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\grid.tbltogrid.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\grid.treegrid.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-ar.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-bg.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-bg1251.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-cat.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-cn.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-cs.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-da.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-de.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-dk.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-el.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-en.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-es.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-fa.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-fi.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-fr.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-gl.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-he.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-hr.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-hr1250.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-hu.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-id.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-is.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-it.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-ja.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-kr.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-lt.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-mne.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-nl.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-no.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-pl.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-pt-br.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-pt.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-ro.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-ru.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-sk.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-sr-latin.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-sr.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-sv.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-th.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-tr.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-tw.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-ua.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\i18n\grid.locale-vi.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\jqDnR.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\jqModal.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\jquery.fmatter.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jqGrid\jqGrid\src\JsonXml.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jQuery-UI-Date-Range-Picker\css\ui.daterangepicker.css" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jQuery-UI-Date-Range-Picker\index.html" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jQuery-UI-Date-Range-Picker\js\date.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jQuery-UI-Date-Range-Picker\js\daterangepicker.jQuery.compressed.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jQuery-UI-Date-Range-Picker\js\daterangepicker.jQuery.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jQuery-UI-FileInput\css\enhanced.css" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jQuery-UI-FileInput\images\icon-generic.gif" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jQuery-UI-FileInput\images\icon-image.gif" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jQuery-UI-FileInput\images\icon-media.gif" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jQuery-UI-FileInput\images\icon-zip.gif" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jQuery-UI-FileInput\js\enhance.min.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\jQuery-UI-FileInput\js\fileinput.jquery.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\wijmo\jquery.bgiframe-2.1.3-pre.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\wijmo\jquery.mousewheel.min.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\wijmo\jquery.wijmo-open.1.5.0.css" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\third-party\wijmo\jquery.wijmo-open.1.5.0.min.js" />
+    <Content Include="assets\plugins\jquery-ui\css\accordion.css" />
+    <Content Include="assets\plugins\jquery-ui\css\all.css" />
+    <Content Include="assets\plugins\jquery-ui\css\autocomplete.css" />
+    <Content Include="assets\plugins\jquery-ui\css\base.css" />
+    <Content Include="assets\plugins\jquery-ui\css\button.css" />
+    <Content Include="assets\plugins\jquery-ui\css\core.css" />
+    <Content Include="assets\plugins\jquery-ui\css\datepicker.css" />
+    <Content Include="assets\plugins\jquery-ui\css\dialog.css" />
+    <Content Include="assets\plugins\jquery-ui\css\draggable.css" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-bg_flat_0_999999_40x100.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-bg_glass_75_ffffff_1x400.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-icons_222222_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-icons_428bca_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-icons_444444_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-icons_454545_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-icons_555555_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-icons_777620_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-icons_777777_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-icons_888888_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-icons_999999_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-icons_f0ad4e_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-icons_f6cf3b_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui\css\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui\css\jquery-ui-1.10.3.custom.css" />
+    <Content Include="assets\plugins\jquery-ui\css\jquery-ui-1.10.3.theme.css" />
+    <Content Include="assets\plugins\jquery-ui\css\jquery-ui.css" />
+    <Content Include="assets\plugins\jquery-ui\css\jquery-ui.min.css" />
+    <Content Include="assets\plugins\jquery-ui\css\jquery.ui.1.10.3.ie.css" />
+    <Content Include="assets\plugins\jquery-ui\css\menu.css" />
+    <Content Include="assets\plugins\jquery-ui\css\progressbar.css" />
+    <Content Include="assets\plugins\jquery-ui\css\resizable.css" />
+    <Content Include="assets\plugins\jquery-ui\css\selectable.css" />
+    <Content Include="assets\plugins\jquery-ui\css\selectmenu.css" />
+    <Content Include="assets\plugins\jquery-ui\css\slider.css" />
+    <Content Include="assets\plugins\jquery-ui\css\sortable.css" />
+    <Content Include="assets\plugins\jquery-ui\css\spinner.css" />
+    <Content Include="assets\plugins\jquery-ui\css\tabs.css" />
+    <Content Include="assets\plugins\jquery-ui\css\theme.css" />
+    <Content Include="assets\plugins\jquery-ui\css\tooltip.css" />
+    <Content Include="assets\plugins\jquery-ui\js\ai.0.22.9-build00167.js" />
+    <Content Include="assets\plugins\jquery-ui\js\ai.0.22.9-build00167.min.js" />
+    <Content Include="assets\plugins\jquery-ui\js\bootstrap.js" />
+    <Content Include="assets\plugins\jquery-ui\js\bootstrap.min.js" />
+    <Content Include="assets\plugins\jquery-ui\js\jquery-migrate-1.2.1.min.js" />
+    <Content Include="assets\plugins\jquery-ui\js\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="assets\plugins\jquery-ui\js\jquery.unobtrusive-ajax.js" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\.gitignore" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\css\font\fontawesome-webfont.eot" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\css\font\fontawesome-webfont.ttf" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\css\font\fontawesome-webfont.woff" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\css\font\FontAwesome.otf" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\alerts.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\badges.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\bootstrap.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\breadcrumbs.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\button-groups.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\buttons.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\carousel.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\close.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\code.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\component-animations.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\dropdowns.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\forms.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\glyphicons.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\grid.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\input-groups.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\jumbotron.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\labels.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\list-group.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\media.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\mixins.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\modals.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\navbar.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\navs.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\normalize.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\pager.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\pagination.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\panels.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\popovers.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\print.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\progress-bars.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\responsive-utilities.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\scaffolding.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\tables.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\theme.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\thumbnails.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\tooltip.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\type.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\utilities.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\variables.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\bootstrap\wells.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\custom.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\jq-ui-bootstrap\accordion.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\jq-ui-bootstrap\autocomplete.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\jq-ui-bootstrap\base.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\jq-ui-bootstrap\button.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\jq-ui-bootstrap\core.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\jq-ui-bootstrap\datepicker.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\jq-ui-bootstrap\dialog.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\jq-ui-bootstrap\icons.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\jq-ui-bootstrap\jq-ui-bootstrap-mixin-adapter.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\jq-ui-bootstrap\jq-ui-bootstrap-variable-adapter.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\jq-ui-bootstrap\jq-ui-bootstrap.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\jq-ui-bootstrap\menu.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\jq-ui-bootstrap\misc.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\jq-ui-bootstrap\progressbar.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\jq-ui-bootstrap\resizable.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\jq-ui-bootstrap\selectable.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\jq-ui-bootstrap\slider.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\jq-ui-bootstrap\spinner.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\jq-ui-bootstrap\tabs.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\jq-ui-bootstrap\toolbar.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\jq-ui-bootstrap\tooltip.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\style.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\style2.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\theme-spacelab\bootswatch.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\theme-spacelab\variables.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\theme-united\bootswatch.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\theme-united\variables.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\thirdParty\enhanced.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\thirdParty\font-awesome.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\thirdParty\ui.daterangepicker.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\less\thirdParty\wijmo-theming.less" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\package.json" />
+    <Content Include="assets\plugins\jquery-ui-bootstrap-masterbs3\README.md" />
+    <None Include="assets\plugins\jquery-ui\js\jquery.validate-vsdoc.js" />
+    <Content Include="assets\plugins\jquery-ui\js\jquery.validate.js" />
+    <Content Include="assets\plugins\jquery-ui\js\jquery.validate.unobtrusive.min.js" />
+    <Content Include="assets\plugins\jquery-ui\js\modernizr-2.6.2.js" />
+    <Content Include="assets\plugins\jquery-ui\js\respond.js" />
+    <Content Include="assets\plugins\jquery-ui\js\respond.min.js" />
+    <None Include="assets\plugins\jquery-ui\js\_references.js" />
+    <Content Include="assets\plugins\jquery-validation\dist\jquery.validate.min.js" />
+    <Content Include="assets\plugins\jquery-validation\dist\validate.js" />
+    <Content Include="assets\plugins\jquery.filer\assets\fonts\jquery.filer-icons\jquery-filer.css" />
+    <Content Include="assets\plugins\jquery.filer\css\jquery.filer.css" />
+    <Content Include="assets\plugins\jquery.filer\css\themes\jquery.filer-dragdropbox-theme.css" />
+    <Content Include="assets\plugins\jquery.filer\js\jquery.filer.min.js" />
+    <Content Include="assets\plugins\jquery.tagsinput\dist\jquery.tagsinput.min.css" />
+    <Content Include="assets\plugins\jquery.tagsinput\grunt-tasks\assets_production.js" />
+    <Content Include="assets\plugins\jquery.tagsinput\grunt-tasks\options\cssmin.js" />
+    <Content Include="assets\plugins\jquery.tagsinput\grunt-tasks\options\uglify.js" />
+    <Content Include="assets\plugins\jquery.tagsinput\Gruntfile.js" />
+    <Content Include="assets\plugins\jquery.tagsinput\src\jquery.tagsinput.css" />
+    <Content Include="assets\plugins\jquery.tagsinput\src\jquery.tagsinput.js" />
+    <Content Include="assets\plugins\magnific-popup\dist\jquery.magnific-popup.min.js" />
+    <Content Include="assets\plugins\magnific-popup\dist\magnific-popup.css" />
+    <Content Include="assets\plugins\mjolnic-bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
+    <Content Include="assets\plugins\mjolnic-bootstrap-colorpicker\dist\img\alpha.png" />
+    <Content Include="assets\plugins\mjolnic-bootstrap-colorpicker\dist\img\hue.png" />
+    <Content Include="assets\plugins\mjolnic-bootstrap-colorpicker\dist\img\saturation.png" />
+    <Content Include="assets\plugins\mjolnic-bootstrap-colorpicker\dist\js\bootstrap-colorpicker.min.js" />
+    <Content Include="assets\plugins\moment\moment.js" />
+    <Content Include="assets\plugins\morris\morris.css" />
+    <Content Include="assets\plugins\morris\morris.min.js" />
+    <Content Include="assets\plugins\multiselect\css\multi-select.css" />
+    <Content Include="assets\plugins\multiselect\js\jquery.multi-select.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\dist\assets\ajax-loader.gif" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\dist\assets\owl.carousel.css" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\dist\assets\owl.carousel.min.css" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\dist\assets\owl.theme.default.css" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\dist\assets\owl.theme.default.min.css" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\dist\assets\owl.theme.green.css" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\dist\assets\owl.theme.green.min.css" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\dist\assets\owl.video.play.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\dist\owl.carousel.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\dist\owl.carousel.min.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\css\animate.css" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\css\docs.theme.min.css" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\img\bird_blue_32.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\img\download.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\img\feature-drag.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\img\feature-modern.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\img\feature-module.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\img\feature-options.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\img\feature-responsive.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\img\feature-zombie.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\img\owl-logo.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\img\twitter_25.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\js\app.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\js\foundation.min.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\owlcarousel\assets\ajax-loader.gif" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\owlcarousel\assets\owl.carousel.css" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\owlcarousel\assets\owl.carousel.min.css" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\owlcarousel\assets\owl.theme.default.css" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\owlcarousel\assets\owl.theme.default.min.css" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\owlcarousel\assets\owl.theme.green.css" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\owlcarousel\assets\owl.theme.green.min.css" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\owlcarousel\assets\owl.video.play.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\owlcarousel\owl.carousel.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\owlcarousel\owl.carousel.min.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\vendors\foundation.min.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\vendors\highlight.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\vendors\jquery.min.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\vendors\jquery.mousewheel.min.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\demos\animate.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\demos\autoheight.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\demos\autoplay.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\demos\autowidth.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\demos\basic.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\demos\center.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\demos\demos.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\demos\events.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\demos\lazyLoad.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\demos\merge.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\demos\mousewheel.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\demos\responsive.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\demos\rtl.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\demos\stagepadding.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\demos\test.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\demos\urlhashnav.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\demos\video.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\docs\api-classes.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\docs\api-events.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\docs\api-options.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\docs\dev-buildin-plugins.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\docs\dev-external.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\docs\dev-plugin-api.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\docs\dev-styles.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\docs\started-faq.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\docs\started-installation.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\docs\started-welcome.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\docs\support-changelog.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\docs\support-contact.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\docs\support-contributing.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\index.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\css\animate.css" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\img\bird_blue_32.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\img\download.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\img\feature-drag.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\img\feature-modern.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\img\feature-module.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\img\feature-options.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\img\feature-responsive.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\img\feature-zombie.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\img\owl-logo.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\img\twitter_25.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\js\app.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\js\foundation.min.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\vendors\foundation.min.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\vendors\highlight.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\vendors\jquery.min.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\vendors\jquery.mousewheel.min.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\helpers\modulo.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\helpers\test.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\Gruntfile.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\img\ajax-loader.gif" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\img\owl.video.play.png" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\js\owl.animate.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\js\owl.autoheight.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\js\owl.autoplay.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\js\owl.autorefresh.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\js\owl.carousel.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\js\owl.hash.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\js\owl.lazyload.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\js\owl.navigation.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\js\owl.support.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\js\owl.support.modernizr.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\js\owl.video.js" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\test\index.html" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\test\unit\core.js" />
+    <Content Include="assets\plugins\parsleyjs\dist\parsley.min.js" />
+    <Content Include="assets\plugins\raphael\raphael-min.js" />
+    <Content Include="assets\plugins\select2\dist\css\select2-bootstrap.css" />
+    <Content Include="assets\plugins\select2\dist\css\select2-spinner.gif" />
+    <Content Include="assets\plugins\select2\dist\css\select2.css" />
+    <Content Include="assets\plugins\select2\dist\css\select2.png" />
+    <Content Include="assets\plugins\select2\dist\js\select2.min.js" />
+    <Content Include="assets\plugins\summernote\summernote.css" />
+    <Content Include="assets\plugins\summernote\summernote.min.js" />
+    <Content Include="assets\plugins\switchery\switchery.min.css" />
+    <Content Include="assets\plugins\switchery\switchery.min.js" />
+    <Content Include="assets\plugins\timepicker\bootstrap-timepicker.min.css" />
+    <Content Include="assets\plugins\timepicker\bootstrap-timepicker.min.js" />
+    <Content Include="assets\plugins\tiny-editable\mindmup-editabletable.js" />
+    <Content Include="assets\plugins\tiny-editable\numeric-input-example.js" />
+    <Content Include="assets\plugins\toastr\toastr.min.css" />
+    <Content Include="assets\plugins\toastr\toastr.min.js" />
+    <Content Include="assets\plugins\waypoints\lib\jquery.waypoints.js" />
+    <Content Include="AUX_CORREGIR_INSCRIPCION.aspx" />
+    <Content Include="Data\RevenueReport.xml" />
+    <Content Include="Ejemplos.html" />
+    <Content Include="Global.asax" />
+    <Content Include="BienvenidaIngresoEstudiante.html" />
+    <Content Include="GridEjemplo.aspx" />
+    <Content Include="HorarioDocente.aspx" />
+    <Content Include="HorarioEstudiante.aspx" />
+    <Content Include="iframeBuscarInscripciones.aspx" />
+    <Content Include="iframeCambiarClave.aspx" />
+    <Content Include="iframeEnviarClave.aspx" />
+    <Content Include="iframePerfilUsuario.aspx" />
+    <Content Include="iframe_Notificacion.aspx" />
+    <Content Include="iframe_SubirContenido.aspx" />
+    <Content Include="index.html" />
+    <Content Include="Ingreso.aspx" />
+    <Content Include="Inicio.aspx" />
+    <Content Include="Inscripcion.aspx" />
+    <Content Include="LibretaDocente.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="NotaDocente.aspx" />
+    <Content Include="NotaEstudiante.aspx" />
+    <Content Include="page-404.html" />
+    <Content Include="PlantillasHtmlEmail\BienvenidaDocente.html" />
+    <Content Include="PlantillasHtmlEmail\BienvenidaEstudiante.html" />
+    <Content Include="PlantillasHtmlEmail\BienvenidaPersonal.html" />
+    <Content Include="PlantillasHtmlEmail\EnvioClave.html" />
+    <Content Include="PreguntasFrecuentes.aspx" />
+    <Content Include="Principal.aspx" />
+    <Content Include="ReporteAsistenciaDocente.aspx" />
+    <Content Include="ReporteCronograma.aspx" />
+    <Content Include="ReporteInscripciones.aspx" />
+    <Content Include="ReporteNotasEstudiante.aspx" />
+    <Content Include="RepositorioDocente.aspx" />
+    <Content Include="RepositorioEstudiante.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminCarreras.aspx.cs">
+      <DependentUpon>AdminCarreras.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminCarreras.aspx.designer.cs">
+      <DependentUpon>AdminCarreras.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminCronograma.aspx.cs">
+      <DependentUpon>AdminCronograma.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminCronograma.aspx.designer.cs">
+      <DependentUpon>AdminCronograma.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminCronogramaDetalle.aspx.cs">
+      <DependentUpon>AdminCronogramaDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminCronogramaDetalle.aspx.designer.cs">
+      <DependentUpon>AdminCronogramaDetalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDocenteMateria.aspx.cs">
+      <DependentUpon>AdminDocenteMateria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminDocenteMateria.aspx.designer.cs">
+      <DependentUpon>AdminDocenteMateria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDocenteNota.aspx.cs">
+      <DependentUpon>AdminDocenteNota.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminDocenteNota.aspx.designer.cs">
+      <DependentUpon>AdminDocenteNota.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDocentes.aspx.cs">
+      <DependentUpon>AdminDocentes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminDocentes.aspx.designer.cs">
+      <DependentUpon>AdminDocentes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminHorario.aspx.cs">
+      <DependentUpon>AdminHorario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminHorario.aspx.designer.cs">
+      <DependentUpon>AdminHorario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminHorarioMateria.aspx.cs">
+      <DependentUpon>AdminHorarioMateria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminHorarioMateria.aspx.designer.cs">
+      <DependentUpon>AdminHorarioMateria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminInscripcion.aspx.cs">
+      <DependentUpon>AdminInscripcion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminInscripcion.aspx.designer.cs">
+      <DependentUpon>AdminInscripcion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminIntervalos.aspx.cs">
+      <DependentUpon>AdminIntervalos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminIntervalos.aspx.designer.cs">
+      <DependentUpon>AdminIntervalos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminIntervalosDetalle.aspx.cs">
+      <DependentUpon>AdminIntervalosDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminIntervalosDetalle.aspx.designer.cs">
+      <DependentUpon>AdminIntervalosDetalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminMateriaParalelo.aspx.cs">
+      <DependentUpon>AdminMateriaParalelo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminMateriaParalelo.aspx.designer.cs">
+      <DependentUpon>AdminMateriaParalelo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminMaterias.aspx.cs">
+      <DependentUpon>AdminMaterias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminMaterias.aspx.designer.cs">
+      <DependentUpon>AdminMaterias.aspx</DependentUpon>
+    </Compile>
+    <Content Include="App_Code\AdminCarrera.cs" />
+    <Content Include="App_Code\AdminMaterias.cs" />
+    <Content Include="App_Code\AdminDocentes.cs" />
+    <Compile Include="AdminNotas.aspx.cs">
+      <DependentUpon>AdminNotas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminNotas.aspx.designer.cs">
+      <DependentUpon>AdminNotas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminNotasDetalle.aspx.cs">
+      <DependentUpon>AdminNotasDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminNotasDetalle.aspx.designer.cs">
+      <DependentUpon>AdminNotasDetalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminNotasPonderacion.aspx.cs">
+      <DependentUpon>AdminNotasPonderacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminNotasPonderacion.aspx.designer.cs">
+      <DependentUpon>AdminNotasPonderacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminNotificacion.aspx.cs">
+      <DependentUpon>AdminNotificacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminNotificacion.aspx.designer.cs">
+      <DependentUpon>AdminNotificacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminParalelo.aspx.cs">
+      <DependentUpon>AdminParalelo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminParalelo.aspx.designer.cs">
+      <DependentUpon>AdminParalelo.aspx</DependentUpon>
+    </Compile>
+    <Content Include="App_Code\AdminMateriaParalelo.cs" />
+    <Content Include="App_Code\AdminIntervalo.cs" />
+    <Content Include="App_Code\AdminIntervaloDetalle.cs" />
+    <Content Include="App_Code\AdminHorario.cs" />
+    <Content Include="App_Code\AdminDocenteMaterias.cs" />
+    <Content Include="App_Code\AdminHorarioMateria.cs" />
+    <Content Include="App_Code\AdminNotas.cs" />
+    <Content Include="App_Code\AdminNotasDetalle.cs" />
+    <Content Include="App_Code\AdminNotasPonderacion.cs" />
+    <Content Include="App_Code\AdminDocenteNota.cs" />
+    <Content Include="App_Code\NotasDocente.cs" />
+    <Content Include="App_Code\AdminCronograma.cs" />
+    <Content Include="App_Code\AdminCronogramaDetalle.cs" />
+    <Content Include="App_Code\AdminInscripcionDetalleCarrera.cs" />
+    <Compile Include="AdminUsuarios.aspx.cs">
+      <DependentUpon>AdminUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUsuarios.aspx.designer.cs">
+      <DependentUpon>AdminUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Asistencia.aspx.cs">
+      <DependentUpon>Asistencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Asistencia.aspx.designer.cs">
+      <DependentUpon>Asistencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AUX_CORREGIR_INSCRIPCION.aspx.cs">
+      <DependentUpon>AUX_CORREGIR_INSCRIPCION.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AUX_CORREGIR_INSCRIPCION.aspx.designer.cs">
+      <DependentUpon>AUX_CORREGIR_INSCRIPCION.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="GridEjemplo.aspx.cs">
+      <DependentUpon>GridEjemplo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GridEjemplo.aspx.designer.cs">
+      <DependentUpon>GridEjemplo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HorarioDocente.aspx.cs">
+      <DependentUpon>HorarioDocente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HorarioDocente.aspx.designer.cs">
+      <DependentUpon>HorarioDocente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HorarioEstudiante.aspx.cs">
+      <DependentUpon>HorarioEstudiante.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HorarioEstudiante.aspx.designer.cs">
+      <DependentUpon>HorarioEstudiante.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="iframeBuscarInscripciones.aspx.cs">
+      <DependentUpon>iframeBuscarInscripciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="iframeBuscarInscripciones.aspx.designer.cs">
+      <DependentUpon>iframeBuscarInscripciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="iframeCambiarClave.aspx.cs">
+      <DependentUpon>iframeCambiarClave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="iframeCambiarClave.aspx.designer.cs">
+      <DependentUpon>iframeCambiarClave.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="iframeEnviarClave.aspx.cs">
+      <DependentUpon>iframeEnviarClave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="iframeEnviarClave.aspx.designer.cs">
+      <DependentUpon>iframeEnviarClave.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="iframePerfilUsuario.aspx.cs">
+      <DependentUpon>iframePerfilUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="iframePerfilUsuario.aspx.designer.cs">
+      <DependentUpon>iframePerfilUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="iframe_Notificacion.aspx.cs">
+      <DependentUpon>iframe_Notificacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="iframe_Notificacion.aspx.designer.cs">
+      <DependentUpon>iframe_Notificacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="iframe_SubirContenido.aspx.cs">
+      <DependentUpon>iframe_SubirContenido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="iframe_SubirContenido.aspx.designer.cs">
+      <DependentUpon>iframe_SubirContenido.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ingreso.aspx.cs">
+      <DependentUpon>Ingreso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ingreso.aspx.designer.cs">
+      <DependentUpon>Ingreso.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Inscripcion.aspx.cs">
+      <DependentUpon>Inscripcion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inscripcion.aspx.designer.cs">
+      <DependentUpon>Inscripcion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LibretaDocente.aspx.cs">
+      <DependentUpon>LibretaDocente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LibretaDocente.aspx.designer.cs">
+      <DependentUpon>LibretaDocente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LimpiarControles.cs" />
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NotaDocente.aspx.cs">
+      <DependentUpon>NotaDocente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NotaDocente.aspx.designer.cs">
+      <DependentUpon>NotaDocente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NotaEstudiante.aspx.cs">
+      <DependentUpon>NotaEstudiante.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NotaEstudiante.aspx.designer.cs">
+      <DependentUpon>NotaEstudiante.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pagina.Master.cs">
+      <DependentUpon>Pagina.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pagina.Master.designer.cs">
+      <DependentUpon>Pagina.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pdf_Eventos.cs" />
+    <Compile Include="PreguntasFrecuentes.aspx.cs">
+      <DependentUpon>PreguntasFrecuentes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PreguntasFrecuentes.aspx.designer.cs">
+      <DependentUpon>PreguntasFrecuentes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Principal.aspx.cs">
+      <DependentUpon>Principal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Principal.aspx.designer.cs">
+      <DependentUpon>Principal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReporteAsistenciaDocente.aspx.cs">
+      <DependentUpon>ReporteAsistenciaDocente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteAsistenciaDocente.aspx.designer.cs">
+      <DependentUpon>ReporteAsistenciaDocente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteCronograma.aspx.cs">
+      <DependentUpon>ReporteCronograma.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteCronograma.aspx.designer.cs">
+      <DependentUpon>ReporteCronograma.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteInscripciones.aspx.cs">
+      <DependentUpon>ReporteInscripciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteInscripciones.aspx.designer.cs">
+      <DependentUpon>ReporteInscripciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteNotasEstudiante.aspx.cs">
+      <DependentUpon>ReporteNotasEstudiante.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteNotasEstudiante.aspx.designer.cs">
+      <DependentUpon>ReporteNotasEstudiante.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RepositorioDocente.aspx.cs">
+      <DependentUpon>RepositorioDocente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RepositorioDocente.aspx.designer.cs">
+      <DependentUpon>RepositorioDocente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RepositorioEstudiante.aspx.cs">
+      <DependentUpon>RepositorioEstudiante.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RepositorioEstudiante.aspx.designer.cs">
+      <DependentUpon>RepositorioEstudiante.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad.cs" />
+    <Compile Include="Usuario.cs" />
+    <Compile Include="util.cs" />
+    <Compile Include="ValidarCedula.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="assets\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="assets\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="assets\fonts\themify.ttf" />
+    <Content Include="assets\fonts\themify.woff" />
+    <Content Include="assets\plugins\datatables\json\scroller-demo.json" />
+    <Content Include="assets\plugins\summernote\font\summernote.ttf" />
+    <Content Include="assets\plugins\summernote\font\summernote.woff" />
+    <Content Include="Pagina.Master" />
+    <Content Include="doc\PlantillaHojaInscripcion.pdf" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\.github\CONTRIBUTING.md" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\.github\ISSUE_TEMPLATE.md" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\.github\PULL_REQUEST_TEMPLATE.md" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\bower.json" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\CHANGE.md" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\composer.json" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\LICENSE.md" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\nuget\build.bat" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\nuget\Package.nuspec" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\package.json" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\README.md" />
+    <Content Include="assets\plugins\bootstrap-fileinput-master\sass\fileinput.scss" />
+    <Content Include="assets\pages\jquery.PerfilUsuario.js" />
+    <Content Include="packages.config" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\.gitattributes" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\.gitignore" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\.travis.yml" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\bower.json" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\CONTRIBUTING.md" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\dist\LICENSE" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\dist\README.md" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\owlcarousel\README.md" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs\assets\vendors\jquery.min.map" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\scss\custom.scss" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\scss\demos.scss" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\scss\docs.scss" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\scss\docs.theme.scss" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\scss\highlight.scss" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\scss\_settings.scss" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\assets\vendors\jquery.min.map" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\data\classes.json" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\data\events.json" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\data\features.json" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\data\options.json" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\layouts\demos.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\layouts\docs.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\layouts\home.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\demos\animate.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\demos\autoheight.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\demos\autoplay.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\demos\autowidth.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\demos\basic.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\demos\center.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\demos\demos.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\demos\events.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\demos\lazyLoad.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\demos\merge.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\demos\mousewheel.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\demos\responsive.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\demos\rtl.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\demos\stagepadding.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\demos\test.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\demos\urlhashnav.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\demos\video.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\docs\api-classes.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\docs\api-events.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\docs\api-options.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\docs\dev-buildin-plugins.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\docs\dev-external.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\docs\dev-plugin-api.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\docs\dev-styles.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\docs\started-faq.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\docs\started-installation.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\docs\started-welcome.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\docs\support-changelog.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\docs\support-contact.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\docs\support-contributing.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\pages\index.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\partials\footer.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\partials\head.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\partials\header.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\partials\home-carousel.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\partials\home-features.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\partials\home-hero.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\partials\home-teaser-text.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\partials\javascripts.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\partials\releated-docs.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\partials\sidenav-docs.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\partials\title.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\docs_src\templates\partials\vendors.hbs" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\LICENSE" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\package.json" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\README.md" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\ROADMAP.md" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\js\.jscsrc" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\js\.jshintrc" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\scss\owl.carousel.scss" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\scss\owl.theme.default.scss" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\scss\owl.theme.green.scss" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\scss\_animate.scss" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\scss\_autoheight.scss" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\scss\_core.scss" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\scss\_lazyload.scss" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\scss\_theme.default.scss" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\scss\_theme.green.scss" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\scss\_theme.scss" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\src\scss\_video.scss" />
+    <Content Include="assets\plugins\OwlCarousel2-2.2.1\_config.json" />
+    <Content Include="doc\Reglamento interno alumnos.pdf" />
+    <Content Include="assets\plugins\jquery.tagsinput\.bower.json" />
+    <Content Include="assets\plugins\jquery.tagsinput\bower.json" />
+    <None Include="Properties\PublishProfiles\ogualoto.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Inscripciones\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>14631</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/SysAcademico</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

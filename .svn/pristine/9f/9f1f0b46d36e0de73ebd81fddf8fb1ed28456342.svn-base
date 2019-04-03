@@ -1,0 +1,331 @@
+﻿
+@model Model.Services.Admin.Inscipcion
+@{
+    ViewBag.Title = "Paso 1 : Datos Personales";
+}
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">@ViewBag.Title</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="m-t-25"></div>
+        <button id="example2" class="btn btn-custom waves-effect waves-light m-b-5" data-toggle="modal" data-target="#con-close-modal"> <i class="zmdi zmdi-search m-r-5"></i> <span>Buscar</span> </button>
+        <div class="m-t-25"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
+            @*new { onsubmit = "return SubmitForm(this)" }*@
+            @using (Html.BeginForm("DatosPersonales", "Inscripciones", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                @{
+                                    List<SelectListItem> listDocumento = new List<SelectListItem>();
+                                    listDocumento.Add(new SelectListItem
+                                    {
+                                        Text = "CEDULA",
+                                        Value = "CEDULA"
+                                    });
+                                    listDocumento.Add(new SelectListItem
+                                    {
+                                        Text = "PASAPORTE",
+                                        Value = "PASAPORTE",
+                                    });
+                                }
+                                @Html.LabelFor(model => model.DESCRIPCION_NACIONALIDAD, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-6">
+                                    @Html.DropDownListFor(m => m.DESCRIPCION_NACIONALIDAD, listDocumento, " ", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.DESCRIPCION_NACIONALIDAD, "", new { @class = "text-custom" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ID_INSCRIP, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        @Html.EditorFor(model => model.ID_INSCRIP, new { htmlAttributes = new { @class = "form-control", id = "txt_inscripId" } })
+                                        <span class="input-group-addon bg-primary b-0 text-white"><i class="ti-search"></i></span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.ID_INSCRIP, "", new { @class = "text-custom" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.APELLIDO_PATERNO_INSCRIP, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.APELLIDO_PATERNO_INSCRIP, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.APELLIDO_PATERNO_INSCRIP, "", new { @class = "text-custom" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.APELLIDO_MATERNO_INSCRIP, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.APELLIDO_MATERNO_INSCRIP, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.APELLIDO_MATERNO_INSCRIP, "", new { @class = "text-custom" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PRIMER_NOMBRE_INSCRIP, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.PRIMER_NOMBRE_INSCRIP, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.PRIMER_NOMBRE_INSCRIP, "", new { @class = "text-custom" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SEGUNDO_NOMBRE_INSCRIP, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.SEGUNDO_NOMBRE_INSCRIP, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.SEGUNDO_NOMBRE_INSCRIP, "", new { @class = "text-custom" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.FECHA_NACIMIENTO_INSCRIP, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        @Html.EditorFor(model => model.FECHA_NACIMIENTO_INSCRIP, "{0:dd/mm/yyyy}", new { htmlAttributes = new { id = "FECHA_NACIMIENTO_INSCRIP", @class = "form-control", @type = "datetime" } })
+                                        <span class="input-group-addon bg-primary b-0 text-white"><i class="ti-calendar"></i></span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.FECHA_NACIMIENTO_INSCRIP, "", new { @class = "text-custom" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ID_ESTADO_CIVIL, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-6">
+                                    @Html.DropDownListFor(m => m.ID_ESTADO_CIVIL, new SelectList(new Model.Services.Admin.Inscipcion().cmb_EstadoCivil(), "ID_ESTADO_CIVIL", "DESCRIPCION_ESTADO_CIVIL"), " ", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ID_ESTADO_CIVIL, "", new { @class = "text-custom" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ID_CIUDAD, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-6">
+                                    @Html.DropDownListFor(x => x.ID_CIUDAD, new SelectList(new Model.Services.Admin.Inscipcion().cmb_Ciudad(), "UBI_ID", "UBI_CIUDAD"), " ", new { @class = "form-control select2", id = "cmbCiudad" })
+                                    @Html.ValidationMessageFor(model => model.ID_CIUDAD, "", new { @class = "text-custom" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CORREO, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.CORREO, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.CORREO, "", new { @class = "text-custom" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CEL_INSCRIP, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.CEL_INSCRIP, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.CEL_INSCRIP, "", new { @class = "text-custom" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TELEF_INSCRIP, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.TELEF_INSCRIP, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.TELEF_INSCRIP, "", new { @class = "text-custom" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TELEF_EMER_INSCRIP, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.TELEF_EMER_INSCRIP, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.TELEF_EMER_INSCRIP, "", new { @class = "text-custom" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DIRECCION, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.DIRECCION, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DIRECCION, "", new { @class = "text-custom" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-9">
+                                <div class="bootstrap-demo">
+                                    <label class="checkbox-inline">
+                                        @Html.CheckBoxFor(x => x.DOC_IDENTIDAD.HasValue, new { id = "ckb_docIdentidad" }) Documento de Identidad
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        @Html.CheckBoxFor(x => x.FOTOGRAFIA.HasValue, new { id = "ckb_foto" }) Fotografías
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        @Html.CheckBoxFor(x => x.PAPELETA_VOT.HasValue, new { id = "ckb_papelVot" }) Papeleta de Votación
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        @Html.CheckBoxFor(x => x.CERT_MEDICO.HasValue, new { id = "ckb_certMedico" }) Certificado Médico
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group m-b-0">
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-custom waves-effect waves-light m-b-5 btn-loding" data-loading-text="<span class='btn-label'><i class='fa fa-circle-o-notch fa-spin'></i></span> Guardar<span class='md-ripple'></span>"><span class="btn-label"><i class="zmdi zmdi-arrow-right"></i></span> Siguiente<span class="md-ripple"></span></button>
+
+                        </div>
+                    </div>
+                </div>
+                                    }
+        </div>
+    </div>
+</div>
+
+<div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Buscar Inscripción</h4>
+            </div>
+            <div class="modal-body">
+                <table id="tbl_Inscripcion" class="table-datatable table dt-responsive table-striped jambo_table bulk_action tblInscripcion" style="width:100%">
+                    <thead>
+                        <tr class="headings">
+                            <th class="column-title">N. Cedula</th>
+                            <th class="column-title">Apellido Paterno</th>
+                            <th class="column-title">Apellido Materno</th>
+                            <th class="column-title">Primer Nombre</th>
+                            <th class="column-title">Segundo Nombre</th>
+                            <th class="column-title"></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            $("#cmbCiudad").select2();
+
+            $("#FECHA_NACIMIENTO_INSCRIP").datepicker({
+                format: "dd/mm/yyyy"
+            });
+
+            datatable = $('#tbl_Inscripcion').DataTable({
+                "ajax": "@Url.Action("getTableInscripciones", "Inscripciones")",
+                "columns": [
+                  { 'data': 'ID_INSCRIP' },
+                  { 'data': 'APELLIDO_PATERNO_INSCRIP' },
+                  { 'data': 'APELLIDO_MATERNO_INSCRIP' },
+                  { 'data': 'PRIMER_NOMBRE_INSCRIP' },
+                  { 'data': 'SEGUNDO_NOMBRE_INSCRIP' },
+                  {
+                      'data': 'ID_INSCRIP', 'render': function (data) {
+                          return "<button type='button' onclick=ObtenerInscipcion('" + data + "')  class='btn btn-flat btn-xs btn-warning'><em class='zmdi zmdi-edit'></em></button>"
+                      },
+                      'orderable': false,
+                      "className": "actions",
+                      'width': '150px'
+                  },
+                ],
+                "processing": true,
+                "language": {
+                    "url": "../assets/plugins/datatables/Spanish.json",
+                },
+                "order": [[0, 'asc']],
+            });
+
+            $.validator.methods.date = function (value, element) {
+                Globalize.culture("en-AU");
+                // you can alternatively pass the culture to parseDate instead of
+                // setting the culture above, like so:
+                // parseDate(value, null, "en-AU")
+                return this.optional(element) || Globalize.parseDate(value) !== null;
+            }
+        });
+
+
+        $(function () {
+            $("#txt_inscripId").autocomplete({
+                minLength: 3,
+                source: function (request, response) {
+                    $.ajax({
+                        url: '@Url.Action("AutoComInscipcion", "Inscripciones")',
+                        data: "{ 'Prefix': '" + request.term + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.ID_INSCRIP, value: item.ID_INSCRIP };
+                            }))
+                        },
+                        error: function (response) {
+                            var r = jQuery.parseJSON(response.responseText);
+                            alert("Message: " + r.Message);
+                            alert("StackTrace: " + r.StackTrace);
+                            alert("ExceptionType: " + r.ExceptionType);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    ObtenerInscipcion(i.item.label);
+                },
+            });
+        });
+
+        function ObtenerInscipcion(ID_INSCRIP) {
+
+            var baseUrl = '@Url.Action("DatosPersonales", "Inscripciones", new { id = string.Empty })/' + ID_INSCRIP;
+            window.location.href = baseUrl;
+        }
+
+
+        function ActualizarDetalle() {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("DetalleCarrera", "Inscripciones")',
+                data: '{ID_INSCRIP: "' + $("#txt_inscripId").val() + '" }',
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (response) {
+                    $('#myPartialViewDiv').html(response);
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        }
+
+
+    </script>
+
+}

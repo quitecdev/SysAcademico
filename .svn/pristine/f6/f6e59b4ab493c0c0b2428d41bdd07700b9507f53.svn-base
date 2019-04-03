@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Model.Services.Admin;
+
+namespace CAS_ADMIN.Controllers
+{
+    public class ParaleloController : Controller
+    {
+        // GET: Paralelo
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        #region Paralelo
+        Paralelo _paralelo = new Paralelo();
+        public JsonResult getParaleloSedeCarrera(int id_carrera, int id_sede, int id_intervalo, int id_intervaloDetalle)
+        {
+            List<SelectListItem> licities = new List<SelectListItem>();
+
+            foreach (var x in _paralelo.ObtenerParaleloCarreraSedeCarera(id_sede, id_carrera, id_intervalo, id_intervaloDetalle))
+            {
+                licities.Add(new SelectListItem { Text = x.DESCRIPCION_PARALELO, Value = x.ID_PARALELO.ToString() });
+            }
+            return Json(new SelectList(licities, "Value", "Text", JsonRequestBehavior.AllowGet));
+        }
+        #endregion
+    }
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="67db9a5b85104370b27e0150edac70cb" Name="Diagram1">
+        <EntityTypeShape EntityType="CAS_DataModel.AUX_ABREVIATURA_DIA" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_ASISTENCIA" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_AUDITORIA" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_CARPETA_ADJUNTOS" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_CARRERA" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_CARRERA_NOTA" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_CARRERA_REQUISITOS" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_CRONOGRAMA" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_CRONOGRAMA_ADJUNTO" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_CRONOGRAMA_DETALLE" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_DIAS" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_DOCENTE" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_DOCENTE_NOTAS" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_ENCUESTA" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_ESTADO_CIVIL" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_ESTUDIANTE" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_ESTUDIANTE_DETALLE" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_ESTUDIANTE_NOTA" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_GRUPO" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_HORARIO" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_HORARIO_DETALLE" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_HORARIO_TIPO" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_INSCRIPCION" Width="1.5" PointX="12.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_INSCRIPCION_DETALLE_CARRERA" Width="1.5" PointX="12.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_INSCRIPCION_ESTADO" Width="1.5" PointX="8.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_INTERVALO" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_INTERVALO_DETALLE" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_MATERIA" Width="1.5" PointX="2.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_MENU" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_NOTA" Width="1.5" PointX="4.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_NOTA_DETALLE" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_NOTA_PONDERACION" Width="1.5" PointX="14.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_NOTIFICACIONES" Width="1.5" PointX="14.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_PARALELO" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_PARALELO_MATERIA" Width="1.5" PointX="16.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_PERIODO" Width="1.5" PointX="6.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_PERSONAL" Width="1.5" PointX="16.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_ROL" Width="1.5" PointX="8.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_ROL_MENU" Width="1.5" PointX="10.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_SALON" Width="1.5" PointX="16.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_SEDE" Width="1.5" PointX="12.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_SEMANA" Width="1.5" PointX="14.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_TIPO_INVERTALO" Width="1.5" PointX="16.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_TIPO_PAGO" Width="1.5" PointX="0.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_UBICACION" Width="1.5" PointX="2.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_UNIVERSIDAD" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_USUARIO" Width="1.5" PointX="18.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_USUARIO_ROL" Width="1.5" PointX="18.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_VISITA" Width="1.5" PointX="18.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_DOCENTE_ASISTENCIA" Width="1.5" PointX="17.375" PointY="18.75" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_ESTUDIANTE_ASISTENCIA" Width="1.5" PointX="5.375" PointY="19.75" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_INSCRIPCION_FECHA" Width="1.5" PointX="7.375" PointY="19.75" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_DOCENTE_MATERIA_PARALELO" Width="1.5" PointX="9.375" PointY="19.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,191 @@
+﻿@model Model.Services.Admin.ModelInscripcion
+@{
+    ViewBag.Title = "Inscripción";
+}
+
+
+<div class="parallax inner-head" style="background-position: 50% 44px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <i class="glyphicon glyphicon-pencil"></i>
+                <h4>Se Parte De Nosotros</h4>
+                <ol class="breadcrumb">
+                    <li><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+                    <li class="active">Preinscripción</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="contain-wrapp padding-bottom-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-7">
+                @using (Html.BeginForm())
+                {
+                    <div class="row wrap-form">
+                        <div class="col-md-12">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.DESCRIPCION_NACIONALIDAD)
+                                @Html.EditorFor(model => model.DESCRIPCION_NACIONALIDAD, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DESCRIPCION_NACIONALIDAD, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.ID_INSCRIP)
+                                @Html.EditorFor(model => model.ID_INSCRIP, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ID_INSCRIP, "", new { @class = "error" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.APELLIDO_PATERNO_INSCRIP)
+                                @Html.EditorFor(model => model.APELLIDO_PATERNO_INSCRIP, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.APELLIDO_PATERNO_INSCRIP, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.APELLIDO_MATERNO_INSCRIP)
+                                @Html.EditorFor(model => model.APELLIDO_MATERNO_INSCRIP, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.APELLIDO_MATERNO_INSCRIP, "", new { @class = "error" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.PRIMER_NOMBRE_INSCRIP)
+                                @Html.EditorFor(model => model.PRIMER_NOMBRE_INSCRIP, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.PRIMER_NOMBRE_INSCRIP, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.SEGUNDO_NOMBRE_INSCRIP)
+                                @Html.EditorFor(model => model.SEGUNDO_NOMBRE_INSCRIP, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SEGUNDO_NOMBRE_INSCRIP, "", new { @class = "error" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.CORREO)
+                                @Html.EditorFor(model => model.CORREO, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CORREO, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.CEL_INSCRIP)
+                                @Html.EditorFor(model => model.CEL_INSCRIP, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CEL_INSCRIP, "", new { @class = "error" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group col-md-12">
+                                @Html.LabelFor(model => model.DIRECCION)
+                                @Html.EditorFor(model => model.DIRECCION, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DIRECCION, "", new { @class = "error" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group col-md-12">
+                                <input type="submit" value="Registrarte" id="submit" class="btn-e btn-e-primary">
+                                <div class="status-progress"></div>
+                            </div>
+                        </div>
+
+                        @if (ViewBag.TheResult == true)
+                        {
+                            <div class="col-md-12">
+                                <div class="alert alert-custom alert-success">
+                                    <div class="alert-icon">
+                                        <i class="fa fa-check-square-o"></i>
+                                    </div>
+                                    <div class="alert-content">
+                                        <strong>Bien hecho !</strong>Tu inscripción se ha registrado correctamente.
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="col-md-12">
+                            <div class="alert alert-info">
+                                <i class="fa fa-info"></i> <strong>Información !</strong> Para legalizar su inscripción debe acercarse a la sede más cercana con los siguientes requisitos:
+                                <ul>
+                                    <li>2 fotos tamaño carnet</li>
+                                    <li>Copia de la cedula y papeleta de votación a color</li>
+                                    <li>Certificado médico</li>
+                                </ul>
+                                "Plazo máximo de entrega 15 días"
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-md-4 col-sm-5">
+                <div class="contact-detail">
+                    <div class="contact-sparator"></div>
+                    <ul class="list-unstyled">
+                        <li>
+                            <h6><i class="fa fa-institution fa-1x fa-primary"></i> Campus Norte</h6>
+                            <dl>
+                                <dt><i class="fa fa-map-marker"></i> Dirección</dt>
+                                <dd>Isla Santa Fé N43-168 y Río Coca.</dd>
+                                <dt><i class="fa fa-phone"></i> Teléfono</dt>
+                                <dd>(593-2) 2468 620</dd>
+                                <dt><i class="fa fa-envelope"></i> E-mail</dt>
+                                <dd><a href="mailto:info@culinaryartschoolecuador.com">info@culinaryartschoolecuador.com</a></dd>
+                            </dl> 
+                        </li>
+                        <li>
+                            <h6><i class="fa fa-institution fa-1x fa-primary"></i> Campus Sur</h6>
+                            <dl>
+                                <dt><i class="fa fa-map-marker"></i> Dirección</dt>
+                                <dd>Centro Comercial Quicentro Sur, 3er piso (junto al banco Pichincha).</dd>
+                                <dt><i class="fa fa-phone"></i> Teléfono</dt>
+                                <dd>(593-2) 4000 281</dd>
+                                <dt><i class="fa fa-envelope"></i> E-mail</dt>
+                                <dd><a href="mailto:infosur@culinaryartschoolecuador.com">infosur@culinaryartschoolecuador.com</a></dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <h6><i class="fa fa-institution fa-1x fa-primary"></i> Campus Valle</h6>
+                            <dl>
+                                <dt><i class="fa fa-map-marker"></i> Dirección</dt>
+                                <dd>Alfredo Dávila, entre Montecristi y Calceta (tras el parque de San Rafael: Eduardo Kingman).</dd>
+                                <dt><i class="fa fa-phone"></i> Teléfono</dt>
+                                <dd>(593-2) 2861396 </dd>
+                                <dt><i class="fa fa-envelope"></i> E-mail</dt>
+                                <dd><a href="mailto:infovalle@culinaryartschoolecuador.com">infovalle@culinaryartschoolecuador.com</a></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#ID_INSCRIP').change(function () {
+                //alert(this.value);
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("ValidadDocumento", "Inscripcion")', // we are calling json method
+                    dataType: 'json',
+                    data: { documento: this.value },
+                    success: function (response) {
+                        if (response.success) {
+                            $('#ID_INSCRIP').val('');
+                            alert('El número de de documento ingresado ya se encuentra registrado en nuestro sistema.');
+                        }
+                    },
+                    error: function (response) {
+                        var r = jQuery.parseJSON(response.responseText);
+                        alert("Message: " + r.Message);
+                        alert("StackTrace: " + r.StackTrace);
+                        alert("ExceptionType: " + r.ExceptionType);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+}
+

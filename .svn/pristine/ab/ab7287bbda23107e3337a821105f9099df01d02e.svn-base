@@ -1,0 +1,195 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Model.Data;
+using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
+
+namespace Model.Services.Admin
+{
+    public class InscripcionDetalle
+    {
+        public int ID_INSCRIP_DETALLE_CARRERA { get; set; }
+
+        [Required]
+        [Display(Name = "Documento de Identidad")]
+        public string ID_INSCRIP { get; set; }
+
+        [Required]
+        [Display(Name = "Sede")]
+        public Nullable<int> ID_SEDE { get; set; }
+
+        [Required]
+        [Display(Name = "Carrera")]
+        public Nullable<int> ID_CARRERA { get; set; }
+
+        [Required]
+        [Display(Name = "Tipo Horario")]
+        public Nullable<int> ID_INTERVALO { get; set; }
+
+        [Required]
+        [Display(Name = "Horario")]
+        public Nullable<int> ID_INTERVALO_DETALLE { get; set; }
+
+        [Required]
+        [Display(Name = "Paralelo")]
+        public Nullable<int> ID_PARALELO { get; set; }
+
+        [Required]
+        [Display(Name = "Forma de Pago")]
+        public Nullable<int> ID_TIPO_PAGO { get; set; }
+
+        [Display(Name = "N. Factura")]
+        public string NUMERO_FACTURA { get; set; }
+        public Nullable<int> ID_ESTATUS { get; set; }
+
+        public Nullable<int> ID_PERIODO { get; set; }
+
+
+        Periodo _perido = new Periodo();
+
+        public InscripcionDetalle ObtenerDetalle(int _ID_INSCRIP_DETALLE_CARRERA)
+        {
+            InscripcionDetalle _detalle = new InscripcionDetalle();
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    _detalle = ctx.CAS_INSCRIPCION_DETALLE_CARRERA.Where(x => x.ID_INSCRIP_DETALLE_CARRERA == _ID_INSCRIP_DETALLE_CARRERA)
+                              .Select(x => new InscripcionDetalle
+                              {
+                                  ID_INSCRIP_DETALLE_CARRERA = x.ID_INSCRIP_DETALLE_CARRERA,
+                                  ID_INSCRIP = x.ID_INSCRIP,
+                                  ID_SEDE = x.ID_SEDE,
+                                  ID_CARRERA = x.ID_CARRERA,
+                                  ID_INTERVALO = x.ID_INTERVALO,
+                                  ID_INTERVALO_DETALLE = x.ID_INTERVALO_DETALLE,
+                                  ID_PARALELO = x.ID_PARALELO,
+                                  ID_TIPO_PAGO = x.ID_TIPO_PAGO,
+                                  NUMERO_FACTURA = x.NUMERO_FACTURA,
+                                  ID_ESTATUS = x.ID_ESTATUS,
+                                  ID_PERIODO = x.ID_PERIODO
+                              }).FirstOrDefault();
+                }
+                return _detalle;
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return _detalle;
+            }
+        }
+
+        public void GuardarDetalle(InscripcionDetalle inscripcionDetalle)
+        {
+            CAS_INSCRIPCION_DETALLE_CARRERA _inscripcion = new CAS_INSCRIPCION_DETALLE_CARRERA();
+            
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    if (inscripcionDetalle.ID_INSCRIP_DETALLE_CARRERA == 0)
+
+                    {
+                        _inscripcion.ID_INSCRIP_DETALLE_CARRERA = inscripcionDetalle.ID_INSCRIP_DETALLE_CARRERA;
+                        _inscripcion.ID_INSCRIP = inscripcionDetalle.ID_INSCRIP;
+                        _inscripcion.ID_SEDE = inscripcionDetalle.ID_SEDE;
+                        _inscripcion.ID_CARRERA = inscripcionDetalle.ID_CARRERA;
+                        _inscripcion.ID_INTERVALO = inscripcionDetalle.ID_INTERVALO;
+                        _inscripcion.ID_INTERVALO_DETALLE = inscripcionDetalle.ID_INTERVALO_DETALLE;
+                        _inscripcion.ID_PARALELO = inscripcionDetalle.ID_PARALELO;
+                        _inscripcion.ID_TIPO_PAGO = inscripcionDetalle.ID_TIPO_PAGO;
+                        _inscripcion.NUMERO_FACTURA = inscripcionDetalle.NUMERO_FACTURA;
+                        if (inscripcionDetalle.ID_TIPO_PAGO!=1)
+                        {
+                            _inscripcion.ID_ESTATUS = 1;
+                        }
+                        else
+                        {
+                            _inscripcion.ID_ESTATUS = 3;
+                        }
+                        _inscripcion.ID_PERIODO = _perido.ObtenerPeriodoActivo().ID_PERIODO;
+                       ctx.Entry(_inscripcion).State = EntityState.Added;
+                    }
+                    ctx.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+            }
+        }
+        public void ActualizarDetalle(InscripcionDetalle inscripcionDetalle)
+        {
+            CAS_INSCRIPCION_DETALLE_CARRERA _detalleInscripcion = new CAS_INSCRIPCION_DETALLE_CARRERA();
+            CAS_ESTUDIANTE_DETALLE _detalleEstudiante = new CAS_ESTUDIANTE_DETALLE();
+            try
+            {
+                using (var ctx= new CAS_DataEntities())
+                {
+                    _detalleInscripcion = ctx.CAS_INSCRIPCION_DETALLE_CARRERA.Where(x => x.ID_INSCRIP_DETALLE_CARRERA == inscripcionDetalle.ID_INSCRIP_DETALLE_CARRERA).AsNoTracking().FirstOrDefault();
+                    _detalleEstudiante = ctx.CAS_ESTUDIANTE_DETALLE
+                                         .Where(x => x.ID_ESTUDIANTE==_detalleInscripcion.ID_INSCRIP
+                                                &&   x.ID_SEDE == _detalleInscripcion.ID_SEDE
+                                                &&   x.ID_CARRERA== _detalleInscripcion.ID_CARRERA
+                                                &&   x.ID_INTERVALO==_detalleInscripcion.ID_INTERVALO
+                                                &&   x.ID_INTERVALO_DETALLE==_detalleInscripcion.ID_INTERVALO_DETALLE
+                                                &&   x.ID_PARALELO==_detalleInscripcion.ID_PARALELO
+                                                &&   x.ID_PERIODO==_detalleInscripcion.ID_PERIODO
+                                         ).AsNoTracking().FirstOrDefault();
+
+                    #region ActualizoDetalleInscripcion
+                    _detalleInscripcion.ID_INSCRIP_DETALLE_CARRERA = inscripcionDetalle.ID_INSCRIP_DETALLE_CARRERA;
+                    _detalleInscripcion.ID_INSCRIP = inscripcionDetalle.ID_INSCRIP;
+                    _detalleInscripcion.ID_SEDE = inscripcionDetalle.ID_SEDE;
+                    _detalleInscripcion.ID_CARRERA = inscripcionDetalle.ID_CARRERA;
+                    _detalleInscripcion.ID_INTERVALO = inscripcionDetalle.ID_INTERVALO;
+                    _detalleInscripcion.ID_INTERVALO_DETALLE = inscripcionDetalle.ID_INTERVALO_DETALLE;
+                    _detalleInscripcion.ID_PARALELO = inscripcionDetalle.ID_PARALELO;
+                    _detalleInscripcion.ID_TIPO_PAGO = inscripcionDetalle.ID_TIPO_PAGO;
+                    _detalleInscripcion.NUMERO_FACTURA = inscripcionDetalle.NUMERO_FACTURA;
+                    if (inscripcionDetalle.ID_TIPO_PAGO != 1)
+                    {
+                        _detalleInscripcion.ID_ESTATUS = 1;
+                    }
+                    else
+                    {
+                        _detalleInscripcion.ID_ESTATUS = 3;
+                    }
+                    _detalleInscripcion.ID_PERIODO = _perido.ObtenerPeriodoActivo().ID_PERIODO;
+                    ctx.Entry(_detalleInscripcion).State = EntityState.Modified;
+                    #endregion
+
+                    #region ActualizarDetalleEstudiante
+                    if (_detalleEstudiante != null)
+                    {
+                        _detalleEstudiante.ID_SEDE = inscripcionDetalle.ID_SEDE;
+                        _detalleEstudiante.ID_CARRERA = inscripcionDetalle.ID_CARRERA;
+                        _detalleEstudiante.ID_INTERVALO = inscripcionDetalle.ID_INTERVALO;
+                        _detalleEstudiante.ID_INTERVALO_DETALLE = inscripcionDetalle.ID_INTERVALO_DETALLE;
+                        _detalleEstudiante.ID_PARALELO = inscripcionDetalle.ID_PARALELO;
+                        ctx.Entry(_detalleEstudiante).State = EntityState.Modified;
+                    }
+                    #endregion
+                    ctx.SaveChanges();
+
+                    //ACTUALIZO NOTA 
+                    if (_detalleEstudiante != null)
+                    {
+                        ObjectParameter outID = new ObjectParameter("outID", typeof(int));
+                        ObjectParameter outMensaje = new ObjectParameter("outMensaje", typeof(string));
+                        ctx.SP_ActualizarDetalleNotas(_detalleInscripcion.ID_INSCRIP_DETALLE_CARRERA, outMensaje, outID);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+            }
+        }
+    }
+}

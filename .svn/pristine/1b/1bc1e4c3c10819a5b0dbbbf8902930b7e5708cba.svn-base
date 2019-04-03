@@ -1,0 +1,1133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CAS_DataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AUX_ABREVIATURA_DIA">
+    <Key>
+      <PropertyRef Name="ID_DIA_ABREVI" />
+    </Key>
+    <Property Name="ID_DIA_ABREVI" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION_ABREVI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CAS_ASISTENCIA">
+    <Key>
+      <PropertyRef Name="ID_ASISTENCIA" />
+    </Key>
+    <Property Name="ID_ASISTENCIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION_ASISTENCIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_INICIO" Type="DateTime" Precision="0" />
+    <Property Name="FECHA_FIN" Type="DateTime" Precision="0" />
+    <Property Name="ID_PERIODO" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_AUDITORIA">
+    <Key>
+      <PropertyRef Name="AUD_ID" />
+    </Key>
+    <Property Name="AUD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USR_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AUD_SESSION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AUD_FECHA_HORA" Type="DateTime" Precision="3" />
+    <Property Name="AUD_ACCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="AUD_DATA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="USR_CODIGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CAS_CARPETA_ADJUNTOS">
+    <Key>
+      <PropertyRef Name="ID_CARPETA" />
+    </Key>
+    <Property Name="ID_CARPETA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION_CARPETA" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CAS_CARRERA">
+    <Key>
+      <PropertyRef Name="ID_CARRERA" />
+    </Key>
+    <Property Name="ID_CARRERA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION_CARRERA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NOMBRE_TECNICO_CARRERA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="COD_CARRERA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ID_GRUPO" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_CARRERA_NOTA">
+    <Key>
+      <PropertyRef Name="ID_CARRERA_NOTA" />
+    </Key>
+    <Property Name="ID_CARRERA_NOTA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_CARRERA" Type="Int32" />
+    <Property Name="ID_NOTA" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_CARRERA_REQUISITOS">
+    <Key>
+      <PropertyRef Name="ID_CARRERA_REQUISITOS" />
+    </Key>
+    <Property Name="ID_CARRERA_REQUISITOS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_CARRERA_PADRE" Type="Int32" />
+    <Property Name="ID_CARRERA_HIJO" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_CRONOGRAMA">
+    <Key>
+      <PropertyRef Name="ID_CRONOGRAMA" />
+    </Key>
+    <Property Name="ID_CRONOGRAMA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_CARRERA" Type="Int32" />
+    <Property Name="ID_SEDE" Type="Int32" />
+    <Property Name="ID_PERIODO" Type="Int32" />
+    <Property Name="ID_TIPO_INTERVALO" Type="Int32" />
+    <Property Name="DESCRIPCION_CRONOGRAMA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_INICIO" Type="DateTime" Precision="0" />
+    <Property Name="FECHA_FIN" Type="DateTime" Precision="0" />
+    <Property Name="ID_PARALELO" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_CRONOGRAMA_ADJUNTO">
+    <Key>
+      <PropertyRef Name="ID_CRONOGRAMA_ADJUNTO" />
+    </Key>
+    <Property Name="ID_CRONOGRAMA_ADJUNTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_CRONOGRAMA_DETALLE" Type="Int32" />
+    <Property Name="RUTA_ADJUNTO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ICONO_ADJUNTO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PESO_ADJUNTO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NOMBRE_ADJUNTO" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ID_CARPETA" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_CRONOGRAMA_DETALLE">
+    <Key>
+      <PropertyRef Name="ID_CRONOGRAMA_DETALLE" />
+    </Key>
+    <Property Name="ID_CRONOGRAMA_DETALLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_CRONOGRAMA" Type="Int32" />
+    <Property Name="SEMANA_CRONOGRAMA" Type="Int32" />
+    <Property Name="FECHA_CRONOGRAMA" Type="DateTime" Precision="0" />
+    <Property Name="TEMA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TEMATICA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="REQUERIMIENTO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="FERIADO" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="CAS_DIAS">
+    <Key>
+      <PropertyRef Name="ID_DIAS" />
+    </Key>
+    <Property Name="ID_DIAS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION_DIAS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CAS_DOCENTE">
+    <Key>
+      <PropertyRef Name="ID_DOCENTE" />
+    </Key>
+    <Property Name="ID_DOCENTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="APELLIDO_PATERNO_DOCENTE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="APELLIDO_MATERNO_DOCENTE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PRIMER_NOMBRE_DOCENTE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="SEGUNDO_NOMBRE_DOCENTE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_NACIMIENTO_DOCENTE" Type="DateTime" Precision="0" />
+    <Property Name="ID_ESTADO_CIVIL" Type="Int32" />
+    <Property Name="ID_PROVINCIA" Type="Int32" />
+    <Property Name="DIRECCION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="TELEF_DOCENTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CEL_DOCENTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IMG_DOCENTE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CORREO_DOCENTE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_INGRESO_DOCENTE" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="CAS_DOCENTE_MATERIA_PARALELO">
+    <Key>
+      <PropertyRef Name="ID_DOCENTE_MATERIA_PARALELO" />
+    </Key>
+    <Property Name="ID_DOCENTE_MATERIA_PARALELO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_DOCENTE" Type="Int32" />
+    <Property Name="ID_HORARIO_DETALLE" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_DOCENTE_NOTAS">
+    <Key>
+      <PropertyRef Name="ID_DOCENTE_NOTA" />
+    </Key>
+    <Property Name="ID_DOCENTE_NOTA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_DOCENTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ID_PONDERACION" Type="Int32" />
+    <Property Name="ID_SEDE" Type="Int32" />
+    <Property Name="FECHA_INICIO" Type="DateTime" Precision="3" />
+    <Property Name="FECHA_FIN" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="CAS_ENCUESTA">
+    <Key>
+      <PropertyRef Name="ID_ENCUESTA" />
+    </Key>
+    <Property Name="ID_ENCUESTA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_INSCRIP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="WEB" Type="Boolean" />
+    <Property Name="AMIGOS" Type="Boolean" />
+    <Property Name="FACEBOK" Type="Boolean" />
+    <Property Name="TWITTER" Type="Boolean" />
+    <Property Name="OTROS" Type="Boolean" />
+    <Property Name="OTROS_DETALLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CAS_ESTADO_CIVIL">
+    <Key>
+      <PropertyRef Name="ID_ESTADO_CIVIL" />
+    </Key>
+    <Property Name="ID_ESTADO_CIVIL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION_ESTADO_CIVIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CAS_ESTUDIANTE">
+    <Key>
+      <PropertyRef Name="ID_ESTUDIANTE" />
+    </Key>
+    <Property Name="ID_ESTUDIANTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="APELLIDO_PATERNO_ESTUDIANTE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="APELLIDO_MATERNO_ESTUDIANTE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PRIMER_NOMBRE_ESTUDIANTE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="SEGUNDO_NOMBRE_ESTUDIANTE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_NACIMIENTO_ESTUDIANTE" Type="DateTime" Precision="0" />
+    <Property Name="ID_ESTADO_CIVIL" Type="Int32" />
+    <Property Name="ID_PROVINCIA" Type="Int32" />
+    <Property Name="DIRECCION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="TELEF_ESTUDIANTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CEL_ESTUDIANTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IMG_ESTUDIANTE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CORREO_ESTUDIANTE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_INGRESO_ESTUDIANTE" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="CAS_ESTUDIANTE_DETALLE">
+    <Key>
+      <PropertyRef Name="ID_ESTUDIANTE_DETALLE" />
+    </Key>
+    <Property Name="ID_ESTUDIANTE_DETALLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_ESTUDIANTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ID_SEDE" Type="Int32" />
+    <Property Name="ID_CARRERA" Type="Int32" />
+    <Property Name="ID_INTERVALO" Type="Int32" />
+    <Property Name="ID_INTERVALO_DETALLE" Type="Int32" />
+    <Property Name="ID_PARALELO" Type="Int32" />
+    <Property Name="ID_PERIODO" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_ESTUDIANTE_NOTA">
+    <Key>
+      <PropertyRef Name="ID_ESTUDIANTE_NOTA" />
+    </Key>
+    <Property Name="ID_ESTUDIANTE_NOTA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_ESTUDIANTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ID_PONDERACION" Type="Int32" />
+    <Property Name="VALOR_NOTA" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="ID_PERIODO" Type="Int32" />
+    <Property Name="ID_SEDE" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_GRUPO">
+    <Key>
+      <PropertyRef Name="ID_GROUPO" />
+    </Key>
+    <Property Name="ID_GROUPO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION_GRUPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SP_GRUPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CAS_HORARIO">
+    <Key>
+      <PropertyRef Name="ID_HORARIO" />
+    </Key>
+    <Property Name="ID_HORARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_INTERVALO_DETALLE" Type="Int32" />
+    <Property Name="ID_DIA" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_HORARIO_DETALLE">
+    <Key>
+      <PropertyRef Name="ID_HORARIO_DETALLE" />
+    </Key>
+    <Property Name="ID_HORARIO_DETALLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_PARALELO_MATERIA" Type="Int32" />
+    <Property Name="ID_HORARIO" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_HORARIO_TIPO">
+    <Key>
+      <PropertyRef Name="ID_HORARIO_TIPO" />
+    </Key>
+    <Property Name="ID_HORARIO_TIPO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION_HORARIO_TIPO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CAS_INSCRIPCION">
+    <Key>
+      <PropertyRef Name="ID_INSCRIP" />
+    </Key>
+    <Property Name="ID_INSCRIP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="APELLIDO_PATERNO_INSCRIP" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="APELLIDO_MATERNO_INSCRIP" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PRIMER_NOMBRE_INSCRIP" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="SEGUNDO_NOMBRE_INSCRIP" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_NACIMIENTO_INSCRIP" Type="DateTime" Precision="0" />
+    <Property Name="DESCRIPCION_NACIONALIDAD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ID_ESTADO_CIVIL" Type="Int32" />
+    <Property Name="ID_CIUDAD" Type="Int32" />
+    <Property Name="ID_PROVINCIA" Type="Int32" />
+    <Property Name="DIRECCION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="TELEF_INSCRIP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CEL_INSCRIP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TELEF_EMER_INSCRIP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IMG_INSCRIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DOC_IDENTIDAD" Type="Boolean" />
+    <Property Name="PAPELETA_VOT" Type="Boolean" />
+    <Property Name="FOTOGRAFIA" Type="Boolean" />
+    <Property Name="CERT_MEDICO" Type="Boolean" />
+    <Property Name="CORREO" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_INSCRIPCION" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="CAS_INSCRIPCION_DETALLE_CARRERA">
+    <Key>
+      <PropertyRef Name="ID_INSCRIP_DETALLE_CARRERA" />
+    </Key>
+    <Property Name="ID_INSCRIP_DETALLE_CARRERA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_INSCRIP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_SEDE" Type="Int32" />
+    <Property Name="ID_CARRERA" Type="Int32" />
+    <Property Name="ID_INTERVALO" Type="Int32" />
+    <Property Name="ID_INTERVALO_DETALLE" Type="Int32" />
+    <Property Name="ID_TIPO_PAGO" Type="Int32" />
+    <Property Name="NUMERO_FACTURA" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ID_ESTATUS" Type="Int32" />
+    <Property Name="ID_PARALELO" Type="Int32" />
+    <Property Name="ID_PERIODO" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_INSCRIPCION_ESTADO">
+    <Key>
+      <PropertyRef Name="ID_INSCRIPCION_ESTADO" />
+    </Key>
+    <Property Name="ID_INSCRIPCION_ESTADO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION_ESTADO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CAS_INTERVALO">
+    <Key>
+      <PropertyRef Name="ID_INTERVALO" />
+    </Key>
+    <Property Name="ID_INTERVALO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_TIPO_INTERVALO" Type="Int32" />
+    <Property Name="ID_HORARIO_TIPO" Type="Int32" />
+    <Property Name="ID_SEDE" Type="Int32" />
+    <Property Name="DESCRIPCION_INTERVALO" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CAS_INTERVALO_DETALLE">
+    <Key>
+      <PropertyRef Name="ID_INTERVALO_DETALLE" />
+    </Key>
+    <Property Name="ID_INTERVALO_DETALLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_INTERVALO" Type="Int32" />
+    <Property Name="INICIO_INTERVALO" Type="Time" Precision="7" />
+    <Property Name="FIN_INTERVALO" Type="Time" Precision="7" />
+  </EntityType>
+  <EntityType Name="CAS_MATERIA">
+    <Key>
+      <PropertyRef Name="ID_MATERIA" />
+    </Key>
+    <Property Name="ID_MATERIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION_MATERIA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="COD_MATERIA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ID_CARRERA" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_MENU">
+    <Key>
+      <PropertyRef Name="ID_MENU" />
+    </Key>
+    <Property Name="ID_MENU" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION_MENU" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="URL_MENU" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ICONO_MENU" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ORDEN_MENU" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_NOTA">
+    <Key>
+      <PropertyRef Name="ID_NOTA" />
+    </Key>
+    <Property Name="ID_NOTA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION_NOTA" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ID_TIPO_INTERVALO" Type="Int32" />
+    <Property Name="ID_CARRERA" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_NOTA_DETALLE">
+    <Key>
+      <PropertyRef Name="ID_NOTA_DETALLE" />
+    </Key>
+    <Property Name="ID_NOTA_DETALLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_NOTA" Type="Int32" />
+    <Property Name="DESCRIPCION_NOTA_DETALLE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CAS_NOTA_PONDERACION">
+    <Key>
+      <PropertyRef Name="ID_PONDERACION" />
+    </Key>
+    <Property Name="ID_PONDERACION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_NOTA_DETALLE" Type="Int32" />
+    <Property Name="DESCRIPCION_PONDERACION" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="VALOR_PONDERACION" Type="Decimal" Precision="18" Scale="4" />
+  </EntityType>
+  <EntityType Name="CAS_NOTIFICACIONES">
+    <Key>
+      <PropertyRef Name="ID_NOTIFICACION" />
+    </Key>
+    <Property Name="ID_NOTIFICACION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_USUARIO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TXT_NOTIFICACION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO_NOTIFICACION" Type="Int64" />
+    <Property Name="FECHA_NOTIFICACION" Type="DateTime" Precision="3" />
+    <Property Name="ID_USUARIO_REMITENTE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ASUNTO_NOTIFICACION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ID_PERIODO" Type="Int32" />
+    <Property Name="PRIORIDAD_NOTIFICACION" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_PARALELO">
+    <Key>
+      <PropertyRef Name="ID_PARALELO" />
+    </Key>
+    <Property Name="ID_PARALELO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION_PARALELO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CAS_PARALELO_MATERIA">
+    <Key>
+      <PropertyRef Name="ID_PARALELO_MATERIA" />
+    </Key>
+    <Property Name="ID_PARALELO_MATERIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_PARALELO" Type="Int32" />
+    <Property Name="ID_MATERIA" Type="Int32" />
+    <Property Name="ID_SEDE" Type="Int32" />
+    <Property Name="ESTADO_ASIGANACION" Type="Boolean" />
+    <Property Name="MAX_ASIGANDO" Type="Int32" />
+    <Property Name="PARALELO_UNIFICADO" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="CAS_PERIODO">
+    <Key>
+      <PropertyRef Name="ID_PERIODO" />
+    </Key>
+    <Property Name="ID_PERIODO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION_PERIODO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHA_INICIO" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FECHA_FIN" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ESTADO" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_PERSONAL">
+    <Key>
+      <PropertyRef Name="ID_PERSONAL" />
+    </Key>
+    <Property Name="ID_PERSONAL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="APELLIDO_PATERNO_PERSONAL" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="APELLIDO_MATERNO_PERSONAL" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PRIMER_NOMBRE_PERSONAL" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="SEGUNDO_NOMBRE_PERSONAL" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_NACIMIENTO_PERSONAL" Type="DateTime" Precision="0" />
+    <Property Name="ID_ESTADO_CIVIL" Type="Int32" />
+    <Property Name="ID_PROVINCIA" Type="Int32" />
+    <Property Name="DIRECCION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="TELEF_PERSONAL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CEL_PERSONAL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IMG_PERSONAL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CORREO_PERSONAL" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_INGRESO_PERSONAL" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="CAS_ROL">
+    <Key>
+      <PropertyRef Name="ID_ROL" />
+    </Key>
+    <Property Name="ID_ROL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION_ROL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DIRECTIVA_ROL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CAS_ROL_MENU">
+    <Key>
+      <PropertyRef Name="ID_ROL_MENU" />
+    </Key>
+    <Property Name="ID_ROL_MENU" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_ROL" Type="Int32" />
+    <Property Name="ID_MENU" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_SALON">
+    <Key>
+      <PropertyRef Name="ID_SALON" />
+    </Key>
+    <Property Name="ID_SALON" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION_SALON" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ID_SEDE" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_SEDE">
+    <Key>
+      <PropertyRef Name="ID_SEDE" />
+    </Key>
+    <Property Name="ID_SEDE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_UNIVERSIDAD" Type="Int32" />
+    <Property Name="DESCRIPCION_UNIVERSIDAD" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="COD_SEDE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CAS_SEMANA">
+    <Key>
+      <PropertyRef Name="ID_SEMANA" />
+    </Key>
+    <Property Name="ID_SEMANA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION_SEMANA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ID_PERIODO" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_TIPO_INVERTALO">
+    <Key>
+      <PropertyRef Name="ID_TIPO_INTERVALO" />
+    </Key>
+    <Property Name="ID_TIPO_INTERVALO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION_TIPO_INVERTALO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CAS_TIPO_PAGO">
+    <Key>
+      <PropertyRef Name="ID_TIPO_PAGO" />
+    </Key>
+    <Property Name="ID_TIPO_PAGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION_TIPO_PAGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CAS_UBICACION">
+    <Key>
+      <PropertyRef Name="UBI_ID" />
+    </Key>
+    <Property Name="UBI_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PAIS_ID" Type="Int32" />
+    <Property Name="UBI_CIUDAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UBI_PROVINCIA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UBI_CANTON" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CAS_UNIVERSIDAD">
+    <Key>
+      <PropertyRef Name="ID_UNIVERSIDAD" />
+    </Key>
+    <Property Name="ID_UNIVERSIDAD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION_UNIVERSIDAD" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CAS_USUARIO">
+    <Key>
+      <PropertyRef Name="ID_USUARIO" />
+    </Key>
+    <Property Name="ID_USUARIO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="COD_USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CLAVE_USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO_USUARIO" Type="Int32" />
+    <Property Name="MODIFICAR_CLAVE" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_USUARIO_ROL">
+    <Key>
+      <PropertyRef Name="ID_USUARIO_ROL" />
+    </Key>
+    <Property Name="ID_USUARIO_ROL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_USUARIO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="ID_ROL" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CAS_VISITA">
+    <Key>
+      <PropertyRef Name="ID_VISITA" />
+    </Key>
+    <Property Name="ID_VISITA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="CAS_DataEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AUX_ABREVIATURA_DIA" EntityType="Self.AUX_ABREVIATURA_DIA" />
+    <EntitySet Name="CAS_ASISTENCIA" EntityType="Self.CAS_ASISTENCIA" />
+    <EntitySet Name="CAS_AUDITORIA" EntityType="Self.CAS_AUDITORIA" />
+    <EntitySet Name="CAS_CARPETA_ADJUNTOS" EntityType="Self.CAS_CARPETA_ADJUNTOS" />
+    <EntitySet Name="CAS_CARRERA" EntityType="Self.CAS_CARRERA" />
+    <EntitySet Name="CAS_CARRERA_NOTA" EntityType="Self.CAS_CARRERA_NOTA" />
+    <EntitySet Name="CAS_CARRERA_REQUISITOS" EntityType="Self.CAS_CARRERA_REQUISITOS" />
+    <EntitySet Name="CAS_CRONOGRAMA" EntityType="Self.CAS_CRONOGRAMA" />
+    <EntitySet Name="CAS_CRONOGRAMA_ADJUNTO" EntityType="Self.CAS_CRONOGRAMA_ADJUNTO" />
+    <EntitySet Name="CAS_CRONOGRAMA_DETALLE" EntityType="Self.CAS_CRONOGRAMA_DETALLE" />
+    <EntitySet Name="CAS_DIAS" EntityType="Self.CAS_DIAS" />
+    <EntitySet Name="CAS_DOCENTE" EntityType="Self.CAS_DOCENTE" />
+    <EntitySet Name="CAS_DOCENTE_MATERIA_PARALELO" EntityType="Self.CAS_DOCENTE_MATERIA_PARALELO" />
+    <EntitySet Name="CAS_DOCENTE_NOTAS" EntityType="Self.CAS_DOCENTE_NOTAS" />
+    <EntitySet Name="CAS_ENCUESTA" EntityType="Self.CAS_ENCUESTA" />
+    <EntitySet Name="CAS_ESTADO_CIVIL" EntityType="Self.CAS_ESTADO_CIVIL" />
+    <EntitySet Name="CAS_ESTUDIANTE" EntityType="Self.CAS_ESTUDIANTE" />
+    <EntitySet Name="CAS_ESTUDIANTE_DETALLE" EntityType="Self.CAS_ESTUDIANTE_DETALLE" />
+    <EntitySet Name="CAS_ESTUDIANTE_NOTA" EntityType="Self.CAS_ESTUDIANTE_NOTA" />
+    <EntitySet Name="CAS_GRUPO" EntityType="Self.CAS_GRUPO" />
+    <EntitySet Name="CAS_HORARIO" EntityType="Self.CAS_HORARIO" />
+    <EntitySet Name="CAS_HORARIO_DETALLE" EntityType="Self.CAS_HORARIO_DETALLE" />
+    <EntitySet Name="CAS_HORARIO_TIPO" EntityType="Self.CAS_HORARIO_TIPO" />
+    <EntitySet Name="CAS_INSCRIPCION" EntityType="Self.CAS_INSCRIPCION" />
+    <EntitySet Name="CAS_INSCRIPCION_DETALLE_CARRERA" EntityType="Self.CAS_INSCRIPCION_DETALLE_CARRERA" />
+    <EntitySet Name="CAS_INSCRIPCION_ESTADO" EntityType="Self.CAS_INSCRIPCION_ESTADO" />
+    <EntitySet Name="CAS_INTERVALO" EntityType="Self.CAS_INTERVALO" />
+    <EntitySet Name="CAS_INTERVALO_DETALLE" EntityType="Self.CAS_INTERVALO_DETALLE" />
+    <EntitySet Name="CAS_MATERIA" EntityType="Self.CAS_MATERIA" />
+    <EntitySet Name="CAS_MENU" EntityType="Self.CAS_MENU" />
+    <EntitySet Name="CAS_NOTA" EntityType="Self.CAS_NOTA" />
+    <EntitySet Name="CAS_NOTA_DETALLE" EntityType="Self.CAS_NOTA_DETALLE" />
+    <EntitySet Name="CAS_NOTA_PONDERACION" EntityType="Self.CAS_NOTA_PONDERACION" />
+    <EntitySet Name="CAS_NOTIFICACIONES" EntityType="Self.CAS_NOTIFICACIONES" />
+    <EntitySet Name="CAS_PARALELO" EntityType="Self.CAS_PARALELO" />
+    <EntitySet Name="CAS_PARALELO_MATERIA" EntityType="Self.CAS_PARALELO_MATERIA" />
+    <EntitySet Name="CAS_PERIODO" EntityType="Self.CAS_PERIODO" />
+    <EntitySet Name="CAS_PERSONAL" EntityType="Self.CAS_PERSONAL" />
+    <EntitySet Name="CAS_ROL" EntityType="Self.CAS_ROL" />
+    <EntitySet Name="CAS_ROL_MENU" EntityType="Self.CAS_ROL_MENU" />
+    <EntitySet Name="CAS_SALON" EntityType="Self.CAS_SALON" />
+    <EntitySet Name="CAS_SEDE" EntityType="Self.CAS_SEDE" />
+    <EntitySet Name="CAS_SEMANA" EntityType="Self.CAS_SEMANA" />
+    <EntitySet Name="CAS_TIPO_INVERTALO" EntityType="Self.CAS_TIPO_INVERTALO" />
+    <EntitySet Name="CAS_TIPO_PAGO" EntityType="Self.CAS_TIPO_PAGO" />
+    <EntitySet Name="CAS_UBICACION" EntityType="Self.CAS_UBICACION" />
+    <EntitySet Name="CAS_UNIVERSIDAD" EntityType="Self.CAS_UNIVERSIDAD" />
+    <EntitySet Name="CAS_USUARIO" EntityType="Self.CAS_USUARIO" />
+    <EntitySet Name="CAS_USUARIO_ROL" EntityType="Self.CAS_USUARIO_ROL" />
+    <EntitySet Name="CAS_VISITA" EntityType="Self.CAS_VISITA" />
+    <FunctionImport Name="SP_EstudianteNotaParcial">
+      <Parameter Name="ID_ESTUDIANTE" Mode="In" Type="String" />
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EstudianteNotaDetalle">
+      <Parameter Name="ID_ESTUDIANTE" Mode="In" Type="String" />
+      <Parameter Name="ID_NOTA_DETALLE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_DocenteObtenerCarreraMateria" ReturnType="Collection(CAS_DataModel.DocenteObtenerCarreraMateria_Result)">
+      <Parameter Name="ID_DOCENTE" Mode="In" Type="String" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_DocenteObtenerHorario" ReturnType="Collection(CAS_DataModel.DocenteObtenerHorario_Result)">
+      <Parameter Name="ID_DOCENTE" Mode="In" Type="String" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="CAS_DOCENTE_ASISTENCIA" EntityType="CAS_DataModel.CAS_DOCENTE_ASISTENCIA" />
+    <FunctionImport Name="SP_DocenteHorarioDiario" ReturnType="Collection(CAS_DataModel.DocenteHorarioDiario_Result)">
+      <Parameter Name="ID_DOCENTE" Mode="In" Type="String" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_DocenteObtenerAsistenciaEstudiantes" ReturnType="Collection(CAS_DataModel.DocenteObtenerAsistenciaEstudiantes_Result)">
+      <Parameter Name="ID_HORARIO_DETALLE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="CAS_ESTUDIANTE_ASISTENCIA" EntityType="CAS_DataModel.CAS_ESTUDIANTE_ASISTENCIA" />
+    <FunctionImport Name="SP_DocenteObtenerAsistencia" ReturnType="Collection(CAS_DataModel.DocenteObtenerAsistencia_Result)">
+      <Parameter Name="ID_DOCENTE" Mode="In" Type="String" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_DocenteRepositorioAdjunto" ReturnType="Collection(CAS_DataModel.DocenteRepositorioAdjunto_Result)">
+      <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="SEMANA_CRONOGRAMA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_TIPO_INTERVALO" Mode="In" Type="Int32" />
+      <Parameter Name="ID_CARPETA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_DocenteRepositorioCarpeta" ReturnType="Collection(CAS_DataModel.DocenteRepositorioCarpeta_Result)">
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="SEMANA_CRONOGRAMA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_CRONOGRAMA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_DocenteObtenerNotas" ReturnType="Collection(CAS_DataModel.DocenteObtenerNotas_Result)">
+      <Parameter Name="ID_DOCENTE" Mode="In" Type="String" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_DocenteObtenerParciales">
+      <Parameter Name="ID_DOCENTE" Mode="In" Type="String" />
+      <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_NOTA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="ID_INTERVALO_DETALLE" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_DocenteObtenerEstudianteNota" ReturnType="Collection(CAS_DataModel.DocenteObtenerEstudianteNota_Result)">
+      <Parameter Name="ID_DOCENTE" Mode="In" Type="String" />
+      <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_NOTA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="ID_INTERVALO_DETALLE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_NOTA_DETALLE" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_DocenteObtenerEstudianteParcial" ReturnType="Collection(CAS_DataModel.DocenteObtenerEstudianteParcial_Result)">
+      <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_NOTA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="ID_INTERVALO_DETALLE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_DOCENTE" Mode="In" Type="String" />
+      <Parameter Name="ID_ESTUDIANTE" Mode="In" Type="String" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_DocenteObtenerEstudianteValor" ReturnType="Collection(CAS_DataModel.DocenteObtenerEstudianteValor_Result)">
+      <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_NOTA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="ID_INTERVALO_DETALLE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_DOCENTE" Mode="In" Type="String" />
+      <Parameter Name="ID_ESTUDIANTE" Mode="In" Type="String" />
+      <Parameter Name="ID_NOTA_DETALLE" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_NotificadorEnviaClave">
+      <Parameter Name="ID_USUARIO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_DocenteObtenerNotaParciales" ReturnType="Collection(CAS_DataModel.DocenteObtenerNotaParciales_Result)">
+      <Parameter Name="ID_DOCENTE" Mode="In" Type="String" />
+      <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_NOTA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="ID_INTERVALO_DETALLE" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_DocenteObtenerNotaDetalle" ReturnType="Collection(CAS_DataModel.DocenteObtenerNotaDetalle_Result)">
+      <Parameter Name="ID_DOCENTE" Mode="In" Type="String" />
+      <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_NOTA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="ID_INTERVALO_DETALLE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_NOTA_DETALLE" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_DocenteObtenerNotaDetalleEstudiante" ReturnType="Collection(CAS_DataModel.DocenteObtenerNotaDetalleEstudiante_Result)">
+      <Parameter Name="ID_DOCENTE" Mode="In" Type="String" />
+      <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_NOTA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="ID_INTERVALO_DETALLE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_ESTUDIANTE" Mode="In" Type="String" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_DocenteObtenerNotaEstudiante" ReturnType="Collection(CAS_DataModel.DocenteObtenerNotaEstudiante_Result)">
+      <Parameter Name="ID_DOCENTE" Mode="In" Type="String" />
+      <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_NOTA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="ID_INTERVALO_DETALLE" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EstudianteRepositorioSemana" ReturnType="Collection(CAS_DataModel.EstudianteRepositorioSemana_Result)">
+      <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="ID_TIPO_INTERVALO" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PARALELO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EstudianteRepositorioCarpeta" ReturnType="Collection(CAS_DataModel.EstudianteRepositorioCarpeta_Result)">
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="SEMANA_CRONOGRAMA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_CRONOGRAMA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EstudianteObtenerCarreraMateria" ReturnType="Collection(CAS_DataModel.EstudianteObtenerCarreraMateria_Result)">
+      <Parameter Name="ID_ESTUDIANTE" Mode="In" Type="String" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EstudianteObtenerHorario" ReturnType="Collection(CAS_DataModel.EstudianteObtenerHorario_Result)">
+      <Parameter Name="ID_ESTUDIANTE" Mode="In" Type="String" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EstudianteObtenerCarrera" ReturnType="Collection(CAS_DataModel.EstudianteObtenerCarrera_Result)">
+      <Parameter Name="ID_ESTUDIANTE" Mode="In" Type="String" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EstudianteObtenerAsistencia" ReturnType="Collection(CAS_DataModel.EstudianteObtenerAsistencia_Result)">
+      <Parameter Name="ID_ESTUDIANTE" Mode="In" Type="String" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EstudianteObtenerNotaParciales" ReturnType="Collection(CAS_DataModel.EstudianteObtenerNotaParciales_Result)">
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_TIPO_INTERVALO" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EstudianteObtenerNotaDetalle" ReturnType="Collection(CAS_DataModel.EstudianteObtenerNotaDetalle_Result)">
+      <Parameter Name="ID_NOTA_DETALLE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_ESTUDIANTE" Mode="In" Type="String" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EstudianteObtenerPromedio" ReturnType="Collection(CAS_DataModel.EstudianteObtenerPromedio_Result)">
+      <Parameter Name="ID_ESTUDIANTE" Mode="In" Type="String" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_InscripcionDetalleCarrera" ReturnType="Collection(CAS_DataModel.InscripcionDetalleCarrera_Result)">
+      <Parameter Name="ID_INSCRIP" Mode="In" Type="String" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ObtenerCarreraValida" ReturnType="Collection(CAS_DataModel.ObtenerCarreraValida_Result)">
+      <Parameter Name="ID_INSCRIP" Mode="In" Type="String" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ObtenerIntervaloSedeCarrera" ReturnType="Collection(CAS_DataModel.ObtenerIntervaloSedeCarrera_Result)">
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EstudianteRepositorioAdjunto" ReturnType="Collection(CAS_DataModel.EstudianteRepositorioAdjunto_Result)">
+      <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="SEMANA_CRONOGRAMA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_TIPO_INTERVALO" Mode="In" Type="Int32" />
+      <Parameter Name="ID_CARPETA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PARALELO" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ObtenerIntervaloDetalleSedeCarrera" ReturnType="Collection(CAS_DataModel.ObtenerIntervaloDetalleSedeCarrera_Result)">
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_INSCRIP" Mode="In" Type="String" />
+      <Parameter Name="ID_INTERVALO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ObtenerParaleloSedeCarrera" ReturnType="Collection(CAS_DataModel.ObtenerParaleloSedeCarrera_Result)">
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_INTERVALO" Mode="In" Type="Int32" />
+      <Parameter Name="ID_INTERVALO_DETALLE" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="CAS_INSCRIPCION_FECHA" EntityType="CAS_DataModel.CAS_INSCRIPCION_FECHA" />
+    <FunctionImport Name="SP_DocenteCarreraIntervalo" ReturnType="Collection(CAS_DataModel.DocenteCarreraIntervalo_Result)">
+      <Parameter Name="ID_DOCENTE" Mode="In" Type="String" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_DocenteRepositorioSemana" ReturnType="Collection(CAS_DataModel.DocenteRepositorioSemana_Result)">
+      <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="ID_TIPO_INTERVALO" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PARALELO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="DocenteObtenerCarreraMateria_Result">
+    <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="COD_CARRERA" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="DESCRIPCION_MATERIA" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="COD_MATERIA" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="DESCRIPCION_UNIVERSIDAD" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="COD_SEDE" Nullable="true" MaxLength="250" />
+  </ComplexType>
+  <ComplexType Name="DocenteObtenerHorario_Result">
+    <Property Type="String" Name="HORIA_DIA" Nullable="true" MaxLength="63" />
+    <Property Type="String" Name="LUNES" Nullable="true" MaxLength="284" />
+    <Property Type="String" Name="MARTES" Nullable="true" MaxLength="284" />
+    <Property Type="String" Name="MIERCOLES" Nullable="true" MaxLength="284" />
+    <Property Type="String" Name="JUEVES" Nullable="true" MaxLength="284" />
+    <Property Type="String" Name="VIERNES" Nullable="true" MaxLength="284" />
+    <Property Type="String" Name="SABADO" Nullable="true" MaxLength="284" />
+  </ComplexType>
+  <EntityType Name="CAS_DOCENTE_ASISTENCIA">
+    <Key>
+      <PropertyRef Name="ID_DOCENTE_ASISTENCIA" />
+    </Key>
+    <Property Name="ID_DOCENTE_ASISTENCIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_HORARIO_DETALLE" Type="Int32" Nullable="false" />
+    <Property Name="ID_DOCENTE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_ASISTENCIA" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="HORA_ASISTENCIA" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="OBSERVACION_ASISTENCIA" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_REGISTRO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ESTADO_ASISTENCIA" Type="Int32" />
+    <Property Name="ID_PERIODO" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="DocenteHorarioDiario_Result">
+    <Property Type="Int32" Name="ID_HORARIO_DETALLE" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_UNIVERSIDAD" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="DESCRIPCION_MATERIA" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="DESCRIPCION_PARALELO" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="HORA" Nullable="true" MaxLength="63" />
+    <Property Type="Int32" Name="ESTADO_ASISTENCIA" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="DocenteObtenerAsistenciaEstudiantes_Result">
+    <Property Type="Int32" Name="ID_ASISTENCIA" Nullable="false" />
+    <Property Type="String" Name="ID_ESTUDIANTE" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="APELLIDOS" Nullable="true" MaxLength="501" />
+    <Property Type="String" Name="NOMBRES" Nullable="true" MaxLength="501" />
+    <Property Type="DateTime" Name="FECHA" Nullable="true" />
+    <Property Type="Int32" Name="ID_HORARIO_DETALLE" Nullable="true" />
+    <Property Type="Boolean" Name="ESTADO" Nullable="true" />
+    <Property Type="Int32" Name="ID_PERIODO" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="CAS_ESTUDIANTE_ASISTENCIA">
+    <Key>
+      <PropertyRef Name="ID_ASISTENCIA" />
+    </Key>
+    <Property Name="ID_ASISTENCIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_ESTUDIANTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA" Type="DateTime" Precision="0" />
+    <Property Name="ESTADO" Type="Boolean" />
+    <Property Name="ID_HORARIO_DETALLE" Type="Int32" />
+    <Property Name="ID_PERIODO" Type="Int32" Nullable="false" />
+  </EntityType>
+  <ComplexType Name="DocenteObtenerAsistencia_Result">
+    <Property Type="Int32" Name="ID_DOCENTE_ASISTENCIA" Nullable="false" />
+    <Property Type="Int32" Name="ID_HORARIO_DETALLE" Nullable="false" />
+    <Property Type="String" Name="OBSERVACION_ASISTENCIA" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="TIEMPO" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="DocenteRepositorioAdjunto_Result">
+    <Property Type="String" Name="RUTA_ADJUNTO" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="ICONO_ADJUNTO" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="PESO_ADJUNTO" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="NOMBRE_ADJUNTO" Nullable="true" MaxLength="283" />
+    <Property Type="String" Name="FECHA" Nullable="true" MaxLength="112" />
+    <Property Type="DateTime" Name="FECHA_CRONOGRAMA" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="DocenteRepositorioCarpeta_Result">
+    <Property Type="Int32" Name="ID_CARPETA" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_CARPETA" Nullable="true" MaxLength="250" />
+  </ComplexType>
+  <ComplexType Name="DocenteObtenerNotas_Result">
+    <Property Type="Int32" Name="ID_SEDE" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_UNIVERSIDAD" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="ID_CARRERA" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="ID_NOTA" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_NOTA" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="ID_INTERVALO_DETALLE" Nullable="false" />
+    <Property Type="String" Name="HORA" Nullable="true" MaxLength="63" />
+  </ComplexType>
+  <ComplexType Name="DocenteObtenerEstudianteNota_Result">
+    <Property Type="String" Name="ID_ESTUDIANTE" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="APELLIDO_PATERNO_ESTUDIANTE" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="APELLIDO_MATERNO_ESTUDIANTE" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="PRIMER_NOMBRE_ESTUDIANTE" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="SEGUNDO_NOMBRE_ESTUDIANTE" Nullable="true" MaxLength="250" />
+  </ComplexType>
+  <ComplexType Name="DocenteObtenerEstudianteParcial_Result">
+    <Property Type="Int32" Name="ID_NOTA_DETALLE" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_NOTA_DETALLE" Nullable="true" MaxLength="250" />
+  </ComplexType>
+  <ComplexType Name="DocenteObtenerEstudianteValor_Result">
+    <Property Type="Int32" Name="ID_PONDERACION" Nullable="false" />
+    <Property Type="Int32" Name="ID_ESTUDIANTE_NOTA" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_PONDERACION" Nullable="true" MaxLength="150" />
+    <Property Type="Decimal" Name="VALOR_NOTA" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="ESTADO" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="NotificadorEnviaClave_Result">
+    <Property Type="Int32" Name="MSG_ID" Nullable="false" />
+    <Property Type="Int32" Name="MSG_CODIGO" Nullable="true" />
+    <Property Type="Int32" Name="BDJ_ID" Nullable="true" />
+    <Property Type="String" Name="MSG_DESTINATARIO" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="MSG_REMITENTE" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="MSG_ASUNTO" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="MSG_TEXTO" Nullable="true" />
+    <Property Type="String" Name="MSG_FORMATO" Nullable="true" MaxLength="10" />
+    <Property Type="DateTime" Name="MSG_FECHA_CREACION" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="MSG_FECHA_RECIBIDO" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="MSG_FECHA_ENVIADO" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="MSG_FECHA_CONFIRMADO" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="MSG_CANAL" Nullable="true" />
+    <Property Type="String" Name="USR_CODIGO" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="COD_ACCESO" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="DocenteObtenerNotaParciales_Result">
+    <Property Type="Int32" Name="ID_NOTA_DETALLE" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_NOTA_DETALLE" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="TOTAL" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="DocenteObtenerNotaDetalle_Result">
+    <Property Type="Int32" Name="ID_PONDERACION" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_PONDERACION" Nullable="true" MaxLength="150" />
+  </ComplexType>
+  <ComplexType Name="DocenteObtenerNotaDetalleEstudiante_Result">
+    <Property Type="Int32" Name="ID_ESTUDIANTE_NOTA" Nullable="false" />
+    <Property Type="Int32" Name="ID_PONDERACION" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_PONDERACION" Nullable="true" MaxLength="150" />
+    <Property Type="Decimal" Name="VALOR_NOTA" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="ESTADO" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="DocenteObtenerNotaEstudiante_Result">
+    <Property Type="String" Name="ID_ESTUDIANTE" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="APELLIDO_PATERNO_ESTUDIANTE" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="PRIMER_NOMBRE_ESTUDIANTE" Nullable="true" MaxLength="250" />
+  </ComplexType>
+  <ComplexType Name="EstudianteRepositorioSemana_Result">
+    <Property Type="Int32" Name="SEMANA_CRONOGRAMA" Nullable="true" />
+    <Property Type="String" Name="TEMA" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DESCRIPCION_SEMANA" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="ID_CRONOGRAMA" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="EstudianteRepositorioCarpeta_Result">
+    <Property Type="Int32" Name="ID_CARPETA" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_CARPETA" Nullable="true" MaxLength="250" />
+  </ComplexType>
+  <ComplexType Name="EstudianteObtenerCarreraMateria_Result">
+    <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="COD_CARRERA" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="DESCRIPCION_MATERIA" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="COD_MATERIA" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="DESCRIPCION_UNIVERSIDAD" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="COD_SEDE" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="DESCRIPCION_PARALELO" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="EstudianteObtenerHorario_Result">
+    <Property Type="String" Name="HORIA_DIA" Nullable="true" MaxLength="63" />
+    <Property Type="String" Name="LUNES" Nullable="true" MaxLength="284" />
+    <Property Type="String" Name="MARTES" Nullable="true" MaxLength="284" />
+    <Property Type="String" Name="MIERCOLES" Nullable="true" MaxLength="284" />
+    <Property Type="String" Name="JUEVES" Nullable="true" MaxLength="284" />
+    <Property Type="String" Name="VIERNES" Nullable="true" MaxLength="284" />
+    <Property Type="String" Name="SABADO" Nullable="true" MaxLength="284" />
+  </ComplexType>
+  <ComplexType Name="EstudianteObtenerCarrera_Result">
+    <Property Type="Int32" Name="ID_CARRERA" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="515" />
+    <Property Type="String" Name="COD_CARRERA" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="ID_SEDE" Nullable="false" />
+    <Property Type="Int32" Name="ID_TIPO_INTERVALO" Nullable="true" />
+    <Property Type="Int32" Name="ID_PARALELO" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="EstudianteObtenerAsistencia_Result">
+    <Property Type="Int32" Name="ID_ASISTENCIA" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_UNIVERSIDAD" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="DESCRIPCION_MATERIA" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="DESCRIPCION_PARALELO" Nullable="true" MaxLength="10" />
+    <Property Type="DateTime" Name="FECHA" Nullable="true" />
+    <Property Type="Boolean" Name="ESTADO" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="EstudianteObtenerNotaParciales_Result">
+    <Property Type="Int32" Name="ID_NOTA" Nullable="false" />
+    <Property Type="Int32" Name="ID_NOTA_DETALLE" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_NOTA_DETALLE" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="TOTAL" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="EstudianteObtenerNotaDetalle_Result">
+    <Property Type="Int32" Name="ID_ESTUDIANTE_NOTA" Nullable="false" />
+    <Property Type="Int32" Name="ID_PONDERACION" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_PONDERACION" Nullable="true" MaxLength="150" />
+    <Property Type="Decimal" Name="VALOR_NOTA" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="VALOR_PONDERACION" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Decimal" Name="PARCIAL" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="EstudianteObtenerPromedio_Result">
+    <Property Type="Int32" Name="ID_NOTA_DETALLE" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_NOTA_DETALLE" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="PORCENTAJE" Nullable="true" />
+    <Property Type="Decimal" Name="PROMEDIO" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Decimal" Name="NOTA" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="NOTA_FINAL" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="InscripcionDetalleCarrera_Result">
+    <Property Type="Int32" Name="ID_INSCRIP_DETALLE_CARRERA" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_PERIODO" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="ESTADO" Nullable="true" />
+    <Property Type="String" Name="DESCRIPCION_UNIVERSIDAD" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="523" />
+    <Property Type="String" Name="DESCRIPCION_INTERVALO" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="HORA" Nullable="true" MaxLength="63" />
+    <Property Type="String" Name="DESCRIPCION_PARALELO" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="ID_INSCRIPCION_ESTADO" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_ESTADO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DESCRIPCION_TIPO_PAGO" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NUMERO_FACTURA" Nullable="true" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="ObtenerCarreraValida_Result">
+    <Property Type="Int32" Name="ID_CARRERA" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="NOMBRE_TECNICO_CARRERA" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="COD_CARRERA" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="ID_GRUPO" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ObtenerIntervaloSedeCarrera_Result">
+    <Property Type="Int32" Name="ID_INTERVALO" Nullable="false" />
+    <Property Type="Int32" Name="ID_TIPO_INTERVALO" Nullable="true" />
+    <Property Type="Int32" Name="ID_HORARIO_TIPO" Nullable="true" />
+    <Property Type="Int32" Name="ID_SEDE" Nullable="true" />
+    <Property Type="String" Name="DESCRIPCION_INTERVALO" Nullable="true" MaxLength="250" />
+  </ComplexType>
+  <ComplexType Name="EstudianteRepositorioAdjunto_Result">
+    <Property Type="String" Name="RUTA_ADJUNTO" Nullable="true" MaxLength="8000" />
+    <Property Type="String" Name="ICONO_ADJUNTO" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="PESO_ADJUNTO" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="NOMBRE_ADJUNTO" Nullable="true" MaxLength="283" />
+    <Property Type="String" Name="FECHA" Nullable="true" MaxLength="112" />
+    <Property Type="DateTime" Name="FECHA_CRONOGRAMA" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ObtenerIntervaloDetalleSedeCarrera_Result">
+    <Property Type="Int32" Name="ID_INTERVALO_DETALLE" Nullable="false" />
+    <Property Type="Int32" Name="ID_INTERVALO" Nullable="true" />
+    <Property Type="Time" Name="INICIO_INTERVALO" Nullable="true" />
+    <Property Type="Time" Name="FIN_INTERVALO" Nullable="true" />
+    <Property Type="String" Name="INTERVALO" Nullable="true" MaxLength="63" />
+  </ComplexType>
+  <ComplexType Name="ObtenerParaleloSedeCarrera_Result">
+    <Property Type="Int32" Name="ID_PARALELO" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_PARALELO" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <EntityType Name="CAS_INSCRIPCION_FECHA">
+    <Key>
+      <PropertyRef Name="ID_INSCRIPCION_FECHA" />
+    </Key>
+    <Property Name="ID_INSCRIPCION_FECHA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_PERIODO" Type="Int32" />
+    <Property Name="FECHA_INICIO" Type="DateTime" Precision="0" />
+    <Property Name="FECHA_FIN" Type="DateTime" Precision="0" />
+  </EntityType>
+  <ComplexType Name="DocenteCarreraIntervalo_Result">
+    <Property Type="Int32" Name="ID_SEDE" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_UNIVERSIDAD" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="ID_CARRERA" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="ID_PARALELO" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_PARALELO" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="ID_TIPO_INTERVALO" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_TIPO_INVERTALO" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="DocenteRepositorioSemana_Result">
+    <Property Type="Int32" Name="SEMANA_CRONOGRAMA" Nullable="true" />
+    <Property Type="String" Name="TEMA" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DESCRIPCION_SEMANA" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="ID_CRONOGRAMA" Nullable="false" />
+  </ComplexType>
+</Schema>

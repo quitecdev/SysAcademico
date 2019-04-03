@@ -1,0 +1,86 @@
+﻿@model Model.Services.Docente.Calificar
+@{
+    Layout = null;
+}
+
+<style>
+    th {
+        background: #8b1716;
+        color: #fff;
+    }
+
+</style>
+<div class="modal-dialog modal-full">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Libreta</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div>
+                        @if (Model != null)
+            {
+                if (Model.Parcial != null || Model.Parcial.Count > 0)
+                {
+                                <table class="table table-striped m-0">
+                                    <thead>
+                                        <tr>
+                                            <th rowspan="2">#</th>
+                                            <th rowspan="2">APELLIDO</th>
+                                            <th rowspan="2">NOMBRE</th>
+                                            @foreach (var parcial in Model.Parcial)
+                                            {
+                                                if (parcial.TOTAL != 1)
+                                                {
+                                                    <th style="text-align:center" colspan="@parcial.TOTAL">@parcial.DESCRIPCION_NOTA_DETALLE</th>
+                                                }
+                                                else
+                                                {
+                                                    <th style="text-align:center" rowspan="1">@parcial.DESCRIPCION_NOTA_DETALLE</th>
+                                                }
+                                            }
+                                        </tr>
+                                        <tr>
+                                            @if (Model.Nota_Detalla != null)
+                                            {
+                                                foreach (var detalle in Model.Nota_Detalla)
+                                                {
+                                                    <th style="text-align:center">@detalle.DESCRIPCION_PONDERACION</th>
+                                                }
+                                            }
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.Estudiante != null)
+                                        {
+                                            foreach (var estudiante in Model.Estudiante)
+                                            {
+                                                <tr>
+                                                    <td>@estudiante.ID_ESTUDIANTE</td>
+                                                    <td>@estudiante.APELLIDO_PATERNO_ESTUDIANTE</td>
+                                                    <td>@estudiante.PRIMER_NOMBRE_ESTUDIANTE</td>
+                                                    @if (estudiante.NOTAS != null)
+                                                    {
+                                                        foreach (var notas in estudiante.NOTAS)
+                                                        {
+                                                            <td style="text-align:center">@notas.VALOR_NOTA</td>
+                                                        }
+                                                    }
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

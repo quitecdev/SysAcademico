@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Model.Data;
+using System.Data.Entity.Core.Objects;
+
+namespace Model.Services.Admin
+{
+    public class Paralelo
+    {
+        public int ID_PARALELO { get; set; }
+        public string DESCRIPCION_PARALELO { get; set; }
+
+        public List<Paralelo> ObtenerParaleloCarreraSedeCarera(int _ID_SEDE, int _ID_CARRERA, int _ID_INTERVALO, int _ID_INTERVALO_DETALLE)
+        {
+            List<Paralelo> carrera = new List<Paralelo>();
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    ObjectParameter outID = new ObjectParameter("outID", typeof(int));
+                    ObjectParameter outMensaje = new ObjectParameter("outMensaje", typeof(string));
+
+                    carrera = ctx.SP_ObtenerParaleloSedeCarrera(_ID_CARRERA, _ID_SEDE, _ID_INTERVALO, _ID_INTERVALO_DETALLE, outMensaje, outID)
+                            .Select(x => new Paralelo
+                            {
+                                ID_PARALELO = x.ID_PARALELO,
+                                DESCRIPCION_PARALELO = x.DESCRIPCION_PARALELO,
+                            }).ToList();
+                }
+                return carrera;
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return carrera;
+            }
+        }
+    }
+}

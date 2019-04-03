@@ -1,0 +1,58 @@
+﻿@model List<Model.Services.Admin.EstudianteNotaCarrera>
+@{
+    Layout = null;
+}
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Detalle Nota</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="m-t-25"></div>
+                            <a href='@Url.Action("ImprimirNotaCarrera","Inscripciones",new { id=TempData["ID_INSCRIP_DETALLE_CARRERA"]})' class="btn btn-custom waves-effect waves-light m-b-5">
+                                <i class="fa fa-print m-r-5"></i> <span>Imprimir</span>
+                            </a>
+                            <div class="m-t-25"></div>
+                        </div>
+                    </div>
+
+                    <table class="table table-striped detalle m-0">
+                        <thead>
+                            <tr>
+                                <th>Detalle</th>
+                                <th>Promedio</th>
+                                <th>Nota</th>
+                            </tr>
+                        </thead>
+                        @if (Model != null)
+                        {
+                            <tbody>
+                                @{ decimal final = 0M; }
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.DESCRIPCION_NOTA_DETALLE</td>
+                                        <td>@item.PROMEDIO</td>
+                                        <td>@item.TOTAL</td>
+                                    </tr>
+                                    final = final + item.TOTAL.Value;
+                                }
+                                <tr>
+                                    <th></th>
+                                    <th>NOTA FINAL</th>
+                                    <th>@final</th>
+                                </tr>
+                            </tbody>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

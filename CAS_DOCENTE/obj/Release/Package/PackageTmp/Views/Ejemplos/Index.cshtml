@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Perfil";
+}
+
+@using (Html.BeginForm("Index", "Ejemplos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <span>Select File:</span>
+            <input type="file" name="postedFile" />
+            <hr />
+            <input type="submit" value="Upload" />
+            <br />
+            <span style="color:green">@ViewBag.Message</span>
+}

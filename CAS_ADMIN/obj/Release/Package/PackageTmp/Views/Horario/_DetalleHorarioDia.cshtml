@@ -1,0 +1,64 @@
+﻿@model List<Model.Services.Admin.Horario>
+<script>
+    function EliminarDetalle(ID_HORARIO) {
+        if (confirm("¿Está seguro que desea eliminar este registro?")) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("EliminarHorarioDia", "Horario")',
+                content: "application/json; charset=utf-8",
+                dataType: "json",
+                data: { ID_HORARIO: ID_HORARIO },
+                success: function (response) {
+                    if (response.success) {
+                        ActualizarDetalle();
+                        toastr.success('Correcto', response.message, { timeOut: 5000 })
+                    }
+                    else {
+                        toastr.error(response.message, { timeOut: 5000 })
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    //alert('Error!!');
+                }
+            });
+        }
+    }
+</script>
+<table class="table table-hover table-striped m-0">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Día</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            if (Model.Count != 0)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ID_HORARIO</td>
+                        <td>@item.DESCRIPCION_DIA</td>
+                        <td>
+                            <button title="Eliminar" onclick="EliminarDetalle('@item.ID_HORARIO')" class="btn btn-icon waves-effect waves-light btn-custom btn-xs m-b-5"> <i class="fa fa-trash-o"></i> </button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3">
+                        <p class="text-muted text-center">
+                            Ningún dato disponible en esta tabla
+                        </p>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+

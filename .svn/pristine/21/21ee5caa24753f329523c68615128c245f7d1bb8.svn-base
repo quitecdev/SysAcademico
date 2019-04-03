@@ -1,0 +1,216 @@
+﻿@model  Model.Services.Admin.InscripcionDetalle
+@{
+    Layout = null;
+}
+
+<script>
+    $(document).ready(function () {
+
+        //Dropdownlist Sede
+        $("#ID_SEDE").change(function () {
+            $("#ID_INTERVALO_DETALLE").empty();
+            $("#ID_INTERVALO").empty();
+            $("#ID_PARALELO").empty();
+            if ($("#ID_CARRERA").val() != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("getIntervaloSedeCarrera", "Inscripciones")', // we are calling json method
+                    dataType: 'json',
+                    data: { id_carrera: $("#ID_CARRERA").val(), id_sede: $("#ID_SEDE").val() },
+                    success: function (states) {
+                        // states contains the JSON formatted list
+                        // of states passed from the controller
+                        $("#ID_INTERVALO").append('<option value=""></option>');
+                        $.each(states, function (i, state) {
+                            $("#ID_INTERVALO").append('<option value="' + state.Value + '">' +
+                                 state.Text + '</option>');
+                            // here we are adding option for States
+
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve states.' + ex);
+                    }
+                });
+            }
+            return false;
+        })
+
+        //Dropdownlist Carrera
+        $("#ID_CARRERA").change(function () {
+            $("#ID_INTERVALO_DETALLE").empty();
+            $("#ID_INTERVALO").empty();
+            $("#ID_PARALELO").empty();
+            if ($("#ID_SEDE").val() != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("getIntervaloSedeCarrera", "Inscripciones")', // we are calling json method
+                    dataType: 'json',
+                    data: { id_carrera: $("#ID_CARRERA").val(), id_sede: $("#ID_SEDE").val() },
+                    success: function (states) {
+                        // states contains the JSON formatted list
+                        // of states passed from the controller
+                        $("#ID_INTERVALO").append('<option value=""></option>');
+                        $.each(states, function (i, state) {
+                            $("#ID_INTERVALO").append('<option value="' + state.Value + '">' +
+                                 state.Text + '</option>');
+                            // here we are adding option for States
+
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve states.' + ex);
+                    }
+                });
+            }
+            return false;
+        })
+
+        //Dropdownlist Intervalo
+        $("#ID_INTERVALO").change(function () {
+            $("#ID_INTERVALO_DETALLE").empty();
+            $("#ID_PARALELO").empty();
+            if ($("#ID_SEDE").val() != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("getIntervaloDetalleSedeCarrera", "Inscripciones")', // we are calling json method
+                    dataType: 'json',
+                    data: { id_carrera: $("#ID_CARRERA").val(), id_sede: $("#ID_SEDE").val(), id_inscrip: $("#ID_INSCRIP").val(), id_intervalo: $("#ID_INTERVALO").val() },
+                    success: function (states) {
+                        // states contains the JSON formatted list
+                        // of states passed from the controller
+                        $("#ID_INTERVALO_DETALLE").append('<option value=""></option>');
+                        $.each(states, function (i, state) {
+                            $("#ID_INTERVALO_DETALLE").append('<option value="' + state.Value + '">' +
+                                 state.Text + '</option>');
+                            // here we are adding option for States
+
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve states.' + ex);
+                    }
+                });
+            }
+            return false;
+        })
+
+        //Dropdownlist Intervalo
+        $("#ID_INTERVALO_DETALLE").change(function () {
+            $("#ID_PARALELO").empty();
+            if ($("#ID_INTERVALO_DETALLE").val() != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("getParaleloSedeCarrera", "Inscripciones")', // we are calling json method
+                    dataType: 'json',
+                    data: { id_carrera: $("#ID_CARRERA").val(), id_sede: $("#ID_SEDE").val(), id_intervalo: $("#ID_INTERVALO").val(), id_intervaloDetalle: $("#ID_INTERVALO_DETALLE").val() },
+                    success: function (states) {
+                        // states contains the JSON formatted list
+                        // of states passed from the controller
+                        $("#ID_PARALELO").append('<option value=""></option>');
+                        $.each(states, function (i, state) {
+                            $("#ID_PARALELO").append('<option value="' + state.Value + '">' +
+                                 state.Text + '</option>');
+                            // here we are adding option for States
+
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve states.' + ex);
+                    }
+                });
+            }
+            return false;
+        })
+
+        //Dropdownlist Tipo Pago
+        $("#ID_TIPO_PAGO").change(function () {
+            if ($("#ID_TIPO_PAGO").val() != "2") {
+                $("#NUMERO_FACTURA").attr('disabled', 'disabled');
+            }
+            else {
+                $("#NUMERO_FACTURA").removeAttr('disabled');
+                $('#NUMERO_FACTURA').rules('add', 'required');
+
+            }
+            return false;
+        })
+    });
+
+</script>
+
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BeginForm("EditarCarrera", "Inscripciones", FormMethod.Post, new { onsubmit = "return SubmitForm(this,'" + @Url.Action("EditarCarrera", "Inscripciones", new { id = string.Empty }) + "')", @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.ID_INSCRIP_DETALLE_CARRERA)
+            <div class="form-group">
+                <label class="col-md-3 control-label">Documento Ident.</label>
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.ID_INSCRIP, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.HiddenFor(m => m.ID_INSCRIP)
+                    @Html.ValidationMessageFor(model => model.ID_INSCRIP, "", new { @class = "text-custom" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">Sede</label>
+                <div class="col-md-9">
+                    @Html.DropDownListFor(m => m.ID_SEDE, new SelectList(new Model.Services.Admin.Sede().ObtenerSede(), "ID_SEDE", "DESCRIPCION_UNIVERSIDAD"), " ", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ID_SEDE, "", new { @class = "text-custom" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">Carrera</label>
+                <div class="col-md-9">
+                    @Html.DropDownListFor(m => m.ID_CARRERA, new SelectList(new Model.Services.Admin.Carrera().ObtenerCarrera(), "ID_CARRERA", "DESCRIPCION_CARRERA"), " ", new { @class = "form-control", @disabled = "disabled" })
+                    @Html.HiddenFor(m => m.ID_CARRERA)
+                    @Html.ValidationMessageFor(model => model.ID_CARRERA, "", new { @class = "text-custom" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">Tipo Horario</label>
+                <div class="col-md-9">
+                    @Html.DropDownListFor(m => m.ID_INTERVALO, new SelectList(new Model.Services.Admin.Intervalo().ObtenerIntervaloSedeCarera(Model.ID_SEDE.Value, Model.ID_CARRERA.Value), "ID_INTERVALO", "DESCRIPCION_INTERVALO"), " ", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ID_INTERVALO, "", new { @class = "text-custom" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">Horario</label>
+                <div class="col-md-9">
+                    @Html.DropDownListFor(m => m.ID_INTERVALO_DETALLE, new SelectList(new Model.Services.Admin.IntervaloDetalle().ObtenerIntervaloCarreraSedeCarera(Model.ID_SEDE.Value, Model.ID_CARRERA.Value, null, Model.ID_INTERVALO.Value), "ID_INTERVALO_DETALLE", "INTERVALO"), " ", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ID_INTERVALO_DETALLE, "", new { @class = "text-custom" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">Paralelo</label>
+                <div class="col-md-9">
+                    @*@Html.DropDownListFor(m => m.ID_PARALELO, new SelectList(string.Empty, "ID_PARALELO", "DESCRIPCION_PARALELO"), " ", new { @class = "form-control" })*@
+                    @Html.DropDownListFor(m => m.ID_PARALELO, new SelectList(new Model.Services.Admin.Paralelo().ObtenerParaleloCarreraSedeCarera(Model.ID_SEDE.Value, Model.ID_CARRERA.Value, Model.ID_INTERVALO.Value, Model.ID_INTERVALO_DETALLE.Value), "ID_PARALELO", "DESCRIPCION_PARALELO"), " ", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ID_PARALELO, "", new { @class = "text-custom" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">Forma de Pago</label>
+                <div class="col-md-9">
+                    @Html.DropDownListFor(m => m.ID_TIPO_PAGO, new SelectList(new Model.Services.Admin.TipoPago().ObtenerTipoPago(), "ID_TIPO_PAGO", "DESCRIPCION_TIPO_PAGO"), " ", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ID_TIPO_PAGO, "", new { @class = "text-custom" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">N. Factura</label>
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.NUMERO_FACTURA, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", data_mask = "999-999-999999999" } })
+                    @Html.HiddenFor(m => m.NUMERO_FACTURA)
+                    @Html.ValidationMessageFor(model => model.NUMERO_FACTURA, "", new { @class = "text-custom" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label"></label>
+                <div class="col-md-9">
+                    <button type="submit" class="btn btn-custom waves-effect waves-light m-b-5 btn-loding" data-loading-text="<span class='btn-label'><i class='fa fa-circle-o-notch fa-spin'></i></span> Guardar<span class='md-ripple'></span>"><span class="btn-label"><i class="fa fa-save"></i></span> Guardar<span class="md-ripple"></span></button>
+                </div>
+            </div>
+        }
+    </div><!-- end col -->
+</div>

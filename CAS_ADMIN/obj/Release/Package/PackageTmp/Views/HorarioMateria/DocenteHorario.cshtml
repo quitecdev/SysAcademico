@@ -1,0 +1,91 @@
+﻿@model List<Model.Data.ObtenerDocenteAsignadoHorarioMateria_Result>
+@{
+    Layout = null;
+}
+<script>
+    function EliminarDetalle(id) {
+        if (confirm("¿Está seguro que desea eliminar este registro?")) {
+            
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("EliminarDetalle", "HorarioMateria")',
+                content: "application/json; charset=utf-8",
+                dataType: "json",
+                data: { ID_DOCENTE_MATERIA_PARALELO: id },
+                success: function (response) {
+                    if (response.success) {
+                        ModalForm('@Url.Action("DocenteHorario", "HorarioMateria")')
+                        toastr.success('Correcto', response.message, { timeOut: 5000 })
+                    }
+                    else {
+                        toastr.error(response.message, { timeOut: 5000 })
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    //alert('Error!!');
+                }
+            });
+        }
+    }
+</script>
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Docente Horario</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <table class="table table-hover table-striped m-0">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Docente</th>
+                                <th>Sede</th>
+                                <th>Carrera</th>
+                                <th>Materia</th>
+                                <th>Paralelo</th>
+                                <th>Horario</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                if (Model.Count != 0)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.ID_DOCENTE_MATERIA_PARALELO</td>
+                                            <td>@item.NOMBRE</td>
+                                            <td>@item.DESCRIPCION_UNIVERSIDAD</td>
+                                            <td>@item.DESCRIPCION_CARRERA</td>
+                                            <td>@item.DESCRIPCION_MATERIA</td>
+                                            <td>@item.DESCRIPCION_PARALELO</td>
+                                            <td>@item.HORARIO</td>
+                                            <td>
+                                                <button onclick='EliminarDetalle(@item.ID_DOCENTE_MATERIA_PARALELO)' class="btn btn-icon waves-effect waves-light btn-custom btn-xs m-b-5"> <i class="fa fa-trash-o"></i> </button>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="8">
+                                            <p class="text-muted text-center">
+                                                Ningún dato disponible en esta tabla
+                                            </p>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div><!-- end col -->
+            </div>
+        </div>
+    </div>
+</div>

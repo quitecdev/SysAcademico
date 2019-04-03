@@ -1,0 +1,99 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Model.Data;
+
+namespace Model.Services.Admin
+{
+    public class IntervaloDetalle
+    {
+        public int ID_INTERVALO_DETALLE { get; set; }
+        public Nullable<int> ID_INTERVALO { get; set; }
+        public Nullable<System.TimeSpan> INICIO_INTERVALO { get; set; }
+        public Nullable<System.TimeSpan> FIN_INTERVALO { get; set; }
+        public string INTERVALO { get; set; }
+
+
+        public IntervaloDetalle ObtenerIntervalo(int ID_INTERVALO_DETALLE)
+        {
+            IntervaloDetalle intervalo = new IntervaloDetalle();
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    intervalo = ctx.CAS_INTERVALO_DETALLE.Where(x => x.ID_INTERVALO_DETALLE==ID_INTERVALO_DETALLE)
+                    .Select(x => new IntervaloDetalle
+                    {
+                        ID_INTERVALO_DETALLE = x.ID_INTERVALO_DETALLE,
+                        ID_INTERVALO = x.ID_INTERVALO,
+                        INICIO_INTERVALO = x.INICIO_INTERVALO,
+                        FIN_INTERVALO = x.FIN_INTERVALO
+                    }).FirstOrDefault();
+                }
+                return intervalo;
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return intervalo;
+            }
+        }
+        public List<IntervaloDetalle> ObtenerIntervaloCarreraSedeCarera(int _ID_SEDE, int _ID_CARRERA, string _ID_INSCRIP, int _ID_INTERVALO)
+        {
+            List<IntervaloDetalle> carrera = new List<IntervaloDetalle>();
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    ObjectParameter outID = new ObjectParameter("outID", typeof(int));
+                    ObjectParameter outMensaje = new ObjectParameter("outMensaje", typeof(string));
+
+                    carrera = ctx.SP_ObtenerIntervaloDetalleSedeCarrera(_ID_CARRERA, _ID_SEDE, _ID_INSCRIP, _ID_INTERVALO, outMensaje, outID)
+                            .Select(x => new IntervaloDetalle
+                            {
+                                ID_INTERVALO_DETALLE = x.ID_INTERVALO_DETALLE,
+                                ID_INTERVALO = x.ID_INTERVALO,
+                                INICIO_INTERVALO = x.INICIO_INTERVALO,
+                                FIN_INTERVALO = x.FIN_INTERVALO,
+                                INTERVALO = x.INTERVALO
+                            }).ToList();
+                }
+                return carrera;
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return carrera;
+            }
+        }
+
+        public List<ObtenerHorarioParalelo_Result> ObtenerHorarioParalelo(int ID_PARALELO_MATERIA)
+        {
+            List<ObtenerHorarioParalelo_Result> horario = new List<ObtenerHorarioParalelo_Result>();
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    ObjectParameter outID = new ObjectParameter("outID", typeof(int));
+                    ObjectParameter outMensaje = new ObjectParameter("outMensaje", typeof(string));
+
+                    horario = ctx.SP_ObtenerHorarioParalelo(ID_PARALELO_MATERIA, outMensaje, outID)
+                            .Select(x => new ObtenerHorarioParalelo_Result
+                            {
+                                ID_HORARIO_DETALLE = x.ID_HORARIO_DETALLE,
+                                DETALLE = x.DETALLE
+                            }).ToList();
+                }
+                return horario;
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return horario;
+            }
+        }
+    }
+}

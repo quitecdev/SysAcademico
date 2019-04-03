@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "Inicio";
+}
+
+<!-- Page-Title -->
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">@ViewBag.Title</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="container">
+            <div class="row">
+                <div class="masonry-container">
+                    <div class="col-md-6 col-lg-4 masonry-column">
+                        <div class="card-box">
+                            <h3 class="panel-title m-t-0 text-right text-custom"><b>11 DE NOVIEMBRE</b></h3>
+                            <p class="text-muted m-b-20 font-13 text-right">
+                                Hora: 10:00 a 15:00
+                            </p>
+                            <img src="~/assets/images/cursos/CURSO-MANUEL-SMITH.jpg" class="img-responsive"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 masonry-column">
+                        <div class="card-box">
+                            <h3 class="panel-title m-t-0 text-right text-custom"><b>25 DE NOVIEMBRE</b></h3>
+                            <p class="text-muted m-b-20 font-13 text-right">
+                                Hora: 10:00 a 15:00
+                            </p>
+                            <img src="~/assets/images/cursos/taller-de-coctelería.jpg" class="img-responsive" />
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 masonry-column">
+                        <div class="card-box">
+                            <h3 class="panel-title m-t-0 text-right text-custom"><b>16 DE DICIEMBRE</b></h3>
+                            <p class="text-muted m-b-20 font-13 text-right">
+                                Hora: 10:00 a 15:00
+                            </p>
+                            <img src="~/assets/images/cursos/TALLER-DE-COCINA-NAVIDEÑA1.jpg" class="img-responsive" />
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 masonry-column">
+                        <div class="card-box">
+                            <h3 class="panel-title m-t-0 text-right text-custom"><b>30 DE NOVIEMBRE</b></h3>
+                            <p class="text-muted m-b-20 font-13 text-right">
+                                Hora: 16:00 a 20:00
+                            </p>
+                            <img src="~/assets/images/cursos/TALLER-DE-COCINA-NAVIDEÑA2.jpg" class="img-responsive" />
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 masonry-column">
+                        <div class="card-box">
+                            <h3 class="panel-title m-t-0 text-right text-custom"><b>23 DE NOVIEMBRE</b></h3>
+                            <p class="text-muted m-b-20 font-13 text-right">
+                                Hora: 16:00 a 20:00
+                            </p>
+                            <img src="~/assets/images/cursos/TALLER-DE-POSTRES-NAVIDEÑOS1.jpg" class="img-responsive"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 masonry-column">
+                        <div class="card-box">
+                            <h3 class="panel-title m-t-0 text-right text-custom"><b>2 DE DICIEMBRE</b></h3>
+                            <p class="text-muted m-b-20 font-13 text-right">
+                                Hora: 10:00 a 15:00
+                            </p>
+                            <img src="~/assets/images/cursos/TALLER-DE-POSTRES-NAVIDEÑOS2.jpg" class="img-responsive" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End row -->
+
+        </div>
+        <!-- end row -->
+    </div>
+</div>
+
+
+
+@section Scripts
+{
+    <script>
+        $(window).load(function(){
+            var $container = $('.masonry-container');
+            $container.isotope({
+                filter: '*'
+            });
+        });
+
+    </script>
+}

@@ -1,0 +1,133 @@
+﻿@model Model.Services.Docente.Login
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <!-- App title -->
+    <title>CAS - Ingreso</title>
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/assets/css/core.css" rel="stylesheet" />
+    <link href="~/assets/css/components.css" rel="stylesheet" />
+    <link href="~/assets/css/icons.css" rel="stylesheet" />
+    <link href="~/assets/css/pages.css" rel="stylesheet" />
+    <link href="~/assets/css/menu.css" rel="stylesheet" />
+    <link href="~/assets/css/responsive.css" rel="stylesheet" />
+    <link href="~/assets/css/login.css" rel="stylesheet" />
+    <script src="~/assets/js/modernizr.min.js"></script>
+
+    <style>
+        .img-fondo-contenido {
+            -webkit-box-shadow: 4px 2px 5px -1px rgba(130,123,130,1);
+            -moz-box-shadow: 4px 2px 5px -1px rgba(130,123,130,1);
+            box-shadow: 4px 2px 5px -1px rgba(130,123,130,1);
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container-fluid contenedor">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-8 img-fondo-contenido">
+                <img src="~/assets/images/navidad-2018.png" class="navidad" style="width: 100%; height: 100vh;" />
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 login-contenido">
+                <section id="logo">
+                    <a href="#">
+                        <img src="~/assets/images/CAS-logo.png" alt="" />
+                    </a>
+                </section>
+                <section class="login">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="form-group group-login">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                @Html.EditorFor(model => model.COD_USUARIO, new { htmlAttributes = new { @class = "form-control", placeholder = "Username" } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.COD_USUARIO, "", new { @class = "parsley-required" })
+                        </div>
+                        <div class="form-group group-login">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                @Html.EditorFor(model => model.CLAVE_USUARIO, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.CLAVE_USUARIO, "", new { @class = "parsley-required" })
+                        </div>
+                        <button type="submit" class="btn btn-block btn-custom">Inicia sesión ahora</button>
+                        <div class="form-group group-login less-space">
+                            @Html.CheckBoxFor(model => model.RECORDAR, new { @checked = "checked" })
+                            Recordarme en este dispositivo
+                        </div>
+                        <div class="form-group group-login less-space">
+                            <a href="@Url.Action("ForgotPassword", "Account")">¿ Olvidaste tu contraseña ?</a>
+                        </div>
+
+                        <div class="form-group group-login less-space">
+                            <ul class="nav nav-pills nav-pills-custom pull-right">
+                                <li role="presentation" class="active"><a href="#"> <i class="fa fa-clock-o"></i> <span id="time">Cargando...</span></a></li>
+                            </ul>
+                        </div>
+
+                        if (ViewBag.TheResult == true)
+                        {
+                            <div class="alert alert-danger alert-icon">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <div class="icon"><i class="icon ion-ios7-close-empty"></i></div>
+                                <strong>Oh snap!</strong> Username y/o Password son incorrectos.
+                            </div>
+                        }
+                    }
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery  -->
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/plugins/jquery-snow/jquery.snow.min.1.0.js"></script>
+    <script src="~/assets/js/detect.js"></script>
+    <script src="~/assets/js/fastclick.js"></script>
+    <script src="~/assets/js/jquery.slimscroll.js"></script>
+    <script src="~/assets/js/jquery.blockUI.js"></script>
+    <script src="~/assets/js/waves.js"></script>
+    <script src="~/assets/js/wow.min.js"></script>
+    <script src="~/assets/js/jquery.nicescroll.js"></script>
+    <script src="~/assets/js/jquery.scrollTo.min.js"></script>
+    <!-- App js -->
+    <script src="~/assets/js/jquery.core.js"></script>
+    @*<script src="~/assets/js/jquery.app.js"></script>*@
+
+    @*<script src="~/assets/js/General.js"></script>*@
+
+    <script>
+        var start = new Date;
+
+        $(document).ready(function () {
+            $.fn.snow({ newOn: 100 });
+        });
+
+
+        setInterval(function () {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetHour", "Account")',
+                content: "application/json; charset=utf-8",
+                dataType: "json",
+                data: {},
+                success: function (d) {
+                    $("#time").text(d);
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    //alert('Error!!');
+                }
+            });
+        }, 1000);
+    </script>
+
+</body>
+</html>

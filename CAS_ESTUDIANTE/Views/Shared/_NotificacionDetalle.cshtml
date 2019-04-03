@@ -1,0 +1,22 @@
+﻿@model Model.Services.Estudiante.Notificacion
+
+@{
+    Layout = null;
+}
+
+
+@if (Model != null)
+{
+    <div class="panel-heading">
+        <button type="button" class="close m-t-5" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 class="panel-title">@Model.ASUNTO_NOTIFICACION</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-12">
+                @Html.Raw(Model.TXT_NOTIFICACION)
+            </div>
+        </div>
+       
+    </div>
+}

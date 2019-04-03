@@ -1,0 +1,68 @@
+﻿@model List<Model.Services.Admin.Aulas>
+<script>
+    function EliminarDetalle(ID_PARALELO_MATERIA) {
+        if (confirm("¿Está seguro que desea eliminar este registro?")) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("EliminarAulda", "Carrera")',
+                content: "application/json; charset=utf-8",
+                dataType: "json",
+                data: { ID_PARALELO_MATERIA: ID_PARALELO_MATERIA },
+                success: function (response) {
+                    if (response.success) {
+                        ActualizarDetalle();
+                        toastr.success('Correcto', response.message, { timeOut: 5000 })
+                    }
+                    else {
+                        toastr.error(response.message, { timeOut: 5000 })
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    //alert('Error!!');
+                }
+            });
+        }
+    }
+</script>
+<table class="table table-hover table-striped m-0">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Sede</th>
+            <th>Materia</th>
+            <th>Paralelo</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            if (Model.Count != 0)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ID_PARALELO_MATERIA</td>
+                        <td>@item.DESCRIPCION_SEDE</td>
+                        <td>@item.DESCRIPCION_MATERIA</td>
+                        <td>@item.DESCRIPCION_PARALELO</td>
+                        <td>
+                            <button title="Horario Materia" onclick="ModalForm('@Url.Action("HorarioDetalleMateria", "HorarioDetalle", new { ID_PARALELO_MATERIA = item.ID_PARALELO_MATERIA,ID_SEDE=item.ID_SEDE })')" class="btn btn-icon waves-effect waves-light btn-primary btn-xs m-b-5"> <i class="zmdi zmdi-view-comfy"></i> </button>
+                            <button title="Eliminar" onclick="EliminarDetalle('@item.ID_PARALELO_MATERIA')" class="btn btn-icon waves-effect waves-light btn-custom btn-xs m-b-5"> <i class="fa fa-trash-o"></i> </button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4">
+                        <p class="text-muted text-center">
+                            Ningún dato disponible en esta tabla
+                        </p>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

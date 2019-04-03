@@ -1,0 +1,60 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Model.Services.Admin;
+
+namespace CAS_ADMIN.Controllers
+{
+    public class CarreraController : Controller
+    {
+        // GET: Carrera
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        #region Materia
+        Materia _materia = new Materia();
+        public JsonResult getMateriaCarrera(int id_carrera)
+        {
+            List<SelectListItem> licities = new List<SelectListItem>();
+
+            foreach (var x in _materia.ObtenerMateria(id_carrera))
+            {
+                licities.Add(new SelectListItem { Text = x.DESCRIPCION_MATERIA, Value = x.ID_MATERIA.ToString() });
+            }
+            return Json(new SelectList(licities, "Value", "Text", JsonRequestBehavior.AllowGet));
+        }
+        #endregion
+
+        #region Parelelo
+        Paralelo _paralelo = new Paralelo();
+        public JsonResult getParaleloMateria(int id_sede, int id_materia)
+        {
+            List<SelectListItem> licities = new List<SelectListItem>();
+
+            foreach (var x in _paralelo.ObtenerParaleloMateria(id_sede,id_materia))
+            {
+                licities.Add(new SelectListItem { Text = x.DESCRIPCION_PARALELO, Value = x.ID_PARALELO.ToString() });
+            }
+            return Json(new SelectList(licities, "Value", "Text", JsonRequestBehavior.AllowGet));
+        }
+        #endregion
+
+        #region HorarioParalelo
+        IntervaloDetalle _intervalo = new IntervaloDetalle();
+        public JsonResult getHorarioParalelo(int id_paraleloMateria)
+        {
+            List<SelectListItem> licities = new List<SelectListItem>();
+
+            foreach (var x in _intervalo.ObtenerHorarioParalelo(id_paraleloMateria))
+            {
+                licities.Add(new SelectListItem { Text = x.DETALLE, Value = x.ID_HORARIO_DETALLE.ToString() });
+            }
+            return Json(new SelectList(licities, "Value", "Text", JsonRequestBehavior.AllowGet));
+        }
+        #endregion
+    }
+}

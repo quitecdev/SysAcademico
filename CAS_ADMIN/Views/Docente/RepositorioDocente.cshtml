@@ -1,0 +1,72 @@
+﻿@model  List<Model.Services.Docente.CarreraIntervalo>
+@{
+    Layout = null;
+}
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Materia</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-hover table-striped m-0">
+                        <thead>
+                            <tr>
+                                <th>Sede</th>
+                                <th>Carrera</th>
+                                <th>Paralelo</th>
+                                <th>Horario</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                if (Model.Count > 0)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.DESCRIPCION_UNIVERSIDAD</td>
+                                            <td>@item.DESCRIPCION_CARRERA</td>
+                                            <td>@item.DESCRIPCION_PARALELO</td>
+                                            <td>@item.DESCRIPCION_TIPO_INVERTALO</td>
+                                            <td>
+                                                <button title='Adjuntos' type='button' onclick="ModalForm('@Url.Action("RepositorioDocenteVista","Docente")/@item.ID_SEDE/@item.ID_CARRERA/@item.ID_TIPO_INTERVALO/@item.ID_PARALELO')" class='btn btn-icon waves-effect waves-light btn-info btn-xs m-b-5'> <i class='fa fa-folder'></i> </button>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="5">
+                                            <p class="text-muted text-center">
+                                                Ningún dato disponible en esta tabla
+                                            </p>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="5">
+                                        <p class="text-muted text-center">
+                                            Ningún dato disponible en esta tabla
+                                        </p>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

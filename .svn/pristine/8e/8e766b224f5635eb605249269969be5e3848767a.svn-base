@@ -1,0 +1,135 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Model.Data;
+using System.Data.Entity.Core.Objects;
+
+namespace Model.Services.Admin
+{
+    public class InscripcionDetallleCarrera
+    {
+        public int ID_INSCRIP_DETALLE_CARRERA { get; set; }
+        public string DESCRIPCION_PERIODO { get; set; }
+        public Nullable<int> ESTADO_PERIODO { get; set; }
+        public string DESCRIPCION_UNIVERSIDAD { get; set; }
+        public string DESCRIPCION_CARRERA { get; set; }
+        public string DESCRIPCION_INTERVALO { get; set; }
+        public string HORA { get; set; }
+        public string DESCRIPCION_PARALELO { get; set; }
+        public int ID_INSCRIPCION_ESTADO { get; set; }
+        public string DESCRIPCION_ESTADO { get; set; }
+        public string DESCRIPCION_TIPO_PAGO { get; set; }
+        public string NUMERO_FACTURA { get; set; }
+        public bool ESTADO_INSCRIPCION_FECHA { get; set; }
+
+        InscripcionFecha fechaInscripcion = new InscripcionFecha();
+        public List<InscripcionDetallleCarrera> ObtenerDetalle(string _ID_INSCRIP=null)
+        {
+            List<InscripcionDetallleCarrera> inscripcion = new List<InscripcionDetallleCarrera>();
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    ObjectParameter outID = new ObjectParameter("outID", typeof(int));
+                    ObjectParameter outMensaje = new ObjectParameter("outMensaje", typeof(string));
+                    inscripcion = ctx.SP_InscripcionDetalleCarrera(_ID_INSCRIP,null, outMensaje, outID)
+                                  .Select(x => new InscripcionDetallleCarrera {
+                                      ID_INSCRIP_DETALLE_CARRERA = x.ID_INSCRIP_DETALLE_CARRERA,
+                                      DESCRIPCION_PERIODO = x.DESCRIPCION_PERIODO,
+                                      ESTADO_PERIODO = x.ESTADO,
+                                      DESCRIPCION_UNIVERSIDAD = x.DESCRIPCION_UNIVERSIDAD,
+                                      DESCRIPCION_CARRERA = x.DESCRIPCION_CARRERA,
+                                      DESCRIPCION_INTERVALO = x.DESCRIPCION_INTERVALO,
+                                      HORA = x.HORA,
+                                      DESCRIPCION_PARALELO = x.DESCRIPCION_PARALELO,
+                                      ID_INSCRIPCION_ESTADO = x.ID_INSCRIPCION_ESTADO,
+                                      DESCRIPCION_ESTADO = x.DESCRIPCION_ESTADO,
+                                      DESCRIPCION_TIPO_PAGO = x.DESCRIPCION_TIPO_PAGO,
+                                      NUMERO_FACTURA = x.NUMERO_FACTURA,
+                                      ESTADO_INSCRIPCION_FECHA=fechaInscripcion.VerificarEstado()
+                                     }).ToList();
+                }
+                return inscripcion;
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return inscripcion;
+            }
+        }
+
+        public List<InscripcionDetallleCarrera> ObtenerDetalle(int ID_INSCRIP_DETALLE_CARRERA,string _ID_INSCRIP)
+        {
+            List<InscripcionDetallleCarrera> inscripcion = new List<InscripcionDetallleCarrera>();
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    ObjectParameter outID = new ObjectParameter("outID", typeof(int));
+                    ObjectParameter outMensaje = new ObjectParameter("outMensaje", typeof(string));
+                    inscripcion = ctx.SP_InscripcionDetalleCarrera(_ID_INSCRIP, ID_INSCRIP_DETALLE_CARRERA, outMensaje, outID)
+                                  .Select(x => new InscripcionDetallleCarrera
+                                  {
+                                      ID_INSCRIP_DETALLE_CARRERA = x.ID_INSCRIP_DETALLE_CARRERA,
+                                      DESCRIPCION_PERIODO = x.DESCRIPCION_PERIODO,
+                                      ESTADO_PERIODO = x.ESTADO,
+                                      DESCRIPCION_UNIVERSIDAD = x.DESCRIPCION_UNIVERSIDAD,
+                                      DESCRIPCION_CARRERA = x.DESCRIPCION_CARRERA,
+                                      DESCRIPCION_INTERVALO = x.DESCRIPCION_INTERVALO,
+                                      HORA = x.HORA,
+                                      DESCRIPCION_PARALELO = x.DESCRIPCION_PARALELO,
+                                      ID_INSCRIPCION_ESTADO = x.ID_INSCRIPCION_ESTADO,
+                                      DESCRIPCION_ESTADO = x.DESCRIPCION_ESTADO,
+                                      DESCRIPCION_TIPO_PAGO = x.DESCRIPCION_TIPO_PAGO,
+                                      NUMERO_FACTURA = x.NUMERO_FACTURA,
+                                      ESTADO_INSCRIPCION_FECHA = fechaInscripcion.VerificarEstado()
+                                  }).Where(x=>x.ID_INSCRIP_DETALLE_CARRERA== ID_INSCRIP_DETALLE_CARRERA).ToList();
+                }
+                return inscripcion;
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return inscripcion;
+            }
+        }
+
+        public InscripcionDetallleCarrera ObtenerDetalle(int ID_INSCRIP_DETALLE_CARRERA)
+        {
+            InscripcionDetallleCarrera inscripcion = new InscripcionDetallleCarrera();
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    ObjectParameter outID = new ObjectParameter("outID", typeof(int));
+                    ObjectParameter outMensaje = new ObjectParameter("outMensaje", typeof(string));
+                    inscripcion = ctx.SP_InscripcionDetalleCarrera(null, ID_INSCRIP_DETALLE_CARRERA, outMensaje, outID)
+                                  .Select(x => new InscripcionDetallleCarrera
+                                  {
+                                      ID_INSCRIP_DETALLE_CARRERA = x.ID_INSCRIP_DETALLE_CARRERA,
+                                      DESCRIPCION_PERIODO = x.DESCRIPCION_PERIODO,
+                                      ESTADO_PERIODO = x.ESTADO,
+                                      DESCRIPCION_UNIVERSIDAD = x.DESCRIPCION_UNIVERSIDAD,
+                                      DESCRIPCION_CARRERA = x.DESCRIPCION_CARRERA,
+                                      DESCRIPCION_INTERVALO = x.DESCRIPCION_INTERVALO,
+                                      HORA = x.HORA,
+                                      DESCRIPCION_PARALELO = x.DESCRIPCION_PARALELO,
+                                      ID_INSCRIPCION_ESTADO = x.ID_INSCRIPCION_ESTADO,
+                                      DESCRIPCION_ESTADO = x.DESCRIPCION_ESTADO,
+                                      DESCRIPCION_TIPO_PAGO = x.DESCRIPCION_TIPO_PAGO,
+                                      NUMERO_FACTURA = x.NUMERO_FACTURA,
+                                      ESTADO_INSCRIPCION_FECHA = fechaInscripcion.VerificarEstado()
+                                  }).Where(x => x.ID_INSCRIP_DETALLE_CARRERA == ID_INSCRIP_DETALLE_CARRERA).FirstOrDefault();
+                }
+                return inscripcion;
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return inscripcion;
+            }
+        }
+    }
+}

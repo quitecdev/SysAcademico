@@ -1,0 +1,96 @@
+﻿@model List<Model.Services.Admin.InscripcionDetallleCarrera>
+<table class="table table-striped detalle m-0">
+    <thead>
+        <tr>
+            <th># Cod.</th>
+            <th>Periodo</th>
+            <th>Sede</th>
+            <th>Carrera</th>
+            <th>Tip. Horario</th>
+            <th>Horario</th>
+            <th>Paralelo</th>
+            <th>Estado</th>
+            <th>Pago</th>
+            <th>Factura</th>
+            <th></th>
+        </tr>
+    </thead>
+    @if (Model != null)
+    {
+        if (Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ID_INSCRIP_DETALLE_CARRERA</td>
+                    <td>@item.DESCRIPCION_PERIODO</td>
+                    <td>@item.DESCRIPCION_UNIVERSIDAD</td>
+                    <td>@item.DESCRIPCION_CARRERA</td>
+                    <td>@item.DESCRIPCION_INTERVALO</td>
+                    <td>@item.HORA</td>
+                    <td>@item.DESCRIPCION_PARALELO</td>
+                    <td>
+                        @if (item.ID_INSCRIPCION_ESTADO == 1)
+                        {
+                            <span class="label label-success">@item.DESCRIPCION_ESTADO</span>
+                        }
+                        else if (item.ID_INSCRIPCION_ESTADO == 2)
+                        {
+                            <span class="label label-success">@item.DESCRIPCION_ESTADO</span>
+                        }
+                        else if (item.ID_INSCRIPCION_ESTADO == 3)
+                        {
+                            <span class="label label-danger">@item.DESCRIPCION_ESTADO</span>
+                        }
+                        else if (item.ID_INSCRIPCION_ESTADO == 4)
+                        {
+                            <span class="label label-warning">@item.DESCRIPCION_ESTADO</span>
+                        }
+                    </td>
+                    <td>@item.DESCRIPCION_TIPO_PAGO</td>
+                    <td>@item.NUMERO_FACTURA</td>
+                    <td class="actions">
+                        @if (item.ESTADO == 1)
+                        {
+                            if (item.ESTADO_INSCRIPCION_FECHA)
+                            {
+                                <button title="Editar" onclick="ModalForm('@Url.Action("EditarCarrera", "Inscripciones",new { id=item.ID_INSCRIP_DETALLE_CARRERA})')" class="btn btn-icon waves-effect waves-light btn-custom btn-xs m-b-5"> <i class="fa fa-pencil"></i> </button>
+                            }
+                            else
+                            {
+                                <button title="Editar" class="btn btn-icon disabled waves-effect waves-light btn-custom btn-xs m-b-5"> <i class="fa fa-pencil"></i> </button>
+                            }
+                        }
+                        else
+                        {
+                            <button title="Editar" class="btn btn-icon disabled waves-effect waves-light btn-custom btn-xs m-b-5"> <i class="fa fa-pencil"></i> </button>
+                        }
+                        <button title="Notas" class="btn btn-icon waves-effect waves-light btn-primary btn-xs m-b-5"> <i class="zmdi zmdi-view-subtitles"></i> </button>
+                        <button title="Asistencia" class="btn btn-icon waves-effect waves-light btn-warning btn-xs m-b-5"> <i class="zmdi zmdi-accounts-alt"></i> </button>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="11">
+                    <div class="alert alert-danger">
+                        <strong>Vaya!</strong> Parece que no existen carreras asignadas.
+                    </div>
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="11">
+                <div class="alert alert-danger">
+                    <strong>Vaya!</strong> Parece que no existen carreras asignadas.
+                </div>
+            </td>
+        </tr>
+    }
+</table>
+

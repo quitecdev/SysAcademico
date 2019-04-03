@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Model.Data;
+
+namespace Model.Services.Admin
+{
+    public class Materia
+    {
+        public int ID_MATERIA { get; set; }
+        public string DESCRIPCION_MATERIA { get; set; }
+        public string COD_MATERIA { get; set; }
+        public Nullable<int> ID_CARRERA { get; set; }
+
+        public List<Materia> ObtenerMateria(int _ID_CARRERA)
+        {
+            List<Materia> _materia = new List<Materia>();
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    _materia = (from carrea in ctx.CAS_CARRERA.Where(x => x.ID_CARRERA == _ID_CARRERA)
+                                join materia in ctx.CAS_MATERIA on carrea.ID_CARRERA equals materia.ID_CARRERA
+                                select new Materia()
+                                {
+                                    ID_MATERIA = materia.ID_MATERIA,
+                                    DESCRIPCION_MATERIA = materia.DESCRIPCION_MATERIA,
+                                    COD_MATERIA = materia.COD_MATERIA,
+                                    ID_CARRERA=materia.ID_CARRERA
+                                }
+                                ).ToList();
+                }
+                return _materia;
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return _materia;
+            }
+        }
+    }
+}

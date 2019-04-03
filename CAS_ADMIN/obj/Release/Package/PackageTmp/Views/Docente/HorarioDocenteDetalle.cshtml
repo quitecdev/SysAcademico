@@ -1,0 +1,215 @@
+﻿@model Model.Services.Admin.DocenteHorarioMateria
+@{
+    Layout = null;
+}
+<script>
+    $(document).ready(function () {
+
+        //Dropdownlist Carrera
+        $("#ID_CARRERA").change(function () {
+            $("#ID_MATERIA").empty();
+            $("#ID_PARALELO").empty();
+            $("#ID_HORARIO_DETALLE").empty();
+            if ($("#ID_CARRERA").val() != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("getMateriaCarrera", "Carrera")', // we are calling json method
+                    dataType: 'json',
+                    data: { id_carrera: $("#ID_CARRERA").val() },
+                    success: function (states) {
+                        // states contains the JSON formatted list
+                        // of states passed from the controller
+                        $("#ID_MATERIA").append('<option value=""></option>');
+                        $.each(states, function (i, state) {
+                            $("#ID_MATERIA").append('<option value="' + state.Value + '">' +
+                                 state.Text + '</option>');
+                            // here we are adding option for States
+
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve states.' + ex);
+                    }
+                });
+            }
+            return false;
+        })
+
+        //Dropdownlist Materia
+        $("#ID_MATERIA").change(function () {
+            $("#ID_PARALELO").empty();
+            $("#ID_HORARIO_DETALLE").empty();
+            if ($("#ID_MATERIA").val() != "" && $("#ID_SEDE").val() != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("getParaleloMateria", "Carrera")', // we are calling json method
+                    dataType: 'json',
+                    data: { id_sede: $("#ID_SEDE").val(), id_materia: $("#ID_MATERIA").val() },
+                    success: function (states) {
+                        // states contains the JSON formatted list
+                        // of states passed from the controller
+                        $("#ID_PARALELO").append('<option value=""></option>');
+                        $.each(states, function (i, state) {
+                            $("#ID_PARALELO").append('<option value="' + state.Value + '">' +
+                                 state.Text + '</option>');
+                            // here we are adding option for States
+
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve states.' + ex);
+                    }
+                });
+            }
+            return false;
+        })
+
+        //Dropdownlist Paralelo
+        $("#ID_PARALELO").change(function () {
+            $("#ID_HORARIO_DETALLE").empty();
+            if ($("#ID_PARALELO").val() != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("getHorarioParalelo", "Carrera")', // we are calling json method
+                    dataType: 'json',
+                    data: { id_paraleloMateria: $("#ID_PARALELO").val() },
+                    success: function (states) {
+                        // states contains the JSON formatted list
+                        // of states passed from the controller
+                        $("#ID_HORARIO_DETALLE").append('<option value=""></option>');
+                        $.each(states, function (i, state) {
+                            $("#ID_HORARIO_DETALLE").append('<option value="' + state.Value + '">' +
+                                 state.Text + '</option>');
+                            // here we are adding option for States
+
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve states.' + ex);
+                    }
+                });
+            }
+            return false;
+        })
+    });
+
+    function ActualizarDetalle() {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("DetalleHorario", "Docente")',
+            data: '{ID_DOCENTE: "' + $("#AUX_REDIRECT").val() + '" }',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (response) {
+                $('#myPartialViewDiv').html(response);
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+
+    function EliminarDetalle(ID) {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("EliminarHorario", "Docente")',
+            content: "application/json; charset=utf-8",
+            dataType: "json",
+            data: { ID_ID_DOCENTE_MATERIA_PARALELO: ID },
+            success: function (response) {
+                if (response.success) {
+                    ActualizarDetalle();
+                    toastr.success('Correcto', response.message, { timeOut: 5000 })
+                }
+                else {
+                    toastr.error(response.message, { timeOut: 5000 })
+                }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                //alert('Error!!');
+            }
+        });
+    }
+
+</script>
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Detalle</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="m-t-25"></div>
+                    <button type="button" onclick="ModalForm('@Url.Action("HorarioDocente", "Docente", new { id = Model.AUX_REDIRECT })')" class="btn btn-custom waves-effect waves-light m-b-5"> <i class="zmdi zmdi-arrow-left"></i> <span>Regresar</span> </button>
+                    <div class="m-t-25"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    @using (Html.BeginForm("HorarioDocenteDetalle", "Docente", FormMethod.Post, new { onsubmit = "return SubmitForm(this,'" + @Url.Action("HorarioDocenteDetalle", "Docente", new { id = string.Empty }) + "')", @class = "form-horizontal" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(x => x.AUX_REDIRECT)
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Sede</label>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(m => m.ID_SEDE, new SelectList(new Model.Services.Admin.Sede().ObtenerSede(), "ID_SEDE", "DESCRIPCION_UNIVERSIDAD"), " ", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_SEDE, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Carrera</label>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(m => m.ID_CARRERA, new SelectList(new Model.Services.Admin.Carrera().ObtenerCarrera(), "ID_CARRERA", "DESCRIPCION_CARRERA"), " ", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_CARRERA, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Materia</label>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(m => m.ID_MATERIA, new SelectList(string.Empty, "ID_MATERIA", "DESCRIPCION_MATERIA"), " ", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_MATERIA, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Paralelo</label>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(m => m.ID_PARALELO, new SelectList(string.Empty, "ID_PARALELO_MATERIA", "DESCRIPCION_PARALELO"), " ", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_PARALELO, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Horario</label>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(m => m.ID_HORARIO_DETALLE, new SelectList(string.Empty, "ID_HORARIO_DETALLE", "DETALLE"), " ", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_HORARIO_DETALLE, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-9">
+                                <button type="submit" class="btn btn-custom waves-effect waves-light m-b-5" data-loading-text="<span class='btn-label'><i class='fa fa-circle-o-notch fa-spin'></i></span> Guardar<span class='md-ripple'></span>"><span class="btn-label"><i class="fa fa-save"></i></span> Guardar<span class="md-ripple"></span></button>
+                            </div>
+                        </div>
+                    }
+                    <div class="m-t-25"></div>
+                    <div class="m-t-25"></div>
+                    <div class="m-t-25"></div>
+                    <div id="myPartialViewDiv">
+                        @if (Model.ListaDocente != null)
+                        {
+                            Html.RenderPartial("_DetalleHorario", Model.ListaDocente);
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿@model Model.Services.Admin.ContadorWeb
+<div class="parallax parallax-four bg3">
+    <div class="parallax-container padding-bottom-40">
+        <div class="container">
+            <div class="row count">
+                <div class="col-md-3 col-sm-6">
+                    <div class="counter-item counter-lg">
+                        <span class="fa fa-eye fa-2x icon-circle fa-primary"></span>
+                        <div class="count-value" data-count="@Model.Visitas"><span class="start-count">0</span></div>
+                        <p>Visitas</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="counter-item counter-lg">
+                        <span class="fa fa-user fa-2x icon-circle fa-primary"></span>
+                        <div class="count-value" data-count="@Model.Estudiante"><span class="start-count">0</span></div>
+                        <p>Estudiantes</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="counter-item counter-lg">
+                        <span class="fa fa-institution fa-2x icon-circle fa-primary"></span>
+                        <div class="count-value" data-count="@Model.Docentes"><span class="start-count">0</span></div>
+                        <p>Docentes</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="counter-item counter-lg">
+                        <span class="fa fa-briefcase fa-2x icon-circle fa-primary"></span>
+                        <div class="count-value" data-count="@Model.Personale"><span class="start-count">0</span></div>
+                        <p>Personal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

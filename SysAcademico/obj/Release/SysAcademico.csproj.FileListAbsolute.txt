@@ -1,0 +1,10 @@
+D:\RepositorioLocalCodigo\SysAcademico\SysAcademico\bin\SysAcademico.dll
+D:\RepositorioLocalCodigo\SysAcademico\SysAcademico\bin\SysAcademico.pdb
+D:\RepositorioLocalCodigo\SysAcademico\SysAcademico\obj\Release\SysAcademico.dll
+D:\RepositorioLocalCodigo\SysAcademico\SysAcademico\obj\Release\SysAcademico.pdb
+D:\RepositorioLocalCodigo\SysAcademico\SysAcademico\obj\Release\SysAcademico.csprojResolveAssemblyReference.cache
+D:\RepositorioLocalCodigo\SysAcademico\SysAcademico\bin\SysAcademico.dll.config
+D:\RepositorioLocalCodigo\SysAcademico\SysAcademico\bin\Microsoft.Web.Infrastructure.dll
+D:\RepositorioLocalCodigo\SysAcademico\SysAcademico\bin\Microsoft.Web.Infrastructure.xml
+D:\RepositorioLocalCodigo\SysAcademico\SysAcademico\bin\Newtonsoft.Json.dll
+D:\RepositorioLocalCodigo\SysAcademico\SysAcademico\bin\Newtonsoft.Json.xml

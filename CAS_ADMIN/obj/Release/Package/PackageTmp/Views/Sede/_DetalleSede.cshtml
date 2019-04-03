@@ -1,0 +1,70 @@
+﻿@model List<Model.Services.Admin.Sede>
+
+
+<script>
+    function EliminarDetalle(ID_SEDE) {
+        if (confirm("¿Está seguro que desea eliminar este registro?")) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("EliminarSede", "Sede")',
+                content: "application/json; charset=utf-8",
+                dataType: "json",
+                data: { ID_SEDE: ID_SEDE },
+                success: function (response) {
+                    if (response.success) {
+                        ActualizarDetalle();
+                        toastr.success('Correcto', response.message, { timeOut: 5000 })
+                    }
+                    else {
+                        toastr.error(response.message, { timeOut: 5000 })
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    //alert('Error!!');
+                }
+            });
+        }
+    }
+
+</script>
+
+<table class="table table-hover table-striped m-0">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Descripción</th>
+            <th>Código</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            if (Model.Count != 0)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ID_SEDE</td>
+                        <td>@item.DESCRIPCION_UNIVERSIDAD</td>
+                        <td>@item.COD_SEDE</td>
+                        <td>
+                            <button title="Editar" onclick="ModalForm('@Url.Action("Index", "Sede",new { id=item.ID_SEDE})')" class="btn btn-icon waves-effect waves-light btn-custom btn-xs m-b-5"> <i class="fa fa-pencil"></i> </button>
+                            <button title="Eliminar" onclick="EliminarDetalle('@item.ID_SEDE')" class="btn btn-icon waves-effect waves-light btn-custom btn-xs m-b-5"> <i class="fa fa-trash-o"></i> </button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4">
+                        <p class="text-muted text-center">
+                            Ningún dato disponible en esta tabla
+                        </p>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

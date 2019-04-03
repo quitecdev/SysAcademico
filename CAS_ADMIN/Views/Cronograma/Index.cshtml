@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewBag.Title = "Cronograma";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">@ViewBag.Title</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="m-t-25"></div>
+        <button type="button" onclick="ModalForm('@Url.Action("CrearCronograma", "Cronograma", new { id = string.Empty })')" class="btn btn-custom waves-effect waves-light m-b-5"> <i class="fa fa-plus-circle m-r-5"></i> <span>Añadir</span> </button>
+        <div class="m-t-25"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
+            <table id="tbl_Cronograma" class="table-datatable table dt-responsive table-striped jambo_table bulk_action tblInscripcion" style="width:100%">
+                <thead>
+                    <tr class="headings">
+                        <th class="column-title">#</th>
+                        <th class="column-title">Sede</th>
+                        <th class="column-title">Carrera</th>
+                        <th class="column-title">Intervalo</th>
+                        <th class="column-title">Paralelo</th>
+                        <th class="column-title">Descripción</th>
+                        <th class="column-title">Fecha Inicio</th>
+                        <th class="column-title">Fecha Fin</th>
+                        <th class="column-title"></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+@* MODAL *@
+<div class="modal fade modal-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+
+</div>
+<!-- /.modal -->
+
+
+@section scripts
+{
+    <script>
+        var datatable;
+        $(document).ready(function () {
+            datatable = $('#tbl_Cronograma').DataTable({
+                "ajax": "@Url.Action("getTableCronograma", "Cronograma")",
+                "columns": [
+                  { 'data': 'ID_CRONOGRAMA' },
+                  { 'data': 'DESCRIPCION_SEDE' },
+                  { 'data': 'DESCRIPCION_CARRERA' },
+                  { 'data': 'DESCRIPCION_TIPO_INVERTALO' },
+                  { 'data': 'DESCRIPCION_PARALELO' },
+                  { 'data': 'DESCRIPCION_CRONOGRAMA' },
+                  {
+                      "data": "FECHA_INICIO", 'render': function (data, type, row, meta) {
+                          return moment(row.FECHA_INICIO).format("DD/MM/YYYY");
+                      }
+                  },
+                  {
+                      "data": "FECHA_FIN", 'render': function (data, type, row, meta) {
+                          return moment(row.FECHA_FIN).format("DD/MM/YYYY");
+                      }
+                  },
+                  {
+                      'data': 'ID_CRONOGRAMA', 'render': function (data, type, row, meta) {
+                          return "<button title='Detalle Cronograma' type='button' onclick=Detalle('@Url.Action("CronogramaDetalle", "Cronograma")/" + row.ID_CRONOGRAMA + "')  class='btn btn-icon waves-effect waves-light btn-custom btn-xs m-b-5'> <i class='zmdi zmdi-local-library'></i> </button> " +
+                                 "<button title='Ver' type='button' onclick=ModalForm('@Url.Action("RepositorioDocenteVista", "Docente")/" + row.ID_SEDE + "/" + row.ID_CARRERA + "/" + row.ID_TIPO_INTERVALO + "/" + row.ID_PARALELO + "')  class='btn btn-icon waves-effect waves-light btn-primary btn-xs m-b-5'> <i class='zmdi zmdi-view-list'></i> </button> "+
+                                 "<button title='Eliminar' onclick='EliminarDetalle("+row.ID_CRONOGRAMA+")' class='btn btn-icon waves-effect waves-light btn-custom btn-xs m-b-5'> <i class='fa fa-trash-o'></i> </button>";
+                      },
+                      'orderable': false,
+                      "className": "actions",
+                      'width': '80px'
+                  }
+                ],
+                "order": [[2, "desc"], [3, "desc"]],
+                "processing": true,
+                "language": {
+                    "url": "../assets/plugins/datatables/Spanish.json",
+                },
+                "order": [[1, 'asc']],
+            });
+        });
+
+        function ActualizarDetalle() {
+            datatable.ajax.reload();
+        }
+
+        function Detalle(url) {
+            document.location = url;
+        }
+
+        function EliminarDetalle(ID_CRONOGRAMA) {
+            if (confirm("¿Está seguro que desea eliminar este registro?")) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("EliminarCronograma", "Cronograma")',
+                    content: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: { ID_CRONOGRAMA: ID_CRONOGRAMA },
+                    success: function (response) {
+                        if (response.success) {
+                            ActualizarDetalle();
+                            toastr.success('Correcto', response.message, { timeOut: 5000 })
+                        }
+                        else {
+                            toastr.error(response.message, { timeOut: 5000 })
+                        }
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        //alert('Error!!');
+                    }
+                });
+            }
+        }
+    </script>
+}

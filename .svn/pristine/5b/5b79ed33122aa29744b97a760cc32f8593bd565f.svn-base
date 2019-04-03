@@ -1,0 +1,69 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Model.Data;
+using System.Data.Entity.Core.Objects;
+
+namespace Model.Services.Admin
+{
+    public class Paralelo
+    {
+        public int ID_PARALELO { get; set; }
+        public string DESCRIPCION_PARALELO { get; set; }
+
+        public List<Paralelo> ObtenerParaleloCarreraSedeCarera(int _ID_SEDE, int _ID_CARRERA, int _ID_INTERVALO, int _ID_INTERVALO_DETALLE)
+        {
+            List<Paralelo> carrera = new List<Paralelo>();
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    ObjectParameter outID = new ObjectParameter("outID", typeof(int));
+                    ObjectParameter outMensaje = new ObjectParameter("outMensaje", typeof(string));
+
+                    carrera = ctx.SP_ObtenerParaleloSedeCarrera(_ID_CARRERA, _ID_SEDE, _ID_INTERVALO, _ID_INTERVALO_DETALLE, outMensaje, outID)
+                            .Select(x => new Paralelo
+                            {
+                                ID_PARALELO = x.ID_PARALELO,
+                                DESCRIPCION_PARALELO = x.DESCRIPCION_PARALELO,
+                            }).ToList();
+                }
+                return carrera;
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return carrera;
+            }
+        }
+
+        public List<Paralelo> ObtenerParaleloMateria(int _ID_SEDE,int _ID_MATERIA)
+        {
+            List<Paralelo> _paralelo = new List<Paralelo>();
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    _paralelo = (from carrea in ctx.CAS_CARRERA
+                                 join materia in ctx.CAS_MATERIA.Where(x => x.ID_MATERIA == _ID_MATERIA) on carrea.ID_CARRERA equals materia.ID_CARRERA
+                                 join paraleloMateria in ctx.CAS_PARALELO_MATERIA on materia.ID_MATERIA equals paraleloMateria.ID_MATERIA
+                                 join paralelo in ctx.CAS_PARALELO on paraleloMateria.ID_PARALELO equals paralelo.ID_PARALELO
+                                 join sede in ctx.CAS_SEDE.Where(x => x.ID_SEDE == _ID_SEDE) on paraleloMateria.ID_SEDE equals sede.ID_SEDE
+                                 select new Paralelo() {
+                                     ID_PARALELO = paraleloMateria.ID_PARALELO_MATERIA,
+                                     DESCRIPCION_PARALELO = paralelo.DESCRIPCION_PARALELO
+                                 }
+                              ).ToList();
+                }
+                return _paralelo;
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return _paralelo;
+            }
+        }
+    }
+}

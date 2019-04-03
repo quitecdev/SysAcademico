@@ -1,0 +1,135 @@
+﻿@model List<Model.Services.Estudiante.EstudianteNota>
+@{
+    ViewBag.Title = "Calificaciones";
+}
+
+<style>
+    th {
+        background: #8b1716;
+        color: #fff;
+        padding: 20px !important;
+    }
+
+    td {
+        padding: 20px !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">@ViewBag.Title</h4>
+    </div>
+</div>
+
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card-box">
+                    <h4 class="header-title m-t-0 m-b-30">@item.DESCRIPCION_CARRERA</h4>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <ul class="nav nav-tabs nav-justified">
+                                <li role="presentation" class="active">
+                                    <a href="#promedio_@(item.ID_CARRERA)" id="promedio-tab_@(item.ID_CARRERA)" role="tab" data-toggle="tab">PROMEDIO</a>
+                                </li>
+                                @foreach (var parcial in item.PARCIAL)
+                                {
+                                    if (parcial.TOTAL > 1)
+                                    {
+                                <li role="presentation" class="">
+                                    <a href="#parcial_@(parcial.ID_NOTA_DETALLE)" role="tab" data-toggle="tab">@parcial.DESCRIPCION_NOTA_DETALLE</a>
+                                </li>
+                                    }
+                                }
+
+                            </ul>
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade active in" id="promedio_@(item.ID_CARRERA)">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped m-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Detalle</th>
+                                                    <th class="text-center">Promedio</th>
+                                                    <th class="text-center">Nota</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{ decimal final = 0M; }
+                                                @foreach (var promedio in item.PROMEDIO_ESTUDIANTE)
+                                                {
+                                                <tr>
+                                                    <td scope="row">@promedio.DESCRIPCION_NOTA_DETALLE</td>
+                                                    <td class="text-center">@promedio.PROMEDIO.Value</td>
+                                                    <td class="text-center">@promedio.NOTA.Value</td>
+                                                </tr>
+
+                                                    final = promedio.NOTA_FINAL.Value;
+                                                }
+
+                                                <tr>
+                                                    <th scope="row"></th>
+                                                    <th scope="row" class="text-right">NOTA FINAL</th>
+                                                    <th scope="row" class="text-center">@final</th>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                @foreach (var parcial in item.PARCIAL)
+                                {
+                                    if (parcial.TOTAL > 1)
+                                    {
+                                        <div role="tabpanel" class="tab-pane fade" id="parcial_@(parcial.ID_NOTA_DETALLE)">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped m-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Detalle</th>
+                                                            <th class="text-center">Nota</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @{
+                                                                    decimal a = 0M;
+                                                        }
+                                                        @foreach (var detalle in parcial.NOTA_DETALLE)
+                                                                {
+                                                                <tr>
+                                                                    <td scope="row">@detalle.DESCRIPCION_PONDERACION</td>
+                                                                    <td class="text-center">@detalle.VALOR_NOTA.Value</td>
+                                                                </tr>
+                                                                    a = detalle.PARCIAL.Value;
+                                                                }
+
+                                                        <tr>
+                                                            <th scope="row">PROMEDIO</th>
+                                                            <th scope="row" class="text-center">
+                                                                @a
+                                                            </th>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    }
+                                 }
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end row -->
+
+                </div>
+            </div><!-- end col -->
+        </div>
+    }
+}

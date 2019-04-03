@@ -1,0 +1,194 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Model.Data;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
+
+namespace Model.Services.Admin
+{
+    public class Docente
+    {
+        [Display(Name = "Documento de Identidad")]
+        [Required]
+        public string ID_DOCENTE { get; set; }
+
+        [Display(Name = "Apellido Paterno")]
+        [Required]
+        public string APELLIDO_PATERNO_DOCENTE { get; set; }
+
+        [Display(Name = "Apellido Materno")]
+        public string APELLIDO_MATERNO_DOCENTE { get; set; }
+
+        [Display(Name = "Primer Nombre")]
+        [Required]
+        public string PRIMER_NOMBRE_DOCENTE { get; set; }
+
+        [Display(Name = "Segundo Nombre")]
+        public string SEGUNDO_NOMBRE_DOCENTE { get; set; }
+
+        [Display(Name = "Fecha de Nacimiento")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
+        public Nullable<System.DateTime> FECHA_NACIMIENTO_DOCENTE { get; set; }
+
+        [Display(Name = "Estado Civil")]
+        public Nullable<int> ID_ESTADO_CIVIL { get; set; }
+
+        [Display(Name = "Ciudad")]
+        public Nullable<int> ID_PROVINCIA { get; set; }
+
+        [Display(Name = "Dirección")]
+        [DataType(DataType.MultilineText)]
+        public string DIRECCION { get; set; }
+
+        [Display(Name = "Teléfono")]
+        public string TELEF_DOCENTE { get; set; }
+
+        [Display(Name = "Celular")]
+        [Required]
+        public string CEL_DOCENTE { get; set; }
+
+        public string IMG_DOCENTE { get; set; }
+
+        [Display(Name = "Correo")]
+        [DataType(DataType.EmailAddress)]
+        [Required]
+        public string CORREO_DOCENTE { get; set; }
+
+        public string CLAVE_USUARIO { get; set; }
+        public Nullable<int> MODIFICAR_CLAVE { get; set; }
+
+        public Nullable<System.DateTime> FECHA_INGRESO_DOCENTE { get; set; }
+
+        public Docente ObtenerDocente(string _ID_DOCENTE)
+        {
+            Docente docente = new Docente();
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    docente = ctx.CAS_DOCENTE.Where(x => x.ID_DOCENTE == _ID_DOCENTE)
+                              .Select(x => new Docente
+                              {
+                                  ID_DOCENTE = x.ID_DOCENTE,
+                                  APELLIDO_PATERNO_DOCENTE = x.APELLIDO_PATERNO_DOCENTE,
+                                  APELLIDO_MATERNO_DOCENTE = x.APELLIDO_MATERNO_DOCENTE,
+                                  PRIMER_NOMBRE_DOCENTE = x.PRIMER_NOMBRE_DOCENTE,
+                                  SEGUNDO_NOMBRE_DOCENTE = x.SEGUNDO_NOMBRE_DOCENTE,
+                                  FECHA_NACIMIENTO_DOCENTE = x.FECHA_NACIMIENTO_DOCENTE,
+                                  ID_ESTADO_CIVIL = x.ID_ESTADO_CIVIL,
+                                  ID_PROVINCIA = x.ID_PROVINCIA,
+                                  DIRECCION = x.DIRECCION,
+                                  TELEF_DOCENTE = x.TELEF_DOCENTE,
+                                  CEL_DOCENTE = x.CEL_DOCENTE,
+                                  IMG_DOCENTE = x.IMG_DOCENTE,
+                                  CORREO_DOCENTE = x.CORREO_DOCENTE,
+                                  FECHA_INGRESO_DOCENTE = x.FECHA_INGRESO_DOCENTE
+                              }).FirstOrDefault();
+                }
+                return docente;
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return docente;
+            }
+        }
+
+        public List<Docente> ObtenerDocentes()
+        {
+            List<Docente> _docente = new List<Docente>();
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    _docente = (from docente in ctx.CAS_DOCENTE
+                                join usuario in ctx.CAS_USUARIO on docente.ID_DOCENTE equals usuario.ID_USUARIO
+                                select new Docente()
+                                {
+                                    ID_DOCENTE = docente.ID_DOCENTE,
+                                    APELLIDO_PATERNO_DOCENTE = docente.APELLIDO_PATERNO_DOCENTE,
+                                    APELLIDO_MATERNO_DOCENTE = docente.APELLIDO_MATERNO_DOCENTE,
+                                    PRIMER_NOMBRE_DOCENTE = docente.PRIMER_NOMBRE_DOCENTE,
+                                    SEGUNDO_NOMBRE_DOCENTE = docente.SEGUNDO_NOMBRE_DOCENTE,
+                                    FECHA_NACIMIENTO_DOCENTE = docente.FECHA_NACIMIENTO_DOCENTE,
+                                    ID_ESTADO_CIVIL = docente.ID_ESTADO_CIVIL,
+                                    ID_PROVINCIA = docente.ID_PROVINCIA,
+                                    DIRECCION = docente.DIRECCION,
+                                    TELEF_DOCENTE = docente.TELEF_DOCENTE,
+                                    CEL_DOCENTE = docente.CEL_DOCENTE,
+                                    IMG_DOCENTE = docente.IMG_DOCENTE,
+                                    CORREO_DOCENTE = docente.CORREO_DOCENTE,
+                                    FECHA_INGRESO_DOCENTE = docente.FECHA_INGRESO_DOCENTE,
+                                    CLAVE_USUARIO=usuario.CLAVE_USUARIO,
+                                    MODIFICAR_CLAVE=usuario.MODIFICAR_CLAVE
+                                }
+                                ).ToList();
+                }
+                return _docente;
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return _docente;
+            }
+        }
+
+        public void GuardarDocente(Docente docente)
+        {
+            CAS_DOCENTE _docente = new CAS_DOCENTE();
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    var foo = ctx.CAS_DOCENTE.Where(v => v.ID_DOCENTE == docente.ID_DOCENTE).AsNoTracking().ToList();
+                    var fooCount = foo.Count();
+                    if (fooCount > 0)
+                    {
+                        _docente.ID_DOCENTE = docente.ID_DOCENTE;
+                        _docente.APELLIDO_PATERNO_DOCENTE = docente.APELLIDO_PATERNO_DOCENTE;
+                        _docente.APELLIDO_MATERNO_DOCENTE = docente.APELLIDO_MATERNO_DOCENTE;
+                        _docente.PRIMER_NOMBRE_DOCENTE = docente.PRIMER_NOMBRE_DOCENTE;
+                        _docente.SEGUNDO_NOMBRE_DOCENTE = docente.SEGUNDO_NOMBRE_DOCENTE;
+                        _docente.FECHA_NACIMIENTO_DOCENTE = docente.FECHA_NACIMIENTO_DOCENTE;
+                        _docente.ID_ESTADO_CIVIL = docente.ID_ESTADO_CIVIL;
+                        _docente.ID_PROVINCIA = docente.ID_PROVINCIA;
+                        _docente.DIRECCION = docente.DIRECCION;
+                        _docente.TELEF_DOCENTE = docente.TELEF_DOCENTE;
+                        _docente.CEL_DOCENTE = docente.CEL_DOCENTE;
+                        _docente.IMG_DOCENTE = docente.IMG_DOCENTE;
+                        _docente.CORREO_DOCENTE = docente.CORREO_DOCENTE;
+                        _docente.FECHA_INGRESO_DOCENTE = docente.FECHA_INGRESO_DOCENTE;
+                        ctx.Entry(_docente).State = EntityState.Modified;
+                    }
+                    else
+                    {
+                        _docente.ID_DOCENTE = docente.ID_DOCENTE;
+                        _docente.APELLIDO_PATERNO_DOCENTE = docente.APELLIDO_PATERNO_DOCENTE;
+                        _docente.APELLIDO_MATERNO_DOCENTE = docente.APELLIDO_MATERNO_DOCENTE;
+                        _docente.PRIMER_NOMBRE_DOCENTE = docente.PRIMER_NOMBRE_DOCENTE;
+                        _docente.SEGUNDO_NOMBRE_DOCENTE = docente.SEGUNDO_NOMBRE_DOCENTE;
+                        _docente.FECHA_NACIMIENTO_DOCENTE = docente.FECHA_NACIMIENTO_DOCENTE;
+                        _docente.ID_ESTADO_CIVIL = docente.ID_ESTADO_CIVIL;
+                        _docente.ID_PROVINCIA = docente.ID_PROVINCIA;
+                        _docente.DIRECCION = docente.DIRECCION;
+                        _docente.TELEF_DOCENTE = docente.TELEF_DOCENTE;
+                        _docente.CEL_DOCENTE = docente.CEL_DOCENTE;
+                        _docente.IMG_DOCENTE = docente.IMG_DOCENTE;
+                        _docente.CORREO_DOCENTE = docente.CORREO_DOCENTE;
+                        _docente.FECHA_INGRESO_DOCENTE = docente.FECHA_INGRESO_DOCENTE;
+                        ctx.Entry(_docente).State = EntityState.Added;
+                    }
+                    ctx.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+            }
+        }
+    }
+}

@@ -1,0 +1,83 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Model.Data;
+using System.Data.Entity;
+
+namespace Model.Services.Admin
+{
+    public class Estudiante
+    {
+        public string ID_ESTUDIANTE { get; set; }
+        public string APELLIDO_PATERNO_ESTUDIANTE { get; set; }
+        public string APELLIDO_MATERNO_ESTUDIANTE { get; set; }
+        public string PRIMER_NOMBRE_ESTUDIANTE { get; set; }
+        public string SEGUNDO_NOMBRE_ESTUDIANTE { get; set; }
+        public Nullable<System.DateTime> FECHA_NACIMIENTO_ESTUDIANTE { get; set; }
+        public Nullable<int> ID_ESTADO_CIVIL { get; set; }
+        public Nullable<int> ID_PROVINCIA { get; set; }
+        public string DIRECCION { get; set; }
+        public string TELEF_ESTUDIANTE { get; set; }
+        public string CEL_ESTUDIANTE { get; set; }
+        public string IMG_ESTUDIANTE { get; set; }
+        public string CORREO_ESTUDIANTE { get; set; }
+        public Nullable<System.DateTime> FECHA_INGRESO_ESTUDIANTE { get; set; }
+
+
+        public void GuardarEstudiante(Inscipcion inscripcion)
+        {
+            CAS_ESTUDIANTE _estudiante = new CAS_ESTUDIANTE();
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    var foo = ctx.CAS_ESTUDIANTE.Where(v => v.ID_ESTUDIANTE == inscripcion.ID_INSCRIP).AsNoTracking().ToList();
+                    var fooCount = foo.Count();
+                    if (fooCount > 0)
+                    {
+                        _estudiante = ctx.CAS_ESTUDIANTE.Where(v => v.ID_ESTUDIANTE == inscripcion.ID_INSCRIP).FirstOrDefault();
+                        _estudiante.ID_ESTUDIANTE = inscripcion.ID_INSCRIP;
+                        _estudiante.APELLIDO_PATERNO_ESTUDIANTE = inscripcion.APELLIDO_PATERNO_INSCRIP;
+                        _estudiante.APELLIDO_MATERNO_ESTUDIANTE = inscripcion.APELLIDO_MATERNO_INSCRIP !=null ? inscripcion.APELLIDO_MATERNO_INSCRIP.ToUpper() : inscripcion.APELLIDO_MATERNO_INSCRIP;
+                        _estudiante.PRIMER_NOMBRE_ESTUDIANTE = inscripcion.PRIMER_NOMBRE_INSCRIP;
+                        _estudiante.SEGUNDO_NOMBRE_ESTUDIANTE = inscripcion.SEGUNDO_NOMBRE_INSCRIP !=null ? inscripcion.APELLIDO_MATERNO_INSCRIP.ToUpper() : inscripcion.APELLIDO_MATERNO_INSCRIP;
+                        _estudiante.FECHA_NACIMIENTO_ESTUDIANTE = inscripcion.FECHA_NACIMIENTO_INSCRIP;
+                        _estudiante.ID_ESTADO_CIVIL = inscripcion.ID_ESTADO_CIVIL;
+                        _estudiante.ID_PROVINCIA = inscripcion.ID_CIUDAD;
+                        _estudiante.DIRECCION = inscripcion.DIRECCION;
+                        _estudiante.TELEF_ESTUDIANTE = inscripcion.TELEF_INSCRIP;
+                        _estudiante.CEL_ESTUDIANTE = inscripcion.CEL_INSCRIP;
+                        _estudiante.IMG_ESTUDIANTE = _estudiante.IMG_ESTUDIANTE;
+                        _estudiante.CORREO_ESTUDIANTE = inscripcion.CORREO;
+
+                        ctx.Entry(_estudiante).State = EntityState.Modified;
+                    }
+                    else
+                    {
+                        _estudiante.ID_ESTUDIANTE = inscripcion.ID_INSCRIP;
+                        _estudiante.APELLIDO_PATERNO_ESTUDIANTE = inscripcion.APELLIDO_PATERNO_INSCRIP;
+                        _estudiante.APELLIDO_MATERNO_ESTUDIANTE = inscripcion.APELLIDO_MATERNO_INSCRIP != null ? inscripcion.APELLIDO_MATERNO_INSCRIP.ToUpper() : inscripcion.APELLIDO_MATERNO_INSCRIP;
+                        _estudiante.PRIMER_NOMBRE_ESTUDIANTE = inscripcion.PRIMER_NOMBRE_INSCRIP;
+                        _estudiante.SEGUNDO_NOMBRE_ESTUDIANTE = inscripcion.SEGUNDO_NOMBRE_INSCRIP != null ? inscripcion.APELLIDO_MATERNO_INSCRIP.ToUpper() : inscripcion.APELLIDO_MATERNO_INSCRIP;
+                        _estudiante.FECHA_NACIMIENTO_ESTUDIANTE = inscripcion.FECHA_NACIMIENTO_INSCRIP;
+                        _estudiante.ID_ESTADO_CIVIL = inscripcion.ID_ESTADO_CIVIL;
+                        _estudiante.ID_PROVINCIA = inscripcion.ID_CIUDAD;
+                        _estudiante.DIRECCION = inscripcion.DIRECCION;
+                        _estudiante.TELEF_ESTUDIANTE = inscripcion.TELEF_INSCRIP;
+                        _estudiante.CEL_ESTUDIANTE = inscripcion.CEL_INSCRIP;
+                        _estudiante.CORREO_ESTUDIANTE = inscripcion.CORREO;
+
+                        ctx.Entry(_estudiante).State = EntityState.Added;
+                    }
+                    ctx.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+            }
+        }
+    }
+}

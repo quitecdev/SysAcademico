@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "Cronograma Detalle";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">@ViewBag.Title</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
+            <table id="tbl_CronogramaDetalle" class="table-datatable table dt-responsive table-striped jambo_table bulk_action tblInscripcion" style="width:100%">
+                <thead>
+                    <tr class="headings">
+                        <th class="column-title">#</th>
+                        <th class="column-title">Semana</th>
+                        <th class="column-title">Fecha</th>
+                        <th class="column-title">Día</th>
+                        <th class="column-title">Tema</th>
+                        <th class="column-title">Temática</th>
+                        <th class="column-title">Requerimiento</th>
+                        <th class="column-title">Feriado</th>
+                        <th class="column-title"></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="m-t-25"></div>
+        <div class="m-t-25"></div>
+        <div class="row">
+            <div class="form-group m-b-0">
+                <div class="col-sm-12">
+                    <button id="btn_anterior" onclick="Redirect('@Url.Action("Index", "Cronograma")')" class="btn btn-custom waves-effect waves-light m-b-5 btn-loding" data-loading-text="<span class='btn-label'><i class='fa fa-circle-o-notch fa-spin'></i></span> Guardar<span class='md-ripple'></span>"><span class="btn-label"><i class="zmdi zmdi-arrow-left"></i></span> Anterior<span class="md-ripple"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* MODAL *@
+<div class="modal fade modal-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+
+</div>
+<!-- /.modal -->
+
+@section scripts
+{
+    <script>
+        var datatable;
+        $(document).ready(function () {
+            datatable = $('#tbl_CronogramaDetalle').DataTable({
+                'ajax': {
+                    "type": "GET",
+                    "url": "@Url.Action("getTableCronogramaDetalle", "Cronograma")",
+                    "data": function (d) {
+                        d.id_cronograma = @ViewData["ID_CRONOGRAMA"];
+                    }
+                },
+                "columns": [
+                  { 'data': 'ID_CRONOGRAMA_DETALLE' },
+                  { 'data': 'SEMANA_CRONOGRAMA' },
+                  { 'data': 'FECHA_CRONOGRAMA' },
+                  { 'data': 'DIA' },
+                  { 'data': 'TEMA' },
+                  {
+                      'data': 'TEMATICA',
+                      "className": "text-trim",
+                      'width': '150px'
+                  },
+                  { 'data': 'REQUERIMIENTO' },
+                  {
+                      "data": "FERIADO", 'render': function (data, type, row, meta) {
+                          if (row.FERIADO === true) {
+                              return '<input type="checkbox" disabled checked>'
+                          }
+                          else {
+                              return '<input type="checkbox" disabled>'
+                          }
+                      }
+                  },
+                {
+                    'data': 'ID_CRONOGRAMA_DETALLE', 'render': function (data, type, row, meta) {
+                        return "<button  title='Editar'  type='button' onclick=ModalForm('@Url.Action("EditarCronogramaDetalle", "Cronograma")/" + row.ID_CRONOGRAMA_DETALLE + "')  class='btn btn-icon waves-effect waves-light btn-custom btn-xs m-b-5'><em class='zmdi zmdi-edit'></em></button> "+
+                               "<button  title='Adjuntos'  type='button' onclick=ModalForm('@Url.Action("AdjuntoCronograma", "Cronograma")/" + row.ID_CRONOGRAMA_DETALLE + "')  class='btn btn-icon waves-effect waves-light btn-primary btn-xs m-b-5'><em class='zmdi zmdi-attachment-alt'></em></button> ";
+                    },
+                    'orderable': false,
+                    "className": "actions",
+                    'width': '80px'
+                }
+                ],
+                "processing": true,
+                "language": {
+                    "url": "../assets/plugins/datatables/Spanish.json",
+                },
+                "order": [[1, 'asc']],
+            });
+        });
+
+        function ActualizarDetalle() {
+            datatable.ajax.reload();
+        }
+
+        function Redirect(url) {
+            window.location.href = url;
+        }
+    </script>
+
+}

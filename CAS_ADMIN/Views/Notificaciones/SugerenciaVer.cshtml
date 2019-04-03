@@ -1,0 +1,92 @@
+﻿@model Model.Services.Admin.Sugerencia
+@{
+    Layout = null;
+}
+
+<script>
+    function ActualizarDetalle() {
+        console.log("ok");
+        @*$.ajax({
+            type: "POST",
+            url: '@Url.Action("Detalle", "Paralelo")',
+            data: {},
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (response) {
+                $('#myPartialViewDiv').html(response);
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });*@
+    }
+</script>
+<div class="panel-heading">
+    <button type="button" class="close m-t-5" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 class="panel-title">Mensaje</h3>
+</div>
+<div class="panel-body">
+    <div class="row">
+        <div class="col-sm-12">
+
+            @if (Model.Estudiante != null)
+            {
+                using (Html.BeginForm("SugerenciaVer", "Notificaciones", FormMethod.Post, new { onsubmit = "return SubmitForm(this,'" + @Url.Action("SugerenciaVer", "Notificaciones", new { id = string.Empty }) + "')", @class = "form-horizontal" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.Notificacion.ID_NOTIFICACION)
+                    <dl class="dl-horizontal">
+                        <dt>Nº Documento</dt>
+                        <dd>@Model.Estudiante.ID_ESTUDIANTE</dd>
+
+                        <dt>Apellidos</dt>
+                        <dd>@Model.Estudiante.APELLIDO_PATERNO_ESTUDIANTE  @Model.Estudiante.APELLIDO_MATERNO_ESTUDIANTE </dd>
+
+                        <dt>Nombres</dt>
+                        <dd>@Model.Estudiante.PRIMER_NOMBRE_ESTUDIANTE @Model.Estudiante.SEGUNDO_NOMBRE_ESTUDIANTE</dd>
+
+                        <dt>Teléfono</dt>
+                        <dd>@Model.Estudiante.TELEF_ESTUDIANTE</dd>
+
+                        <dt>Celular</dt>
+                        <dd>@Model.Estudiante.CEL_ESTUDIANTE</dd>
+
+                        <dt>Correo</dt>
+                        <dd><a href="mailto:'@Model.Estudiante.CORREO_ESTUDIANTE'">@Model.Estudiante.CORREO_ESTUDIANTE</a></dd>
+
+                        @if (Model.Notificacion != null)
+                        {
+                            <dt>Mensaje</dt>
+                            <dd>@Html.Raw(Model.Notificacion.TXT_NOTIFICACION)</dd>
+                        }
+                        <dt><br />Respuesta</dt>
+                        <dd>
+                            <br />
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.RESPUESTA, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.RESPUESTA, "", new { @class = "text-custom" })
+                                </div>
+                            </div>
+                        </dd>
+                        <dt></dt>
+                        <dd>
+                            <div class="form-group">
+                                <br />
+                                <div class="col-md-9">
+                                    <button type="submit" class="btn btn-custom waves-effect waves-light m-b-5 btn-loding" data-loading-text="<span class='btn-label'><i class='fa fa-circle-o-notch fa-spin'></i></span> Guardar<span class='md-ripple'></span>"><span class="btn-label"><i class="fa fa-send"></i></span> Enviar<span class="md-ripple"></span></button>
+                                </div>
+                            </div>
+                        </dd>
+
+                    </dl>
+                }
+            }
+
+        </div>
+    </div>
+
+</div>

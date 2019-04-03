@@ -1,0 +1,64 @@
+﻿@model List<Model.Services.Admin.Paralelo>
+<script>
+    function EliminarDetalle(ID_PARALELO) {
+        if (confirm("¿Está seguro que desea eliminar este registro?")) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("EliminarParalelo", "Paralelo")',
+                content: "application/json; charset=utf-8",
+                dataType: "json",
+                data: { ID_PARALELO: ID_PARALELO },
+                success: function (response) {
+                    if (response.success) {
+                        ActualizarDetalle();
+                        toastr.success('Correcto', response.message, { timeOut: 5000 })
+                    }
+                    else {
+                        toastr.error(response.message, { timeOut: 5000 })
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    //alert('Error!!');
+                }
+            });
+        }
+    }
+</script>
+<table class="table table-hover table-striped m-0">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Descripción</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            if (Model.Count != 0)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ID_PARALELO</td>
+                        <td>@item.DESCRIPCION_PARALELO</td>
+                        <td style="width:80px">
+                            <button title="Editar" onclick="ModalForm('@Url.Action("Index", "Paralelo",new { id=item.ID_PARALELO})')" class="btn btn-icon waves-effect waves-light btn-custom btn-xs m-b-5"> <i class="fa fa-pencil"></i> </button>
+                            <button title="Eliminar" onclick="EliminarDetalle('@item.ID_PARALELO')" class="btn btn-icon waves-effect waves-light btn-custom btn-xs m-b-5"> <i class="fa fa-trash-o"></i> </button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3">
+                        <p class="text-muted text-center">
+                            Ningún dato disponible en esta tabla
+                        </p>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

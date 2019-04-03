@@ -1,0 +1,67 @@
+﻿@model List<Model.Services.Docente.RepositorioDocente>
+@{
+    Layout = null;
+    int contador = 0;
+}
+
+
+@if (Model != null)
+{
+
+    foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel-group" id="accordion_@item.ID_CARRERA" role="tablist" aria-multiselectable="true">
+                    @foreach (var semana in item.Semana)
+                        {
+                            if (semana.Carpeta.Count > 0)
+                            {
+                        <div class="panel panel-default bx-shadow-none">
+                            <div class="panel-heading" role="tab" id="heading_@semana.ID_CRONOGRAMA">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion_@item.ID_CARRERA" href="#collapse_@semana.SEMANA_CRONOGRAMA" aria-expanded="false" aria-controls="collapse_@semana.SEMANA_CRONOGRAMA" class="collapsed">
+                                        @semana.DESCRIPCION_SEMANA - @semana.TEMA
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse_@semana.SEMANA_CRONOGRAMA" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_@semana.SEMANA_CRONOGRAMA" aria-expanded="false">
+                                <div class="panel-body">
+                                    @foreach (var carpeta in semana.Carpeta)
+                                            {
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" href="#carpeta_@contador"><i class="indicator fa fa-caret-right" aria-hidden="true"></i> @carpeta.DESCRIPCION_CARPETA</a>
+                                                </h4>
+                                            </div>
+                                            <div id="carpeta_@contador" class="panel-collapse collapse">
+                                                @foreach (var adjunto in carpeta.Adjunto)
+                                                    {
+                                                    <ul class="list-group m-b-0 user-list">
+                                                        <li class="list-group-item">
+                                                            <a href="@adjunto.RUTA_ADJUNTO" class="user-list-item" target="_blank">
+                                                                <div class="avatar text-center">
+                                                                    <i class="@adjunto.ICONO_ADJUNTO text-custom"></i>
+                                                                </div>
+                                                                <div class="user-desc">
+                                                                    <span class="name">@adjunto.NOMBRE_ADJUNTO</span>
+                                                                    <span class="desc"> @adjunto.PESO_ADJUNTO</span>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+
+                                                    }
+                                            </div>
+                                                contador++;
+                                            }
+                                </div>
+                            </div>
+                        </div>
+                            }
+                        }
+                </div>
+            </div>
+        </div>
+    }
+}

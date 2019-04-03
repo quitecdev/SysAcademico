@@ -1,0 +1,83 @@
+﻿@model Model.Services.Admin.Docente
+@{
+    Layout = null;
+}
+
+<script>
+
+</script>
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Editar Docente</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    @using (Html.BeginForm("EditarDocente", "Docente", FormMethod.Post, new { onsubmit = "return SubmitForm(this,'" + @Url.Action("EditarDocente", "Docente", new { id = string.Empty }) + "')", @class = "form-horizontal" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.IMG_DOCENTE)
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ID_DOCENTE, new { @class = "col-md-3 control-label", @readonly = "readonly" })
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.ID_DOCENTE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ID_DOCENTE, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.APELLIDO_PATERNO_DOCENTE, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.APELLIDO_PATERNO_DOCENTE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.APELLIDO_PATERNO_DOCENTE, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.APELLIDO_MATERNO_DOCENTE, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.APELLIDO_MATERNO_DOCENTE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.APELLIDO_MATERNO_DOCENTE, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PRIMER_NOMBRE_DOCENTE, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.PRIMER_NOMBRE_DOCENTE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.PRIMER_NOMBRE_DOCENTE, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SEGUNDO_NOMBRE_DOCENTE, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.SEGUNDO_NOMBRE_DOCENTE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SEGUNDO_NOMBRE_DOCENTE, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CEL_DOCENTE, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.CEL_DOCENTE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CEL_DOCENTE, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CORREO_DOCENTE, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.CORREO_DOCENTE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CORREO_DOCENTE, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-9">
+                                <button type="submit" class="btn btn-custom waves-effect waves-light m-b-5 btn-loding" data-loading-text="<span class='btn-label'><i class='fa fa-circle-o-notch fa-spin'></i></span> Guardar<span class='md-ripple'></span>"><span class="btn-label"><i class="fa fa-save"></i></span> Guardar<span class="md-ripple"></span></button>
+                            </div>
+                        </div>
+                    }
+                </div><!-- end col -->
+            </div>
+        </div>
+    </div>
+</div>

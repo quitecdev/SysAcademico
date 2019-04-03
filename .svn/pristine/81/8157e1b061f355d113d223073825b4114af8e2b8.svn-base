@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Model.Data;
+
+namespace Model.Services.Admin
+{
+    public class Sede
+    {
+        public int ID_SEDE { get; set; }
+        public Nullable<int> ID_UNIVERSIDAD { get; set; }
+        public string DESCRIPCION_UNIVERSIDAD { get; set; }
+        public string COD_SEDE { get; set; }
+
+        public List<Sede> ObtenerSede()
+        {
+            List<Sede> sede = new List<Sede>();
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    sede = ctx.CAS_SEDE
+                           .Select(x => new Sede {
+                               ID_SEDE = x.ID_SEDE,
+                               ID_UNIVERSIDAD = x.ID_UNIVERSIDAD,
+                               DESCRIPCION_UNIVERSIDAD = x.DESCRIPCION_UNIVERSIDAD,
+                               COD_SEDE = x.COD_SEDE
+                           }).ToList();
+                }
+                return sede;
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return sede;
+            }
+        }
+    }
+}

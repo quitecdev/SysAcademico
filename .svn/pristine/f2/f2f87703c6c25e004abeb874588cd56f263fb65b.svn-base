@@ -1,0 +1,118 @@
+﻿@model Model.Services.Admin.Inscipcion
+@{
+    ViewBag.Title = "Paso 2 : Datos Carrera";
+}
+
+<style>
+    .detalle td {
+        background: #fff;
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">@ViewBag.Title</h4>
+    </div>
+</div>
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="m-t-25"></div>
+
+            @Html.HiddenFor(m => m.ID_INSCRIP)
+
+            @if (Model.ESTADO_INSCRIPCION_FECHA)
+            {
+                <button type="button" onclick="ModalForm('@Url.Action("AgregarCarrera", "Inscripciones", new { id = Model.ID_INSCRIP })')" class="btn btn-custom waves-effect waves-light m-b-5"> <i class="fa fa-plus-circle m-r-5"></i> <span>Añadir</span> </button>
+            }
+
+            <div class="m-t-25"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            @*<div class="card-box">*@
+            <div id="myPartialViewDiv">
+
+                @if (Model.DetalleCarrera != null)
+                {
+                    Html.RenderPartial("_DetalleCarrera", Model.DetalleCarrera);
+                }
+
+            </div>
+            <div class="m-t-25"></div>
+            <div class="m-t-25"></div>
+            <div class="row">
+                <div class="form-group m-b-0">
+                    <div class="col-sm-12">
+                        <button id="btn_anterior" onclick="Redirect('@Url.Action("DatosPersonales", "Inscripciones", new { id = Model.ID_INSCRIP })')" class="btn btn-custom waves-effect waves-light m-b-5 btn-loding" data-loading-text="<span class='btn-label'><i class='fa fa-circle-o-notch fa-spin'></i></span> Guardar<span class='md-ripple'></span>"><span class="btn-label"><i class="zmdi zmdi-arrow-left"></i></span> Anterior<span class="md-ripple"></span></button>
+
+                    </div>
+                </div>
+            </div>
+            @*</div>*@
+        </div>
+    </div>
+}
+
+
+
+    @* MODAL *@
+    <div class="modal fade modal-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+
+    </div><!-- /.modal -->
+
+
+    @section scripts
+{
+        <script>
+
+            function ActualizarDetalle() {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("DetalleCarrera", "Inscripciones")',
+                    data: '{ID_INSCRIP: "' + $("#txt_inscripId").val() + '" }',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                        $('#myPartialViewDiv').html(response);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            }
+            //$('#btn_anterior').click(function () {
+            //    window.location.href = 'the_link_to_go_to.html';
+            //})
+            function Redirect(url) {
+                window.location.href = url;
+            }
+
+            function ActualizarDetalle() {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("DetalleCarrera", "Inscripciones")',
+                    data: '{ID_INSCRIP: "' + $("#ID_INSCRIP").val() + '" }',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                        $('#myPartialViewDiv').html(response);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            }
+
+        </script>
+
+    }

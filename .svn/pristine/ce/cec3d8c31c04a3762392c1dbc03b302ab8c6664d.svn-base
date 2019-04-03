@@ -1,0 +1,96 @@
+﻿@model Model.Services.Docente.HorarioDocente
+@{
+    Layout = null;
+}
+
+<style>
+    th {
+        background: #8b1716;
+        color: #fff;
+        padding: 20px !important;
+    }
+
+    td {
+        padding: 20px !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">@ViewBag.Title</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box table-responsive">
+            <div class="row">
+                @if (Model != null)
+                {
+                    <div id="dataexample2">
+                        <div class="col-md-12">
+                            <table class="table table-bordered m-0">
+                                <thead>
+                                    <tr>
+                                        <th>HORIA/DIA</th>
+                                        <th>Lunes</th>
+                                        <th>Martes</th>
+                                        <th>Miércoles</th>
+                                        <th>Jueves</th>
+                                        <th>Viernes</th>
+                                        <th>Sábado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Horario)
+                                    {
+                                        <tr>
+                                            <th scope="row">@item.HORIA_DIA</th>
+                                            <td>@item.LUNES</td>
+                                            <td>@item.MARTES</td>
+                                            <td>@item.MIERCOLES</td>
+                                            <td>@item.JUEVES</td>
+                                            <td>@item.VIERNES</td>
+                                            <td>@item.SABADO</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                            <div class="m-t-25"></div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="m-t-25"></div>
+                            <table class="table table-hover m-0 table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th>Carrera / Código</th>
+                                        <th>Materia / Código</th>
+                                        <th>Sede / Código</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.CarreraMateria)
+                                    {
+                                        <tr>
+                                            <td>@item.DESCRIPCION_CARRERA - @item.COD_CARRERA</td>
+                                            <td>@item.DESCRIPCION_MATERIA - @item.COD_MATERIA</td>
+                                            <td>@item.DESCRIPCION_UNIVERSIDAD - @item.COD_SEDE</td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-danger">
+                        <strong>Oh snap!</strong> Estimado Docente al momento no se encuentra asignado a una carrera, pongase en contacto con el director de carrera.
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

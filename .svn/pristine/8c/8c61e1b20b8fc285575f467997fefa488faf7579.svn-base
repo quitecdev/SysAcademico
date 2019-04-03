@@ -1,0 +1,117 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Model.Services.Admin;
+
+namespace CAS_ADMIN.Controllers
+{
+    [Authorize]
+    public class EstudianteController : Controller
+    {
+        Estudiante _estudiante = new Estudiante();
+        InscripcionDetallleCarrera detalle = new InscripcionDetallleCarrera();
+        InscripcionDetalle _inscripcionDetalle = new InscripcionDetalle();
+        #region Estudiantes
+        // GET: Estudiante
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public JsonResult getTableEstudiante()
+        {
+            try
+            {
+                return Json(new { data = _estudiante.ObtenerEstudiantes() }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return Json(new { success = false, message = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        #endregion
+
+        #region EditarEstudiante
+        public ActionResult EditarEstudiante(string id)
+        {
+            return View(_estudiante.ObtenerEstudiante(id));
+        }
+        [HttpPost]
+        public ActionResult EditarEstudiante(Estudiante estudiante)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    //_docente.GuardarDocente(docente);
+                    return Json(new { success = true, message = "Docente actualizado exitosamente" }, JsonRequestBehavior.AllowGet);
+                }
+                return View(estudiante);
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return Json(new { success = false, message = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        #endregion
+
+        #region DatosCarrera
+        public ActionResult DatosCarrera(string id)
+        {
+            TempData["ID_INSCRIP"] = id;
+            return View(detalle.ObtenerDetalle(id));
+        }
+        #endregion
+
+        #region DetalleCarrera
+        [Authorize]
+        [HttpPost]
+        public ActionResult DetalleCarrera(string ID_INSCRIP)
+        {
+            return PartialView("_DetalleCarrera", detalle.ObtenerDetalle(ID_INSCRIP));
+        }
+
+        #endregion
+
+        #region AgregarCarrera
+        [HttpGet]
+        public ActionResult AgregarCarrera(string id = null)
+        {
+            try
+            {
+                _inscripcionDetalle.ID_INSCRIP = id;
+                return View(_inscripcionDetalle);
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return View();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AgregarCarrera(InscripcionDetalle detalle)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _inscripcionDetalle.GuardarDetalle(detalle);
+                    return Json(new { success = true, message = "Carrera añadida exitosamente" }, JsonRequestBehavior.AllowGet);
+                }
+                return View(detalle);
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return Json(new { success = false, message = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        #endregion
+    }
+}

@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Model.Data;
+using System.Data.Entity.Core.Objects;
+
+namespace Model.Services.Admin
+{
+    public class Intervalo
+    {
+        public int ID_INTERVALO { get; set; }
+        public Nullable<int> ID_TIPO_INTERVALO { get; set; }
+        public Nullable<int> ID_HORARIO_TIPO { get; set; }
+        public Nullable<int> ID_SEDE { get; set; }
+        public string DESCRIPCION_INTERVALO { get; set; }
+
+        public List<Intervalo> ObtenerIntervaloSedeCarera(int ID_SEDE, int ID_CARRERA)
+        {
+            List<Intervalo> carrera = new List<Intervalo>();
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    ObjectParameter outID = new ObjectParameter("outID", typeof(int));
+                    ObjectParameter outMensaje = new ObjectParameter("outMensaje", typeof(string));
+
+                    carrera = ctx.SP_ObtenerIntervaloSedeCarrera(ID_CARRERA,ID_SEDE,  outMensaje, outID)
+                            .Select(x => new Intervalo
+                            {
+                                ID_INTERVALO = x.ID_INTERVALO,
+                                ID_TIPO_INTERVALO = x.ID_TIPO_INTERVALO,
+                                ID_HORARIO_TIPO = x.ID_HORARIO_TIPO,
+                                ID_SEDE = x.ID_SEDE,
+                                DESCRIPCION_INTERVALO = x.DESCRIPCION_INTERVALO
+                            }).ToList();
+                }
+                return carrera;
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return carrera;
+            }
+        }
+    }
+}

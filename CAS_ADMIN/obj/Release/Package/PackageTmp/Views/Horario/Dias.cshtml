@@ -1,0 +1,72 @@
+﻿@model Model.Services.Admin.Horario
+@{
+    Layout = null;
+}
+
+
+<script>
+    $(document).ready(function () {
+
+        ActualizarDetalle();
+    });
+
+
+    function ActualizarDetalle() {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("DetalleHorarioDia", "Horario")',
+                data: JSON.stringify({ ID_INTERVALO_DETALLE: @ViewBag.id_intervalo_detalle }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (response) {
+                    $('#myPartialViewDiv').html(response);
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+    }
+
+</script>
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Asignar Días</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    @using (Html.BeginForm("Dias", "Horario", FormMethod.Post, new { onsubmit = "return SubmitForm(this,'" + @Url.Action("Dias", "Horario", new { id = string.Empty }) + "')", @class = "form-horizontal" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.ID_HORARIO)
+                        @Html.HiddenFor(model => model.ID_INTERVALO_DETALLE)
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Días</label>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(m => m.ID_DIA, new SelectList(new Model.Services.Admin.Horario().ObtenerDias(), "ID_DIAS", "DESCRIPCION_DIAS"), " ", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_DIA, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-9">
+                                <button type="submit" class="btn btn-custom waves-effect waves-light m-b-5 btn-loding" data-loading-text="<span class='btn-label'><i class='fa fa-circle-o-notch fa-spin'></i></span> Guardar<span class='md-ripple'></span>"><span class="btn-label"><i class="fa fa-save"></i></span> Guardar<span class="md-ripple"></span></button>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="col-lg-12">
+                    <div id="myPartialViewDiv">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
