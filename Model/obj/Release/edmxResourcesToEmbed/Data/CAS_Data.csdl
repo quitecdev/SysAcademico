@@ -930,6 +930,15 @@
       <Parameter Name="outMensaje" Mode="InOut" Type="String" />
       <Parameter Name="outID" Mode="InOut" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="CAS_ENCUESTA_OPCION" EntityType="CAS_DataModel.CAS_ENCUESTA_OPCION" />
+    <EntitySet Name="CAS_OBSERVACION" EntityType="CAS_DataModel.CAS_OBSERVACION" />
+    <EntitySet Name="CAS_EVENTO" EntityType="CAS_DataModel.CAS_EVENTO" />
+    <EntitySet Name="CAS_EVENTO_HORA" EntityType="CAS_DataModel.CAS_EVENTO_HORA" />
+    <EntitySet Name="CAS_EVENTO_REGISTRO" EntityType="CAS_DataModel.CAS_EVENTO_REGISTRO" />
+    <FunctionImport Name="SP_NotificadorEvento" ReturnType="Collection(CAS_DataModel.NotificadorEvento_Result)">
+      <Parameter Name="ID_EVENTO_REGISTRO_DETALLE" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="CAS_EVENTO_REGISTRO_DETALLE" EntityType="CAS_DataModel.CAS_EVENTO_REGISTRO_DETALLE" />
   </EntityContainer>
   <ComplexType Name="DocenteObtenerCarreraMateria_Result">
     <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
@@ -1471,4 +1480,75 @@
     <Property Type="String" Name="FECHA" Nullable="true" MaxLength="112" />
     <Property Type="DateTime" Name="FECHA_CRONOGRAMA" Nullable="true" />
   </ComplexType>
+  <EntityType Name="CAS_ENCUESTA_OPCION">
+    <Key>
+      <PropertyRef Name="ID_ENCUESTA_OPCION" />
+    </Key>
+    <Property Name="ID_ENCUESTA_OPCION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_ENCUESTA_PREGUNTA" Type="Int32" />
+    <Property Name="DESCRIPCION_OPCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ID_CALIDAD" Type="Int32" />
+    <Property Name="DESCRIPCION_CALIDAD" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CAS_OBSERVACION">
+    <Key>
+      <PropertyRef Name="ID_OBSERVACION" />
+    </Key>
+    <Property Name="ID_OBSERVACION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TEXTO_OBSERVACION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CAS_EVENTO">
+    <Key>
+      <PropertyRef Name="ID_EVENTO" />
+    </Key>
+    <Property Name="ID_EVENTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_SEDE" Type="Int32" />
+    <Property Name="FECHA_EVENTO" Type="DateTime" Precision="0" />
+    <Property Name="EVENTO_DESCRIPCIÓN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ID_HORA" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CAS_EVENTO_HORA">
+    <Key>
+      <PropertyRef Name="ID_EVENTO_HORA" />
+    </Key>
+    <Property Name="ID_EVENTO_HORA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EVENTO_HORA" Type="Time" Precision="7" />
+  </EntityType>
+  <EntityType Name="CAS_EVENTO_REGISTRO">
+    <Key>
+      <PropertyRef Name="EVENTO_REGISTRO_CORREO" />
+    </Key>
+    <Property Name="EVENTO_REGISTRO_CORREO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EVENTO_REGISTRO_NOMBRES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EVENTO_REGISTRO_APELLIDOS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EVENTO_REGISTRO_MOVIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="NotificadorEvento_Result">
+    <Property Type="Int32" Name="MSG_ID" Nullable="false" />
+    <Property Type="Int32" Name="MSG_CODIGO" Nullable="true" />
+    <Property Type="Int32" Name="BDJ_ID" Nullable="true" />
+    <Property Type="String" Name="MSG_DESTINATARIO" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="MSG_REMITENTE" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="MSG_ASUNTO" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="MSG_TEXTO" Nullable="true" />
+    <Property Type="String" Name="MSG_FORMATO" Nullable="true" MaxLength="10" />
+    <Property Type="DateTime" Name="MSG_FECHA_CREACION" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="MSG_FECHA_RECIBIDO" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="MSG_FECHA_ENVIADO" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="MSG_FECHA_CONFIRMADO" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="MSG_CANAL" Nullable="true" />
+    <Property Type="String" Name="USR_CODIGO" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="COD_ACCESO" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="CAS_EVENTO_REGISTRO_DETALLE">
+    <Key>
+      <PropertyRef Name="ID_EVENTO_REGISTRO_DETALLE" />
+    </Key>
+    <Property Name="ID_EVENTO_REGISTRO_DETALLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EVENTO_REGISTRO_CORREO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ID_EVENTO" Type="Int32" />
+    <Property Name="IMAGE_CODE_BAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CODE_BAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="Boolean" />
+  </EntityType>
 </Schema>

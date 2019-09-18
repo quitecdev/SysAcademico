@@ -14,7 +14,7 @@
         <EntityTypeShape EntityType="CAS_DataModel.CAS_CARRERA_REQUISITOS" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CAS_DataModel.CAS_CRONOGRAMA" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CAS_DataModel.CAS_CRONOGRAMA_ADJUNTO" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CAS_DataModel.CAS_CRONOGRAMA_DETALLE" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_CRONOGRAMA_DETALLE" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="false" />
         <EntityTypeShape EntityType="CAS_DataModel.CAS_DIAS" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CAS_DataModel.CAS_DOCENTE" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CAS_DataModel.CAS_DOCENTE_NOTAS" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
@@ -62,6 +62,12 @@
         <EntityTypeShape EntityType="CAS_DataModel.CAS_ENCUESTA_PREGUNTAS" Width="1.875" PointX="2.75" PointY="20.75" />
         <EntityTypeShape EntityType="CAS_DataModel.CAS_RESPUESTA_ENCUESTA_DOCENTE" Width="1.5" PointX="21.375" PointY="0.75" />
         <EntityTypeShape EntityType="CAS_DataModel.CAS_ENCUESTA" Width="1.5" PointX="21.375" PointY="4.75" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_ENCUESTA_OPCION" Width="1.5" PointX="21.375" PointY="7.75" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_OBSERVACION" Width="1.5" PointX="21.375" PointY="10.75" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_EVENTO" Width="1.5" PointX="21.375" PointY="13.75" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_EVENTO_HORA" Width="1.5" PointX="21.375" PointY="16.75" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_EVENTO_REGISTRO" Width="1.5" PointX="21.375" PointY="19.75" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_EVENTO_REGISTRO_DETALLE" Width="1.5" PointX="5.375" PointY="22.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

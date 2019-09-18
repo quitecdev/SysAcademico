@@ -63,3 +63,10 @@ D:\RepositorioLocalCodigo\SysAcademico\CAS_DOCENTE\bin\Microsoft.Practices.Enter
 D:\RepositorioLocalCodigo\SysAcademico\CAS_DOCENTE\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
 D:\RepositorioLocalCodigo\SysAcademico\CAS_DOCENTE\bin\Microsoft.Practices.ObjectBuilder.dll
 D:\RepositorioLocalCodigo\SysAcademico\CAS_DOCENTE\bin\TRACKAuditoria.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_DOCENTE\bin\es\System.Web.Helpers.resources.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_DOCENTE\bin\es\System.Web.Mvc.resources.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_DOCENTE\bin\es\System.Web.Optimization.resources.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_DOCENTE\bin\es\System.Web.Razor.resources.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_DOCENTE\bin\es\System.Web.WebPages.resources.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_DOCENTE\bin\es\System.Web.WebPages.Deployment.resources.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_DOCENTE\bin\es\System.Web.WebPages.Razor.resources.dll

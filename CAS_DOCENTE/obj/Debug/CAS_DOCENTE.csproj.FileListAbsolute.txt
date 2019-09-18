@@ -135,3 +135,5 @@ D:\RepositorioLocalCodigo\SysAcademico\CAS_DOCENTE\bin\es\System.Web.Razor.resou
 D:\RepositorioLocalCodigo\SysAcademico\CAS_DOCENTE\bin\es\System.Web.WebPages.resources.dll
 D:\RepositorioLocalCodigo\SysAcademico\CAS_DOCENTE\bin\es\System.Web.WebPages.Deployment.resources.dll
 D:\RepositorioLocalCodigo\SysAcademico\CAS_DOCENTE\bin\es\System.Web.WebPages.Razor.resources.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_DOCENTE\bin\AfsEncripta.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_DOCENTE\bin\BarcodeLib.dll

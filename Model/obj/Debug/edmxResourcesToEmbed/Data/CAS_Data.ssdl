@@ -175,6 +175,16 @@
     <Property Name="DESCRIPCION_ENCUESTA" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ID_TIPO_INTERVALO" Type="int" />
   </EntityType>
+  <EntityType Name="CAS_ENCUESTA_OPCION">
+    <Key>
+      <PropertyRef Name="ID_ENCUESTA_OPCION" />
+    </Key>
+    <Property Name="ID_ENCUESTA_OPCION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_ENCUESTA_PREGUNTA" Type="int" />
+    <Property Name="DESCRIPCION_OPCION" Type="varchar" MaxLength="500" />
+    <Property Name="ID_CALIDAD" Type="int" />
+    <Property Name="DESCRIPCION_CALIDAD" Type="varchar" MaxLength="250" />
+  </EntityType>
   <EntityType Name="CAS_ENCUESTA_PREGUNTAS">
     <Key>
       <PropertyRef Name="ID_ENCUESTA_PREGUNTA" />
@@ -243,6 +253,43 @@
     <Property Name="VALOR_NOTA" Type="decimal" Precision="18" Scale="4" />
     <Property Name="ID_PERIODO" Type="int" />
     <Property Name="ID_SEDE" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_EVENTO">
+    <Key>
+      <PropertyRef Name="ID_EVENTO" />
+    </Key>
+    <Property Name="ID_EVENTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_SEDE" Type="int" />
+    <Property Name="FECHA_EVENTO" Type="date" />
+    <Property Name="EVENTO_DESCRIPCIÓN" Type="varchar" MaxLength="50" />
+    <Property Name="ID_HORA" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="CAS_EVENTO_HORA">
+    <Key>
+      <PropertyRef Name="ID_EVENTO_HORA" />
+    </Key>
+    <Property Name="ID_EVENTO_HORA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EVENTO_HORA" Type="time" Precision="7" />
+  </EntityType>
+  <EntityType Name="CAS_EVENTO_REGISTRO">
+    <Key>
+      <PropertyRef Name="EVENTO_REGISTRO_CORREO" />
+    </Key>
+    <Property Name="EVENTO_REGISTRO_CORREO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EVENTO_REGISTRO_NOMBRES" Type="varchar" MaxLength="50" />
+    <Property Name="EVENTO_REGISTRO_APELLIDOS" Type="varchar" MaxLength="50" />
+    <Property Name="EVENTO_REGISTRO_MOVIL" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CAS_EVENTO_REGISTRO_DETALLE">
+    <Key>
+      <PropertyRef Name="ID_EVENTO_REGISTRO_DETALLE" />
+    </Key>
+    <Property Name="ID_EVENTO_REGISTRO_DETALLE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EVENTO_REGISTRO_CORREO" Type="varchar" MaxLength="50" />
+    <Property Name="ID_EVENTO" Type="int" />
+    <Property Name="IMAGE_CODE_BAR" Type="varchar(max)" />
+    <Property Name="CODE_BAR" Type="varchar(max)" />
+    <Property Name="ESTADO" Type="bit" />
   </EntityType>
   <EntityType Name="CAS_GENERO">
     <Key>
@@ -421,6 +468,13 @@
     <Property Name="ASUNTO_NOTIFICACION" Type="varchar" MaxLength="500" />
     <Property Name="ID_PERIODO" Type="int" />
     <Property Name="PRIORIDAD_NOTIFICACION" Type="int" />
+  </EntityType>
+  <EntityType Name="CAS_OBSERVACION">
+    <Key>
+      <PropertyRef Name="ID_OBSERVACION" />
+    </Key>
+    <Property Name="ID_OBSERVACION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TEXTO_OBSERVACION" Type="varchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="CAS_PARALELO">
     <Key>
@@ -720,6 +774,9 @@
   <Function Name="NotificadorEnviaClave" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID_USUARIO" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="NotificadorEvento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_EVENTO_REGISTRO_DETALLE" Type="int" Mode="In" />
+  </Function>
   <Function Name="sp_GenerarDetalleCronograma_Intensivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="FECHA_INICIO" Type="datetime" Mode="In" />
     <Parameter Name="FECHA_FIN" Type="datetime" Mode="In" />
@@ -739,6 +796,11 @@
   <Function Name="DocenteHorarioDiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
     <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
     <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="DocenteHorarioTarea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
+    <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
     <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
     <Parameter Name="outID" Type="int" Mode="InOut" />
   </Function>
@@ -971,12 +1033,17 @@
     <EntitySet Name="CAS_DOCENTE_MATERIA_PARALELO" EntityType="Self.CAS_DOCENTE_MATERIA_PARALELO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAS_DOCENTE_NOTAS" EntityType="Self.CAS_DOCENTE_NOTAS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAS_ENCUESTA" EntityType="Self.CAS_ENCUESTA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_ENCUESTA_OPCION" EntityType="Self.CAS_ENCUESTA_OPCION" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAS_ENCUESTA_PREGUNTAS" EntityType="Self.CAS_ENCUESTA_PREGUNTAS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAS_ESTADO_CIVIL" EntityType="Self.CAS_ESTADO_CIVIL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAS_ESTUDIANTE" EntityType="Self.CAS_ESTUDIANTE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAS_ESTUDIANTE_ASISTENCIA" EntityType="Self.CAS_ESTUDIANTE_ASISTENCIA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAS_ESTUDIANTE_DETALLE" EntityType="Self.CAS_ESTUDIANTE_DETALLE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAS_ESTUDIANTE_NOTA" EntityType="Self.CAS_ESTUDIANTE_NOTA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_EVENTO" EntityType="Self.CAS_EVENTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_EVENTO_HORA" EntityType="Self.CAS_EVENTO_HORA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_EVENTO_REGISTRO" EntityType="Self.CAS_EVENTO_REGISTRO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_EVENTO_REGISTRO_DETALLE" EntityType="Self.CAS_EVENTO_REGISTRO_DETALLE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAS_GENERO" EntityType="Self.CAS_GENERO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAS_GRUPO" EntityType="Self.CAS_GRUPO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAS_HORARIO" EntityType="Self.CAS_HORARIO" Schema="dbo" store:Type="Tables" />
@@ -994,6 +1061,7 @@
     <EntitySet Name="CAS_NOTA_DETALLE" EntityType="Self.CAS_NOTA_DETALLE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAS_NOTA_PONDERACION" EntityType="Self.CAS_NOTA_PONDERACION" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAS_NOTIFICACIONES" EntityType="Self.CAS_NOTIFICACIONES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_OBSERVACION" EntityType="Self.CAS_OBSERVACION" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAS_PARALELO" EntityType="Self.CAS_PARALELO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAS_PARALELO_MATERIA" EntityType="Self.CAS_PARALELO_MATERIA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAS_PERIODO" EntityType="Self.CAS_PERIODO" Schema="dbo" store:Type="Tables" />

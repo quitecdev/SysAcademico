@@ -48,5 +48,23 @@ namespace Model.Services.Estudiante
                 ServicesTrackError.RegistrarError(ex);
             }
         }
+
+        public void GuardarObservacion(string texto)
+        {
+            try
+            {
+                CAS_OBSERVACION observacion = new CAS_OBSERVACION();
+                using (var ctx = new CAS_DataEntities())
+                {
+                    observacion.TEXTO_OBSERVACION = texto;
+                    ctx.Entry(observacion).State = EntityState.Added;
+                    ctx.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+            }
+        }
     }
 }

@@ -1,0 +1,240 @@
+﻿@model Model.Services.Admin.EventoRegistro
+@{
+    ViewBag.Title = "Clase Magistral - Optimización de Productos";
+}
+
+<div class="parallax inner-head" style="background-position: 50% 44px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <i class="glyphicon glyphicon-pencil"></i>
+                <h4>Clase Magistral - Optimización de Productos</h4>
+                <ol class="breadcrumb">
+                    <li><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+                    <li class="active">Clase Magistral - Optimización de Productos</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="contain-wrapp padding-bottom-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-7">
+                @using (Html.BeginForm())
+                {
+                    <div class="row wrap-form">
+                        <h5>Datos Personales</h5>
+                        <div class="col-md-12">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.EVENTO_REGISTRO_APELLIDOS)
+                                @Html.EditorFor(model => model.EVENTO_REGISTRO_APELLIDOS, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EVENTO_REGISTRO_APELLIDOS, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.EVENTO_REGISTRO_NOMBRES)
+                                @Html.EditorFor(model => model.EVENTO_REGISTRO_NOMBRES, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EVENTO_REGISTRO_NOMBRES, "", new { @class = "error" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.EVENTO_REGISTRO_CORREO)
+                                @Html.EditorFor(model => model.EVENTO_REGISTRO_CORREO, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EVENTO_REGISTRO_CORREO, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.EVENTO_REGISTRO_MOVIL)
+                                @Html.EditorFor(model => model.EVENTO_REGISTRO_MOVIL, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EVENTO_REGISTRO_MOVIL, "", new { @class = "error" })
+                            </div>
+                        </div>
+                        @*<h5>Elige tu campus más cercano</h5>
+                        <div class="col-md-12">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.ID_SEDE)
+                                @Html.DropDownListFor(m => m.ID_SEDE, new SelectList(new Model.Services.Admin.Sede().ObtenerSede(), "ID_SEDE", "DESCRIPCION_UNIVERSIDAD"), " ", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_SEDE, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.ID_EVENTO_HORA)
+                                @Html.DropDownListFor(m => m.ID_EVENTO_HORA, new SelectList(new Model.Services.Admin.EventoRegistro().ObtenerHora(), "ID_EVENTO_HORA", "EVENTO_HORA"), " ", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_EVENTO_HORA, "", new { @class = "error" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.FECHA_EVENTO)
+                                @Html.DropDownListFor(m => m.FECHA_EVENTO, new SelectList(string.Empty, "FECHA_EVENTO", "FECHA_EVENTO"), " ", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.FECHA_EVENTO, "", new { @class = "error" })
+                            </div>
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.ID_EVENTO)
+                                @Html.DropDownListFor(m => m.ID_EVENTO, new SelectList(string.Empty, "ID_EVENTO", "ID_EVENTO"), " ", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_EVENTO, "", new { @class = "error" })
+                            </div>
+                        </div>*@
+                        <div class="col-md-12">
+                            <div class="form-group col-md-12">
+                                <input type="submit" value="Registrarte" id="submit" class="btn-e btn-e-primary">
+                                <div class="status-progress"></div>
+                            </div>
+                        </div>
+
+                        @if (ViewBag.TheResult == true)
+                        {
+                            <div class="col-md-12">
+                                <div class="alert alert-danger">
+                                    <div class="alert-icon">
+                                        <i class="fa fa-check-square-o"></i>
+                                    </div>
+                                    <div class="alert-content">
+                                        <strong>Eroor !</strong>El correo electrónico ingresado ya fue registrado.
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+            <div class="col-md-4 col-sm-5">
+                <div class="contact-detail">
+                    <div class="contact-sparator"></div>
+                    <ul class="list-unstyled">
+                        <li>
+                            <h6><i class="fa fa-institution fa-1x fa-primary"></i> Campus Norte</h6>
+                            <dl>
+                                <dt><i class="fa fa-map-marker"></i> Dirección</dt>
+                                <dd>Isla Santa Fé N43-168 y Río Coca.</dd>
+                                <dt><i class="fa fa-phone"></i> Teléfono</dt>
+                                <dd>(593-2) 2468 620</dd>
+                                <dt><i class="fa fa-envelope"></i> E-mail</dt>
+                                <dd><a href="mailto:info@culinaryartschoolecuador.com">info@culinaryartschoolecuador.com</a></dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <h6><i class="fa fa-institution fa-1x fa-primary"></i> Campus Sur</h6>
+                            <dl>
+                                <dt><i class="fa fa-map-marker"></i> Dirección</dt>
+                                <dd>Centro Comercial Quicentro Sur, 3er piso (junto al banco Pichincha).</dd>
+                                <dt><i class="fa fa-phone"></i> Teléfono</dt>
+                                <dd>(593-2) 4000 281</dd>
+                                <dt><i class="fa fa-envelope"></i> E-mail</dt>
+                                <dd><a href="mailto:infosur@culinaryartschoolecuador.com">infosur@culinaryartschoolecuador.com</a></dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <h6><i class="fa fa-institution fa-1x fa-primary"></i> Campus Valle</h6>
+                            <dl>
+                                <dt><i class="fa fa-map-marker"></i> Dirección</dt>
+                                <dd>Alfredo Dávila, entre Montecristi y Calceta (tras el parque de San Rafael: Eduardo Kingman).</dd>
+                                <dt><i class="fa fa-phone"></i> Teléfono</dt>
+                                <dd>(593-2) 2861396 </dd>
+                                <dt><i class="fa fa-envelope"></i> E-mail</dt>
+                                <dd><a href="mailto:infovalle@culinaryartschoolecuador.com">infovalle@culinaryartschoolecuador.com</a></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            //Dropdownlist Sede
+            $("#ID_SEDE").change(function () {
+                $("#FECHA_EVENTO").empty();
+                $("#ID_EVENTO").empty();
+                if ($("#ID_EVENTO_HORA").val() != "") {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("getFecha", "Evento")', // we are calling json method
+                        dataType: 'json',
+                        data: { id_sede: $("#ID_SEDE").val(), id_hora: $("#ID_EVENTO_HORA").val() },
+                        success: function (states) {
+                            // states contains the JSON formatted list
+                            // of states passed from the controller
+                            $("#FECHA_EVENTO").append('<option value=""></option>');
+                            $.each(states, function (i, state) {
+                                $("#FECHA_EVENTO").append('<option value="' + state.Value + '">' +
+                                     state.Text + '</option>');
+                                // here we are adding option for States
+
+                            });
+                        },
+                        error: function (ex) {
+                            alert('Failed to retrieve states.' + ex);
+                        }
+                    });
+                }
+                return false;
+            })
+
+            //Dropdownlist Hora
+            $("#ID_EVENTO_HORA").change(function () {
+                $("#FECHA_EVENTO").empty();
+                $("#ID_EVENTO").empty();
+                if ($("#ID_SEDE").val() != "") {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("getFecha", "Evento")', // we are calling json method
+                        dataType: 'json',
+                        data: { id_sede: $("#ID_SEDE").val(), id_hora: $("#ID_EVENTO_HORA").val() },
+                        success: function (states) {
+                            // states contains the JSON formatted list
+                            // of states passed from the controller
+                            $("#FECHA_EVENTO").append('<option value=""></option>');
+                            $.each(states, function (i, state) {
+                                $("#FECHA_EVENTO").append('<option value="' + state.Value + '">' +
+                                     state.Text + '</option>');
+                                // here we are adding option for States
+
+                            });
+                        },
+                        error: function (ex) {
+                            alert('Failed to retrieve states.' + ex);
+                        }
+                    });
+                }
+                return false;
+            })
+
+
+            //Dropdownlist Fecha
+            $("#FECHA_EVENTO").change(function () {
+                $("#ID_EVENTO").empty();
+                if ($("#FECHA_EVENTO").val() != "") {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("getEvento", "Evento")', // we are calling json method
+                        dataType: 'json',
+                        data: { id_sede: $("#ID_SEDE").val(), id_hora: $("#ID_EVENTO_HORA").val(), fecha: $("#FECHA_EVENTO").val() },
+                        success: function (states) {
+                            // states contains the JSON formatted list
+                            // of states passed from the controller
+                            $("#ID_EVENTO").append('<option value=""></option>');
+                            $.each(states, function (i, state) {
+
+                                console.log(state.Value, state.Text);
+                                $("#ID_EVENTO").append('<option value="' + state.Value + '">' +
+                                     state.Text + '</option>');
+                                // here we are adding option for States
+
+                            });
+                        },
+                        error: function (ex) {
+                            alert('Failed to retrieve states.' + ex);
+                        }
+                    });
+                }
+                return false;
+            })
+
+
+        });
+    </script>
+}

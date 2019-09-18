@@ -33,3 +33,4 @@ D:\RepositorioLocalCodigo\SysAcademico\Model\bin\Debug\EntityFramework.xml
 D:\RepositorioLocalCodigo\SysAcademico\Model\bin\Debug\EntityFramework.SqlServer.xml
 D:\RepositorioLocalCodigo\SysAcademico\Model\obj\Debug\Model.dll
 D:\RepositorioLocalCodigo\SysAcademico\Model\obj\Debug\Model.pdb
+D:\RepositorioLocalCodigo\SysAcademico\Model\bin\Debug\BarcodeLib.dll

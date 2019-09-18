@@ -6,3 +6,4 @@ D:\RepositorioLocalCodigo\SysAcademico\SysAcademico\bin\Newtonsoft.Json.xml
 D:\RepositorioLocalCodigo\SysAcademico\SysAcademico\obj\Debug\SysAcademico.csprojResolveAssemblyReference.cache
 D:\RepositorioLocalCodigo\SysAcademico\SysAcademico\obj\Debug\SysAcademico.dll
 D:\RepositorioLocalCodigo\SysAcademico\SysAcademico\obj\Debug\SysAcademico.pdb
+D:\RepositorioLocalCodigo\SysAcademico\SysAcademico\bin\Microsoft.Web.Infrastructure.dll

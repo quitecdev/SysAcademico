@@ -1240,5 +1240,86 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="CAS_ENCUESTA_OPCION">
+      <EntityTypeMapping TypeName="CAS_DataModel.CAS_ENCUESTA_OPCION">
+        <MappingFragment StoreEntitySet="CAS_ENCUESTA_OPCION">
+          <ScalarProperty Name="DESCRIPCION_CALIDAD" ColumnName="DESCRIPCION_CALIDAD" />
+          <ScalarProperty Name="ID_CALIDAD" ColumnName="ID_CALIDAD" />
+          <ScalarProperty Name="DESCRIPCION_OPCION" ColumnName="DESCRIPCION_OPCION" />
+          <ScalarProperty Name="ID_ENCUESTA_PREGUNTA" ColumnName="ID_ENCUESTA_PREGUNTA" />
+          <ScalarProperty Name="ID_ENCUESTA_OPCION" ColumnName="ID_ENCUESTA_OPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAS_OBSERVACION">
+      <EntityTypeMapping TypeName="CAS_DataModel.CAS_OBSERVACION">
+        <MappingFragment StoreEntitySet="CAS_OBSERVACION">
+          <ScalarProperty Name="TEXTO_OBSERVACION" ColumnName="TEXTO_OBSERVACION" />
+          <ScalarProperty Name="ID_OBSERVACION" ColumnName="ID_OBSERVACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAS_EVENTO">
+      <EntityTypeMapping TypeName="CAS_DataModel.CAS_EVENTO">
+        <MappingFragment StoreEntitySet="CAS_EVENTO">
+          <ScalarProperty Name="ID_HORA" ColumnName="ID_HORA" />
+          <ScalarProperty Name="EVENTO_DESCRIPCIÓN" ColumnName="EVENTO_DESCRIPCIÓN" />
+          <ScalarProperty Name="FECHA_EVENTO" ColumnName="FECHA_EVENTO" />
+          <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+          <ScalarProperty Name="ID_EVENTO" ColumnName="ID_EVENTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAS_EVENTO_HORA">
+      <EntityTypeMapping TypeName="CAS_DataModel.CAS_EVENTO_HORA">
+        <MappingFragment StoreEntitySet="CAS_EVENTO_HORA">
+          <ScalarProperty Name="EVENTO_HORA" ColumnName="EVENTO_HORA" />
+          <ScalarProperty Name="ID_EVENTO_HORA" ColumnName="ID_EVENTO_HORA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAS_EVENTO_REGISTRO">
+      <EntityTypeMapping TypeName="CAS_DataModel.CAS_EVENTO_REGISTRO">
+        <MappingFragment StoreEntitySet="CAS_EVENTO_REGISTRO">
+          <ScalarProperty Name="EVENTO_REGISTRO_MOVIL" ColumnName="EVENTO_REGISTRO_MOVIL" />
+          <ScalarProperty Name="EVENTO_REGISTRO_APELLIDOS" ColumnName="EVENTO_REGISTRO_APELLIDOS" />
+          <ScalarProperty Name="EVENTO_REGISTRO_NOMBRES" ColumnName="EVENTO_REGISTRO_NOMBRES" />
+          <ScalarProperty Name="EVENTO_REGISTRO_CORREO" ColumnName="EVENTO_REGISTRO_CORREO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_NotificadorEvento" FunctionName="CAS_DataModel.Store.NotificadorEvento">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CAS_DataModel.NotificadorEvento_Result">
+          <ScalarProperty Name="MSG_ID" ColumnName="MSG_ID" />
+          <ScalarProperty Name="MSG_CODIGO" ColumnName="MSG_CODIGO" />
+          <ScalarProperty Name="BDJ_ID" ColumnName="BDJ_ID" />
+          <ScalarProperty Name="MSG_DESTINATARIO" ColumnName="MSG_DESTINATARIO" />
+          <ScalarProperty Name="MSG_REMITENTE" ColumnName="MSG_REMITENTE" />
+          <ScalarProperty Name="MSG_ASUNTO" ColumnName="MSG_ASUNTO" />
+          <ScalarProperty Name="MSG_TEXTO" ColumnName="MSG_TEXTO" />
+          <ScalarProperty Name="MSG_FORMATO" ColumnName="MSG_FORMATO" />
+          <ScalarProperty Name="MSG_FECHA_CREACION" ColumnName="MSG_FECHA_CREACION" />
+          <ScalarProperty Name="MSG_FECHA_RECIBIDO" ColumnName="MSG_FECHA_RECIBIDO" />
+          <ScalarProperty Name="MSG_FECHA_ENVIADO" ColumnName="MSG_FECHA_ENVIADO" />
+          <ScalarProperty Name="MSG_FECHA_CONFIRMADO" ColumnName="MSG_FECHA_CONFIRMADO" />
+          <ScalarProperty Name="MSG_CANAL" ColumnName="MSG_CANAL" />
+          <ScalarProperty Name="USR_CODIGO" ColumnName="USR_CODIGO" />
+          <ScalarProperty Name="COD_ACCESO" ColumnName="COD_ACCESO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="CAS_EVENTO_REGISTRO_DETALLE">
+      <EntityTypeMapping TypeName="CAS_DataModel.CAS_EVENTO_REGISTRO_DETALLE">
+        <MappingFragment StoreEntitySet="CAS_EVENTO_REGISTRO_DETALLE">
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="CODE_BAR" ColumnName="CODE_BAR" />
+          <ScalarProperty Name="IMAGE_CODE_BAR" ColumnName="IMAGE_CODE_BAR" />
+          <ScalarProperty Name="ID_EVENTO" ColumnName="ID_EVENTO" />
+          <ScalarProperty Name="EVENTO_REGISTRO_CORREO" ColumnName="EVENTO_REGISTRO_CORREO" />
+          <ScalarProperty Name="ID_EVENTO_REGISTRO_DETALLE" ColumnName="ID_EVENTO_REGISTRO_DETALLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

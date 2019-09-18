@@ -145,9 +145,9 @@ function($) {
     "use strict";
     
     var App = function() {
-        this.VERSION = "1.2.0",
-        this.AUTHOR = "Coderthemes", 
-        this.SUPPORT = "coderthemes@gmail.com", 
+        this.VERSION = "2.0.0",
+        this.AUTHOR = "Quitec", 
+        this.SUPPORT = "infor@quitec.com.ec", 
         this.pageScrollElement = "html, body", 
         this.$body = $("body")
     };

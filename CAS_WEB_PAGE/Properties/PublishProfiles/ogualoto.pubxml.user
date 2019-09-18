@@ -6,11 +6,17 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\COMPILADOS\CAS_WEB_28-03-2019</_PublishTargetUrl>
+    <_PublishTargetUrl>D:\COMPILADOS\CAS_WEB_17-07-2019</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
       <publishTime>03/28/2019 09:48:45</publishTime>
+    </File>
+    <File Include="App_Browsers/qt.browser">
+      <publishTime>06/27/2019 20:54:16</publishTime>
+    </File>
+    <File Include="bin/AfsEncripta.dll">
+      <publishTime>04/03/2017 12:36:50</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>11/13/2018 09:32:07</publishTime>
@@ -18,8 +24,11 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="bin/ApplicationInsights.config">
       <publishTime>03/28/2019 09:48:45</publishTime>
     </File>
+    <File Include="bin/BarcodeLib.dll">
+      <publishTime>04/15/2018 20:22:24</publishTime>
+    </File>
     <File Include="bin/CAS_WEB_PAGE.dll">
-      <publishTime>03/29/2019 12:04:10</publishTime>
+      <publishTime>07/19/2019 10:56:32</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>11/13/2018 09:31:55</publishTime>
@@ -72,11 +81,20 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>11/13/2018 09:31:49</publishTime>
     </File>
+    <File Include="bin/Microsoft.Practices.EnterpriseLibrary.Common.dll">
+      <publishTime>11/13/2018 09:29:28</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.EnterpriseLibrary.Data.dll">
+      <publishTime>11/13/2018 09:29:28</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.ObjectBuilder.dll">
+      <publishTime>11/13/2018 09:29:28</publishTime>
+    </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>11/13/2018 09:31:52</publishTime>
     </File>
     <File Include="bin/Model.dll">
-      <publishTime>03/29/2019 12:04:05</publishTime>
+      <publishTime>07/19/2019 10:56:24</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>11/13/2018 09:31:50</publishTime>
@@ -116,6 +134,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe.config">
       <publishTime>11/13/2018 09:31:48</publishTime>
+    </File>
+    <File Include="bin/Rotativa.dll">
+      <publishTime>12/14/2012 12:17:58</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>11/13/2018 09:31:52</publishTime>
@@ -187,13 +208,16 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/12/2018 20:36:38</publishTime>
     </File>
     <File Include="css/style.css">
-      <publishTime>01/15/2018 11:17:49</publishTime>
+      <publishTime>06/27/2019 20:18:14</publishTime>
     </File>
     <File Include="css/theme-colors/dark-red.css">
       <publishTime>01/13/2018 16:22:00</publishTime>
     </File>
     <File Include="css/theme-colors/orange.css">
       <publishTime>01/12/2018 20:52:22</publishTime>
+    </File>
+    <File Include="doc/open_house.pdf">
+      <publishTime>06/28/2019 10:02:19</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>01/15/2018 10:04:24</publishTime>
@@ -993,8 +1017,29 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="js/vegas/js/vegas.js">
       <publishTime>01/12/2018 22:06:08</publishTime>
     </File>
+    <File Include="NuGet.exe">
+      <publishTime>06/27/2019 20:54:16</publishTime>
+    </File>
     <File Include="packages.config">
-      <publishTime>03/28/2019 12:46:19</publishTime>
+      <publishTime>06/27/2019 20:54:16</publishTime>
+    </File>
+    <File Include="Rotativa/libeay32.dll">
+      <publishTime>06/27/2019 20:54:16</publishTime>
+    </File>
+    <File Include="Rotativa/libgcc_s_dw2-1.dll">
+      <publishTime>06/27/2019 20:54:15</publishTime>
+    </File>
+    <File Include="Rotativa/mingwm10.dll">
+      <publishTime>06/27/2019 20:54:15</publishTime>
+    </File>
+    <File Include="Rotativa/README.txt">
+      <publishTime>06/27/2019 20:54:15</publishTime>
+    </File>
+    <File Include="Rotativa/ssleay32.dll">
+      <publishTime>06/27/2019 20:54:15</publishTime>
+    </File>
+    <File Include="Rotativa/wkhtmltopdf.exe">
+      <publishTime>06/27/2019 20:54:10</publishTime>
     </File>
     <File Include="Scripts/ai.0.22.9-build00167.js">
       <publishTime>11/13/2018 09:30:44</publishTime>
@@ -1044,6 +1089,15 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Views/Componentes/Contadores.cshtml">
       <publishTime>03/29/2019 12:23:42</publishTime>
     </File>
+    <File Include="Views/Evento/Control.cshtml">
+      <publishTime>07/09/2019 13:41:00</publishTime>
+    </File>
+    <File Include="Views/Evento/Index.cshtml">
+      <publishTime>07/19/2019 10:54:08</publishTime>
+    </File>
+    <File Include="Views/Evento/Ticket.cshtml">
+      <publishTime>07/17/2019 15:13:08</publishTime>
+    </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>03/28/2019 09:48:06</publishTime>
     </File>
@@ -1066,7 +1120,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/28/2019 13:44:47</publishTime>
     </File>
     <File Include="Views/Shared/_Header.cshtml">
-      <publishTime>03/28/2019 15:04:18</publishTime>
+      <publishTime>06/25/2019 10:31:02</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
       <publishTime>03/28/2019 13:43:40</publishTime>
@@ -1078,7 +1132,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/28/2019 09:48:06</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/28/2019 13:47:43</publishTime>
+      <publishTime>06/28/2019 10:59:01</publishTime>
     </File>
   </ItemGroup>
 </Project>

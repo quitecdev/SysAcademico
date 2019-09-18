@@ -25,9 +25,13 @@ namespace CAS_ESTUDIANTE.Controllers
             return View(_encuesta.ObtenerEncuesta(User.Identity.Name));
         }
 
-        public JsonResult GuardarEncuesta(List<EncuestaRespuesta_Regular> opciones)
+        public JsonResult GuardarEncuesta(List<EncuestaRespuesta_Regular> opciones, string texto)
         {
             _respuesta.GuardarEncuesta(opciones);
+            if (!string.IsNullOrEmpty(texto))
+            {
+                _respuesta.GuardarObservacion(texto);
+            }
             return Json(new { result = "Redirect", url = Url.Action("Index", "Home") });
         }
     }

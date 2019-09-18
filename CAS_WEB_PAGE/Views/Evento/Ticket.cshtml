@@ -1,0 +1,116 @@
+﻿@model Model.Services.Admin.Ticket
+@{
+    ViewBag.Title = "Ticket";
+}
+
+@*<div class="parallax inner-head" style="background-position: 50% 44px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    <h4>Open House 2019</h4>
+                    <ol class="breadcrumb">
+                        <li><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+                        <li class="active">Open House 2019</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+<div class="parallax inner-head" style="background-position: 50% 44px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <i class="glyphicon glyphicon-pencil"></i>
+                <h4>Open House 2019</h4>
+                <ol class="breadcrumb">
+                    <li><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+                    <li class="active">Open House 2019</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="contain-wrapp padding-bottom-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-7">
+                @if (Model != null)
+                {
+                    <div class="row">
+                        <div class="col-md-9 col-sm-12">
+                            <div class="pricing popular">
+                                <div class="pricing-price" style="background: #ffffff;">
+                                   <img src="~/img/CHARLAS-RUMIÑAHUI-out.jpg" class="img-responsive" />
+                                </div>
+                                <div class="pricing-container">
+                                    <ul>
+                                        <li class="styled">
+                                            <strong>NOMBRE :</strong> @Model.Apellido @Model.Nombre
+                                        </li>
+                                        <li>
+                                            <strong>FECHA :</strong> @Model.Fecha
+                                        </li>
+                                        <li class="styled">
+                                            <img src="@Model.Image" class="img-responsive" />
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                @*<div class="pricing-action">
+                                    <a href="#" class="btn-e btn-e-primary">Buy it now</a>
+                                </div>*@
+                            </div>
+                        </div>
+
+                    </div>
+                }
+                else
+                {
+                    Response.Redirect(Url.Action("Index", "Evento"));
+                }
+            </div>
+            <div class="col-md-4 col-sm-5">
+                <div class="contact-detail">
+                    <div class="contact-sparator"></div>
+                    <ul class="list-unstyled">
+                        <li>
+                            <h6><i class="fa fa-institution fa-1x fa-primary"></i> Campus Norte</h6>
+                            <dl>
+                                <dt><i class="fa fa-map-marker"></i> Dirección</dt>
+                                <dd>Isla Santa Fé N43-168 y Río Coca.</dd>
+                                <dt><i class="fa fa-phone"></i> Teléfono</dt>
+                                <dd>(593-2) 2468 620</dd>
+                                <dt><i class="fa fa-envelope"></i> E-mail</dt>
+                                <dd><a href="mailto:info@culinaryartschoolecuador.com">info@culinaryartschoolecuador.com</a></dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <h6><i class="fa fa-institution fa-1x fa-primary"></i> Campus Sur</h6>
+                            <dl>
+                                <dt><i class="fa fa-map-marker"></i> Dirección</dt>
+                                <dd>Centro Comercial Quicentro Sur, 3er piso (junto al banco Pichincha).</dd>
+                                <dt><i class="fa fa-phone"></i> Teléfono</dt>
+                                <dd>(593-2) 4000 281</dd>
+                                <dt><i class="fa fa-envelope"></i> E-mail</dt>
+                                <dd><a href="mailto:infosur@culinaryartschoolecuador.com">infosur@culinaryartschoolecuador.com</a></dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <h6><i class="fa fa-institution fa-1x fa-primary"></i> Campus Valle</h6>
+                            <dl>
+                                <dt><i class="fa fa-map-marker"></i> Dirección</dt>
+                                <dd>Alfredo Dávila, entre Montecristi y Calceta (tras el parque de San Rafael: Eduardo Kingman).</dd>
+                                <dt><i class="fa fa-phone"></i> Teléfono</dt>
+                                <dd>(593-2) 2861396 </dd>
+                                <dt><i class="fa fa-envelope"></i> E-mail</dt>
+                                <dd><a href="mailto:infovalle@culinaryartschoolecuador.com">infovalle@culinaryartschoolecuador.com</a></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

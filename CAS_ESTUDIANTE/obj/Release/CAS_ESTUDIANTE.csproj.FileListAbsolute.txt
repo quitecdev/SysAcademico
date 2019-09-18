@@ -66,3 +66,10 @@ D:\RepositorioLocalCodigo\SysAcademico\CAS_ESTUDIANTE\bin\Microsoft.AspNet.Ident
 D:\RepositorioLocalCodigo\SysAcademico\CAS_ESTUDIANTE\obj\Release\CAS_ESTUDIANTE.csprojResolveAssemblyReference.cache
 D:\RepositorioLocalCodigo\SysAcademico\CAS_ESTUDIANTE\obj\Release\CAS_ESTUDIANTE.dll
 D:\RepositorioLocalCodigo\SysAcademico\CAS_ESTUDIANTE\obj\Release\CAS_ESTUDIANTE.pdb
+D:\RepositorioLocalCodigo\SysAcademico\CAS_ESTUDIANTE\bin\es\System.Web.Helpers.resources.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_ESTUDIANTE\bin\es\System.Web.Mvc.resources.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_ESTUDIANTE\bin\es\System.Web.Optimization.resources.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_ESTUDIANTE\bin\es\System.Web.Razor.resources.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_ESTUDIANTE\bin\es\System.Web.WebPages.resources.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_ESTUDIANTE\bin\es\System.Web.WebPages.Deployment.resources.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_ESTUDIANTE\bin\es\System.Web.WebPages.Razor.resources.dll

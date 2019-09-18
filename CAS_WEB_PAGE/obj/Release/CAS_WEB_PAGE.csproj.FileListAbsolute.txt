@@ -66,3 +66,6 @@ D:\RepositorioLocalCodigo\SysAcademico\CAS_WEB_PAGE\bin\es\System.Web.WebPages.R
 D:\RepositorioLocalCodigo\SysAcademico\CAS_WEB_PAGE\obj\Release\CAS_WEB_PAGE.csprojResolveAssemblyReference.cache
 D:\RepositorioLocalCodigo\SysAcademico\CAS_WEB_PAGE\obj\Release\CAS_WEB_PAGE.dll
 D:\RepositorioLocalCodigo\SysAcademico\CAS_WEB_PAGE\obj\Release\CAS_WEB_PAGE.pdb
+D:\RepositorioLocalCodigo\SysAcademico\CAS_WEB_PAGE\bin\AfsEncripta.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_WEB_PAGE\bin\BarcodeLib.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_WEB_PAGE\bin\Rotativa.dll

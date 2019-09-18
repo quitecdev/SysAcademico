@@ -66,3 +66,6 @@ D:\RepositorioLocalCodigo\SysAcademico\CAS_WEB_PAGE\obj\Debug\CAS_WEB_PAGE.dll
 D:\RepositorioLocalCodigo\SysAcademico\CAS_WEB_PAGE\obj\Debug\CAS_WEB_PAGE.pdb
 D:\RepositorioLocalCodigo\SysAcademico\CAS_WEB_PAGE\bin\EntityFramework.SqlServer.dll
 D:\RepositorioLocalCodigo\SysAcademico\CAS_WEB_PAGE\bin\EntityFramework.SqlServer.xml
+D:\RepositorioLocalCodigo\SysAcademico\CAS_WEB_PAGE\bin\BarcodeLib.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_WEB_PAGE\bin\AfsEncripta.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_WEB_PAGE\bin\Rotativa.dll

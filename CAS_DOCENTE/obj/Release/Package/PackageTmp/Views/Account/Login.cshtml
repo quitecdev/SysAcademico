@@ -19,12 +19,21 @@
     <link href="~/assets/css/responsive.css" rel="stylesheet" />
     <link href="~/assets/css/login.css" rel="stylesheet" />
     <script src="~/assets/js/modernizr.min.js"></script>
+
+    <style>
+        .img-fondo-contenido {
+            -webkit-box-shadow: 4px 2px 5px -1px rgba(130,123,130,1);
+            -moz-box-shadow: 4px 2px 5px -1px rgba(130,123,130,1);
+            box-shadow: 4px 2px 5px -1px rgba(130,123,130,1);
+        }
+    </style>
+
 </head>
 <body>
     <div class="container-fluid contenedor">
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-8 img-fondo-contenido">
-                <img src="~/assets/images/IMG_0042.jpg" style="width: 100%; height: 100vh;" />
+                <img src="~/assets/images/navidad-2018.png" class="navidad" style="width: 100%; height: 100vh;" />
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 login-contenido">
                 <section id="logo">
@@ -80,6 +89,7 @@
     <!-- jQuery  -->
     <script src="~/assets/js/jquery.min.js"></script>
     <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/plugins/jquery-snow/jquery.snow.min.1.0.js"></script>
     <script src="~/assets/js/detect.js"></script>
     <script src="~/assets/js/fastclick.js"></script>
     <script src="~/assets/js/jquery.slimscroll.js"></script>
@@ -88,15 +98,19 @@
     <script src="~/assets/js/wow.min.js"></script>
     <script src="~/assets/js/jquery.nicescroll.js"></script>
     <script src="~/assets/js/jquery.scrollTo.min.js"></script>
-
     <!-- App js -->
     <script src="~/assets/js/jquery.core.js"></script>
-    <script src="~/assets/js/jquery.app.js"></script>
+    @*<script src="~/assets/js/jquery.app.js"></script>*@
 
     @*<script src="~/assets/js/General.js"></script>*@
 
     <script>
         var start = new Date;
+
+        $(document).ready(function () {
+            $.fn.snow({ newOn: 100 });
+        });
+
 
         setInterval(function () {
             $.ajax({

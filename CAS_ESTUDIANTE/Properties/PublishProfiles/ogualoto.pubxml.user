@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\COMPILADOS\CAS_ESTUDIANTE_07-03-2019</_PublishTargetUrl>
+    <_PublishTargetUrl>D:\COMPILADOS\CAS_ESTUDIANTE_27-05-2019</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
@@ -970,13 +970,34 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2018 09:31:04</publishTime>
     </File>
     <File Include="bin/CAS_ESTUDIANTE.dll">
-      <publishTime>03/07/2019 12:00:01</publishTime>
+      <publishTime>05/27/2019 12:44:00</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>11/13/2018 09:31:58</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
       <publishTime>11/13/2018 09:31:58</publishTime>
+    </File>
+    <File Include="bin/es/System.Web.Helpers.resources.dll">
+      <publishTime>01/28/2015 04:04:36</publishTime>
+    </File>
+    <File Include="bin/es/System.Web.Mvc.resources.dll">
+      <publishTime>01/28/2015 04:02:24</publishTime>
+    </File>
+    <File Include="bin/es/System.Web.Optimization.resources.dll">
+      <publishTime>02/11/2014 15:28:40</publishTime>
+    </File>
+    <File Include="bin/es/System.Web.Razor.resources.dll">
+      <publishTime>01/28/2015 04:02:36</publishTime>
+    </File>
+    <File Include="bin/es/System.Web.WebPages.Deployment.resources.dll">
+      <publishTime>01/28/2015 04:04:36</publishTime>
+    </File>
+    <File Include="bin/es/System.Web.WebPages.Razor.resources.dll">
+      <publishTime>01/28/2015 04:04:36</publishTime>
+    </File>
+    <File Include="bin/es/System.Web.WebPages.resources.dll">
+      <publishTime>01/28/2015 04:04:36</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>11/13/2018 09:32:17</publishTime>
@@ -1021,7 +1042,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2018 09:31:52</publishTime>
     </File>
     <File Include="bin/Model.dll">
-      <publishTime>03/07/2019 11:59:52</publishTime>
+      <publishTime>05/27/2019 12:43:52</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>11/13/2018 09:31:50</publishTime>
@@ -1189,7 +1210,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2018 09:30:45</publishTime>
     </File>
     <File Include="Views/Encuestas/evalucionDocentes.cshtml">
-      <publishTime>01/24/2019 11:17:45</publishTime>
+      <publishTime>05/27/2019 12:34:53</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>11/13/2018 09:31:06</publishTime>

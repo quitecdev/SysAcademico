@@ -41,139 +41,183 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-sm-6" style="margin: 0 auto;float: inherit;">
-                @if (Model != null)
-                {
-                    foreach (var carrera in Model.Datos)
+            <form>
+                <div class="col-sm-6" style="margin: 0 auto;float: inherit;">
+                    @if (Model != null)
                     {
-                        if (carrera.ID_TIPO_INTERVALO == 1)
+                        foreach (var carrera in Model.Datos)
                         {
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <h2 class="page-title">@carrera.DESCRIPCION_CARRERA  <small class="text-custom">Regular</small></h2>
-                                </div>
-                            </div>
-                            <div class="row">
-                                @foreach (var docente in carrera.DOCENTE)
-                                {
+                            if (carrera.ID_TIPO_INTERVALO == 1)
+                            {
+                                <div class="row">
                                     <div class="col-sm-12">
-                                        <div class="card-box">
-                                            <h4 class="m-t-0">@docente.NOMBRE <small class="text-custom">@docente.DESCRIPCION_MATERIA</small></h4>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="p-20">
-                                                        <form>
+                                        <h2 class="page-title">@carrera.DESCRIPCION_CARRERA  <small class="text-custom">Regular</small></h2>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    @{ int cont = 1;}
+                                    @foreach (var docente in carrera.DOCENTE)
+                                    {
+                                        <div class="col-sm-12">
+                                            <div class="card-box">
+                                                <h4 class="m-t-0">@docente.NOMBRE <small class="text-custom">@docente.DESCRIPCION_MATERIA</small></h4>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="p-20">
+                                                            @{ int numeracion1 = 1;}
                                                             @foreach (var preguntas in docente.PREGUNTAS)
                                                             {
                                                                 <div class="form-group">
-                                                                    <label class="control-label">@preguntas.DESCRIPCION_PREGUNTA</label>
-                                                                    <input required
-                                                                           data-id="@preguntas.ID_ENCUESTA_PREGUNTA"
-                                                                           data-idEstudiante="@carrera.ID_ESTUDIANTE"
-                                                                           data-idDocente="@docente.ID_DOCENTE"
-                                                                           data-idCarrea="@docente.ID_CARRERA"
-                                                                           data-idMateria="@docente.ID_MATERIA"
-                                                                           data-idIntervalo="@docente.ID_INTERVALO_DETALLE"
-                                                                           data-idParalelo="@docente.ID_PARALELO"
-                                                                           class="demo0"
-                                                                           type="text"
-                                                                           value="1"
-                                                                           name="demo0"
-                                                                           data-bts-min="1"
-                                                                           data-bts-max="10"
-                                                                           data-bts-init-val=""
-                                                                           data-bts-step="1"
-                                                                           data-bts-decimal="0"
-                                                                           data-bts-step-interval="10"
-                                                                           data-bts-force-step-divisibility="round"
-                                                                           data-bts-step-interval-delay="500"
-                                                                           data-bts-prefix="" data-bts-postfix=""
-                                                                           data-bts-prefix-extra-class=""
-                                                                           data-bts-postfix-extra-class=""
-                                                                           data-bts-booster="true"
-                                                                           data-bts-boostat="10"
-                                                                           data-bts-max-boosted-step="false"
-                                                                           data-bts-mousewheel="true"
-                                                                           data-bts-button-down-class="btn btn-default"
-                                                                           data-bts-button-up-class="btn btn-default" />
+                                                                    <label class="control-label">@numeracion1 .- @preguntas.DESCRIPCION_PREGUNTA</label>
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            @foreach (var item in preguntas.Opciones)
+                                                                            {
+                                                                                <label class="radio-inline">
+                                                                                    <input type="radio"
+                                                                                           data-id="@item.ID_ENCUESTA_PREGUNTA"
+                                                                                           data-idEstudiante="@carrera.ID_ESTUDIANTE"
+                                                                                           data-idDocente="@docente.ID_DOCENTE"
+                                                                                           data-idCarrea="@docente.ID_CARRERA"
+                                                                                           data-idMateria="@docente.ID_MATERIA"
+                                                                                           data-idIntervalo="@docente.ID_INTERVALO_DETALLE"
+                                                                                           data-idParalelo="@docente.ID_PARALELO"
+                                                                                           name="@cont@item.ID_ENCUESTA_PREGUNTA"
+                                                                                           value="@item.ID_ENCUESTA_OPCION"
+                                                                                           required>@item.DESCRIPCION_OPCION
+                                                                                    </label>
+                                                                            }
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
+                                                                numeracion1++;
                                                             }
-                                                        </form>
-                                                    </div>
-                                                </div><!-- end col -->
-                                            </div><!-- end row -->
+                                                        </div>
+                                                    </div><!-- end col -->
+                                                </div><!-- end row -->
+                                            </div>
                                         </div>
-                                    </div>
-                                }
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <h2 class="page-title">@carrera.DESCRIPCION_CARRERA  <small class="text-custom">Intensivo</small></h2>
+                                        cont++;
+                                    }
                                 </div>
-                            </div>
-                            <div class="row">
-                                @foreach (var docente in carrera.DOCENTE)
-                                {
-                                    <div class="col-sm-12">
-                                        <div class="card-box">
+                                        }
+                                        else
+                                        {
                                             <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="p-20">
-                                                        <form>
-                                                            @foreach (var preguntas in docente.PREGUNTAS)
-                                                            {
-                                                                <div class="form-group">
-                                                                    <label class="control-label">@preguntas.DESCRIPCION_PREGUNTA</label>
-                                                                    <input required
-                                                                           data-id="@preguntas.ID_ENCUESTA_PREGUNTA"
-                                                                           data-idEstudiante="@carrera.ID_ESTUDIANTE"
-                                                                           data-idDocente="0"
-                                                                           data-idCarrea="@docente.ID_CARRERA"
-                                                                           data-idMateria="@docente.ID_MATERIA"
-                                                                           data-idIntervalo="@docente.ID_INTERVALO_DETALLE"
-                                                                           data-idParalelo="@docente.ID_PARALELO"
-                                                                           class="demo0"
-                                                                           type="text"
-                                                                           value="1"
-                                                                           name="demo0"
-                                                                           data-bts-min="1"
-                                                                           data-bts-max="10"
-                                                                           data-bts-init-val=""
-                                                                           data-bts-step="1"
-                                                                           data-bts-decimal="0"
-                                                                           data-bts-step-interval="10"
-                                                                           data-bts-force-step-divisibility="round"
-                                                                           data-bts-step-interval-delay="500"
-                                                                           data-bts-prefix="" data-bts-postfix=""
-                                                                           data-bts-prefix-extra-class=""
-                                                                           data-bts-postfix-extra-class=""
-                                                                           data-bts-booster="true"
-                                                                           data-bts-boostat="10"
-                                                                           data-bts-max-boosted-step="false"
-                                                                           data-bts-mousewheel="true"
-                                                                           data-bts-button-down-class="btn btn-default"
-                                                                           data-bts-button-up-class="btn btn-default" />
-                                                                </div>
-                                                            }
-                                                        </form>
+                                                <div class="col-sm-12">
+                                                    <h2 class="page-title">@carrera.DESCRIPCION_CARRERA  <small class="text-custom">Intensivo</small></h2>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                @{ int cont = 1;}
+                                                @foreach (var docente in carrera.DOCENTE)
+                                                {
+                                                    <div class="col-sm-12">
+                                                        <div class="card-box">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="p-20">
+                                                                        @{ int numeracion1 = 1;}
+                                                                        @foreach (var preguntas in docente.PREGUNTAS)
+                                                                        {
+                                                                            <div class="form-group">
+                                                                                <label class="control-label">@numeracion1 .- @preguntas.DESCRIPCION_PREGUNTA</label>
+                                                                                <div class="row">
+                                                                                    <div class="col-md-12">
+                                                                                        @foreach (var item in preguntas.Opciones)
+                                                                                        {
+                                                                                            <label class="radio-inline">
+                                                                                                <input type="radio"
+                                                                                                       data-id="@item.ID_ENCUESTA_PREGUNTA"
+                                                                                                       data-idEstudiante="@carrera.ID_ESTUDIANTE"
+                                                                                                       data-idDocente="0"
+                                                                                                       data-idCarrea="@docente.ID_CARRERA"
+                                                                                                       data-idMateria="@docente.ID_MATERIA"
+                                                                                                       data-idIntervalo="@docente.ID_INTERVALO_DETALLE"
+                                                                                                       data-idParalelo="@docente.ID_PARALELO"
+                                                                                                       name="@cont@item.ID_ENCUESTA_PREGUNTA"
+                                                                                                       value="@item.ID_ENCUESTA_OPCION"
+                                                                                                       required>@item.DESCRIPCION_OPCION
+                                                                                                </label>
+                                                                                        }
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            numeracion1++;
+                                                                        }
+                                                                    </div>
+                                                                </div><!-- end col -->
+                                                            </div><!-- end row -->
+                                                        </div>
                                                     </div>
-                                                </div><!-- end col -->
-                                            </div><!-- end row -->
-                                        </div>
-                                    </div>
-                                }
-                            </div>
-                        }
-                    }
-                    <div class="clearfix">
-                        <button type="button" onclick="recorrerOpciones();" class="btn btn-custom pull-right">Terminar Encuesta</button>
-                    </div>
-                }
-            </div>
+                                                    cont++;
+                                                }
+                                            </div>
+                                                    }
 
+
+                                                    <div class="row">
+                                                        @{ int cont1 = 1;}
+                                                        @foreach (var docente in carrera.INFRAESTRUCTURA)
+                                                        {
+                                                            <div class="col-sm-12">
+                                                                <div class="card-box">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="p-20">
+                                                                                @{ int numeracion2 = 1;}
+                                                                                @foreach (var preguntas in docente.PREGUNTAS)
+                                                                                {
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label">@numeracion2 .- @preguntas.DESCRIPCION_PREGUNTA</label>
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-12">
+                                                                                                @foreach (var item in preguntas.Opciones)
+                                                                                                {
+                                                                                                    <label class="radio-inline">
+                                                                                                        <input type="radio"
+                                                                                                               data-id="@item.ID_ENCUESTA_PREGUNTA"
+                                                                                                               data-idEstudiante="@carrera.ID_ESTUDIANTE"
+                                                                                                               data-idDocente="0"
+                                                                                                               data-idCarrea="@docente.ID_CARRERA"
+                                                                                                               data-idMateria="@docente.ID_MATERIA"
+                                                                                                               data-idIntervalo="@docente.ID_INTERVALO_DETALLE"
+                                                                                                               data-idParalelo="@docente.ID_PARALELO"
+                                                                                                               name="@cont1@item.ID_ENCUESTA_PREGUNTA"
+                                                                                                               value="@item.ID_ENCUESTA_OPCION"
+                                                                                                               required>@item.DESCRIPCION_OPCION
+                                                                                                        </label>
+                                                                                                }
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    numeracion2++;
+                                                                                }
+                                                                            </div>
+                                                                        </div><!-- end col -->
+                                                                        <div class="col-md-12">
+                                                                            <div class="p-20">
+                                                                                <div class="form-group">
+                                                                                    <label for="exampleInputEmail1">Observaciones:</label>
+                                                                                    <textarea id="observacion" class="form-control" rows="4" maxlength="256"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div><!-- end row -->
+                                                                </div>
+                                                            </div>
+                                                            cont1++;
+                                                        }
+                                                    </div>
+
+
+                                                            }
+                                                            <div class="clearfix">
+                                                                <button type="button" onclick="recorrerOpciones();" class="btn btn-custom pull-right">Terminar Encuesta</button>
+                                                            </div>
+                                                            }
+                </div>
+            </form>
         </div>
     </div>
     <!-- jQuery  -->
@@ -188,41 +232,54 @@
     <script src="~/assets/js/jquery.nicescroll.js"></script>
     <script src="~/assets/js/jquery.scrollTo.min.js"></script>
     <script src="~/assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js" type="text/javascript"></script>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
     <!-- App js -->
     <script src="~/assets/js/jquery.core.js"></script>
     <script src="~/assets/js/jquery.app.js"></script>
     <script>
         var resizefunc = [];
-        $(".demo0").TouchSpin({
-            buttondown_class: "btn btn-custom",
-            buttonup_class: "btn btn-custom"
+
+        $(document).ready(function () {
+
+            $('form').validate();
+
+            //$.validator.unobtrusive.parse(form);
         });
 
         function recorrerOpciones() {
-            var opciones = [];
-            $("input[type=text]").each(function (index) {
-                var ID_ENCUESTA_PREGUNTA = $(this).attr('data-id');
-                var ID_ESTUDIANTE = $(this).attr("data-idEstudiante");
-                var ID_DOCENTE = $(this).attr("data-idDocente");
-                var ID_CARRERA = $(this).attr("data-idCarrea");
-                var ID_MATERIA = $(this).attr("data-idMateria");
-                var ID_INTERVALO_DETALLE = $(this).attr("data-idIntervalo");
-                var ID_PARALELO = $(this).attr("data-idParalelo");
-                var VALOR_RESPUESTA = $(this).val();
-                //console.log(id, idEstudiante, idDocente, idCarrea, idMateria, idIntervalo, idParalelo, valor)
-                opciones.push({ ID_ENCUESTA_PREGUNTA, ID_ESTUDIANTE, ID_DOCENTE, ID_CARRERA, ID_MATERIA, ID_INTERVALO_DETALLE, ID_PARALELO, VALOR_RESPUESTA });
-            });
-            $.ajax({
-                type: "POST",
-                url: '@Url.Action("GuardarEncuesta", "Encuestas")',
-                data: JSON.stringify(opciones),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (response) {
-                    if (response.result == 'Redirect')
-                        window.location = response.url;
-                }
-            });
+            if ($("form").valid()) {
+                var opciones = [];
+                $("input[type=radio]").each(function (index) {
+                    if ($(this).is(':checked')) {
+                        var ID_ENCUESTA_PREGUNTA = $(this).attr('data-id');
+                        var ID_ESTUDIANTE = $(this).attr("data-idEstudiante");
+                        var ID_DOCENTE = $(this).attr("data-idDocente");
+                        var ID_CARRERA = $(this).attr("data-idCarrea");
+                        var ID_MATERIA = $(this).attr("data-idMateria");
+                        var ID_INTERVALO_DETALLE = $(this).attr("data-idIntervalo");
+                        var ID_PARALELO = $(this).attr("data-idParalelo");
+                        var VALOR_RESPUESTA = $(this).val();
+                        opciones.push({ ID_ENCUESTA_PREGUNTA, ID_ESTUDIANTE, ID_DOCENTE, ID_CARRERA, ID_MATERIA, ID_INTERVALO_DETALLE, ID_PARALELO, VALOR_RESPUESTA });
+                    }
+                });
+
+                var texto = $("#observacion").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GuardarEncuesta", "Encuestas")',
+                    data: JSON.stringify({ opciones, "texto": texto }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+                        if (response.result == 'Redirect')
+                            window.location = response.url;
+                    }
+                });
+            }
         }
     </script>
 </body>

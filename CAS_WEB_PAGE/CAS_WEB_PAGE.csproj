@@ -85,6 +85,22 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51206.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.6.0\lib\net40\Rotativa.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -157,6 +173,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ComponentesController.cs" />
+    <Compile Include="Controllers\EventoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InscripcionController.cs" />
     <Compile Include="Global.asax.cs">
@@ -385,6 +402,7 @@
     <Content Include="img\testimonials\img04.jpg" />
     <Content Include="img\testimonials\testimonials-quote.png" />
     <Content Include="img\themes\logo-orange.png" />
+    <Content Include="NuGet.exe" />
     <Content Include="obj\img\about_us_1.jpg" />
     <Content Include="obj\img\about_us_2.jpg" />
     <Content Include="obj\img\about_us_3.jpg" />
@@ -621,6 +639,12 @@
     <Content Include="js\vegas\css\vegas.css" />
     <Content Include="js\vegas\js\setting.js" />
     <Content Include="js\vegas\js\vegas.js" />
+    <Content Include="Rotativa\libeay32.dll" />
+    <Content Include="Rotativa\libgcc_s_dw2-1.dll" />
+    <Content Include="Rotativa\mingwm10.dll" />
+    <Content Include="Rotativa\README.txt" />
+    <Content Include="Rotativa\ssleay32.dll" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -636,6 +660,8 @@
     <Content Include="js\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="js\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="js\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="App_Browsers\qt.browser" />
+    <Content Include="doc\open_house.pdf" />
     <None Include="Properties\PublishProfiles\ogualoto.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -668,6 +694,9 @@
     <Content Include="Views\Inscripcion\Index.cshtml" />
     <Content Include="Views\Home\_Contadores.cshtml" />
     <Content Include="Views\Componentes\Contadores.cshtml" />
+    <Content Include="Views\Evento\Index.cshtml" />
+    <Content Include="Views\Evento\Ticket.cshtml" />
+    <Content Include="Views\Evento\Control.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

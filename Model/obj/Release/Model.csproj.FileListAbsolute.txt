@@ -21,3 +21,5 @@ D:\RepositorioLocalCodigo\SysAcademico\Model\bin\Release\System.Web.WebPages.Raz
 D:\RepositorioLocalCodigo\SysAcademico\Model\bin\Release\System.Web.WebPages.xml
 D:\RepositorioLocalCodigo\SysAcademico\Model\bin\Release\Microsoft.Web.Infrastructure.xml
 D:\RepositorioLocalCodigo\SysAcademico\Model\bin\Release\System.Web.WebPages.Deployment.xml
+D:\RepositorioLocalCodigo\SysAcademico\Model\bin\Release\AfsEncripta.dll
+D:\RepositorioLocalCodigo\SysAcademico\Model\bin\Release\BarcodeLib.dll

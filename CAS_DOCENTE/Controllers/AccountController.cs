@@ -17,17 +17,26 @@ namespace CAS_DOCENTE.Controllers
         Login ingreso = new Login();
         ForgotPassword recuperar = new ForgotPassword();
         ChangePassword cambiar = new ChangePassword();
+        EncuestaDocente _encuesta = new EncuestaDocente();
         // GET: Ingreso
         public ActionResult Login()
         {
-            ServicesAuditoria.audit().RegistrarAuditoria(null, null, Session.SessionID, "ABRIR_FORMULARIO", ServicesAuditoria.audit().CrearTag("FORMULARIO", "INGRESO"), ServicesAuditoria.audit().CrearTag("IP", Request.UserHostAddress));
-            if (Request.Cookies["Login"] != null)
+            try
             {
-                ingreso.COD_USUARIO = Request.Cookies["Login"].Values["username"];
-                ingreso.CLAVE_USUARIO = Request.Cookies["Login"].Values["password"];
-                ingreso.RECORDAR = true;
+                ServicesAuditoria.audit().RegistrarAuditoria(null, null, Session.SessionID, "ABRIR_FORMULARIO", ServicesAuditoria.audit().CrearTag("FORMULARIO", "INGRESO"), ServicesAuditoria.audit().CrearTag("IP", Request.UserHostAddress));
+                if (Request.Cookies["Login"] != null)
+                {
+                    ingreso.COD_USUARIO = Request.Cookies["Login"].Values["username"];
+                    ingreso.CLAVE_USUARIO = Request.Cookies["Login"].Values["password"];
+                    ingreso.RECORDAR = true;
+                }
+                return View(ingreso);
             }
-            return View(ingreso);
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return View(ingreso);
+            }
         }
 
         [HttpPost]
@@ -72,8 +81,20 @@ namespace CAS_DOCENTE.Controllers
                         cookie.Expires = DateTime.Now.AddDays(30);
                         Response.Cookies.Add(cookie);
                     }
-                    var action = "Index";
-                    var controler = "Home";
+                    isExist = _encuesta.ValidarEncuesta(obtenerDatosUsurio.ID_USUARIO);
+                    var action = "";
+                    var controler = "";
+                    if (isExist)
+                    {
+                        action = "Index";
+                        controler = "Home";
+                    }
+                    else
+                    {
+                        // var a = _carrera.ObtenerCarreraEstudiante(obtenerDatosUsurio.ID_USUARIO);
+                        action = "evalucionDocentes";
+                        controler = "Encuestas";
+                    }
                     ServicesAuditoria.audit().RegistrarAuditoria(Session["COD_USUARIO"].ToString(), Session["ID_USUARIO"].ToString(), Session.SessionID, "INICIO_SESION", ServicesAuditoria.audit().CrearTag("ROL", Session["DESCRIPCION_ROL"].ToString()));
                     return RedirectToAction(action, controler);
                 }

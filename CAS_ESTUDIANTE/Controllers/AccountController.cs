@@ -80,12 +80,12 @@ namespace CAS_ESTUDIANTE.Controllers
                     var controler = "";
                     //if (isExist)
                     //{
-                    action = "Index";
-                    controler = "Home";
+                        action = "Index";
+                        controler = "Home";
                     //}
                     //else
                     //{
-                    //    var a = _carrera.ObtenerCarreraEstudiante(obtenerDatosUsurio.ID_USUARIO);
+                    //   // var a = _carrera.ObtenerCarreraEstudiante(obtenerDatosUsurio.ID_USUARIO);
                     //    action = "evalucionDocentes";
                     //    controler = "Encuestas";
                     //}

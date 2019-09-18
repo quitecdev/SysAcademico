@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AfsEncripta, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\AfsEncripta.dll</HintPath>
+    </Reference>
+    <Reference Include="BarcodeLib, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f09bda868cc39e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\BarcodeLib.1.3.0.0\lib\net20\BarcodeLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -41,6 +49,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web" />
@@ -125,6 +134,9 @@
     <Compile Include="Data\CAS_ENCUESTA.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\CAS_ENCUESTA_OPCION.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\CAS_ENCUESTA_PREGUNTAS.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
@@ -141,6 +153,18 @@
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\CAS_ESTUDIANTE_NOTA.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_EVENTO.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_EVENTO_HORA.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_EVENTO_REGISTRO.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_EVENTO_REGISTRO_DETALLE.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\CAS_GENERO.cs">
@@ -192,6 +216,9 @@
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\CAS_NOTIFICACIONES.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_OBSERVACION.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\CAS_PARALELO.cs">
@@ -258,6 +285,9 @@
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\DocenteHorarioMateria_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DocenteHorarioTarea_Result.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\DocenteObtenerAsistenciaEstudiantes_Result.cs">
@@ -347,6 +377,9 @@
     <Compile Include="Data\NotificadorEnviaClave_Result.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\NotificadorEvento_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\ObtenerCarreraValida_Result.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
@@ -413,6 +446,7 @@
     <Compile Include="Services\Admin\Estudiante.cs" />
     <Compile Include="Services\Admin\EstudianteAsistenciaCarrera.cs" />
     <Compile Include="Services\Admin\EstudianteNotaCarrera.cs" />
+    <Compile Include="Services\Admin\EventoRegistro.cs" />
     <Compile Include="Services\Admin\ForgotPassword.cs" />
     <Compile Include="Services\Admin\Horario.cs" />
     <Compile Include="Services\Admin\HorarioDetalleMateria.cs" />
@@ -434,6 +468,7 @@
     <Compile Include="Services\Admin\Sede.cs" />
     <Compile Include="Services\Admin\ServicesTrackError.cs" />
     <Compile Include="Services\Admin\Sugerencia.cs" />
+    <Compile Include="Services\Admin\Ticket.cs" />
     <Compile Include="Services\Admin\TipoPago.cs" />
     <Compile Include="Services\Admin\Usuario.cs" />
     <Compile Include="Services\CarreraEstudiante.cs" />
@@ -442,8 +477,10 @@
     <Compile Include="Services\Docente\Calificar.cs" />
     <Compile Include="Services\Docente\CarreraIntervalo.cs" />
     <Compile Include="Services\Docente\ChangePassword.cs" />
+    <Compile Include="Services\Docente\EncuestaDocente.cs" />
     <Compile Include="Services\Docente\ForgotPassword.cs" />
     <Compile Include="Services\Docente\HorarioDocente.cs" />
+    <Compile Include="Services\Docente\HorarioTarea.cs" />
     <Compile Include="Services\Docente\Login.cs" />
     <Compile Include="Services\Docente\Notas.cs" />
     <Compile Include="Services\Docente\NotasAsignadas.cs" />

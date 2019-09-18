@@ -135,3 +135,5 @@ D:\RepositorioLocalCodigo\SysAcademico\CAS_ADMIN\bin\es\System.Web.Razor.resourc
 D:\RepositorioLocalCodigo\SysAcademico\CAS_ADMIN\bin\es\System.Web.WebPages.resources.dll
 D:\RepositorioLocalCodigo\SysAcademico\CAS_ADMIN\bin\es\System.Web.WebPages.Deployment.resources.dll
 D:\RepositorioLocalCodigo\SysAcademico\CAS_ADMIN\bin\es\System.Web.WebPages.Razor.resources.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_ADMIN\bin\AfsEncripta.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_ADMIN\bin\BarcodeLib.dll

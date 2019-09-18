@@ -137,8 +137,7 @@
     float: left;
     width: 100%;
     padding: 0;
-    background: #212121;
-    color: #bababa;
+
 }
 .half-column-wrapp h1,
 .half-column-wrapp h2,
@@ -151,7 +150,6 @@
 .half-column-wrapp .half-column {
     width: 50%;
     float: left;
-    background: #212121;
 }
 .half-column-wrapp .half-column.column-content {
     padding: 60px;

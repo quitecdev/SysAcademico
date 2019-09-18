@@ -180,6 +180,16 @@
           <Property Name="DESCRIPCION_ENCUESTA" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ID_TIPO_INTERVALO" Type="int" />
         </EntityType>
+        <EntityType Name="CAS_ENCUESTA_OPCION">
+          <Key>
+            <PropertyRef Name="ID_ENCUESTA_OPCION" />
+          </Key>
+          <Property Name="ID_ENCUESTA_OPCION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_ENCUESTA_PREGUNTA" Type="int" />
+          <Property Name="DESCRIPCION_OPCION" Type="varchar" MaxLength="500" />
+          <Property Name="ID_CALIDAD" Type="int" />
+          <Property Name="DESCRIPCION_CALIDAD" Type="varchar" MaxLength="250" />
+        </EntityType>
         <EntityType Name="CAS_ENCUESTA_PREGUNTAS">
           <Key>
             <PropertyRef Name="ID_ENCUESTA_PREGUNTA" />
@@ -248,6 +258,43 @@
           <Property Name="VALOR_NOTA" Type="decimal" Precision="18" Scale="4" />
           <Property Name="ID_PERIODO" Type="int" />
           <Property Name="ID_SEDE" Type="int" />
+        </EntityType>
+        <EntityType Name="CAS_EVENTO">
+          <Key>
+            <PropertyRef Name="ID_EVENTO" />
+          </Key>
+          <Property Name="ID_EVENTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_SEDE" Type="int" />
+          <Property Name="FECHA_EVENTO" Type="date" />
+          <Property Name="EVENTO_DESCRIPCIÓN" Type="varchar" MaxLength="50" />
+          <Property Name="ID_HORA" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="CAS_EVENTO_HORA">
+          <Key>
+            <PropertyRef Name="ID_EVENTO_HORA" />
+          </Key>
+          <Property Name="ID_EVENTO_HORA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EVENTO_HORA" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="CAS_EVENTO_REGISTRO">
+          <Key>
+            <PropertyRef Name="EVENTO_REGISTRO_CORREO" />
+          </Key>
+          <Property Name="EVENTO_REGISTRO_CORREO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EVENTO_REGISTRO_NOMBRES" Type="varchar" MaxLength="50" />
+          <Property Name="EVENTO_REGISTRO_APELLIDOS" Type="varchar" MaxLength="50" />
+          <Property Name="EVENTO_REGISTRO_MOVIL" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CAS_EVENTO_REGISTRO_DETALLE">
+          <Key>
+            <PropertyRef Name="ID_EVENTO_REGISTRO_DETALLE" />
+          </Key>
+          <Property Name="ID_EVENTO_REGISTRO_DETALLE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EVENTO_REGISTRO_CORREO" Type="varchar" MaxLength="50" />
+          <Property Name="ID_EVENTO" Type="int" />
+          <Property Name="IMAGE_CODE_BAR" Type="varchar(max)" />
+          <Property Name="CODE_BAR" Type="varchar(max)" />
+          <Property Name="ESTADO" Type="bit" />
         </EntityType>
         <EntityType Name="CAS_GENERO">
           <Key>
@@ -426,6 +473,13 @@
           <Property Name="ASUNTO_NOTIFICACION" Type="varchar" MaxLength="500" />
           <Property Name="ID_PERIODO" Type="int" />
           <Property Name="PRIORIDAD_NOTIFICACION" Type="int" />
+        </EntityType>
+        <EntityType Name="CAS_OBSERVACION">
+          <Key>
+            <PropertyRef Name="ID_OBSERVACION" />
+          </Key>
+          <Property Name="ID_OBSERVACION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TEXTO_OBSERVACION" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="CAS_PARALELO">
           <Key>
@@ -725,6 +779,9 @@
         <Function Name="NotificadorEnviaClave" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID_USUARIO" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="NotificadorEvento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_EVENTO_REGISTRO_DETALLE" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_GenerarDetalleCronograma_Intensivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FECHA_INICIO" Type="datetime" Mode="In" />
           <Parameter Name="FECHA_FIN" Type="datetime" Mode="In" />
@@ -744,6 +801,11 @@
         <Function Name="DocenteHorarioDiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
           <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
           <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+          <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+          <Parameter Name="outID" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="DocenteHorarioTarea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
+          <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
           <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
           <Parameter Name="outID" Type="int" Mode="InOut" />
         </Function>
@@ -976,12 +1038,17 @@
           <EntitySet Name="CAS_DOCENTE_MATERIA_PARALELO" EntityType="Self.CAS_DOCENTE_MATERIA_PARALELO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_DOCENTE_NOTAS" EntityType="Self.CAS_DOCENTE_NOTAS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_ENCUESTA" EntityType="Self.CAS_ENCUESTA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAS_ENCUESTA_OPCION" EntityType="Self.CAS_ENCUESTA_OPCION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_ENCUESTA_PREGUNTAS" EntityType="Self.CAS_ENCUESTA_PREGUNTAS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_ESTADO_CIVIL" EntityType="Self.CAS_ESTADO_CIVIL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_ESTUDIANTE" EntityType="Self.CAS_ESTUDIANTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_ESTUDIANTE_ASISTENCIA" EntityType="Self.CAS_ESTUDIANTE_ASISTENCIA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_ESTUDIANTE_DETALLE" EntityType="Self.CAS_ESTUDIANTE_DETALLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_ESTUDIANTE_NOTA" EntityType="Self.CAS_ESTUDIANTE_NOTA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAS_EVENTO" EntityType="Self.CAS_EVENTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAS_EVENTO_HORA" EntityType="Self.CAS_EVENTO_HORA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAS_EVENTO_REGISTRO" EntityType="Self.CAS_EVENTO_REGISTRO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAS_EVENTO_REGISTRO_DETALLE" EntityType="Self.CAS_EVENTO_REGISTRO_DETALLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_GENERO" EntityType="Self.CAS_GENERO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_GRUPO" EntityType="Self.CAS_GRUPO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_HORARIO" EntityType="Self.CAS_HORARIO" Schema="dbo" store:Type="Tables" />
@@ -999,6 +1066,7 @@
           <EntitySet Name="CAS_NOTA_DETALLE" EntityType="Self.CAS_NOTA_DETALLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_NOTA_PONDERACION" EntityType="Self.CAS_NOTA_PONDERACION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_NOTIFICACIONES" EntityType="Self.CAS_NOTIFICACIONES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAS_OBSERVACION" EntityType="Self.CAS_OBSERVACION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_PARALELO" EntityType="Self.CAS_PARALELO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_PARALELO_MATERIA" EntityType="Self.CAS_PARALELO_MATERIA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_PERIODO" EntityType="Self.CAS_PERIODO" Schema="dbo" store:Type="Tables" />
@@ -1951,6 +2019,20 @@
             <Parameter Name="outMensaje" Mode="InOut" Type="String" />
             <Parameter Name="outID" Mode="InOut" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="CAS_ENCUESTA_OPCION" EntityType="CAS_DataModel.CAS_ENCUESTA_OPCION" />
+          <EntitySet Name="CAS_OBSERVACION" EntityType="CAS_DataModel.CAS_OBSERVACION" />
+          <EntitySet Name="CAS_EVENTO" EntityType="CAS_DataModel.CAS_EVENTO" />
+          <EntitySet Name="CAS_EVENTO_HORA" EntityType="CAS_DataModel.CAS_EVENTO_HORA" />
+          <EntitySet Name="CAS_EVENTO_REGISTRO" EntityType="CAS_DataModel.CAS_EVENTO_REGISTRO" />
+          <FunctionImport Name="SP_NotificadorEvento" ReturnType="Collection(CAS_DataModel.NotificadorEvento_Result)">
+          <Parameter Name="ID_EVENTO_REGISTRO_DETALLE" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="CAS_EVENTO_REGISTRO_DETALLE" EntityType="CAS_DataModel.CAS_EVENTO_REGISTRO_DETALLE" />
+          <FunctionImport Name="SP_DocenteHorarioTarea" ReturnType="Collection(CAS_DataModel.DocenteHorarioTarea_Result)">
+            <Parameter Name="ID_DOCENTE" Mode="In" Type="String" />
+            <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+            <Parameter Name="outID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="DocenteObtenerCarreraMateria_Result">
           <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
@@ -2491,6 +2573,89 @@
           <Property Type="String" Name="NOMBRE_ADJUNTO" Nullable="true" MaxLength="283" />
           <Property Type="String" Name="FECHA" Nullable="true" MaxLength="112" />
           <Property Type="DateTime" Name="FECHA_CRONOGRAMA" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="CAS_ENCUESTA_OPCION">
+          <Key>
+            <PropertyRef Name="ID_ENCUESTA_OPCION" />
+          </Key>
+          <Property Name="ID_ENCUESTA_OPCION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_ENCUESTA_PREGUNTA" Type="Int32" />
+          <Property Name="DESCRIPCION_OPCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ID_CALIDAD" Type="Int32" />
+          <Property Name="DESCRIPCION_CALIDAD" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CAS_OBSERVACION">
+          <Key>
+            <PropertyRef Name="ID_OBSERVACION" />
+          </Key>
+          <Property Name="ID_OBSERVACION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TEXTO_OBSERVACION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CAS_EVENTO">
+          <Key>
+            <PropertyRef Name="ID_EVENTO" />
+          </Key>
+          <Property Name="ID_EVENTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_SEDE" Type="Int32" />
+          <Property Name="FECHA_EVENTO" Type="DateTime" Precision="0" />
+          <Property Name="EVENTO_DESCRIPCIÓN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_HORA" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CAS_EVENTO_HORA">
+          <Key>
+            <PropertyRef Name="ID_EVENTO_HORA" />
+          </Key>
+          <Property Name="ID_EVENTO_HORA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EVENTO_HORA" Type="Time" Precision="7" />
+        </EntityType>
+        <EntityType Name="CAS_EVENTO_REGISTRO">
+          <Key>
+            <PropertyRef Name="EVENTO_REGISTRO_CORREO" />
+          </Key>
+          <Property Name="EVENTO_REGISTRO_CORREO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EVENTO_REGISTRO_NOMBRES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EVENTO_REGISTRO_APELLIDOS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EVENTO_REGISTRO_MOVIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="NotificadorEvento_Result">
+          <Property Type="Int32" Name="MSG_ID" Nullable="false" />
+          <Property Type="Int32" Name="MSG_CODIGO" Nullable="true" />
+          <Property Type="Int32" Name="BDJ_ID" Nullable="true" />
+          <Property Type="String" Name="MSG_DESTINATARIO" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="MSG_REMITENTE" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="MSG_ASUNTO" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="MSG_TEXTO" Nullable="true" />
+          <Property Type="String" Name="MSG_FORMATO" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="MSG_FECHA_CREACION" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="MSG_FECHA_RECIBIDO" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="MSG_FECHA_ENVIADO" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="MSG_FECHA_CONFIRMADO" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="MSG_CANAL" Nullable="true" />
+          <Property Type="String" Name="USR_CODIGO" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="COD_ACCESO" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="CAS_EVENTO_REGISTRO_DETALLE">
+          <Key>
+            <PropertyRef Name="ID_EVENTO_REGISTRO_DETALLE" />
+          </Key>
+          <Property Name="ID_EVENTO_REGISTRO_DETALLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EVENTO_REGISTRO_CORREO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_EVENTO" Type="Int32" />
+          <Property Name="IMAGE_CODE_BAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CODE_BAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="Boolean" />
+        </EntityType>
+        <ComplexType Name="DocenteHorarioTarea_Result">
+          <Property Type="Int32" Name="ID_SEDE" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_UNIVERSIDAD" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="ID_CARRERA" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="ID_MATERIA" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_MATERIA" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="ID_PARALELO" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_PARALELO" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="ID_INTERVALO_DETALLE" Nullable="false" />
+          <Property Type="String" Name="HORARIO" Nullable="true" MaxLength="63" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3735,6 +3900,103 @@
                 <ScalarProperty Name="NOMBRE_ADJUNTO" ColumnName="NOMBRE_ADJUNTO" />
                 <ScalarProperty Name="FECHA" ColumnName="FECHA" />
                 <ScalarProperty Name="FECHA_CRONOGRAMA" ColumnName="FECHA_CRONOGRAMA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="CAS_ENCUESTA_OPCION">
+            <EntityTypeMapping TypeName="CAS_DataModel.CAS_ENCUESTA_OPCION">
+              <MappingFragment StoreEntitySet="CAS_ENCUESTA_OPCION">
+                <ScalarProperty Name="DESCRIPCION_CALIDAD" ColumnName="DESCRIPCION_CALIDAD" />
+                <ScalarProperty Name="ID_CALIDAD" ColumnName="ID_CALIDAD" />
+                <ScalarProperty Name="DESCRIPCION_OPCION" ColumnName="DESCRIPCION_OPCION" />
+                <ScalarProperty Name="ID_ENCUESTA_PREGUNTA" ColumnName="ID_ENCUESTA_PREGUNTA" />
+                <ScalarProperty Name="ID_ENCUESTA_OPCION" ColumnName="ID_ENCUESTA_OPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAS_OBSERVACION">
+            <EntityTypeMapping TypeName="CAS_DataModel.CAS_OBSERVACION">
+              <MappingFragment StoreEntitySet="CAS_OBSERVACION">
+                <ScalarProperty Name="TEXTO_OBSERVACION" ColumnName="TEXTO_OBSERVACION" />
+                <ScalarProperty Name="ID_OBSERVACION" ColumnName="ID_OBSERVACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAS_EVENTO">
+            <EntityTypeMapping TypeName="CAS_DataModel.CAS_EVENTO">
+              <MappingFragment StoreEntitySet="CAS_EVENTO">
+                <ScalarProperty Name="ID_HORA" ColumnName="ID_HORA" />
+                <ScalarProperty Name="EVENTO_DESCRIPCIÓN" ColumnName="EVENTO_DESCRIPCIÓN" />
+                <ScalarProperty Name="FECHA_EVENTO" ColumnName="FECHA_EVENTO" />
+                <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+                <ScalarProperty Name="ID_EVENTO" ColumnName="ID_EVENTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAS_EVENTO_HORA">
+            <EntityTypeMapping TypeName="CAS_DataModel.CAS_EVENTO_HORA">
+              <MappingFragment StoreEntitySet="CAS_EVENTO_HORA">
+                <ScalarProperty Name="EVENTO_HORA" ColumnName="EVENTO_HORA" />
+                <ScalarProperty Name="ID_EVENTO_HORA" ColumnName="ID_EVENTO_HORA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAS_EVENTO_REGISTRO">
+            <EntityTypeMapping TypeName="CAS_DataModel.CAS_EVENTO_REGISTRO">
+              <MappingFragment StoreEntitySet="CAS_EVENTO_REGISTRO">
+                <ScalarProperty Name="EVENTO_REGISTRO_MOVIL" ColumnName="EVENTO_REGISTRO_MOVIL" />
+                <ScalarProperty Name="EVENTO_REGISTRO_APELLIDOS" ColumnName="EVENTO_REGISTRO_APELLIDOS" />
+                <ScalarProperty Name="EVENTO_REGISTRO_NOMBRES" ColumnName="EVENTO_REGISTRO_NOMBRES" />
+                <ScalarProperty Name="EVENTO_REGISTRO_CORREO" ColumnName="EVENTO_REGISTRO_CORREO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_NotificadorEvento" FunctionName="CAS_DataModel.Store.NotificadorEvento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CAS_DataModel.NotificadorEvento_Result">
+                <ScalarProperty Name="MSG_ID" ColumnName="MSG_ID" />
+                <ScalarProperty Name="MSG_CODIGO" ColumnName="MSG_CODIGO" />
+                <ScalarProperty Name="BDJ_ID" ColumnName="BDJ_ID" />
+                <ScalarProperty Name="MSG_DESTINATARIO" ColumnName="MSG_DESTINATARIO" />
+                <ScalarProperty Name="MSG_REMITENTE" ColumnName="MSG_REMITENTE" />
+                <ScalarProperty Name="MSG_ASUNTO" ColumnName="MSG_ASUNTO" />
+                <ScalarProperty Name="MSG_TEXTO" ColumnName="MSG_TEXTO" />
+                <ScalarProperty Name="MSG_FORMATO" ColumnName="MSG_FORMATO" />
+                <ScalarProperty Name="MSG_FECHA_CREACION" ColumnName="MSG_FECHA_CREACION" />
+                <ScalarProperty Name="MSG_FECHA_RECIBIDO" ColumnName="MSG_FECHA_RECIBIDO" />
+                <ScalarProperty Name="MSG_FECHA_ENVIADO" ColumnName="MSG_FECHA_ENVIADO" />
+                <ScalarProperty Name="MSG_FECHA_CONFIRMADO" ColumnName="MSG_FECHA_CONFIRMADO" />
+                <ScalarProperty Name="MSG_CANAL" ColumnName="MSG_CANAL" />
+                <ScalarProperty Name="USR_CODIGO" ColumnName="USR_CODIGO" />
+                <ScalarProperty Name="COD_ACCESO" ColumnName="COD_ACCESO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="CAS_EVENTO_REGISTRO_DETALLE">
+            <EntityTypeMapping TypeName="CAS_DataModel.CAS_EVENTO_REGISTRO_DETALLE">
+              <MappingFragment StoreEntitySet="CAS_EVENTO_REGISTRO_DETALLE">
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="CODE_BAR" ColumnName="CODE_BAR" />
+                <ScalarProperty Name="IMAGE_CODE_BAR" ColumnName="IMAGE_CODE_BAR" />
+                <ScalarProperty Name="ID_EVENTO" ColumnName="ID_EVENTO" />
+                <ScalarProperty Name="EVENTO_REGISTRO_CORREO" ColumnName="EVENTO_REGISTRO_CORREO" />
+                <ScalarProperty Name="ID_EVENTO_REGISTRO_DETALLE" ColumnName="ID_EVENTO_REGISTRO_DETALLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_DocenteHorarioTarea" FunctionName="CAS_DataModel.Store.DocenteHorarioTarea">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CAS_DataModel.DocenteHorarioTarea_Result">
+                <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+                <ScalarProperty Name="DESCRIPCION_UNIVERSIDAD" ColumnName="DESCRIPCION_UNIVERSIDAD" />
+                <ScalarProperty Name="ID_CARRERA" ColumnName="ID_CARRERA" />
+                <ScalarProperty Name="DESCRIPCION_CARRERA" ColumnName="DESCRIPCION_CARRERA" />
+                <ScalarProperty Name="ID_MATERIA" ColumnName="ID_MATERIA" />
+                <ScalarProperty Name="DESCRIPCION_MATERIA" ColumnName="DESCRIPCION_MATERIA" />
+                <ScalarProperty Name="ID_PARALELO" ColumnName="ID_PARALELO" />
+                <ScalarProperty Name="DESCRIPCION_PARALELO" ColumnName="DESCRIPCION_PARALELO" />
+                <ScalarProperty Name="ID_INTERVALO_DETALLE" ColumnName="ID_INTERVALO_DETALLE" />
+                <ScalarProperty Name="HORARIO" ColumnName="HORARIO" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

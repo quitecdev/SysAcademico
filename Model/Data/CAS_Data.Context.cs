@@ -84,6 +84,12 @@ namespace Model.Data
         public virtual DbSet<CAS_ENCUESTA_PREGUNTAS> CAS_ENCUESTA_PREGUNTAS { get; set; }
         public virtual DbSet<CAS_RESPUESTA_ENCUESTA_DOCENTE> CAS_RESPUESTA_ENCUESTA_DOCENTE { get; set; }
         public virtual DbSet<CAS_ENCUESTA> CAS_ENCUESTA { get; set; }
+        public virtual DbSet<CAS_ENCUESTA_OPCION> CAS_ENCUESTA_OPCION { get; set; }
+        public virtual DbSet<CAS_OBSERVACION> CAS_OBSERVACION { get; set; }
+        public virtual DbSet<CAS_EVENTO> CAS_EVENTO { get; set; }
+        public virtual DbSet<CAS_EVENTO_HORA> CAS_EVENTO_HORA { get; set; }
+        public virtual DbSet<CAS_EVENTO_REGISTRO> CAS_EVENTO_REGISTRO { get; set; }
+        public virtual DbSet<CAS_EVENTO_REGISTRO_DETALLE> CAS_EVENTO_REGISTRO_DETALLE { get; set; }
     
         public virtual int SP_EstudianteNotaParcial(string iD_ESTUDIANTE, Nullable<int> iD_CARRERA, Nullable<int> iD_PERIODO, ObjectParameter outMensaje, ObjectParameter outID)
         {
@@ -1093,6 +1099,24 @@ namespace Model.Data
                 new ObjectParameter("ID_CRONOGRAMA", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocenteRepositorioAdjunto_Result>("SP_DocenteRepositorioAdjunto", iD_SEDEParameter, iD_CARRERAParameter, sEMANA_CRONOGRAMAParameter, iD_TIPO_INTERVALOParameter, iD_CARPETAParameter, iD_PERIODOParameter, iD_CRONOGRAMAParameter, outMensaje, outID);
+        }
+    
+        public virtual ObjectResult<NotificadorEvento_Result> SP_NotificadorEvento(Nullable<int> iD_EVENTO_REGISTRO_DETALLE)
+        {
+            var iD_EVENTO_REGISTRO_DETALLEParameter = iD_EVENTO_REGISTRO_DETALLE.HasValue ?
+                new ObjectParameter("ID_EVENTO_REGISTRO_DETALLE", iD_EVENTO_REGISTRO_DETALLE) :
+                new ObjectParameter("ID_EVENTO_REGISTRO_DETALLE", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NotificadorEvento_Result>("SP_NotificadorEvento", iD_EVENTO_REGISTRO_DETALLEParameter);
+        }
+    
+        public virtual ObjectResult<DocenteHorarioTarea_Result> SP_DocenteHorarioTarea(string iD_DOCENTE, ObjectParameter outMensaje, ObjectParameter outID)
+        {
+            var iD_DOCENTEParameter = iD_DOCENTE != null ?
+                new ObjectParameter("ID_DOCENTE", iD_DOCENTE) :
+                new ObjectParameter("ID_DOCENTE", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocenteHorarioTarea_Result>("SP_DocenteHorarioTarea", iD_DOCENTEParameter, outMensaje, outID);
         }
     }
 }

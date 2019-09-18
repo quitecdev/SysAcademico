@@ -176,9 +176,11 @@
     <Compile Include="Controllers\AsistenciaController.cs" />
     <Compile Include="Controllers\CalificacionesController.cs" />
     <Compile Include="Controllers\EjemplosController.cs" />
+    <Compile Include="Controllers\EncuestasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorarioController.cs" />
     <Compile Include="Controllers\RepositorioController.cs" />
+    <Compile Include="Controllers\TareasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -564,6 +566,9 @@
     <Content Include="Views\Account\CambiarConstraseña.cshtml" />
     <Content Include="Views\Account\_Contraseña.cshtml" />
     <Content Include="Views\Shared\_NotificacionDetalle.cshtml" />
+    <Content Include="Views\Encuestas\evalucionDocentes.cshtml" />
+    <Content Include="Views\Tareas\Index.cshtml" />
+    <Content Include="Views\Tareas\Crear.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
