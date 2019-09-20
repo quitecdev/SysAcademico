@@ -90,6 +90,9 @@ namespace Model.Data
         public virtual DbSet<CAS_EVENTO_HORA> CAS_EVENTO_HORA { get; set; }
         public virtual DbSet<CAS_EVENTO_REGISTRO> CAS_EVENTO_REGISTRO { get; set; }
         public virtual DbSet<CAS_EVENTO_REGISTRO_DETALLE> CAS_EVENTO_REGISTRO_DETALLE { get; set; }
+        public virtual DbSet<CAS_TAREAS> CAS_TAREAS { get; set; }
+        public virtual DbSet<CAS_ESTUDIANTE_TAREA> CAS_ESTUDIANTE_TAREA { get; set; }
+        public virtual DbSet<CAS_TAREA_ADJUNTO> CAS_TAREA_ADJUNTO { get; set; }
     
         public virtual int SP_EstudianteNotaParcial(string iD_ESTUDIANTE, Nullable<int> iD_CARRERA, Nullable<int> iD_PERIODO, ObjectParameter outMensaje, ObjectParameter outID)
         {
@@ -1117,6 +1120,53 @@ namespace Model.Data
                 new ObjectParameter("ID_DOCENTE", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocenteHorarioTarea_Result>("SP_DocenteHorarioTarea", iD_DOCENTEParameter, outMensaje, outID);
+        }
+    
+        public virtual int SP_GenerarTareaEstudiante(Nullable<int> iD_TAREA)
+        {
+            var iD_TAREAParameter = iD_TAREA.HasValue ?
+                new ObjectParameter("ID_TAREA", iD_TAREA) :
+                new ObjectParameter("ID_TAREA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_GenerarTareaEstudiante", iD_TAREAParameter);
+        }
+    
+        public virtual ObjectResult<DocenteObtenerDetalleTarea_Result> SP_DocenteObtenerDetalleTarea(string iD_DOCENTE, Nullable<int> iD_SEDE, Nullable<int> iD_CARRERA, Nullable<int> iD_MATERIA, Nullable<int> iD_PARALELO, Nullable<int> iD_INTERVALO_DETALLE, ObjectParameter outMensaje, ObjectParameter outID)
+        {
+            var iD_DOCENTEParameter = iD_DOCENTE != null ?
+                new ObjectParameter("ID_DOCENTE", iD_DOCENTE) :
+                new ObjectParameter("ID_DOCENTE", typeof(string));
+    
+            var iD_SEDEParameter = iD_SEDE.HasValue ?
+                new ObjectParameter("ID_SEDE", iD_SEDE) :
+                new ObjectParameter("ID_SEDE", typeof(int));
+    
+            var iD_CARRERAParameter = iD_CARRERA.HasValue ?
+                new ObjectParameter("ID_CARRERA", iD_CARRERA) :
+                new ObjectParameter("ID_CARRERA", typeof(int));
+    
+            var iD_MATERIAParameter = iD_MATERIA.HasValue ?
+                new ObjectParameter("ID_MATERIA", iD_MATERIA) :
+                new ObjectParameter("ID_MATERIA", typeof(int));
+    
+            var iD_PARALELOParameter = iD_PARALELO.HasValue ?
+                new ObjectParameter("ID_PARALELO", iD_PARALELO) :
+                new ObjectParameter("ID_PARALELO", typeof(int));
+    
+            var iD_INTERVALO_DETALLEParameter = iD_INTERVALO_DETALLE.HasValue ?
+                new ObjectParameter("ID_INTERVALO_DETALLE", iD_INTERVALO_DETALLE) :
+                new ObjectParameter("ID_INTERVALO_DETALLE", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocenteObtenerDetalleTarea_Result>("SP_DocenteObtenerDetalleTarea", iD_DOCENTEParameter, iD_SEDEParameter, iD_CARRERAParameter, iD_MATERIAParameter, iD_PARALELOParameter, iD_INTERVALO_DETALLEParameter, outMensaje, outID);
+        }
+    
+        public virtual ObjectResult<DocenteCalificacionTarea_Result> SP_DocenteCalificacionTarea(Nullable<int> iD_TAREA, ObjectParameter outMensaje, ObjectParameter outID)
+        {
+            var iD_TAREAParameter = iD_TAREA.HasValue ?
+                new ObjectParameter("ID_TAREA", iD_TAREA) :
+                new ObjectParameter("ID_TAREA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocenteCalificacionTarea_Result>("SP_DocenteCalificacionTarea", iD_TAREAParameter, outMensaje, outID);
         }
     }
 }

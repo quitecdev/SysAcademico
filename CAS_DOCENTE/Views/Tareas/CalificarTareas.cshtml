@@ -1,0 +1,121 @@
+﻿@model  List<Model.Services.Docente.TareaCalificacion>
+@{
+    ViewBag.Title = "Calificar Tareas";
+}
+<style>
+    th {
+        background: #8b1716;
+        color: #fff;
+        padding: 20px !important;
+    }
+
+    td {
+        padding: 20px !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">@ViewBag.Title</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box table-responsive">
+            @if (Model != null)
+            {
+                <table class="table table-hover table-striped m-0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Apellidos</th>
+                            <th>Nombres</th>
+                            <th>Adjunto</th>
+                            <th>Calificación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.ID_ESTUDIANTE</td>
+                                    <td>@item.APELLIDOS</td>
+                                    <td>@item.NOMBRES</td>
+                                   
+                                    @if (String.IsNullOrEmpty(item.ADJUNTO_TAREA))
+                                    {
+                                        <td>@item.ADJUNTO_TAREA</td>
+                                        <td>@item.NOTA_TAREA</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            @*<a href="@Url.Content(item.ADJUNTO_TAREA.Replace(@".\","~/").Replace(@"\","/"))" target="_blank">
+                                                    @item.NOMBRE_ADJUNTO
+                                                </a>*@
+                                            <a href="@Url.Content(item.ADJUNTO_TAREA)" target="_blank" title="Ver Tarea" class="on-default edit-row text-custom">
+                                                <i class="zmdi zmdi-attachment-alt"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <input type="text" style="width: 60px;" id="@item.ID_ESTUDIANTE_TAREA" max="10.00" class="form-control input-sm decimal" value="@item.NOTA_TAREA">
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                    }
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+                            }
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/assets/plugins/jquery-validation/dist/jquery.numeric.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $('.decimal').numeric(".");
+
+            $("input[type=text]").change(function () {
+                var myId = $(this).attr('id');
+                var valor = $(this).val()
+                if (parseFloat(valor) > 10) {
+                    alert("La nota ingresada no puede ser mayor a 10.00")
+                    $(this).val('0.00')
+                }
+                else {
+                    Nota(myId, valor);
+                }
+            });
+        });
+
+
+        function Nota(id, valor) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("ActualizarNota", "Tareas")',
+                content: "application/json; charset=utf-8",
+                dataType: "json",
+                data: { ID_ESTUDIANTE_TAREA: id, VALOR: valor },
+                success: function (d) {
+
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    //alert('Error!!');
+                }
+            });
+
+        }
+    </script>
+}

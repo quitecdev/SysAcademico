@@ -181,6 +181,7 @@
     <Compile Include="Controllers\IngresoController.cs" />
     <Compile Include="Controllers\NotaEstudianteController.cs" />
     <Compile Include="Controllers\RepositorioEstudianteController.cs" />
+    <Compile Include="Controllers\TareasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -571,6 +572,7 @@
     <Content Include="Views\Shared\_SugerenciaDetalle.cshtml" />
     <Content Include="Views\Shared\SugerenciaVer.cshtml" />
     <Content Include="Views\Encuestas\evalucionDocentes.cshtml" />
+    <Content Include="Views\Tareas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

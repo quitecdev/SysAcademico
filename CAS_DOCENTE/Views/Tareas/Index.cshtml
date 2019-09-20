@@ -47,7 +47,8 @@
                                     <td>@item.HORARIO</td>
                                     <td>
                                         @*@Html.ActionLink("Ir","", new { id = item.ID }, new { @class = "MyCustomCssClassName" })*@
-                                        <a href='@Url.Action("Crear","Tareas")/@item.ID_SEDE/@item.ID_CARRERA/@item.ID_MATERIA/@item.ID_PARALELO/@item.ID_INTERVALO_DETALLE' class="on-default edit-row text-custom"><i class="zmdi zmdi-collection-text"></i></a>
+                                        <a href='@Url.Action("Crear","Tareas")/@item.ID_SEDE/@item.ID_CARRERA/@item.ID_MATERIA/@item.ID_PARALELO/@item.ID_INTERVALO_DETALLE' title="Crear Tarea" class="on-default edit-row text-custom"><i class="zmdi zmdi-collection-text"></i></a>
+                                        <a href='@Url.Action("DetalleTareas","Tareas")/@item.ID_SEDE/@item.ID_CARRERA/@item.ID_MATERIA/@item.ID_PARALELO/@item.ID_INTERVALO_DETALLE' title="Ver Tareas" class="on-default edit-row text-inverse"><i class="zmdi zmdi-assignment-o"></i></a>
                                     </td>
                                 </tr>
                             }

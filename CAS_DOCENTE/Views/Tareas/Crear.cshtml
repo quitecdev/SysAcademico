@@ -1,7 +1,105 @@
-﻿
+﻿@model Model.Services.Docente.Tarea
 @{
     ViewBag.Title = "Crear Tarea";
 }
 
-<h2>Crear</h2>
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">@ViewBag.Title</h4>
+    </div>
+</div>
 
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
+            <div class="row">
+                <div class="col-lg-12">
+                    @using (Html.BeginForm("Crear", "Tareas", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", id = "formTarea" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.ID_SEDE);
+                        @Html.HiddenFor(m => m.ID_CARRERA);
+                        @Html.HiddenFor(m => m.ID_MATERIA);
+                        @Html.HiddenFor(m => m.ID_PARALELO);
+                        @Html.HiddenFor(m => m.ID_INTERVALO_DETALLE);
+                        @Html.HiddenFor(m => m.ID_DOCENTE);
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TEMA_TAREA, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.TEMA_TAREA, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TEMA_TAREA, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DESCRIPCION_TAREA, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-6">
+                                @Html.TextAreaFor(model => model.DESCRIPCION_TAREA, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DESCRIPCION_TAREA, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Archivo (s)</label>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(m => m.Files, new { type = "file", multiple = "multiple", id = "fileUpload" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FECHA_FIN_TAREA, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    @Html.EditorFor(model => model.FECHA_FIN_TAREA, "{0:dd/mm/yyyy}", new { htmlAttributes = new { id = "FECHA_FIN_TAREA", @class = "form-control", @type = "datetime" } })
+                                    <span class="input-group-addon bg-primary b-0 text-white"><i class="ti-calendar"></i></span>
+                                </div>
+                                @Html.ValidationMessageFor(model => model.FECHA_FIN_TAREA, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-9">
+                                <button type="submit" class="btn btn-custom waves-effect waves-light m-b-5 btn-loding" data-loading-text="<span class='btn-label'><i class='fa fa-circle-o-notch fa-spin'></i></span> Guardar<span class='md-ripple'></span>"><span class="btn-label"><i class="fa fa-save"></i></span> Guardar<span class="md-ripple"></span></button>
+                            </div>
+                        </div>
+                    }
+                </div><!-- end col -->
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $("#FECHA_FIN_TAREA").datepicker({
+            format: "dd/mm/yyyy"
+        });
+
+        $.validator.methods.date = function (value, element) {
+            Globalize.culture("en-AU");
+            // you can alternatively pass the culture to parseDate instead of
+            // setting the culture above, like so:
+            // parseDate(value, null, "en-AU")
+            return this.optional(element) || Globalize.parseDate(value) !== null;
+        }
+
+        $(document).ready(function () {
+            $('#DESCRIPCION_TAREA').summernote({
+                height: 200,                 // set editor height
+                minHeight: null,             // set minimum height of editor
+                maxHeight: null,             // set maximum height of editor
+                focus: false
+            });
+        });
+
+        $('#fileUpload').filestyle({
+            text: 'Examinar',
+            badge: true,
+            btnClass: 'btn-custom',
+            htmlIcon: '<span class="zmdi zmdi-folder"></span> '
+        });
+    </script>
+}

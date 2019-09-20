@@ -29,7 +29,7 @@ namespace CAS_DOCENTE
                     ID_SEDE = UrlParameter.Optional,
                     ID_CARRERA = UrlParameter.Optional,
                     ID_TIPO_INTERVALO = UrlParameter.Optional,
-                    ID_PARALELO=UrlParameter.Optional
+                    ID_PARALELO = UrlParameter.Optional
                 });
 
             routes.MapRoute(
@@ -59,6 +59,20 @@ namespace CAS_DOCENTE
                 ID_INTERVALO_DETALLE = UrlParameter.Optional
             });
 
-            }
+            routes.MapRoute(
+            "DetalleTareas",
+            "Tareas/DetalleTareas/{ID_SEDE}/{ID_CARRERA}/{ID_MATERIA}/{ID_PARALELO}/{ID_INTERVALO_DETALLE}",
+            new
+            {
+                controller = "Tareas",
+                action = "DetalleTareas",
+                ID_SEDE = UrlParameter.Optional,
+                ID_CARRERA = UrlParameter.Optional,
+                ID_MATERIA = UrlParameter.Optional,
+                ID_PARALELO = UrlParameter.Optional,
+                ID_INTERVALO_DETALLE = UrlParameter.Optional
+            });
+
+        }
     }
 }

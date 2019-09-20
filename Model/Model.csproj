@@ -155,6 +155,9 @@
     <Compile Include="Data\CAS_ESTUDIANTE_NOTA.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\CAS_ESTUDIANTE_TAREA.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\CAS_EVENTO.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
@@ -251,6 +254,12 @@
     <Compile Include="Data\CAS_SEMANA.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\CAS_TAREAS.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CAS_TAREA_ADJUNTO.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\CAS_TIPO_INVERTALO.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
@@ -270,6 +279,9 @@
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\CAS_VISITA.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DocenteCalificacionTarea_Result.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\DocenteCarreraIntervalo_Result.cs">
@@ -300,6 +312,9 @@
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\DocenteObtenerDatosReporteDocente_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DocenteObtenerDetalleTarea_Result.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\DocenteObtenerEstudianteNota_Result.cs">
@@ -488,6 +503,9 @@
     <Compile Include="Services\Docente\Perfil.cs" />
     <Compile Include="Services\Docente\RepositorioDocente.cs" />
     <Compile Include="Services\Docente\ServicesTrackError.cs" />
+    <Compile Include="Services\Docente\Tarea.cs" />
+    <Compile Include="Services\Docente\TareaCalificacion.cs" />
+    <Compile Include="Services\Docente\TareaDetalle.cs" />
     <Compile Include="Services\Estudiante\ChangePassword.cs" />
     <Compile Include="Services\Estudiante\EncuestaRespuesta_Regular.cs" />
     <Compile Include="Services\Estudiante\EncustaEvalucionDocente_Regular.cs" />

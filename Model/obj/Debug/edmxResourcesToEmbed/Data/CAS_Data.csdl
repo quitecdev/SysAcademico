@@ -944,6 +944,27 @@
       <Parameter Name="outMensaje" Mode="InOut" Type="String" />
       <Parameter Name="outID" Mode="InOut" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="CAS_TAREAS" EntityType="CAS_DataModel.CAS_TAREAS" />
+    <FunctionImport Name="SP_GenerarTareaEstudiante">
+      <Parameter Name="ID_TAREA" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_DocenteObtenerDetalleTarea" ReturnType="Collection(CAS_DataModel.DocenteObtenerDetalleTarea_Result)">
+      <Parameter Name="ID_DOCENTE" Mode="In" Type="String" />
+      <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_MATERIA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PARALELO" Mode="In" Type="Int32" />
+      <Parameter Name="ID_INTERVALO_DETALLE" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_DocenteCalificacionTarea" ReturnType="Collection(CAS_DataModel.DocenteCalificacionTarea_Result)">
+      <Parameter Name="ID_TAREA" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="CAS_ESTUDIANTE_TAREA" EntityType="CAS_DataModel.CAS_ESTUDIANTE_TAREA" />
+    <EntitySet Name="CAS_TAREA_ADJUNTO" EntityType="CAS_DataModel.CAS_TAREA_ADJUNTO" />
   </EntityContainer>
   <ComplexType Name="DocenteObtenerCarreraMateria_Result">
     <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
@@ -1568,4 +1589,67 @@
     <Property Type="Int32" Name="ID_INTERVALO_DETALLE" Nullable="false" />
     <Property Type="String" Name="HORARIO" Nullable="true" MaxLength="63" />
   </ComplexType>
+  <EntityType Name="CAS_TAREAS">
+    <Key>
+      <PropertyRef Name="ID_TAREA" />
+    </Key>
+    <Property Name="ID_TAREA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_SEDE" Type="Int32" Nullable="false" />
+    <Property Name="ID_CARRERA" Type="Int32" Nullable="false" />
+    <Property Name="ID_MATERIA" Type="Int32" Nullable="false" />
+    <Property Name="ID_PARALELO" Type="Int32" Nullable="false" />
+    <Property Name="ID_INTERVALO_DETALLE" Type="Int32" Nullable="false" />
+    <Property Name="ID_DOCENTE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TEMA_TAREA" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPCION_TAREA" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_CREACION_TAREA" Type="DateTime" Precision="3" />
+    <Property Name="FECHA_FIN_TAREA" Type="DateTime" Precision="3" />
+    <Property Name="ID_PERIODO" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="DocenteObtenerDetalleTarea_Result">
+    <Property Type="Int32" Name="ID_TAREA" Nullable="false" />
+    <Property Type="Int32" Name="ID_SEDE" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_UNIVERSIDAD" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="ID_CARRERA" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="ID_MATERIA" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_MATERIA" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="ID_PARALELO" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_PARALELO" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="ID_INTERVALO_DETALLE" Nullable="false" />
+    <Property Type="String" Name="HORARIO" Nullable="true" MaxLength="63" />
+    <Property Type="String" Name="TEMA_TAREA" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="DESCRIPCION_TAREA" Nullable="false" />
+    <Property Type="DateTime" Name="FECHA_CREACION_TAREA" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="FECHA_FIN_TAREA" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ID_PERIODO" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="DocenteCalificacionTarea_Result">
+    <Property Type="Int32" Name="ID_ESTUDIANTE_TAREA" Nullable="false" />
+    <Property Type="String" Name="ID_ESTUDIANTE" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="APELLIDOS" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="NOMBRES" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="ADJUNTO_TAREA" Nullable="true" />
+    <Property Type="Decimal" Name="NOTA_TAREA" Nullable="true" Precision="18" Scale="4" />
+  </ComplexType>
+  <EntityType Name="CAS_ESTUDIANTE_TAREA">
+    <Key>
+      <PropertyRef Name="ID_ESTUDIANTE_TAREA" />
+    </Key>
+    <Property Name="ID_ESTUDIANTE_TAREA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_TAREA" Type="Int32" />
+    <Property Name="ID_ESTUDIANTE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="ADJUNTO_TAREA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_TAREA" Type="DateTime" Precision="3" />
+    <Property Name="NOTA_TAREA" Type="Decimal" Precision="18" Scale="4" />
+  </EntityType>
+  <EntityType Name="CAS_TAREA_ADJUNTO">
+    <Key>
+      <PropertyRef Name="ID_TAREA_ADJUNTO" />
+    </Key>
+    <Property Name="ID_TAREA_ADJUNTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_TAREA" Type="Int32" />
+    <Property Name="PATH_ADJUNTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="NOMBRE_ADJUNTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

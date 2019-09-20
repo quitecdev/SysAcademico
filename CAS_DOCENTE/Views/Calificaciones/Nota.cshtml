@@ -122,7 +122,13 @@
             $("input[type=text]").change(function () {
                 var myId = $(this).attr('id');
                 var valor = $(this).val()
-                Nota(myId, valor);
+                if (parseFloat(valor) > 10) {
+                    alert("La nota ingresada no puede ser mayor a 10.00")
+                }
+                else {
+                    Nota(myId, valor);
+                }
+
             });
         });
 

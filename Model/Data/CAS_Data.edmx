@@ -259,6 +259,17 @@
           <Property Name="ID_PERIODO" Type="int" />
           <Property Name="ID_SEDE" Type="int" />
         </EntityType>
+        <EntityType Name="CAS_ESTUDIANTE_TAREA">
+          <Key>
+            <PropertyRef Name="ID_ESTUDIANTE_TAREA" />
+          </Key>
+          <Property Name="ID_ESTUDIANTE_TAREA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_TAREA" Type="int" />
+          <Property Name="ID_ESTUDIANTE" Type="varchar" MaxLength="15" />
+          <Property Name="ADJUNTO_TAREA" Type="varchar(max)" />
+          <Property Name="FECHA_TAREA" Type="datetime" />
+          <Property Name="NOTA_TAREA" Type="decimal" Precision="18" Scale="4" />
+        </EntityType>
         <EntityType Name="CAS_EVENTO">
           <Key>
             <PropertyRef Name="ID_EVENTO" />
@@ -584,6 +595,32 @@
           <Property Name="DESCRIPCION_SEMANA" Type="varchar" MaxLength="50" />
           <Property Name="ID_PERIODO" Type="int" />
         </EntityType>
+        <EntityType Name="CAS_TAREA_ADJUNTO">
+          <Key>
+            <PropertyRef Name="ID_TAREA_ADJUNTO" />
+          </Key>
+          <Property Name="ID_TAREA_ADJUNTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_TAREA" Type="int" />
+          <Property Name="PATH_ADJUNTO" Type="varchar(max)" />
+          <Property Name="NOMBRE_ADJUNTO" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="CAS_TAREAS">
+          <Key>
+            <PropertyRef Name="ID_TAREA" />
+          </Key>
+          <Property Name="ID_TAREA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_SEDE" Type="int" Nullable="false" />
+          <Property Name="ID_CARRERA" Type="int" Nullable="false" />
+          <Property Name="ID_MATERIA" Type="int" Nullable="false" />
+          <Property Name="ID_PARALELO" Type="int" Nullable="false" />
+          <Property Name="ID_INTERVALO_DETALLE" Type="int" Nullable="false" />
+          <Property Name="ID_DOCENTE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TEMA_TAREA" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="DESCRIPCION_TAREA" Type="varchar(max)" Nullable="false" />
+          <Property Name="FECHA_CREACION_TAREA" Type="datetime" />
+          <Property Name="FECHA_FIN_TAREA" Type="datetime" />
+          <Property Name="ID_PERIODO" Type="int" />
+        </EntityType>
         <EntityType Name="CAS_TIPO_INVERTALO">
           <Key>
             <PropertyRef Name="ID_TIPO_INTERVALO" />
@@ -664,6 +701,9 @@
           <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
           <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
           <Parameter Name="outID" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="GenerarTareaEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+          <Parameter Name="ID_TAREA" Type="int" Mode="In" />
         </Function>
         <Function Name="InscripcionDetalleCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
           <Parameter Name="ID_INSCRIP" Type="varchar" Mode="In" />
@@ -792,6 +832,11 @@
           <Parameter Name="FECHA_FIN" Type="datetime" Mode="In" />
           <Parameter Name="ID_CRONOGRAMA" Type="int" Mode="In" />
         </Function>
+        <Function Name="DocenteCalificacionTarea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
+          <Parameter Name="ID_TAREA" Type="int" Mode="In" />
+          <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+          <Parameter Name="outID" Type="int" Mode="InOut" />
+        </Function>
         <Function Name="DocenteCarreraIntervalo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
           <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
           <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
@@ -831,6 +876,16 @@
           <Parameter Name="ID_SEDE" Type="int" Mode="In" />
           <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
           <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+          <Parameter Name="ID_PARALELO" Type="int" Mode="In" />
+          <Parameter Name="ID_INTERVALO_DETALLE" Type="int" Mode="In" />
+          <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+          <Parameter Name="outID" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="DocenteObtenerDetalleTarea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="DOCENTE">
+          <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
+          <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+          <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+          <Parameter Name="ID_MATERIA" Type="int" Mode="In" />
           <Parameter Name="ID_PARALELO" Type="int" Mode="In" />
           <Parameter Name="ID_INTERVALO_DETALLE" Type="int" Mode="In" />
           <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
@@ -1045,6 +1100,7 @@
           <EntitySet Name="CAS_ESTUDIANTE_ASISTENCIA" EntityType="Self.CAS_ESTUDIANTE_ASISTENCIA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_ESTUDIANTE_DETALLE" EntityType="Self.CAS_ESTUDIANTE_DETALLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_ESTUDIANTE_NOTA" EntityType="Self.CAS_ESTUDIANTE_NOTA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAS_ESTUDIANTE_TAREA" EntityType="Self.CAS_ESTUDIANTE_TAREA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_EVENTO" EntityType="Self.CAS_EVENTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_EVENTO_HORA" EntityType="Self.CAS_EVENTO_HORA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_EVENTO_REGISTRO" EntityType="Self.CAS_EVENTO_REGISTRO" Schema="dbo" store:Type="Tables" />
@@ -1077,6 +1133,8 @@
           <EntitySet Name="CAS_SALON" EntityType="Self.CAS_SALON" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_SEDE" EntityType="Self.CAS_SEDE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_SEMANA" EntityType="Self.CAS_SEMANA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAS_TAREA_ADJUNTO" EntityType="Self.CAS_TAREA_ADJUNTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAS_TAREAS" EntityType="Self.CAS_TAREAS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_TIPO_INVERTALO" EntityType="Self.CAS_TIPO_INVERTALO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_TIPO_PAGO" EntityType="Self.CAS_TIPO_PAGO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_UBICACION" EntityType="Self.CAS_UBICACION" Schema="dbo" store:Type="Tables" />
@@ -2033,6 +2091,27 @@
             <Parameter Name="outMensaje" Mode="InOut" Type="String" />
             <Parameter Name="outID" Mode="InOut" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="CAS_TAREAS" EntityType="CAS_DataModel.CAS_TAREAS" />
+          <FunctionImport Name="SP_GenerarTareaEstudiante">
+          <Parameter Name="ID_TAREA" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DocenteObtenerDetalleTarea" ReturnType="Collection(CAS_DataModel.DocenteObtenerDetalleTarea_Result)">
+            <Parameter Name="ID_DOCENTE" Mode="In" Type="String" />
+            <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
+            <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+            <Parameter Name="ID_MATERIA" Mode="In" Type="Int32" />
+            <Parameter Name="ID_PARALELO" Mode="In" Type="Int32" />
+            <Parameter Name="ID_INTERVALO_DETALLE" Mode="In" Type="Int32" />
+            <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+            <Parameter Name="outID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DocenteCalificacionTarea" ReturnType="Collection(CAS_DataModel.DocenteCalificacionTarea_Result)">
+            <Parameter Name="ID_TAREA" Mode="In" Type="Int32" />
+            <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+            <Parameter Name="outID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="CAS_ESTUDIANTE_TAREA" EntityType="CAS_DataModel.CAS_ESTUDIANTE_TAREA" />
+          <EntitySet Name="CAS_TAREA_ADJUNTO" EntityType="CAS_DataModel.CAS_TAREA_ADJUNTO" />
         </EntityContainer>
         <ComplexType Name="DocenteObtenerCarreraMateria_Result">
           <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
@@ -2657,6 +2736,69 @@
           <Property Type="Int32" Name="ID_INTERVALO_DETALLE" Nullable="false" />
           <Property Type="String" Name="HORARIO" Nullable="true" MaxLength="63" />
         </ComplexType>
+        <EntityType Name="CAS_TAREAS">
+          <Key>
+            <PropertyRef Name="ID_TAREA" />
+          </Key>
+          <Property Name="ID_TAREA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_SEDE" Type="Int32" Nullable="false" />
+          <Property Name="ID_CARRERA" Type="Int32" Nullable="false" />
+          <Property Name="ID_MATERIA" Type="Int32" Nullable="false" />
+          <Property Name="ID_PARALELO" Type="Int32" Nullable="false" />
+          <Property Name="ID_INTERVALO_DETALLE" Type="Int32" Nullable="false" />
+          <Property Name="ID_DOCENTE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TEMA_TAREA" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION_TAREA" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_CREACION_TAREA" Type="DateTime" Precision="3" />
+          <Property Name="FECHA_FIN_TAREA" Type="DateTime" Precision="3" />
+          <Property Name="ID_PERIODO" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="DocenteObtenerDetalleTarea_Result">
+          <Property Type="Int32" Name="ID_TAREA" Nullable="false" />
+          <Property Type="Int32" Name="ID_SEDE" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_UNIVERSIDAD" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="ID_CARRERA" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="ID_MATERIA" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_MATERIA" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="ID_PARALELO" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_PARALELO" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="ID_INTERVALO_DETALLE" Nullable="false" />
+          <Property Type="String" Name="HORARIO" Nullable="true" MaxLength="63" />
+          <Property Type="String" Name="TEMA_TAREA" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="DESCRIPCION_TAREA" Nullable="false" />
+          <Property Type="DateTime" Name="FECHA_CREACION_TAREA" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FECHA_FIN_TAREA" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ID_PERIODO" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DocenteCalificacionTarea_Result">
+          <Property Type="Int32" Name="ID_ESTUDIANTE_TAREA" Nullable="false" />
+          <Property Type="String" Name="ID_ESTUDIANTE" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="APELLIDOS" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="NOMBRES" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="ADJUNTO_TAREA" Nullable="true" />
+          <Property Type="Decimal" Name="NOTA_TAREA" Nullable="true" Precision="18" Scale="4" />
+        </ComplexType>
+        <EntityType Name="CAS_ESTUDIANTE_TAREA">
+          <Key>
+            <PropertyRef Name="ID_ESTUDIANTE_TAREA" />
+          </Key>
+          <Property Name="ID_ESTUDIANTE_TAREA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_TAREA" Type="Int32" />
+          <Property Name="ID_ESTUDIANTE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ADJUNTO_TAREA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_TAREA" Type="DateTime" Precision="3" />
+          <Property Name="NOTA_TAREA" Type="Decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="CAS_TAREA_ADJUNTO">
+          <Key>
+            <PropertyRef Name="ID_TAREA_ADJUNTO" />
+          </Key>
+          <Property Name="ID_TAREA_ADJUNTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_TAREA" Type="Int32" />
+          <Property Name="PATH_ADJUNTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE_ADJUNTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4000,6 +4142,81 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="CAS_TAREAS">
+            <EntityTypeMapping TypeName="CAS_DataModel.CAS_TAREAS">
+              <MappingFragment StoreEntitySet="CAS_TAREAS">
+                <ScalarProperty Name="ID_PERIODO" ColumnName="ID_PERIODO" />
+                <ScalarProperty Name="FECHA_FIN_TAREA" ColumnName="FECHA_FIN_TAREA" />
+                <ScalarProperty Name="FECHA_CREACION_TAREA" ColumnName="FECHA_CREACION_TAREA" />
+                <ScalarProperty Name="DESCRIPCION_TAREA" ColumnName="DESCRIPCION_TAREA" />
+                <ScalarProperty Name="TEMA_TAREA" ColumnName="TEMA_TAREA" />
+                <ScalarProperty Name="ID_DOCENTE" ColumnName="ID_DOCENTE" />
+                <ScalarProperty Name="ID_INTERVALO_DETALLE" ColumnName="ID_INTERVALO_DETALLE" />
+                <ScalarProperty Name="ID_PARALELO" ColumnName="ID_PARALELO" />
+                <ScalarProperty Name="ID_MATERIA" ColumnName="ID_MATERIA" />
+                <ScalarProperty Name="ID_CARRERA" ColumnName="ID_CARRERA" />
+                <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+                <ScalarProperty Name="ID_TAREA" ColumnName="ID_TAREA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_GenerarTareaEstudiante" FunctionName="CAS_DataModel.Store.GenerarTareaEstudiante" />
+          <FunctionImportMapping FunctionImportName="SP_DocenteObtenerDetalleTarea" FunctionName="CAS_DataModel.Store.DocenteObtenerDetalleTarea">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CAS_DataModel.DocenteObtenerDetalleTarea_Result">
+                <ScalarProperty Name="ID_TAREA" ColumnName="ID_TAREA" />
+                <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+                <ScalarProperty Name="DESCRIPCION_UNIVERSIDAD" ColumnName="DESCRIPCION_UNIVERSIDAD" />
+                <ScalarProperty Name="ID_CARRERA" ColumnName="ID_CARRERA" />
+                <ScalarProperty Name="DESCRIPCION_CARRERA" ColumnName="DESCRIPCION_CARRERA" />
+                <ScalarProperty Name="ID_MATERIA" ColumnName="ID_MATERIA" />
+                <ScalarProperty Name="DESCRIPCION_MATERIA" ColumnName="DESCRIPCION_MATERIA" />
+                <ScalarProperty Name="ID_PARALELO" ColumnName="ID_PARALELO" />
+                <ScalarProperty Name="DESCRIPCION_PARALELO" ColumnName="DESCRIPCION_PARALELO" />
+                <ScalarProperty Name="ID_INTERVALO_DETALLE" ColumnName="ID_INTERVALO_DETALLE" />
+                <ScalarProperty Name="HORARIO" ColumnName="HORARIO" />
+                <ScalarProperty Name="TEMA_TAREA" ColumnName="TEMA_TAREA" />
+                <ScalarProperty Name="DESCRIPCION_TAREA" ColumnName="DESCRIPCION_TAREA" />
+                <ScalarProperty Name="FECHA_CREACION_TAREA" ColumnName="FECHA_CREACION_TAREA" />
+                <ScalarProperty Name="FECHA_FIN_TAREA" ColumnName="FECHA_FIN_TAREA" />
+                <ScalarProperty Name="ID_PERIODO" ColumnName="ID_PERIODO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DocenteCalificacionTarea" FunctionName="CAS_DataModel.Store.DocenteCalificacionTarea">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CAS_DataModel.DocenteCalificacionTarea_Result">
+                <ScalarProperty Name="ID_ESTUDIANTE_TAREA" ColumnName="ID_ESTUDIANTE_TAREA" />
+                <ScalarProperty Name="ID_ESTUDIANTE" ColumnName="ID_ESTUDIANTE" />
+                <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="ADJUNTO_TAREA" ColumnName="ADJUNTO_TAREA" />
+                <ScalarProperty Name="NOTA_TAREA" ColumnName="NOTA_TAREA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="CAS_ESTUDIANTE_TAREA">
+            <EntityTypeMapping TypeName="CAS_DataModel.CAS_ESTUDIANTE_TAREA">
+              <MappingFragment StoreEntitySet="CAS_ESTUDIANTE_TAREA">
+                <ScalarProperty Name="NOTA_TAREA" ColumnName="NOTA_TAREA" />
+                <ScalarProperty Name="FECHA_TAREA" ColumnName="FECHA_TAREA" />
+                <ScalarProperty Name="ADJUNTO_TAREA" ColumnName="ADJUNTO_TAREA" />
+                <ScalarProperty Name="ID_ESTUDIANTE" ColumnName="ID_ESTUDIANTE" />
+                <ScalarProperty Name="ID_TAREA" ColumnName="ID_TAREA" />
+                <ScalarProperty Name="ID_ESTUDIANTE_TAREA" ColumnName="ID_ESTUDIANTE_TAREA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAS_TAREA_ADJUNTO">
+            <EntityTypeMapping TypeName="CAS_DataModel.CAS_TAREA_ADJUNTO">
+              <MappingFragment StoreEntitySet="CAS_TAREA_ADJUNTO">
+                <ScalarProperty Name="NOMBRE_ADJUNTO" ColumnName="NOMBRE_ADJUNTO" />
+                <ScalarProperty Name="PATH_ADJUNTO" ColumnName="PATH_ADJUNTO" />
+                <ScalarProperty Name="ID_TAREA" ColumnName="ID_TAREA" />
+                <ScalarProperty Name="ID_TAREA_ADJUNTO" ColumnName="ID_TAREA_ADJUNTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
