@@ -269,6 +269,8 @@
           <Property Name="ADJUNTO_TAREA" Type="varchar(max)" />
           <Property Name="FECHA_TAREA" Type="datetime" />
           <Property Name="NOTA_TAREA" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="ADJUNTO_NOMBRE" Type="varchar(max)" />
+          <Property Name="OBSERVACION_TAREA" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="CAS_EVENTO">
           <Key>
@@ -1044,6 +1046,11 @@
           <Parameter Name="ID_ESTUDIANTE" Type="varchar" Mode="In" />
           <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
           <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+          <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+          <Parameter Name="outID" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="EstudianteObtenerTareasDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ESTUDIANTE">
+          <Parameter Name="ID_ESTUDIANTE" Type="varchar" Mode="In" />
           <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
           <Parameter Name="outID" Type="int" Mode="InOut" />
         </Function>
@@ -2110,8 +2117,13 @@
             <Parameter Name="outMensaje" Mode="InOut" Type="String" />
             <Parameter Name="outID" Mode="InOut" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="CAS_ESTUDIANTE_TAREA" EntityType="CAS_DataModel.CAS_ESTUDIANTE_TAREA" />
           <EntitySet Name="CAS_TAREA_ADJUNTO" EntityType="CAS_DataModel.CAS_TAREA_ADJUNTO" />
+          <FunctionImport Name="SP_EstudianteObtenerTareasDetalle" ReturnType="Collection(CAS_DataModel.EstudianteObtenerTareasDetalle_Result)">
+            <Parameter Name="ID_ESTUDIANTE" Mode="In" Type="String" />
+            <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+            <Parameter Name="outID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="CAS_ESTUDIANTE_TAREA" EntityType="CAS_DataModel.CAS_ESTUDIANTE_TAREA" />
         </EntityContainer>
         <ComplexType Name="DocenteObtenerCarreraMateria_Result">
           <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
@@ -2779,6 +2791,28 @@
           <Property Type="String" Name="ADJUNTO_TAREA" Nullable="true" />
           <Property Type="Decimal" Name="NOTA_TAREA" Nullable="true" Precision="18" Scale="4" />
         </ComplexType>
+        <EntityType Name="CAS_TAREA_ADJUNTO">
+          <Key>
+            <PropertyRef Name="ID_TAREA_ADJUNTO" />
+          </Key>
+          <Property Name="ID_TAREA_ADJUNTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_TAREA" Type="Int32" />
+          <Property Name="PATH_ADJUNTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE_ADJUNTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="EstudianteObtenerTareasDetalle_Result">
+          <Property Type="Int32" Name="ID_ESTUDIANTE_TAREA" Nullable="false" />
+          <Property Type="Int32" Name="ID_TAREA" Nullable="false" />
+          <Property Type="Int32" Name="ID_SEDE" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_UNIVERSIDAD" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="ID_CARRERA" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="ID_MATERIA" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_MATERIA" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="TEMA_TAREA" Nullable="false" MaxLength="500" />
+          <Property Type="DateTime" Name="FECHA_FIN_TAREA" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="NOTA_TAREA" Nullable="true" Precision="18" Scale="4" />
+        </ComplexType>
         <EntityType Name="CAS_ESTUDIANTE_TAREA">
           <Key>
             <PropertyRef Name="ID_ESTUDIANTE_TAREA" />
@@ -2789,15 +2823,8 @@
           <Property Name="ADJUNTO_TAREA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FECHA_TAREA" Type="DateTime" Precision="3" />
           <Property Name="NOTA_TAREA" Type="Decimal" Precision="18" Scale="4" />
-        </EntityType>
-        <EntityType Name="CAS_TAREA_ADJUNTO">
-          <Key>
-            <PropertyRef Name="ID_TAREA_ADJUNTO" />
-          </Key>
-          <Property Name="ID_TAREA_ADJUNTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_TAREA" Type="Int32" />
-          <Property Name="PATH_ADJUNTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="NOMBRE_ADJUNTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ADJUNTO_NOMBRE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OBSERVACION_TAREA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -4195,18 +4222,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="CAS_ESTUDIANTE_TAREA">
-            <EntityTypeMapping TypeName="CAS_DataModel.CAS_ESTUDIANTE_TAREA">
-              <MappingFragment StoreEntitySet="CAS_ESTUDIANTE_TAREA">
-                <ScalarProperty Name="NOTA_TAREA" ColumnName="NOTA_TAREA" />
-                <ScalarProperty Name="FECHA_TAREA" ColumnName="FECHA_TAREA" />
-                <ScalarProperty Name="ADJUNTO_TAREA" ColumnName="ADJUNTO_TAREA" />
-                <ScalarProperty Name="ID_ESTUDIANTE" ColumnName="ID_ESTUDIANTE" />
-                <ScalarProperty Name="ID_TAREA" ColumnName="ID_TAREA" />
-                <ScalarProperty Name="ID_ESTUDIANTE_TAREA" ColumnName="ID_ESTUDIANTE_TAREA" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="CAS_TAREA_ADJUNTO">
             <EntityTypeMapping TypeName="CAS_DataModel.CAS_TAREA_ADJUNTO">
               <MappingFragment StoreEntitySet="CAS_TAREA_ADJUNTO">
@@ -4214,6 +4229,37 @@
                 <ScalarProperty Name="PATH_ADJUNTO" ColumnName="PATH_ADJUNTO" />
                 <ScalarProperty Name="ID_TAREA" ColumnName="ID_TAREA" />
                 <ScalarProperty Name="ID_TAREA_ADJUNTO" ColumnName="ID_TAREA_ADJUNTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_EstudianteObtenerTareasDetalle" FunctionName="CAS_DataModel.Store.EstudianteObtenerTareasDetalle">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CAS_DataModel.EstudianteObtenerTareasDetalle_Result">
+                <ScalarProperty Name="ID_ESTUDIANTE_TAREA" ColumnName="ID_ESTUDIANTE_TAREA" />
+                <ScalarProperty Name="ID_TAREA" ColumnName="ID_TAREA" />
+                <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+                <ScalarProperty Name="DESCRIPCION_UNIVERSIDAD" ColumnName="DESCRIPCION_UNIVERSIDAD" />
+                <ScalarProperty Name="ID_CARRERA" ColumnName="ID_CARRERA" />
+                <ScalarProperty Name="DESCRIPCION_CARRERA" ColumnName="DESCRIPCION_CARRERA" />
+                <ScalarProperty Name="ID_MATERIA" ColumnName="ID_MATERIA" />
+                <ScalarProperty Name="DESCRIPCION_MATERIA" ColumnName="DESCRIPCION_MATERIA" />
+                <ScalarProperty Name="TEMA_TAREA" ColumnName="TEMA_TAREA" />
+                <ScalarProperty Name="FECHA_FIN_TAREA" ColumnName="FECHA_FIN_TAREA" />
+                <ScalarProperty Name="NOTA_TAREA" ColumnName="NOTA_TAREA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="CAS_ESTUDIANTE_TAREA">
+            <EntityTypeMapping TypeName="CAS_DataModel.CAS_ESTUDIANTE_TAREA">
+              <MappingFragment StoreEntitySet="CAS_ESTUDIANTE_TAREA">
+                <ScalarProperty Name="OBSERVACION_TAREA" ColumnName="OBSERVACION_TAREA" />
+                <ScalarProperty Name="ADJUNTO_NOMBRE" ColumnName="ADJUNTO_NOMBRE" />
+                <ScalarProperty Name="NOTA_TAREA" ColumnName="NOTA_TAREA" />
+                <ScalarProperty Name="FECHA_TAREA" ColumnName="FECHA_TAREA" />
+                <ScalarProperty Name="ADJUNTO_TAREA" ColumnName="ADJUNTO_TAREA" />
+                <ScalarProperty Name="ID_ESTUDIANTE" ColumnName="ID_ESTUDIANTE" />
+                <ScalarProperty Name="ID_TAREA" ColumnName="ID_TAREA" />
+                <ScalarProperty Name="ID_ESTUDIANTE_TAREA" ColumnName="ID_ESTUDIANTE_TAREA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

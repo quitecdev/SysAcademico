@@ -61,7 +61,7 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label"></label>
                             <div class="col-md-9">
-                                <button type="submit" class="btn btn-custom waves-effect waves-light m-b-5 btn-loding" data-loading-text="<span class='btn-label'><i class='fa fa-circle-o-notch fa-spin'></i></span> Guardar<span class='md-ripple'></span>"><span class="btn-label"><i class="fa fa-save"></i></span> Guardar<span class="md-ripple"></span></button>
+                                <button type="submit" class="btn btn-custom waves-effect waves-light m-b-5 btn-loding"><span class="btn-label"><i class="fa fa-save"></i></span> Guardar<span class="md-ripple"></span></button>
                             </div>
                         </div>
                     }
@@ -91,7 +91,13 @@
                 height: 200,                 // set editor height
                 minHeight: null,             // set minimum height of editor
                 maxHeight: null,             // set maximum height of editor
-                focus: false
+                focus: false,
+                toolbar: [
+                  ['style', ['highlight', 'bold', 'italic', 'underline', 'clear']],
+                  ['font', ['strikethrough', 'superscript', 'subscript']],
+                  ['para', ['ul', 'ol', 'paragraph']],
+                  ['view', ['codeview']]
+                ]
             });
         });
 

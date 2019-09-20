@@ -377,6 +377,9 @@
     <Compile Include="Data\EstudianteObtenerPromedio_Result.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\EstudianteObtenerTareasDetalle_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\EstudianteRepositorioAdjunto_Result.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
@@ -519,6 +522,8 @@
     <Compile Include="Services\Estudiante\ServicesTrackError.cs" />
     <Compile Include="Services\Estudiante\RepositorioEstudiante.cs" />
     <Compile Include="Services\Estudiante\Sugerencia.cs" />
+    <Compile Include="Services\Estudiante\TareaDetalle.cs" />
+    <Compile Include="Services\Estudiante\Tareas.cs" />
     <Compile Include="Services\ServicesAuditoria.cs" />
   </ItemGroup>
   <ItemGroup>

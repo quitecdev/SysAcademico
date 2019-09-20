@@ -20,5 +20,7 @@ namespace Model.Data
         public string ADJUNTO_TAREA { get; set; }
         public Nullable<System.DateTime> FECHA_TAREA { get; set; }
         public Nullable<decimal> NOTA_TAREA { get; set; }
+        public string ADJUNTO_NOMBRE { get; set; }
+        public string OBSERVACION_TAREA { get; set; }
     }
 }

@@ -573,6 +573,7 @@
     <Content Include="Views\Shared\SugerenciaVer.cshtml" />
     <Content Include="Views\Encuestas\evalucionDocentes.cshtml" />
     <Content Include="Views\Tareas\Index.cshtml" />
+    <Content Include="Views\Tareas\Detalle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

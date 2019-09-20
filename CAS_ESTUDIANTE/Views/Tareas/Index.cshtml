@@ -1,70 +1,61 @@
-﻿@*@model List<Model.Services.Estudiante.RepositorioEstudiante>*@
+﻿@model  List<Model.Services.Estudiante.Tareas>
 @{
     ViewBag.Title = "Tareas";
 }
+<style>
+    th {
+        background: #8b1716;
+        color: #fff;
+        padding: 20px !important;
+    }
+
+    td {
+        padding: 20px !important;
+    }
+</style>
 
 <div class="row">
     <div class="col-sm-12">
         <h4 class="page-title">@ViewBag.Title</h4>
     </div>
 </div>
-
 <div class="row">
-    <div class="col-md-12">
-        <div class="card-box">
-
-
-            <div class="panel-group" id="accordion_1" role="tablist" aria-multiselectable="true">
-                    <div class="panel panel-default bx-shadow-none">
-                        <div class="panel-heading" role="tab" id="heading_1">
-                            <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion_1" href="#collapse_1" aria-expanded="false" aria-controls="collapse_1" class="collapsed">
-                                  TAERA 2 - TEORIA 2 
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapse_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_1" aria-expanded="false">
-                            <div class="panel-body">
-                                <h1>EJEMPLO</h1>
-                                @*@if (semana.Carpeta.Count > 0)
-                                {
-                                    foreach (var carpeta in semana.Carpeta)
-                                    {*@
-                                        @*<div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a data-toggle="collapse" href="#carpeta_1"><i class="indicator fa fa-caret-right" aria-hidden="true"></i> @carpeta.DESCRIPCION_CARPETA</a>
-                                            </h4>
-                                        </div>
-                                                <div id="carpeta_@contador" class="panel-collapse collapse">
-                                                    @foreach (var adjunto in carpeta.Adjunto)
-                                                    {
-                                                        <ul class="list-group m-b-0 user-list">
-                                                            <li class="list-group-item">
-                                                                <a href="@adjunto.RUTA_ADJUNTO" class="user-list-item" target="_blank">
-                                                                    <div class="avatar text-center">
-                                                                        <i class="@adjunto.ICONO_ADJUNTO text-custom"></i>
-                                                                    </div>
-                                                                    <div class="user-desc">
-                                                                        <span class="name" style="font-weight: bold;">Temática : @adjunto.TEMATICA</span>
-                                                                        <span class="name">@adjunto.NOMBRE_ADJUNTO</span>
-                                                                        <span class="desc"> @adjunto.PESO_ADJUNTO</span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-
-                                                    }
-                                                </div>*@
-                                        @*contador++;
-                                    }
-                                }*@
-                            </div>
-                        </div>
-                    </div>
-            </div>
-
-
-
+    <div class="col-sm-12">
+        <div class="card-box table-responsive">
+            @if (Model != null)
+            {
+                <table class="table table-hover table-striped m-0">
+                    <thead>
+                        <tr>
+                            <th>Sede</th>
+                            <th>Carrera</th>
+                            <th>Materia</th>
+                            <th>Tema</th>
+                            <th>Fecha Entrega</th>
+                            <th>Calificación</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.DESCRIPCION_UNIVERSIDAD</td>
+                                    <td>@item.DESCRIPCION_CARRERA</td>
+                                    <td>@item.DESCRIPCION_MATERIA</td>
+                                    <td>@item.TEMA_TAREA</td>
+                                    <td>@item.FECHA_FIN_TAREA</td>
+                                    <td>@item.NOTA_TAREA</td>
+                                    <td>
+                                        <a href='@Url.Action("Detalle","Tareas")/@item.ID_ESTUDIANTE_TAREA' title="Ver Tareas" class="on-default edit-row text-inverse"><i class="zmdi zmdi-assignment-o"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+                            }
         </div>
     </div>
 </div>

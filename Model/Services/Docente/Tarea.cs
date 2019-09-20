@@ -96,7 +96,7 @@ namespace Model.Services.Docente
 
                 if (file != null && file.ContentLength > 0)
                 {
-                    string directorio = "~/Docente/Tareas/" + _enc.HashString(ID_DOCENTE);
+                    string directorio = "~/Adjuntos/" + _enc.HashString(ID_DOCENTE);
 
                     string verificar = HttpContext.Current.Server.MapPath(directorio);
                     if (!Directory.Exists(verificar))

@@ -56,11 +56,12 @@ namespace CAS_DOCENTE.Controllers
                 string json = JsonConvert.SerializeObject(tarea);
                 ServicesAuditoria.audit().RegistrarAuditoria(Session["COD_USUARIO"].ToString(), Session["ID_USUARIO"].ToString(), Session.SessionID, "GUARDAR", ServicesAuditoria.audit().CrearTag("FORMULARIO", "CREAR_TAREA"), ServicesAuditoria.audit().CrearTag("DATA", json));
                 return Redirect("DetalleTareas/" + tarea.ID_SEDE+"/"+tarea.ID_CARRERA+"/"+tarea.ID_MATERIA+"/"+tarea.ID_PARALELO+"/"+tarea.ID_INTERVALO_DETALLE);
+                //return RedirectToAction("Index","Tareas");
             }
             catch (Exception ex)
             {
                 ServicesTrackError.RegistrarError(ex);
-                return View();
+                return Redirect("DetalleTareas/" + tarea.ID_SEDE + "/" + tarea.ID_CARRERA + "/" + tarea.ID_MATERIA + "/" + tarea.ID_PARALELO + "/" + tarea.ID_INTERVALO_DETALLE);
             }
         }
         #endregion

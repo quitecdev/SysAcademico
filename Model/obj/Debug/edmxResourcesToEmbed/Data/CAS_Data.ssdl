@@ -264,6 +264,8 @@
     <Property Name="ADJUNTO_TAREA" Type="varchar(max)" />
     <Property Name="FECHA_TAREA" Type="datetime" />
     <Property Name="NOTA_TAREA" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="ADJUNTO_NOMBRE" Type="varchar(max)" />
+    <Property Name="OBSERVACION_TAREA" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="CAS_EVENTO">
     <Key>
@@ -1039,6 +1041,11 @@
     <Parameter Name="ID_ESTUDIANTE" Type="varchar" Mode="In" />
     <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
     <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="EstudianteObtenerTareasDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ESTUDIANTE">
+    <Parameter Name="ID_ESTUDIANTE" Type="varchar" Mode="In" />
     <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
     <Parameter Name="outID" Type="int" Mode="InOut" />
   </Function>

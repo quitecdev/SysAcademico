@@ -81,20 +81,20 @@ namespace CAS_DOCENTE.Controllers
                         cookie.Expires = DateTime.Now.AddDays(30);
                         Response.Cookies.Add(cookie);
                     }
-                    isExist = _encuesta.ValidarEncuesta(obtenerDatosUsurio.ID_USUARIO);
+                    //isExist = _encuesta.ValidarEncuesta(obtenerDatosUsurio.ID_USUARIO);
                     var action = "";
                     var controler = "";
-                    if (isExist)
-                    {
+                    //if (isExist)
+                    //{
                         action = "Index";
                         controler = "Home";
-                    }
-                    else
-                    {
-                        // var a = _carrera.ObtenerCarreraEstudiante(obtenerDatosUsurio.ID_USUARIO);
-                        action = "evalucionDocentes";
-                        controler = "Encuestas";
-                    }
+                    //}
+                    //else
+                    //{
+                    //    // var a = _carrera.ObtenerCarreraEstudiante(obtenerDatosUsurio.ID_USUARIO);
+                    //    action = "evalucionDocentes";
+                    //    controler = "Encuestas";
+                    //}
                     ServicesAuditoria.audit().RegistrarAuditoria(Session["COD_USUARIO"].ToString(), Session["ID_USUARIO"].ToString(), Session.SessionID, "INICIO_SESION", ServicesAuditoria.audit().CrearTag("ROL", Session["DESCRIPCION_ROL"].ToString()));
                     return RedirectToAction(action, controler);
                 }

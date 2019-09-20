@@ -1,0 +1,97 @@
+﻿@model Model.Services.Estudiante.TareaDetalle
+@{
+    ViewBag.Title = "Detalle Tarea";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">@ViewBag.Title</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
+            <div class="row">
+                <div class="col-lg-12">
+                    @using (Html.BeginForm("Detalle", "Tareas", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", id = "formTarea" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.ID_ESTUDIANTE_TAREA);
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.TEMA_TAREA, new { @class = "col-md-3 control-label" })*@
+                            <label class = "col-md-3 control-label">Tema</label>
+                            <div class="col-md-6">
+                                <label class = "form-control">@Model.TEMA_TAREA</label>
+                                @*@Html.EditorFor(model => model.TEMA_TAREA, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TEMA_TAREA, "", new { @class = "text-custom" })*@
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.TEMA_TAREA, new { @class = "col-md-3 control-label" })*@
+                            <label class="col-md-3 control-label">Descripcion</label>
+                            <div class="col-md-6">
+                                @*<label>@Model.TEMA_TAREA</label>*@
+                                @Html.Raw(Model.DESCRIPCION_TAREA)
+                                @*@Html.EditorFor(model => model.TEMA_TAREA, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.TEMA_TAREA, "", new { @class = "text-custom" })*@
+                            </div>
+                        </div>
+
+                        @*@Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.ID_);
+                        @Html.HiddenFor(m => m.ID_CARRERA);
+                        @Html.HiddenFor(m => m.ID_MATERIA);
+                        @Html.HiddenFor(m => m.ID_PARALELO);
+                        @Html.HiddenFor(m => m.ID_INTERVALO_DETALLE);
+                        @Html.HiddenFor(m => m.ID_DOCENTE);
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TEMA_TAREA, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.TEMA_TAREA, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TEMA_TAREA, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DESCRIPCION_TAREA, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-6">
+                                @Html.TextAreaFor(model => model.DESCRIPCION_TAREA, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DESCRIPCION_TAREA, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Archivo (s)</label>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(m => m.Files, new { type = "file", multiple = "multiple", id = "fileUpload" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FECHA_FIN_TAREA, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    @Html.EditorFor(model => model.FECHA_FIN_TAREA, "{0:dd/mm/yyyy}", new { htmlAttributes = new { id = "FECHA_FIN_TAREA", @class = "form-control", @type = "datetime" } })
+                                    <span class="input-group-addon bg-primary b-0 text-white"><i class="ti-calendar"></i></span>
+                                </div>
+                                @Html.ValidationMessageFor(model => model.FECHA_FIN_TAREA, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-9">
+                                <button type="submit" class="btn btn-custom waves-effect waves-light m-b-5 btn-loding"><span class="btn-label"><i class="fa fa-save"></i></span> Guardar<span class="md-ripple"></span></button>
+                            </div>
+                        </div>*@
+                    }
+                </div><!-- end col -->
+            </div>
+        </div>
+    </div>
+</div>

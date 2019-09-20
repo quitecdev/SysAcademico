@@ -91,8 +91,8 @@ namespace Model.Data
         public virtual DbSet<CAS_EVENTO_REGISTRO> CAS_EVENTO_REGISTRO { get; set; }
         public virtual DbSet<CAS_EVENTO_REGISTRO_DETALLE> CAS_EVENTO_REGISTRO_DETALLE { get; set; }
         public virtual DbSet<CAS_TAREAS> CAS_TAREAS { get; set; }
-        public virtual DbSet<CAS_ESTUDIANTE_TAREA> CAS_ESTUDIANTE_TAREA { get; set; }
         public virtual DbSet<CAS_TAREA_ADJUNTO> CAS_TAREA_ADJUNTO { get; set; }
+        public virtual DbSet<CAS_ESTUDIANTE_TAREA> CAS_ESTUDIANTE_TAREA { get; set; }
     
         public virtual int SP_EstudianteNotaParcial(string iD_ESTUDIANTE, Nullable<int> iD_CARRERA, Nullable<int> iD_PERIODO, ObjectParameter outMensaje, ObjectParameter outID)
         {
@@ -1167,6 +1167,15 @@ namespace Model.Data
                 new ObjectParameter("ID_TAREA", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocenteCalificacionTarea_Result>("SP_DocenteCalificacionTarea", iD_TAREAParameter, outMensaje, outID);
+        }
+    
+        public virtual ObjectResult<EstudianteObtenerTareasDetalle_Result> SP_EstudianteObtenerTareasDetalle(string iD_ESTUDIANTE, ObjectParameter outMensaje, ObjectParameter outID)
+        {
+            var iD_ESTUDIANTEParameter = iD_ESTUDIANTE != null ?
+                new ObjectParameter("ID_ESTUDIANTE", iD_ESTUDIANTE) :
+                new ObjectParameter("ID_ESTUDIANTE", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EstudianteObtenerTareasDetalle_Result>("SP_EstudianteObtenerTareasDetalle", iD_ESTUDIANTEParameter, outMensaje, outID);
         }
     }
 }
