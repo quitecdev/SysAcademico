@@ -82,7 +82,9 @@ namespace Model.Services.Docente
             }
             catch (Exception ex)
             {
+
                 ServicesTrackError.RegistrarError(ex);
+
             }
         }
 
