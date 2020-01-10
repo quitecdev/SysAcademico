@@ -63,3 +63,12 @@ D:\RepositorioLocalCodigo\SysAcademico\CAS_ADMIN\obj\Release\CAS_ADMIN.pdb
 D:\RepositorioLocalCodigo\SysAcademico\CAS_ADMIN\bin\itextsharp.dll
 D:\RepositorioLocalCodigo\SysAcademico\CAS_ADMIN\bin\EntityFramework.SqlServer.dll
 D:\RepositorioLocalCodigo\SysAcademico\CAS_ADMIN\bin\EntityFramework.SqlServer.xml
+D:\RepositorioLocalCodigo\SysAcademico\CAS_ADMIN\bin\AfsEncripta.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_ADMIN\bin\BarcodeLib.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_ADMIN\bin\es\System.Web.Helpers.resources.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_ADMIN\bin\es\System.Web.Mvc.resources.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_ADMIN\bin\es\System.Web.Optimization.resources.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_ADMIN\bin\es\System.Web.Razor.resources.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_ADMIN\bin\es\System.Web.WebPages.resources.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_ADMIN\bin\es\System.Web.WebPages.Deployment.resources.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_ADMIN\bin\es\System.Web.WebPages.Razor.resources.dll

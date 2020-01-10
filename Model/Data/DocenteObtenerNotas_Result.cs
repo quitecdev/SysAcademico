@@ -13,6 +13,8 @@ namespace Model.Data
     
     public partial class DocenteObtenerNotas_Result
     {
+        public Nullable<int> ID_PERIODO { get; set; }
+        public string DESCRIPCION_PERIODO { get; set; }
         public int ID_SEDE { get; set; }
         public string DESCRIPCION_UNIVERSIDAD { get; set; }
         public int ID_CARRERA { get; set; }
@@ -21,5 +23,7 @@ namespace Model.Data
         public string DESCRIPCION_NOTA { get; set; }
         public int ID_INTERVALO_DETALLE { get; set; }
         public string HORA { get; set; }
+        public string ID_DOCENTE { get; set; }
+        public string NOMBRE { get; set; }
     }
 }

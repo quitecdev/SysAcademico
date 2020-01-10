@@ -70,6 +70,19 @@ namespace CAS_ADMIN
                 ID_PARALELO_MATERIA = UrlParameter.Optional,
                 ID_SEDE = UrlParameter.Optional
             });
+
+            routes.MapRoute(
+            "CreaNotasDetalle",
+            "Notas/CreaNotasDetalle/{ID_NOTA}/{ID_NOTA_DETALLE}",
+            new
+            {
+                controller = "Notas",
+                action = "CreaNotasDetalle",
+                ID_NOTA = UrlParameter.Optional,
+                ID_NOTA_DETALLE = UrlParameter.Optional
+            });
+
+
         }
     }
 }

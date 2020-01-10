@@ -349,3 +349,12 @@ function SubmitForm(form) {
 
     return false;
 }
+
+plyr.setup("#plyr-video");
+
+function ModalVideo(url) {
+    $.get(url).done(function (responde) {
+        $('#full-width-modal').html(responde);
+        $('#full-width-modal').modal('show');
+    });
+}

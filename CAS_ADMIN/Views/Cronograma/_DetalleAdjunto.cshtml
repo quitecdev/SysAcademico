@@ -52,9 +52,18 @@
                             <span class="lead m-t-0  text-custom"><i class="@item.ICONO_ADJUNTO"></i></span>
                         </td>
                         <td>
-                            <a href="@Url.Content(item.RUTA_ADJUNTO.Replace(@".\","~/").Replace(@"\","/"))" target="_blank">
-                                @item.NOMBRE_ADJUNTO
-                            </a>
+                            @if (item.ICONO_ADJUNTO != "zmdi zmdi-collection-video")
+                            {
+                                <a href="@Url.Content(item.RUTA_ADJUNTO.Replace(@".\","~/").Replace(@"\","/"))" target="_blank">
+                                    @item.NOMBRE_ADJUNTO
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="javascript:ModalVideo('@Url.Action("Video","Visualizador")/@item.ID_CRONOGRAMA_ADJUNTO');">
+                                    @item.NOMBRE_ADJUNTO
+                                </a>
+                            }
                         </td>
                         <td>@item.PESO_ADJUNTO</td>
                         <td>
@@ -76,4 +85,3 @@
         }
     </tbody>
 </table>
-

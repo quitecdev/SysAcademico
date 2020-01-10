@@ -73,3 +73,5 @@ D:\RepositorioLocalCodigo\SysAcademico\CAS_ESTUDIANTE\bin\es\System.Web.Razor.re
 D:\RepositorioLocalCodigo\SysAcademico\CAS_ESTUDIANTE\bin\es\System.Web.WebPages.resources.dll
 D:\RepositorioLocalCodigo\SysAcademico\CAS_ESTUDIANTE\bin\es\System.Web.WebPages.Deployment.resources.dll
 D:\RepositorioLocalCodigo\SysAcademico\CAS_ESTUDIANTE\bin\es\System.Web.WebPages.Razor.resources.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_ESTUDIANTE\bin\AfsEncripta.dll
+D:\RepositorioLocalCodigo\SysAcademico\CAS_ESTUDIANTE\bin\BarcodeLib.dll

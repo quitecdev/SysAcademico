@@ -182,6 +182,7 @@
     <Compile Include="Controllers\NotaEstudianteController.cs" />
     <Compile Include="Controllers\RepositorioEstudianteController.cs" />
     <Compile Include="Controllers\TareasController.cs" />
+    <Compile Include="Controllers\VisualizadorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -454,6 +455,8 @@
     <Content Include="assets\plugins\multiselect\css\multi-select.css" />
     <Content Include="assets\plugins\multiselect\js\jquery.multi-select.js" />
     <Content Include="assets\plugins\parsleyjs\dist\parsley.min.js" />
+    <Content Include="assets\plugins\plyr\plyr.css" />
+    <Content Include="assets\plugins\plyr\plyr.js" />
     <Content Include="assets\plugins\raphael\raphael-min.js" />
     <Content Include="assets\plugins\select2\dist\css\select2-bootstrap.css" />
     <Content Include="assets\plugins\select2\dist\css\select2-spinner.gif" />
@@ -538,7 +541,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -574,6 +579,7 @@
     <Content Include="Views\Encuestas\evalucionDocentes.cshtml" />
     <Content Include="Views\Tareas\Index.cshtml" />
     <Content Include="Views\Tareas\Detalle.cshtml" />
+    <Content Include="Views\Visualizador\Video.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

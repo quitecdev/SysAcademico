@@ -20,5 +20,6 @@ namespace Model.Data
         public string DESCRIPCION_PARALELO { get; set; }
         public string DESCRIPCION_DIAS { get; set; }
         public string HORA { get; set; }
+        public string DESCRIPCION_PERIODO { get; set; }
     }
 }

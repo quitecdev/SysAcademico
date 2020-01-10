@@ -68,6 +68,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\AdminRepositorioAdjunto_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\AdminRepositorioCarpeta_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\AdminRepositorioSemana_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\AUX_ABREVIATURA_DIA.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
@@ -443,6 +452,12 @@
     <Compile Include="Data\ObtenerIntervaloSedeCarrera_Result.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\ObtenerNotaDetalle_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ObtenerNota_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\ObtenerParaleloSedeCarrera_Result.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
@@ -477,11 +492,14 @@
     <Compile Include="Services\Admin\IntervaloDetalle.cs" />
     <Compile Include="Services\Admin\Login.cs" />
     <Compile Include="Services\Admin\Materia.cs" />
+    <Compile Include="Services\Admin\Nota.cs" />
+    <Compile Include="Services\Admin\NotaDetalle.cs" />
     <Compile Include="Services\Admin\Notificacion.cs" />
     <Compile Include="Services\Admin\Paralelo.cs" />
     <Compile Include="Services\Admin\Perfil.cs" />
     <Compile Include="Services\Admin\Periodo.cs" />
     <Compile Include="Services\Admin\Reporte_EncuestaDocente.cs" />
+    <Compile Include="Services\Admin\RepositorioAdmin.cs" />
     <Compile Include="Services\Admin\RutaAdjunto.cs" />
     <Compile Include="Services\Admin\Sede.cs" />
     <Compile Include="Services\Admin\ServicesTrackError.cs" />

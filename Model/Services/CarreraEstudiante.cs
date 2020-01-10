@@ -16,6 +16,7 @@ namespace Model.Services
         public int ID_SEDE { get; set; }
         public Nullable<int> ID_TIPO_INTERVALO { get; set; }
         public int ID_PARALELO { get; set; }
+        public int ID_PERIODO { get; set; }
 
 
         public List<CarreraEstudiante> ObtenerCarreraEstudiante(string ID_ESTUDIANTE)
@@ -27,14 +28,16 @@ namespace Model.Services
                 ObjectParameter outID = new ObjectParameter("outID", typeof(int));
                 ObjectParameter outMensaje = new ObjectParameter("outMensaje", typeof(string));
 
-                carrera = ctx.SP_EstudianteObtenerCarrera(ID_ESTUDIANTE, null, outMensaje, outID)
-                          .Select(x => new CarreraEstudiante {
+                carrera = ctx.SP_EstudianteObtenerCarrera(ID_ESTUDIANTE, outMensaje, outID)
+                          .Select(x => new CarreraEstudiante
+                          {
                               ID_CARRERA = x.ID_CARRERA,
                               DESCRIPCION_CARRERA = x.DESCRIPCION_CARRERA,
                               COD_CARRERA = x.COD_CARRERA,
-                              ID_SEDE=x.ID_SEDE,
-                              ID_TIPO_INTERVALO=x.ID_TIPO_INTERVALO,
-                              ID_PARALELO=x.ID_PARALELO
+                              ID_SEDE = x.ID_SEDE,
+                              ID_TIPO_INTERVALO = x.ID_TIPO_INTERVALO,
+                              ID_PARALELO = x.ID_PARALELO,
+                              ID_PERIODO=x.ID_PERIODO.Value
                           }).ToList();
             }
             return carrera;

@@ -10,7 +10,8 @@ namespace Model.Services.Docente
 {
     public class NotasAsignadas
     {
-        public string ID_DOCENTE { get; set; }
+        public Nullable<int> ID_PERIODO { get; set; }
+        public string DESCRIPCION_PERIODO { get; set; }
         public int ID_SEDE { get; set; }
         public string DESCRIPCION_UNIVERSIDAD { get; set; }
         public int ID_CARRERA { get; set; }
@@ -19,6 +20,8 @@ namespace Model.Services.Docente
         public string DESCRIPCION_NOTA { get; set; }
         public int ID_INTERVALO_DETALLE { get; set; }
         public string HORA { get; set; }
+        public string ID_DOCENTE { get; set; }
+        public string NOMBRE { get; set; }
 
 
         public List<NotasAsignadas> Obtener(string ID_DOCENTE)
@@ -32,7 +35,10 @@ namespace Model.Services.Docente
                     ObjectParameter outMensaje = new ObjectParameter("outMensaje", typeof(string));
                     notas = ctx.SP_DocenteObtenerNotas(ID_DOCENTE, null, outMensaje, outID)
                             .Select(x => new NotasAsignadas {
-                                ID_DOCENTE= ID_DOCENTE,
+                                ID_PERIODO=x.ID_PERIODO,
+                                DESCRIPCION_PERIODO=x.DESCRIPCION_PERIODO,
+                                ID_DOCENTE = ID_DOCENTE,
+                                NOMBRE=x.NOMBRE,
                                 ID_SEDE =x.ID_SEDE,
                                 DESCRIPCION_UNIVERSIDAD=x.DESCRIPCION_UNIVERSIDAD,
                                 ID_CARRERA=x.ID_CARRERA,

@@ -214,19 +214,6 @@ namespace Model.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocenteRepositorioCarpeta_Result>("SP_DocenteRepositorioCarpeta", iD_CARRERAParameter, sEMANA_CRONOGRAMAParameter, iD_CRONOGRAMAParameter, iD_PERIODOParameter, outMensaje, outID);
         }
     
-        public virtual ObjectResult<DocenteObtenerNotas_Result> SP_DocenteObtenerNotas(string iD_DOCENTE, Nullable<int> iD_PERIODO, ObjectParameter outMensaje, ObjectParameter outID)
-        {
-            var iD_DOCENTEParameter = iD_DOCENTE != null ?
-                new ObjectParameter("ID_DOCENTE", iD_DOCENTE) :
-                new ObjectParameter("ID_DOCENTE", typeof(string));
-    
-            var iD_PERIODOParameter = iD_PERIODO.HasValue ?
-                new ObjectParameter("ID_PERIODO", iD_PERIODO) :
-                new ObjectParameter("ID_PERIODO", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocenteObtenerNotas_Result>("SP_DocenteObtenerNotas", iD_DOCENTEParameter, iD_PERIODOParameter, outMensaje, outID);
-        }
-    
         public virtual int SP_DocenteObtenerParciales(string iD_DOCENTE, Nullable<int> iD_SEDE, Nullable<int> iD_CARRERA, Nullable<int> iD_NOTA, Nullable<int> iD_PERIODO, Nullable<int> iD_INTERVALO_DETALLE, ObjectParameter outMensaje, ObjectParameter outID)
         {
             var iD_DOCENTEParameter = iD_DOCENTE != null ?
@@ -564,19 +551,6 @@ namespace Model.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EstudianteObtenerHorario_Result>("SP_EstudianteObtenerHorario", iD_ESTUDIANTEParameter, iD_PERIODOParameter, outMensaje, outID);
         }
     
-        public virtual ObjectResult<EstudianteObtenerCarrera_Result> SP_EstudianteObtenerCarrera(string iD_ESTUDIANTE, Nullable<int> iD_PERIODO, ObjectParameter outMensaje, ObjectParameter outID)
-        {
-            var iD_ESTUDIANTEParameter = iD_ESTUDIANTE != null ?
-                new ObjectParameter("ID_ESTUDIANTE", iD_ESTUDIANTE) :
-                new ObjectParameter("ID_ESTUDIANTE", typeof(string));
-    
-            var iD_PERIODOParameter = iD_PERIODO.HasValue ?
-                new ObjectParameter("ID_PERIODO", iD_PERIODO) :
-                new ObjectParameter("ID_PERIODO", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EstudianteObtenerCarrera_Result>("SP_EstudianteObtenerCarrera", iD_ESTUDIANTEParameter, iD_PERIODOParameter, outMensaje, outID);
-        }
-    
         public virtual ObjectResult<EstudianteObtenerAsistencia_Result> SP_EstudianteObtenerAsistencia(string iD_ESTUDIANTE, Nullable<int> iD_PERIODO, ObjectParameter outMensaje, ObjectParameter outID)
         {
             var iD_ESTUDIANTEParameter = iD_ESTUDIANTE != null ?
@@ -747,15 +721,6 @@ namespace Model.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocenteRepositorioSemana_Result>("SP_DocenteRepositorioSemana", iD_SEDEParameter, iD_CARRERAParameter, iD_PERIODOParameter, iD_TIPO_INTERVALOParameter, iD_PARALELOParameter, outMensaje, outID);
         }
     
-        public virtual ObjectResult<DocenteHorarioMateria_Result> SP_DocenteHorarioMateria(string iD_DOCENTE, ObjectParameter outMensaje, ObjectParameter outID)
-        {
-            var iD_DOCENTEParameter = iD_DOCENTE != null ?
-                new ObjectParameter("ID_DOCENTE", iD_DOCENTE) :
-                new ObjectParameter("ID_DOCENTE", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocenteHorarioMateria_Result>("SP_DocenteHorarioMateria", iD_DOCENTEParameter, outMensaje, outID);
-        }
-    
         public virtual ObjectResult<ObtenerHorarioParalelo_Result> SP_ObtenerHorarioParalelo(Nullable<int> iD_PARALELO_MATERIA, ObjectParameter outMensaje, ObjectParameter outID)
         {
             var iD_PARALELO_MATERIAParameter = iD_PARALELO_MATERIA.HasValue ?
@@ -856,19 +821,6 @@ namespace Model.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocenteObtenerDatosReporteDocente_Result>("SP_DocenteObtenerDatosReporteDocente", iD_SEDEParameter, iD_CARRERAParameter, iD_PERIODOParameter, iD_PARALELOParameter, iD_INTERVALO_DETALLEParameter, outMensaje, outID);
         }
     
-        public virtual ObjectResult<EstudianteObtenerCarreraReporteDocente_Result> SP_EstudianteObtenerCarreraReporteDocente(string iD_ESTUDIANTE, Nullable<int> iD_PERIODO, ObjectParameter outMensaje, ObjectParameter outID)
-        {
-            var iD_ESTUDIANTEParameter = iD_ESTUDIANTE != null ?
-                new ObjectParameter("ID_ESTUDIANTE", iD_ESTUDIANTE) :
-                new ObjectParameter("ID_ESTUDIANTE", typeof(string));
-    
-            var iD_PERIODOParameter = iD_PERIODO.HasValue ?
-                new ObjectParameter("ID_PERIODO", iD_PERIODO) :
-                new ObjectParameter("ID_PERIODO", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EstudianteObtenerCarreraReporteDocente_Result>("SP_EstudianteObtenerCarreraReporteDocente", iD_ESTUDIANTEParameter, iD_PERIODOParameter, outMensaje, outID);
-        }
-    
         public virtual ObjectResult<DocenteDatosCarreraMateria_Result> SP_DocenteDatosCarreraMateria(string iD_DOCENTE, ObjectParameter outMensaje, ObjectParameter outID)
         {
             var iD_DOCENTEParameter = iD_DOCENTE != null ?
@@ -926,39 +878,6 @@ namespace Model.Data
                 new ObjectParameter("ID_INTERVALO", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ObtenerHorarioMateria_Result>("SP_ObtenerHorarioMateria", iD_SEDEParameter, iD_CARRERAParameter, iD_MATERIAParameter, iD_PARALELOParameter, iD_INTERVALOParameter, outMensaje, outID);
-        }
-    
-        public virtual ObjectResult<EstudianteRepositorioAdjunto_Result> SP_EstudianteRepositorioAdjunto(Nullable<int> iD_SEDE, Nullable<int> iD_CARRERA, Nullable<int> sEMANA_CRONOGRAMA, Nullable<int> iD_TIPO_INTERVALO, Nullable<int> iD_CARPETA, Nullable<int> iD_PARALELO, Nullable<int> iD_PERIODO, ObjectParameter outMensaje, ObjectParameter outID)
-        {
-            var iD_SEDEParameter = iD_SEDE.HasValue ?
-                new ObjectParameter("ID_SEDE", iD_SEDE) :
-                new ObjectParameter("ID_SEDE", typeof(int));
-    
-            var iD_CARRERAParameter = iD_CARRERA.HasValue ?
-                new ObjectParameter("ID_CARRERA", iD_CARRERA) :
-                new ObjectParameter("ID_CARRERA", typeof(int));
-    
-            var sEMANA_CRONOGRAMAParameter = sEMANA_CRONOGRAMA.HasValue ?
-                new ObjectParameter("SEMANA_CRONOGRAMA", sEMANA_CRONOGRAMA) :
-                new ObjectParameter("SEMANA_CRONOGRAMA", typeof(int));
-    
-            var iD_TIPO_INTERVALOParameter = iD_TIPO_INTERVALO.HasValue ?
-                new ObjectParameter("ID_TIPO_INTERVALO", iD_TIPO_INTERVALO) :
-                new ObjectParameter("ID_TIPO_INTERVALO", typeof(int));
-    
-            var iD_CARPETAParameter = iD_CARPETA.HasValue ?
-                new ObjectParameter("ID_CARPETA", iD_CARPETA) :
-                new ObjectParameter("ID_CARPETA", typeof(int));
-    
-            var iD_PARALELOParameter = iD_PARALELO.HasValue ?
-                new ObjectParameter("ID_PARALELO", iD_PARALELO) :
-                new ObjectParameter("ID_PARALELO", typeof(int));
-    
-            var iD_PERIODOParameter = iD_PERIODO.HasValue ?
-                new ObjectParameter("ID_PERIODO", iD_PERIODO) :
-                new ObjectParameter("ID_PERIODO", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EstudianteRepositorioAdjunto_Result>("SP_EstudianteRepositorioAdjunto", iD_SEDEParameter, iD_CARRERAParameter, sEMANA_CRONOGRAMAParameter, iD_TIPO_INTERVALOParameter, iD_CARPETAParameter, iD_PARALELOParameter, iD_PERIODOParameter, outMensaje, outID);
         }
     
         public virtual ObjectResult<ObtenerDocenteAsignadoHorarioMateria_Result> SP_ObtenerDocenteAsignadoHorarioMateria(Nullable<int> iD_HORARIO_DETALLE, ObjectParameter outMensaje, ObjectParameter outID)
@@ -1071,39 +990,6 @@ namespace Model.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ObtenerDiaLibreHorario_Result>("SP_ObtenerDiaLibreHorario", iD_INTERVALO_DETALLEParameter, iD_PARALELO_MATERIAParameter, outMensaje, outID);
         }
     
-        public virtual ObjectResult<DocenteRepositorioAdjunto_Result> SP_DocenteRepositorioAdjunto(Nullable<int> iD_SEDE, Nullable<int> iD_CARRERA, Nullable<int> sEMANA_CRONOGRAMA, Nullable<int> iD_TIPO_INTERVALO, Nullable<int> iD_CARPETA, Nullable<int> iD_PERIODO, Nullable<int> iD_CRONOGRAMA, ObjectParameter outMensaje, ObjectParameter outID)
-        {
-            var iD_SEDEParameter = iD_SEDE.HasValue ?
-                new ObjectParameter("ID_SEDE", iD_SEDE) :
-                new ObjectParameter("ID_SEDE", typeof(int));
-    
-            var iD_CARRERAParameter = iD_CARRERA.HasValue ?
-                new ObjectParameter("ID_CARRERA", iD_CARRERA) :
-                new ObjectParameter("ID_CARRERA", typeof(int));
-    
-            var sEMANA_CRONOGRAMAParameter = sEMANA_CRONOGRAMA.HasValue ?
-                new ObjectParameter("SEMANA_CRONOGRAMA", sEMANA_CRONOGRAMA) :
-                new ObjectParameter("SEMANA_CRONOGRAMA", typeof(int));
-    
-            var iD_TIPO_INTERVALOParameter = iD_TIPO_INTERVALO.HasValue ?
-                new ObjectParameter("ID_TIPO_INTERVALO", iD_TIPO_INTERVALO) :
-                new ObjectParameter("ID_TIPO_INTERVALO", typeof(int));
-    
-            var iD_CARPETAParameter = iD_CARPETA.HasValue ?
-                new ObjectParameter("ID_CARPETA", iD_CARPETA) :
-                new ObjectParameter("ID_CARPETA", typeof(int));
-    
-            var iD_PERIODOParameter = iD_PERIODO.HasValue ?
-                new ObjectParameter("ID_PERIODO", iD_PERIODO) :
-                new ObjectParameter("ID_PERIODO", typeof(int));
-    
-            var iD_CRONOGRAMAParameter = iD_CRONOGRAMA.HasValue ?
-                new ObjectParameter("ID_CRONOGRAMA", iD_CRONOGRAMA) :
-                new ObjectParameter("ID_CRONOGRAMA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocenteRepositorioAdjunto_Result>("SP_DocenteRepositorioAdjunto", iD_SEDEParameter, iD_CARRERAParameter, sEMANA_CRONOGRAMAParameter, iD_TIPO_INTERVALOParameter, iD_CARPETAParameter, iD_PERIODOParameter, iD_CRONOGRAMAParameter, outMensaje, outID);
-        }
-    
         public virtual ObjectResult<NotificadorEvento_Result> SP_NotificadorEvento(Nullable<int> iD_EVENTO_REGISTRO_DETALLE)
         {
             var iD_EVENTO_REGISTRO_DETALLEParameter = iD_EVENTO_REGISTRO_DETALLE.HasValue ?
@@ -1169,6 +1055,129 @@ namespace Model.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocenteCalificacionTarea_Result>("SP_DocenteCalificacionTarea", iD_TAREAParameter, outMensaje, outID);
         }
     
+        public virtual ObjectResult<DocenteRepositorioAdjunto_Result> SP_DocenteRepositorioAdjunto(Nullable<int> iD_SEDE, Nullable<int> iD_CARRERA, Nullable<int> sEMANA_CRONOGRAMA, Nullable<int> iD_TIPO_INTERVALO, Nullable<int> iD_CARPETA, Nullable<int> iD_PERIODO, Nullable<int> iD_CRONOGRAMA, ObjectParameter outMensaje, ObjectParameter outID)
+        {
+            var iD_SEDEParameter = iD_SEDE.HasValue ?
+                new ObjectParameter("ID_SEDE", iD_SEDE) :
+                new ObjectParameter("ID_SEDE", typeof(int));
+    
+            var iD_CARRERAParameter = iD_CARRERA.HasValue ?
+                new ObjectParameter("ID_CARRERA", iD_CARRERA) :
+                new ObjectParameter("ID_CARRERA", typeof(int));
+    
+            var sEMANA_CRONOGRAMAParameter = sEMANA_CRONOGRAMA.HasValue ?
+                new ObjectParameter("SEMANA_CRONOGRAMA", sEMANA_CRONOGRAMA) :
+                new ObjectParameter("SEMANA_CRONOGRAMA", typeof(int));
+    
+            var iD_TIPO_INTERVALOParameter = iD_TIPO_INTERVALO.HasValue ?
+                new ObjectParameter("ID_TIPO_INTERVALO", iD_TIPO_INTERVALO) :
+                new ObjectParameter("ID_TIPO_INTERVALO", typeof(int));
+    
+            var iD_CARPETAParameter = iD_CARPETA.HasValue ?
+                new ObjectParameter("ID_CARPETA", iD_CARPETA) :
+                new ObjectParameter("ID_CARPETA", typeof(int));
+    
+            var iD_PERIODOParameter = iD_PERIODO.HasValue ?
+                new ObjectParameter("ID_PERIODO", iD_PERIODO) :
+                new ObjectParameter("ID_PERIODO", typeof(int));
+    
+            var iD_CRONOGRAMAParameter = iD_CRONOGRAMA.HasValue ?
+                new ObjectParameter("ID_CRONOGRAMA", iD_CRONOGRAMA) :
+                new ObjectParameter("ID_CRONOGRAMA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocenteRepositorioAdjunto_Result>("SP_DocenteRepositorioAdjunto", iD_SEDEParameter, iD_CARRERAParameter, sEMANA_CRONOGRAMAParameter, iD_TIPO_INTERVALOParameter, iD_CARPETAParameter, iD_PERIODOParameter, iD_CRONOGRAMAParameter, outMensaje, outID);
+        }
+    
+        public virtual ObjectResult<EstudianteRepositorioAdjunto_Result> SP_EstudianteRepositorioAdjunto(Nullable<int> iD_SEDE, Nullable<int> iD_CARRERA, Nullable<int> sEMANA_CRONOGRAMA, Nullable<int> iD_TIPO_INTERVALO, Nullable<int> iD_CARPETA, Nullable<int> iD_PARALELO, Nullable<int> iD_PERIODO, ObjectParameter outMensaje, ObjectParameter outID)
+        {
+            var iD_SEDEParameter = iD_SEDE.HasValue ?
+                new ObjectParameter("ID_SEDE", iD_SEDE) :
+                new ObjectParameter("ID_SEDE", typeof(int));
+    
+            var iD_CARRERAParameter = iD_CARRERA.HasValue ?
+                new ObjectParameter("ID_CARRERA", iD_CARRERA) :
+                new ObjectParameter("ID_CARRERA", typeof(int));
+    
+            var sEMANA_CRONOGRAMAParameter = sEMANA_CRONOGRAMA.HasValue ?
+                new ObjectParameter("SEMANA_CRONOGRAMA", sEMANA_CRONOGRAMA) :
+                new ObjectParameter("SEMANA_CRONOGRAMA", typeof(int));
+    
+            var iD_TIPO_INTERVALOParameter = iD_TIPO_INTERVALO.HasValue ?
+                new ObjectParameter("ID_TIPO_INTERVALO", iD_TIPO_INTERVALO) :
+                new ObjectParameter("ID_TIPO_INTERVALO", typeof(int));
+    
+            var iD_CARPETAParameter = iD_CARPETA.HasValue ?
+                new ObjectParameter("ID_CARPETA", iD_CARPETA) :
+                new ObjectParameter("ID_CARPETA", typeof(int));
+    
+            var iD_PARALELOParameter = iD_PARALELO.HasValue ?
+                new ObjectParameter("ID_PARALELO", iD_PARALELO) :
+                new ObjectParameter("ID_PARALELO", typeof(int));
+    
+            var iD_PERIODOParameter = iD_PERIODO.HasValue ?
+                new ObjectParameter("ID_PERIODO", iD_PERIODO) :
+                new ObjectParameter("ID_PERIODO", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EstudianteRepositorioAdjunto_Result>("SP_EstudianteRepositorioAdjunto", iD_SEDEParameter, iD_CARRERAParameter, sEMANA_CRONOGRAMAParameter, iD_TIPO_INTERVALOParameter, iD_CARPETAParameter, iD_PARALELOParameter, iD_PERIODOParameter, outMensaje, outID);
+        }
+    
+        public virtual ObjectResult<AdminRepositorioAdjunto_Result> SP_AdminRepositorioAdjunto(Nullable<int> sEMANA_CRONOGRAMA, Nullable<int> iD_CARPETA, Nullable<int> iD_CRONOGRAMA, ObjectParameter outMensaje, ObjectParameter outID)
+        {
+            var sEMANA_CRONOGRAMAParameter = sEMANA_CRONOGRAMA.HasValue ?
+                new ObjectParameter("SEMANA_CRONOGRAMA", sEMANA_CRONOGRAMA) :
+                new ObjectParameter("SEMANA_CRONOGRAMA", typeof(int));
+    
+            var iD_CARPETAParameter = iD_CARPETA.HasValue ?
+                new ObjectParameter("ID_CARPETA", iD_CARPETA) :
+                new ObjectParameter("ID_CARPETA", typeof(int));
+    
+            var iD_CRONOGRAMAParameter = iD_CRONOGRAMA.HasValue ?
+                new ObjectParameter("ID_CRONOGRAMA", iD_CRONOGRAMA) :
+                new ObjectParameter("ID_CRONOGRAMA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AdminRepositorioAdjunto_Result>("SP_AdminRepositorioAdjunto", sEMANA_CRONOGRAMAParameter, iD_CARPETAParameter, iD_CRONOGRAMAParameter, outMensaje, outID);
+        }
+    
+        public virtual ObjectResult<AdminRepositorioCarpeta_Result> SP_AdminRepositorioCarpeta(Nullable<int> sEMANA_CRONOGRAMA, Nullable<int> iD_CRONOGRAMA, ObjectParameter outMensaje, ObjectParameter outID)
+        {
+            var sEMANA_CRONOGRAMAParameter = sEMANA_CRONOGRAMA.HasValue ?
+                new ObjectParameter("SEMANA_CRONOGRAMA", sEMANA_CRONOGRAMA) :
+                new ObjectParameter("SEMANA_CRONOGRAMA", typeof(int));
+    
+            var iD_CRONOGRAMAParameter = iD_CRONOGRAMA.HasValue ?
+                new ObjectParameter("ID_CRONOGRAMA", iD_CRONOGRAMA) :
+                new ObjectParameter("ID_CRONOGRAMA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AdminRepositorioCarpeta_Result>("SP_AdminRepositorioCarpeta", sEMANA_CRONOGRAMAParameter, iD_CRONOGRAMAParameter, outMensaje, outID);
+        }
+    
+        public virtual ObjectResult<AdminRepositorioSemana_Result> SP_AdminRepositorioSemana(Nullable<int> iD_CRONOGRAMA, ObjectParameter outMensaje, ObjectParameter outID)
+        {
+            var iD_CRONOGRAMAParameter = iD_CRONOGRAMA.HasValue ?
+                new ObjectParameter("ID_CRONOGRAMA", iD_CRONOGRAMA) :
+                new ObjectParameter("ID_CRONOGRAMA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AdminRepositorioSemana_Result>("SP_AdminRepositorioSemana", iD_CRONOGRAMAParameter, outMensaje, outID);
+        }
+    
+        public virtual ObjectResult<EstudianteObtenerCarrera_Result> SP_EstudianteObtenerCarrera(string iD_ESTUDIANTE, ObjectParameter outMensaje, ObjectParameter outID)
+        {
+            var iD_ESTUDIANTEParameter = iD_ESTUDIANTE != null ?
+                new ObjectParameter("ID_ESTUDIANTE", iD_ESTUDIANTE) :
+                new ObjectParameter("ID_ESTUDIANTE", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EstudianteObtenerCarrera_Result>("SP_EstudianteObtenerCarrera", iD_ESTUDIANTEParameter, outMensaje, outID);
+        }
+    
+        public virtual int SP_EliminarTareas(Nullable<int> iD_TAREA)
+        {
+            var iD_TAREAParameter = iD_TAREA.HasValue ?
+                new ObjectParameter("ID_TAREA", iD_TAREA) :
+                new ObjectParameter("ID_TAREA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_EliminarTareas", iD_TAREAParameter);
+        }
+    
         public virtual ObjectResult<EstudianteObtenerTareasDetalle_Result> SP_EstudianteObtenerTareasDetalle(string iD_ESTUDIANTE, ObjectParameter outMensaje, ObjectParameter outID)
         {
             var iD_ESTUDIANTEParameter = iD_ESTUDIANTE != null ?
@@ -1176,6 +1185,55 @@ namespace Model.Data
                 new ObjectParameter("ID_ESTUDIANTE", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EstudianteObtenerTareasDetalle_Result>("SP_EstudianteObtenerTareasDetalle", iD_ESTUDIANTEParameter, outMensaje, outID);
+        }
+    
+        public virtual ObjectResult<DocenteHorarioMateria_Result> SP_DocenteHorarioMateria(string iD_DOCENTE, ObjectParameter outMensaje, ObjectParameter outID)
+        {
+            var iD_DOCENTEParameter = iD_DOCENTE != null ?
+                new ObjectParameter("ID_DOCENTE", iD_DOCENTE) :
+                new ObjectParameter("ID_DOCENTE", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocenteHorarioMateria_Result>("SP_DocenteHorarioMateria", iD_DOCENTEParameter, outMensaje, outID);
+        }
+    
+        public virtual ObjectResult<ObtenerNota_Result> SP_ObtenerNota(ObjectParameter outMensaje, ObjectParameter outID)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ObtenerNota_Result>("SP_ObtenerNota", outMensaje, outID);
+        }
+    
+        public virtual ObjectResult<ObtenerNotaDetalle_Result> SP_ObtenerNotaDetalle(Nullable<int> iD_NOTA, ObjectParameter outMensaje, ObjectParameter outID)
+        {
+            var iD_NOTAParameter = iD_NOTA.HasValue ?
+                new ObjectParameter("ID_NOTA", iD_NOTA) :
+                new ObjectParameter("ID_NOTA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ObtenerNotaDetalle_Result>("SP_ObtenerNotaDetalle", iD_NOTAParameter, outMensaje, outID);
+        }
+    
+        public virtual ObjectResult<EstudianteObtenerCarreraReporteDocente_Result> SP_EstudianteObtenerCarreraReporteDocente(string iD_ESTUDIANTE, Nullable<int> iD_PERIODO, ObjectParameter outMensaje, ObjectParameter outID)
+        {
+            var iD_ESTUDIANTEParameter = iD_ESTUDIANTE != null ?
+                new ObjectParameter("ID_ESTUDIANTE", iD_ESTUDIANTE) :
+                new ObjectParameter("ID_ESTUDIANTE", typeof(string));
+    
+            var iD_PERIODOParameter = iD_PERIODO.HasValue ?
+                new ObjectParameter("ID_PERIODO", iD_PERIODO) :
+                new ObjectParameter("ID_PERIODO", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EstudianteObtenerCarreraReporteDocente_Result>("SP_EstudianteObtenerCarreraReporteDocente", iD_ESTUDIANTEParameter, iD_PERIODOParameter, outMensaje, outID);
+        }
+    
+        public virtual ObjectResult<DocenteObtenerNotas_Result> SP_DocenteObtenerNotas(string iD_DOCENTE, Nullable<int> iD_PERIODO, ObjectParameter outMensaje, ObjectParameter outID)
+        {
+            var iD_DOCENTEParameter = iD_DOCENTE != null ?
+                new ObjectParameter("ID_DOCENTE", iD_DOCENTE) :
+                new ObjectParameter("ID_DOCENTE", typeof(string));
+    
+            var iD_PERIODOParameter = iD_PERIODO.HasValue ?
+                new ObjectParameter("ID_PERIODO", iD_PERIODO) :
+                new ObjectParameter("ID_PERIODO", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocenteObtenerNotas_Result>("SP_DocenteObtenerNotas", iD_DOCENTEParameter, iD_PERIODOParameter, outMensaje, outID);
         }
     }
 }

@@ -31,21 +31,22 @@ namespace Model.Services.Estudiante
                         ID_CARRERA = item.ID_CARRERA,
                         DESCRIPCION_CARRERA = item.DESCRIPCION_CARRERA,
 
-                        Semana = ctx.SP_EstudianteRepositorioSemana(item.ID_SEDE,item.ID_CARRERA,null,item.ID_TIPO_INTERVALO,item.ID_PARALELO, outMensaje, outID)
+                        Semana = ctx.SP_EstudianteRepositorioSemana(item.ID_SEDE,item.ID_CARRERA,item.ID_PERIODO,item.ID_TIPO_INTERVALO,item.ID_PARALELO, outMensaje, outID)
                                 .Select(x => new RepositorioSemana
                                 {
                                     SEMANA_CRONOGRAMA = x.SEMANA_CRONOGRAMA,
                                     TEMA = x.TEMA,
                                     DESCRIPCION_SEMANA = x.DESCRIPCION_SEMANA,
                                     ID_CRONOGRAMA = x.ID_CRONOGRAMA,
-                                    Carpeta = ctx.SP_EstudianteRepositorioCarpeta(item.ID_CARRERA, x.SEMANA_CRONOGRAMA, x.ID_CRONOGRAMA, null, outMensaje, outID)
+                                    Carpeta = ctx.SP_EstudianteRepositorioCarpeta(item.ID_CARRERA, x.SEMANA_CRONOGRAMA, x.ID_CRONOGRAMA, item.ID_PERIODO, outMensaje, outID)
                                               .Select(b => new RepositorioCarpeta
                                               {
                                                   ID_CARPETA = b.ID_CARPETA,
                                                   DESCRIPCION_CARPETA = b.DESCRIPCION_CARPETA,
-                                                  Adjunto = ctx.SP_EstudianteRepositorioAdjunto(item.ID_SEDE, item.ID_CARRERA, x.SEMANA_CRONOGRAMA, item.ID_TIPO_INTERVALO, b.ID_CARPETA, item.ID_PARALELO, null, outMensaje, outID)
+                                                  Adjunto = ctx.SP_EstudianteRepositorioAdjunto(item.ID_SEDE, item.ID_CARRERA, x.SEMANA_CRONOGRAMA, item.ID_TIPO_INTERVALO, b.ID_CARPETA, item.ID_PARALELO, item.ID_PERIODO, outMensaje, outID)
                                                            .Select(y => new RepositorioAdjunto
                                                            {
+                                                               ID_CRONOGRAMA_ADJUNTO=y.ID_CRONOGRAMA_ADJUNTO,
                                                                RUTA_ADJUNTO = y.RUTA_ADJUNTO,
                                                                ICONO_ADJUNTO = y.ICONO_ADJUNTO,
                                                                PESO_ADJUNTO = y.PESO_ADJUNTO,
@@ -86,6 +87,7 @@ namespace Model.Services.Estudiante
 
     public class RepositorioAdjunto
     {
+        public int ID_CRONOGRAMA_ADJUNTO { get; set; }
         public string RUTA_ADJUNTO { get; set; }
         public string ICONO_ADJUNTO { get; set; }
         public string PESO_ADJUNTO { get; set; }

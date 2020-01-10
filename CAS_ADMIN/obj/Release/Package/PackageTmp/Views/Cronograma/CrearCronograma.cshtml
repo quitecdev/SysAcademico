@@ -75,7 +75,7 @@
                     type: 'POST',
                     url: '@Url.Action("getTipoIntervalo", "Intervalo")', // we are calling json method
                     dataType: 'json',
-                    data: { },
+                    data: {},
                     success: function (states) {
                         // states contains the JSON formatted list
                         // of states passed from the controller
@@ -120,7 +120,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     @using (Html.BeginForm("CrearCronograma", "Cronograma", FormMethod.Post, new { onsubmit = "return SubmitForm(this,'" + @Url.Action("CrearCronograma", "Cronograma", new { id = string.Empty }) + "')", @class = "form-horizontal" }))
-                    {
+                        {
                         @Html.AntiForgeryToken()
                         @Html.HiddenFor(model => model.ID_CRONOGRAMA)
                         <div class="form-group">
@@ -149,6 +149,13 @@
                             <div class="col-md-9">
                                 @Html.DropDownListFor(m => m.ID_TIPO_INTERVALO, new SelectList(string.Empty, "ID_TIPO_INTERVALO", "DESCRIPCION_TIPO_INVERTALO"), " ", new { @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.ID_TIPO_INTERVALO, "", new { @class = "text-custom" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Periodo</label>
+                            <div class="col-md-9">
+                                @Html.DropDownListFor(m => m.ID_PERIODO, new SelectList(new Model.Services.Admin.Periodo().ListPeriodo(), "ID_PERIODO", "DESCRIPCION_PERIODO"), " ", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_PERIODO, "", new { @class = "text-custom" })
                             </div>
                         </div>
                         <div class="form-group">

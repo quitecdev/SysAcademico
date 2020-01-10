@@ -116,5 +116,22 @@ namespace CAS_DOCENTE.Controllers
 
         #endregion
 
+        #region EliminarTarea
+        public ActionResult EliminarTareas(int ID_TAREA, int ID_SEDE, int ID_CARRERA, int ID_MATERIA, int ID_PARALELO, int ID_INTERVALO_DETALLE)
+        {
+            try
+            {
+                _tarea.EliminarTarea(ID_TAREA);
+                //ServicesAuditoria.audit().RegistrarAuditoria(Session["COD_USUARIO"].ToString(), Session["ID_USUARIO"].ToString(), Session.SessionID, "ABRIR_FORMULARIO", ServicesAuditoria.audit().CrearTag("FORMULARIO", "CREAR_TAREA"));
+               return  RedirectToAction("DetalleTareas", "Tareas",new { ID_SEDE,ID_CARRERA, ID_MATERIA,ID_PARALELO,ID_INTERVALO_DETALLE });
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return View();
+            }
+        }
+        #endregion
+
     }
 }

@@ -23,6 +23,8 @@ namespace Model.Services.Admin
         public Nullable<int> ID_SEDE { get; set; }
         public string DESCRIPCION_SEDE { get; set; }
 
+        [Required]
+        [Display(Name = "Periodo")]
         public Nullable<int> ID_PERIODO { get; set; }
         public string DESCRIPCION_PERIODO { get; set; }
 
@@ -56,13 +58,15 @@ namespace Model.Services.Admin
             {
                 using (var ctx = new CAS_DataEntities())
                 {
+                    var myInClause = new int[] { 1,2 };
+
                     _cronograma = (from cronograma in ctx.CAS_CRONOGRAMA
                                    join carrera in ctx.CAS_CARRERA on cronograma.ID_CARRERA equals carrera.ID_CARRERA
                                    join sede in ctx.CAS_SEDE on cronograma.ID_SEDE equals sede.ID_SEDE
                                    join periodo in ctx.CAS_PERIODO on cronograma.ID_PERIODO equals periodo.ID_PERIODO
                                    join tipo_intervalo in ctx.CAS_TIPO_INVERTALO on cronograma.ID_TIPO_INTERVALO equals tipo_intervalo.ID_TIPO_INTERVALO
                                    join paralelo in ctx.CAS_PARALELO on cronograma.ID_PARALELO equals paralelo.ID_PARALELO
-                                   where periodo.ESTADO == 1
+                                   where myInClause.Contains(periodo.ESTADO.Value)
                                    select new Cronograma()
                                    {
                                        ID_CRONOGRAMA = cronograma.ID_CRONOGRAMA,
@@ -99,11 +103,11 @@ namespace Model.Services.Admin
             {
                 using (var ctx = new CAS_DataEntities())
                 {
-                    var perido= _perido.ObtenerPeriodoActivo();
+                    //var perido= _perido.ObtenerPeriodoActivo();
                     _cronograma.ID_CRONOGRAMA = cronograma.ID_CRONOGRAMA;
                     _cronograma.ID_CARRERA = cronograma.ID_CARRERA;
                     _cronograma.ID_SEDE = cronograma.ID_SEDE;
-                    _cronograma.ID_PERIODO = perido.ID_PERIODO;
+                    _cronograma.ID_PERIODO = cronograma.ID_PERIODO;
                     _cronograma.ID_TIPO_INTERVALO = cronograma.ID_TIPO_INTERVALO;
                     _cronograma.DESCRIPCION_CRONOGRAMA = cronograma.DESCRIPCION_CRONOGRAMA;
                     _cronograma.FECHA_INICIO = cronograma.FECHA_INICIO;

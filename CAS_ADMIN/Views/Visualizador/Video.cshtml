@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+
+}
+
+<script>
+    var players = plyr.setup("#plyr-video");
+
+
+    $(".modal-content .close").click(function () {
+        $('body').removeClass('video-active');
+        players[0].pause();
+    });
+</script>
+
+
+<div class="modal-dialog modal-full">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <video id="plyr-video" style="width:100%"controls>
+                    <source src="@Url.Content(ViewBag.URL)" type="video/mp4">
+                </video>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->

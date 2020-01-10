@@ -1,0 +1,36 @@
+.plyr input[type=range]::-ms-fill-lower {
+ background:#8b1716!important;
+}
+
+.plyr input[type=range]:active::-webkit-slider-thumb {
+ background:#8b1716!important;
+ border-color:#fff;
+ -webkit-transform:scale(1.25);
+ transform:scale(1.25)
+}
+.plyr input[type=range]:active::-moz-range-thumb {
+ background:#8b1716!important;
+}
+.plyr input[type=range]:active::-ms-thumb {
+ background:#8b1716!important;
+}
+
+.plyr--video .plyr__controls button.tab-focus:focus,
+.plyr--video .plyr__controls button:hover {
+ background:#8b1716!important;
+ color:#fff
+}
+
+.plyr--audio .plyr__controls button.tab-focus:focus,
+.plyr--audio .plyr__controls button:hover {
+ background:#8b1716!important;
+ color:#fff
+}
+
+.plyr__play-large{
+    background:#8b1716!important;
+}
+
+.plyr__progress--played, .plyr__volume--display{
+    color:#8b1716!important;
+}

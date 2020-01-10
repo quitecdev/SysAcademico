@@ -16,6 +16,7 @@ namespace Model.Services.Docente
         public string APELLIDOS { get; set; }
         public string NOMBRES { get; set; }
         public string ADJUNTO_TAREA { get; set; }
+        public string ADJUNTO_NOMBRE { get; set; }
         public Nullable<decimal> NOTA_TAREA { get; set; }
 
 
@@ -37,6 +38,7 @@ namespace Model.Services.Docente
                                            APELLIDOS = x.APELLIDOS,
                                            NOMBRES = x.NOMBRES,
                                            ADJUNTO_TAREA = x.ADJUNTO_TAREA,
+                                           ADJUNTO_NOMBRE = x.ADJUNTO_NOMBRE,
                                            NOTA_TAREA = x.NOTA_TAREA
                                        }).ToList();
                 }

@@ -20,5 +20,6 @@ namespace Model.Data
         public Nullable<int> ID_PARALELO { get; set; }
         public Nullable<int> ID_INTERVALO_DETALLE { get; set; }
         public Nullable<int> ID_TIPO_INTERVALO { get; set; }
+        public Nullable<int> ID_PERIODO { get; set; }
     }
 }

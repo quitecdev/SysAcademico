@@ -92,7 +92,8 @@ namespace Model.Services.Admin
                                          DESCRIPCION_MATERIA = x.DESCRIPCION_MATERIA,
                                          DESCRIPCION_PARALELO = x.DESCRIPCION_PARALELO,
                                          DESCRIPCION_DIAS = x.DESCRIPCION_DIAS,
-                                         HORA = x.HORA
+                                         HORA = x.HORA,
+                                         DESDESCRIPCION_PERIODO=x.DESCRIPCION_PERIODO
                                      }).ToList();
                     docenteMateria.AUX_REDIRECT = _ID_DOCENTE;
                 }
@@ -116,5 +117,6 @@ namespace Model.Services.Admin
         public string DESCRIPCION_PARALELO { get; set; }
         public string DESCRIPCION_DIAS { get; set; }
         public string HORA { get; set; }
+        public string DESDESCRIPCION_PERIODO { get; set; }
     }
 }

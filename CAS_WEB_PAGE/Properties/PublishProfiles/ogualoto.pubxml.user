@@ -6,7 +6,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\COMPILADOS\CAS_WEB_17-07-2019</_PublishTargetUrl>
+    <_PublishTargetUrl>D:\COMPILADOS\CAS_WEB_11-12-2019</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
@@ -28,7 +28,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/15/2018 20:22:24</publishTime>
     </File>
     <File Include="bin/CAS_WEB_PAGE.dll">
-      <publishTime>07/19/2019 10:56:32</publishTime>
+      <publishTime>12/11/2019 14:22:30</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>11/13/2018 09:31:55</publishTime>
@@ -94,7 +94,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>11/13/2018 09:31:52</publishTime>
     </File>
     <File Include="bin/Model.dll">
-      <publishTime>07/19/2019 10:56:24</publishTime>
+      <publishTime>12/11/2019 14:22:20</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>11/13/2018 09:31:50</publishTime>

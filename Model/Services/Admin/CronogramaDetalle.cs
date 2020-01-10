@@ -18,7 +18,7 @@ namespace Model.Services.Admin
         public Nullable<int> SEMANA_CRONOGRAMA { get; set; }
         public Nullable<System.DateTime> FECHA_CRONOGRAMA { get; set; }
 
-        [Required]
+        //[Required]
         [Display(Name ="Tema")]
         public string TEMA { get; set; }
         [Display(Name = "Temática")]

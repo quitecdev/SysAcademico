@@ -1,13 +1,7 @@
 ﻿@{
     ViewBag.Title = "Perfil";
 }
+<video id="plyr-video" poster="/path/to/video-poster.png" controls>
+    <source src="/path/to/video.mp4" type="video/mp4">
+</video>
 
-@using (Html.BeginForm("Index", "Ejemplos", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    <span>Select File:</span>
-            <input type="file" name="postedFile" />
-            <hr />
-            <input type="submit" value="Upload" />
-            <br />
-            <span style="color:green">@ViewBag.Message</span>
-}

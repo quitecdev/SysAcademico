@@ -24,7 +24,17 @@ namespace CAS_ADMIN.Models
 
                 CronogramaAdjunto adjuntoGuardar = new CronogramaAdjunto();
 
-                string directorio = "~/Repositorio/" + rutaAdjunt.DESCRIPCION_PERIODO + "/" + rutaAdjunt.COD_CARRERA + "/" + rutaAdjunt.TEMA + "/" + rutaAdjunt.DIA;
+                string directorio;
+
+                if (String.IsNullOrEmpty(rutaAdjunt.TEMA))
+                {
+                    directorio = "~/Repositorio/" + rutaAdjunt.DESCRIPCION_PERIODO + "/" + rutaAdjunt.COD_CARRERA + "/" + rutaAdjunt.DIA;
+                }
+                else
+                {
+                    directorio = "~/Repositorio/" + rutaAdjunt.DESCRIPCION_PERIODO + "/" + rutaAdjunt.COD_CARRERA + "/" + rutaAdjunt.TEMA + "/" + rutaAdjunt.DIA;
+                }
+                
 
                 string verificar = HttpContext.Current.Server.MapPath(directorio);
                 if (!Directory.Exists(verificar))
@@ -76,7 +86,8 @@ namespace CAS_ADMIN.Models
                     case ".wmv":
                     case ".mov":
                     case ".ogv":
-                        icon = "fa fa-file-movie-o";
+                    case ".mp4":
+                        icon = "zmdi zmdi-collection-video";
                         break;
                     case ".rar":
                     case ".zip":

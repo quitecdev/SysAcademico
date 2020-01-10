@@ -3,6 +3,7 @@
 <table class="table table-hover table-striped m-0">
     <thead>
         <tr>
+            <th>Periódo</th>
             <th>Sede</th>
             <th>Carrera</th>
             <th>Materia</th>
@@ -20,6 +21,7 @@
                 foreach (var item in Model)
                 {
                     <tr>
+                        <td>@item.DESDESCRIPCION_PERIODO</td>
                         <td>@item.DESCRIPCION_UNIVERSIDAD</td>
                         <td>@item.DESCRIPCION_CARRERA</td>
                         <td>@item.DESCRIPCION_MATERIA</td>

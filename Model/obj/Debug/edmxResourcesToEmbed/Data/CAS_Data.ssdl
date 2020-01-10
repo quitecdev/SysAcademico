@@ -334,6 +334,7 @@
     <Property Name="ID_HORARIO_DETALLE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_PARALELO_MATERIA" Type="int" />
     <Property Name="ID_HORARIO" Type="int" />
+    <Property Name="ID_PERIODO" Type="int" />
   </EntityType>
   <EntityType Name="CAS_HORARIO_TIPO">
     <Key>
@@ -450,6 +451,7 @@
     <Property Name="DESCRIPCION_NOTA" Type="varchar" MaxLength="250" />
     <Property Name="ID_TIPO_INTERVALO" Type="int" />
     <Property Name="ID_CARRERA" Type="int" />
+    <Property Name="ID_PERIODO" Type="int" />
   </EntityType>
   <EntityType Name="CAS_NOTA_DETALLE">
     <Key>
@@ -680,6 +682,24 @@
     <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
     <Parameter Name="outID" Type="int" Mode="InOut" />
   </Function>
+  <Function Name="AdminRepositorioAdjunto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="SEMANA_CRONOGRAMA" Type="int" Mode="In" />
+    <Parameter Name="ID_CARPETA" Type="int" Mode="In" />
+    <Parameter Name="ID_CRONOGRAMA" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="AdminRepositorioCarpeta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="SEMANA_CRONOGRAMA" Type="int" Mode="In" />
+    <Parameter Name="ID_CRONOGRAMA" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="AdminRepositorioSemana" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_CRONOGRAMA" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
   <Function Name="DocenteDatosCarreraMateria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
     <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
     <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
@@ -698,6 +718,9 @@
     <Parameter Name="ID_DOCENTE" Type="varchar" Mode="In" />
     <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
     <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="EliminarTareas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_TAREA" Type="int" Mode="In" />
   </Function>
   <Function Name="GenerarTareaEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
     <Parameter Name="ID_TAREA" Type="int" Mode="In" />
@@ -792,6 +815,15 @@
   <Function Name="ObtenerIntervaloSedeCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
     <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
     <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerNota" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerNotaDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_NOTA" Type="int" Mode="In" />
     <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
     <Parameter Name="outID" Type="int" Mode="InOut" />
   </Function>
@@ -1001,7 +1033,6 @@
   </Function>
   <Function Name="EstudianteObtenerCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ESTUDIANTE">
     <Parameter Name="ID_ESTUDIANTE" Type="varchar" Mode="In" />
-    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
     <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
     <Parameter Name="outID" Type="int" Mode="InOut" />
   </Function>

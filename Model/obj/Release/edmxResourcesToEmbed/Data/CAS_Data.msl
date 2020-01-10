@@ -227,6 +227,7 @@
     <EntitySetMapping Name="CAS_HORARIO_DETALLE">
       <EntityTypeMapping TypeName="CAS_DataModel.CAS_HORARIO_DETALLE">
         <MappingFragment StoreEntitySet="CAS_HORARIO_DETALLE">
+          <ScalarProperty Name="ID_PERIODO" ColumnName="ID_PERIODO" />
           <ScalarProperty Name="ID_HORARIO_DETALLE" ColumnName="ID_HORARIO_DETALLE" />
           <ScalarProperty Name="ID_PARALELO_MATERIA" ColumnName="ID_PARALELO_MATERIA" />
           <ScalarProperty Name="ID_HORARIO" ColumnName="ID_HORARIO" />
@@ -311,6 +312,7 @@
     <EntitySetMapping Name="CAS_NOTA">
       <EntityTypeMapping TypeName="CAS_DataModel.CAS_NOTA">
         <MappingFragment StoreEntitySet="CAS_NOTA">
+          <ScalarProperty Name="ID_PERIODO" ColumnName="ID_PERIODO" />
           <ScalarProperty Name="ID_NOTA" ColumnName="ID_NOTA" />
           <ScalarProperty Name="DESCRIPCION_NOTA" ColumnName="DESCRIPCION_NOTA" />
           <ScalarProperty Name="ID_TIPO_INTERVALO" ColumnName="ID_TIPO_INTERVALO" />
@@ -726,18 +728,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="SP_EstudianteObtenerCarrera" FunctionName="CAS_DataModel.Store.EstudianteObtenerCarrera">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="CAS_DataModel.EstudianteObtenerCarrera_Result">
-          <ScalarProperty Name="ID_CARRERA" ColumnName="ID_CARRERA" />
-          <ScalarProperty Name="DESCRIPCION_CARRERA" ColumnName="DESCRIPCION_CARRERA" />
-          <ScalarProperty Name="COD_CARRERA" ColumnName="COD_CARRERA" />
-          <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
-          <ScalarProperty Name="ID_TIPO_INTERVALO" ColumnName="ID_TIPO_INTERVALO" />
-          <ScalarProperty Name="ID_PARALELO" ColumnName="ID_PARALELO" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="SP_EstudianteObtenerAsistencia" FunctionName="CAS_DataModel.Store.EstudianteObtenerAsistencia">
       <ResultMapping>
         <ComplexTypeMapping TypeName="CAS_DataModel.EstudianteObtenerAsistencia_Result">
@@ -857,19 +847,6 @@
           <ScalarProperty Name="TEMA" ColumnName="TEMA" />
           <ScalarProperty Name="DESCRIPCION_SEMANA" ColumnName="DESCRIPCION_SEMANA" />
           <ScalarProperty Name="ID_CRONOGRAMA" ColumnName="ID_CRONOGRAMA" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="SP_DocenteHorarioMateria" FunctionName="CAS_DataModel.Store.DocenteHorarioMateria">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="CAS_DataModel.DocenteHorarioMateria_Result">
-          <ScalarProperty Name="ID_HORARIO_DETALLE" ColumnName="ID_HORARIO_DETALLE" />
-          <ScalarProperty Name="DESCRIPCION_UNIVERSIDAD" ColumnName="DESCRIPCION_UNIVERSIDAD" />
-          <ScalarProperty Name="DESCRIPCION_CARRERA" ColumnName="DESCRIPCION_CARRERA" />
-          <ScalarProperty Name="DESCRIPCION_MATERIA" ColumnName="DESCRIPCION_MATERIA" />
-          <ScalarProperty Name="DESCRIPCION_PARALELO" ColumnName="DESCRIPCION_PARALELO" />
-          <ScalarProperty Name="DESCRIPCION_DIAS" ColumnName="DESCRIPCION_DIAS" />
-          <ScalarProperty Name="HORA" ColumnName="HORA" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -1043,19 +1020,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="SP_EstudianteObtenerCarreraReporteDocente" FunctionName="CAS_DataModel.Store.EstudianteObtenerCarreraReporteDocente">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="CAS_DataModel.EstudianteObtenerCarreraReporteDocente_Result">
-          <ScalarProperty Name="ID_ESTUDIANTE" ColumnName="ID_ESTUDIANTE" />
-          <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
-          <ScalarProperty Name="ID_CARRERA" ColumnName="ID_CARRERA" />
-          <ScalarProperty Name="DESCRIPCION_CARRERA" ColumnName="DESCRIPCION_CARRERA" />
-          <ScalarProperty Name="ID_PARALELO" ColumnName="ID_PARALELO" />
-          <ScalarProperty Name="ID_INTERVALO_DETALLE" ColumnName="ID_INTERVALO_DETALLE" />
-          <ScalarProperty Name="ID_TIPO_INTERVALO" ColumnName="ID_TIPO_INTERVALO" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <EntitySetMapping Name="CAS_ENCUESTA">
       <EntityTypeMapping TypeName="CAS_DataModel.CAS_ENCUESTA">
         <MappingFragment StoreEntitySet="CAS_ENCUESTA">
@@ -1112,19 +1076,6 @@
           <ScalarProperty Name="HORARIO" ColumnName="HORARIO" />
           <ScalarProperty Name="ID_DIAS" ColumnName="ID_DIAS" />
           <ScalarProperty Name="DESCRIPCION_DIAS" ColumnName="DESCRIPCION_DIAS" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="SP_EstudianteRepositorioAdjunto" FunctionName="CAS_DataModel.Store.EstudianteRepositorioAdjunto">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="CAS_DataModel.EstudianteRepositorioAdjunto_Result">
-          <ScalarProperty Name="RUTA_ADJUNTO" ColumnName="RUTA_ADJUNTO" />
-          <ScalarProperty Name="ICONO_ADJUNTO" ColumnName="ICONO_ADJUNTO" />
-          <ScalarProperty Name="PESO_ADJUNTO" ColumnName="PESO_ADJUNTO" />
-          <ScalarProperty Name="NOMBRE_ADJUNTO" ColumnName="NOMBRE_ADJUNTO" />
-          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
-          <ScalarProperty Name="FECHA_CRONOGRAMA" ColumnName="FECHA_CRONOGRAMA" />
-          <ScalarProperty Name="TEMATICA" ColumnName="TEMATICA" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -1228,18 +1179,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="SP_DocenteRepositorioAdjunto" FunctionName="CAS_DataModel.Store.DocenteRepositorioAdjunto">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="CAS_DataModel.DocenteRepositorioAdjunto_Result">
-          <ScalarProperty Name="RUTA_ADJUNTO" ColumnName="RUTA_ADJUNTO" />
-          <ScalarProperty Name="ICONO_ADJUNTO" ColumnName="ICONO_ADJUNTO" />
-          <ScalarProperty Name="PESO_ADJUNTO" ColumnName="PESO_ADJUNTO" />
-          <ScalarProperty Name="NOMBRE_ADJUNTO" ColumnName="NOMBRE_ADJUNTO" />
-          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
-          <ScalarProperty Name="FECHA_CRONOGRAMA" ColumnName="FECHA_CRONOGRAMA" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <EntitySetMapping Name="CAS_ENCUESTA_OPCION">
       <EntityTypeMapping TypeName="CAS_DataModel.CAS_ENCUESTA_OPCION">
         <MappingFragment StoreEntitySet="CAS_ENCUESTA_OPCION">
@@ -1321,5 +1260,242 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_DocenteHorarioTarea" FunctionName="CAS_DataModel.Store.DocenteHorarioTarea">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CAS_DataModel.DocenteHorarioTarea_Result">
+          <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+          <ScalarProperty Name="DESCRIPCION_UNIVERSIDAD" ColumnName="DESCRIPCION_UNIVERSIDAD" />
+          <ScalarProperty Name="ID_CARRERA" ColumnName="ID_CARRERA" />
+          <ScalarProperty Name="DESCRIPCION_CARRERA" ColumnName="DESCRIPCION_CARRERA" />
+          <ScalarProperty Name="ID_MATERIA" ColumnName="ID_MATERIA" />
+          <ScalarProperty Name="DESCRIPCION_MATERIA" ColumnName="DESCRIPCION_MATERIA" />
+          <ScalarProperty Name="ID_PARALELO" ColumnName="ID_PARALELO" />
+          <ScalarProperty Name="DESCRIPCION_PARALELO" ColumnName="DESCRIPCION_PARALELO" />
+          <ScalarProperty Name="ID_INTERVALO_DETALLE" ColumnName="ID_INTERVALO_DETALLE" />
+          <ScalarProperty Name="HORARIO" ColumnName="HORARIO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="CAS_TAREAS">
+      <EntityTypeMapping TypeName="CAS_DataModel.CAS_TAREAS">
+        <MappingFragment StoreEntitySet="CAS_TAREAS">
+          <ScalarProperty Name="ID_PERIODO" ColumnName="ID_PERIODO" />
+          <ScalarProperty Name="FECHA_FIN_TAREA" ColumnName="FECHA_FIN_TAREA" />
+          <ScalarProperty Name="FECHA_CREACION_TAREA" ColumnName="FECHA_CREACION_TAREA" />
+          <ScalarProperty Name="DESCRIPCION_TAREA" ColumnName="DESCRIPCION_TAREA" />
+          <ScalarProperty Name="TEMA_TAREA" ColumnName="TEMA_TAREA" />
+          <ScalarProperty Name="ID_DOCENTE" ColumnName="ID_DOCENTE" />
+          <ScalarProperty Name="ID_INTERVALO_DETALLE" ColumnName="ID_INTERVALO_DETALLE" />
+          <ScalarProperty Name="ID_PARALELO" ColumnName="ID_PARALELO" />
+          <ScalarProperty Name="ID_MATERIA" ColumnName="ID_MATERIA" />
+          <ScalarProperty Name="ID_CARRERA" ColumnName="ID_CARRERA" />
+          <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+          <ScalarProperty Name="ID_TAREA" ColumnName="ID_TAREA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_GenerarTareaEstudiante" FunctionName="CAS_DataModel.Store.GenerarTareaEstudiante" />
+    <FunctionImportMapping FunctionImportName="SP_DocenteObtenerDetalleTarea" FunctionName="CAS_DataModel.Store.DocenteObtenerDetalleTarea">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CAS_DataModel.DocenteObtenerDetalleTarea_Result">
+          <ScalarProperty Name="ID_TAREA" ColumnName="ID_TAREA" />
+          <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+          <ScalarProperty Name="DESCRIPCION_UNIVERSIDAD" ColumnName="DESCRIPCION_UNIVERSIDAD" />
+          <ScalarProperty Name="ID_CARRERA" ColumnName="ID_CARRERA" />
+          <ScalarProperty Name="DESCRIPCION_CARRERA" ColumnName="DESCRIPCION_CARRERA" />
+          <ScalarProperty Name="ID_MATERIA" ColumnName="ID_MATERIA" />
+          <ScalarProperty Name="DESCRIPCION_MATERIA" ColumnName="DESCRIPCION_MATERIA" />
+          <ScalarProperty Name="ID_PARALELO" ColumnName="ID_PARALELO" />
+          <ScalarProperty Name="DESCRIPCION_PARALELO" ColumnName="DESCRIPCION_PARALELO" />
+          <ScalarProperty Name="ID_INTERVALO_DETALLE" ColumnName="ID_INTERVALO_DETALLE" />
+          <ScalarProperty Name="HORARIO" ColumnName="HORARIO" />
+          <ScalarProperty Name="TEMA_TAREA" ColumnName="TEMA_TAREA" />
+          <ScalarProperty Name="DESCRIPCION_TAREA" ColumnName="DESCRIPCION_TAREA" />
+          <ScalarProperty Name="FECHA_CREACION_TAREA" ColumnName="FECHA_CREACION_TAREA" />
+          <ScalarProperty Name="FECHA_FIN_TAREA" ColumnName="FECHA_FIN_TAREA" />
+          <ScalarProperty Name="ID_PERIODO" ColumnName="ID_PERIODO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="CAS_TAREA_ADJUNTO">
+      <EntityTypeMapping TypeName="CAS_DataModel.CAS_TAREA_ADJUNTO">
+        <MappingFragment StoreEntitySet="CAS_TAREA_ADJUNTO">
+          <ScalarProperty Name="NOMBRE_ADJUNTO" ColumnName="NOMBRE_ADJUNTO" />
+          <ScalarProperty Name="PATH_ADJUNTO" ColumnName="PATH_ADJUNTO" />
+          <ScalarProperty Name="ID_TAREA" ColumnName="ID_TAREA" />
+          <ScalarProperty Name="ID_TAREA_ADJUNTO" ColumnName="ID_TAREA_ADJUNTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAS_ESTUDIANTE_TAREA">
+      <EntityTypeMapping TypeName="CAS_DataModel.CAS_ESTUDIANTE_TAREA">
+        <MappingFragment StoreEntitySet="CAS_ESTUDIANTE_TAREA">
+          <ScalarProperty Name="OBSERVACION_TAREA" ColumnName="OBSERVACION_TAREA" />
+          <ScalarProperty Name="ADJUNTO_NOMBRE" ColumnName="ADJUNTO_NOMBRE" />
+          <ScalarProperty Name="NOTA_TAREA" ColumnName="NOTA_TAREA" />
+          <ScalarProperty Name="FECHA_TAREA" ColumnName="FECHA_TAREA" />
+          <ScalarProperty Name="ADJUNTO_TAREA" ColumnName="ADJUNTO_TAREA" />
+          <ScalarProperty Name="ID_ESTUDIANTE" ColumnName="ID_ESTUDIANTE" />
+          <ScalarProperty Name="ID_TAREA" ColumnName="ID_TAREA" />
+          <ScalarProperty Name="ID_ESTUDIANTE_TAREA" ColumnName="ID_ESTUDIANTE_TAREA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_DocenteCalificacionTarea" FunctionName="CAS_DataModel.Store.DocenteCalificacionTarea">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CAS_DataModel.DocenteCalificacionTarea_Result">
+          <ScalarProperty Name="ID_ESTUDIANTE_TAREA" ColumnName="ID_ESTUDIANTE_TAREA" />
+          <ScalarProperty Name="ID_ESTUDIANTE" ColumnName="ID_ESTUDIANTE" />
+          <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="ADJUNTO_TAREA" ColumnName="ADJUNTO_TAREA" />
+          <ScalarProperty Name="ADJUNTO_NOMBRE" ColumnName="ADJUNTO_NOMBRE" />
+          <ScalarProperty Name="NOTA_TAREA" ColumnName="NOTA_TAREA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_DocenteRepositorioAdjunto" FunctionName="CAS_DataModel.Store.DocenteRepositorioAdjunto">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CAS_DataModel.DocenteRepositorioAdjunto_Result">
+          <ScalarProperty Name="ID_CRONOGRAMA_ADJUNTO" ColumnName="ID_CRONOGRAMA_ADJUNTO" />
+          <ScalarProperty Name="RUTA_ADJUNTO" ColumnName="RUTA_ADJUNTO" />
+          <ScalarProperty Name="ICONO_ADJUNTO" ColumnName="ICONO_ADJUNTO" />
+          <ScalarProperty Name="PESO_ADJUNTO" ColumnName="PESO_ADJUNTO" />
+          <ScalarProperty Name="NOMBRE_ADJUNTO" ColumnName="NOMBRE_ADJUNTO" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="FECHA_CRONOGRAMA" ColumnName="FECHA_CRONOGRAMA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_EstudianteRepositorioAdjunto" FunctionName="CAS_DataModel.Store.EstudianteRepositorioAdjunto">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CAS_DataModel.EstudianteRepositorioAdjunto_Result">
+          <ScalarProperty Name="ID_CRONOGRAMA_ADJUNTO" ColumnName="ID_CRONOGRAMA_ADJUNTO" />
+          <ScalarProperty Name="RUTA_ADJUNTO" ColumnName="RUTA_ADJUNTO" />
+          <ScalarProperty Name="ICONO_ADJUNTO" ColumnName="ICONO_ADJUNTO" />
+          <ScalarProperty Name="PESO_ADJUNTO" ColumnName="PESO_ADJUNTO" />
+          <ScalarProperty Name="NOMBRE_ADJUNTO" ColumnName="NOMBRE_ADJUNTO" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="FECHA_CRONOGRAMA" ColumnName="FECHA_CRONOGRAMA" />
+          <ScalarProperty Name="TEMATICA" ColumnName="TEMATICA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_AdminRepositorioAdjunto" FunctionName="CAS_DataModel.Store.AdminRepositorioAdjunto">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CAS_DataModel.AdminRepositorioAdjunto_Result">
+          <ScalarProperty Name="ID_CRONOGRAMA_ADJUNTO" ColumnName="ID_CRONOGRAMA_ADJUNTO" />
+          <ScalarProperty Name="RUTA_ADJUNTO" ColumnName="RUTA_ADJUNTO" />
+          <ScalarProperty Name="ICONO_ADJUNTO" ColumnName="ICONO_ADJUNTO" />
+          <ScalarProperty Name="PESO_ADJUNTO" ColumnName="PESO_ADJUNTO" />
+          <ScalarProperty Name="NOMBRE_ADJUNTO" ColumnName="NOMBRE_ADJUNTO" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="FECHA_CRONOGRAMA" ColumnName="FECHA_CRONOGRAMA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_AdminRepositorioCarpeta" FunctionName="CAS_DataModel.Store.AdminRepositorioCarpeta">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CAS_DataModel.AdminRepositorioCarpeta_Result">
+          <ScalarProperty Name="ID_CARPETA" ColumnName="ID_CARPETA" />
+          <ScalarProperty Name="DESCRIPCION_CARPETA" ColumnName="DESCRIPCION_CARPETA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_AdminRepositorioSemana" FunctionName="CAS_DataModel.Store.AdminRepositorioSemana">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CAS_DataModel.AdminRepositorioSemana_Result">
+          <ScalarProperty Name="SEMANA_CRONOGRAMA" ColumnName="SEMANA_CRONOGRAMA" />
+          <ScalarProperty Name="TEMA" ColumnName="TEMA" />
+          <ScalarProperty Name="DESCRIPCION_SEMANA" ColumnName="DESCRIPCION_SEMANA" />
+          <ScalarProperty Name="ID_CRONOGRAMA" ColumnName="ID_CRONOGRAMA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_EstudianteObtenerCarrera" FunctionName="CAS_DataModel.Store.EstudianteObtenerCarrera">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CAS_DataModel.EstudianteObtenerCarrera_Result">
+          <ScalarProperty Name="ID_CARRERA" ColumnName="ID_CARRERA" />
+          <ScalarProperty Name="DESCRIPCION_CARRERA" ColumnName="DESCRIPCION_CARRERA" />
+          <ScalarProperty Name="COD_CARRERA" ColumnName="COD_CARRERA" />
+          <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+          <ScalarProperty Name="ID_TIPO_INTERVALO" ColumnName="ID_TIPO_INTERVALO" />
+          <ScalarProperty Name="ID_PARALELO" ColumnName="ID_PARALELO" />
+          <ScalarProperty Name="ID_PERIODO" ColumnName="ID_PERIODO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_EliminarTareas" FunctionName="CAS_DataModel.Store.EliminarTareas" />
+    <FunctionImportMapping FunctionImportName="SP_EstudianteObtenerTareasDetalle" FunctionName="CAS_DataModel.Store.EstudianteObtenerTareasDetalle">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CAS_DataModel.EstudianteObtenerTareasDetalle_Result">
+          <ScalarProperty Name="ID_ESTUDIANTE_TAREA" ColumnName="ID_ESTUDIANTE_TAREA" />
+          <ScalarProperty Name="ID_TAREA" ColumnName="ID_TAREA" />
+          <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+          <ScalarProperty Name="DESCRIPCION_UNIVERSIDAD" ColumnName="DESCRIPCION_UNIVERSIDAD" />
+          <ScalarProperty Name="ID_CARRERA" ColumnName="ID_CARRERA" />
+          <ScalarProperty Name="DESCRIPCION_CARRERA" ColumnName="DESCRIPCION_CARRERA" />
+          <ScalarProperty Name="ID_MATERIA" ColumnName="ID_MATERIA" />
+          <ScalarProperty Name="DESCRIPCION_MATERIA" ColumnName="DESCRIPCION_MATERIA" />
+          <ScalarProperty Name="TEMA_TAREA" ColumnName="TEMA_TAREA" />
+          <ScalarProperty Name="FECHA_FIN_TAREA" ColumnName="FECHA_FIN_TAREA" />
+          <ScalarProperty Name="NOTA_TAREA" ColumnName="NOTA_TAREA" />
+          <ScalarProperty Name="ADJUNTO_TAREA" ColumnName="ADJUNTO_TAREA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_DocenteHorarioMateria" FunctionName="CAS_DataModel.Store.DocenteHorarioMateria">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CAS_DataModel.DocenteHorarioMateria_Result">
+          <ScalarProperty Name="ID_HORARIO_DETALLE" ColumnName="ID_HORARIO_DETALLE" />
+          <ScalarProperty Name="DESCRIPCION_UNIVERSIDAD" ColumnName="DESCRIPCION_UNIVERSIDAD" />
+          <ScalarProperty Name="DESCRIPCION_CARRERA" ColumnName="DESCRIPCION_CARRERA" />
+          <ScalarProperty Name="DESCRIPCION_MATERIA" ColumnName="DESCRIPCION_MATERIA" />
+          <ScalarProperty Name="DESCRIPCION_PARALELO" ColumnName="DESCRIPCION_PARALELO" />
+          <ScalarProperty Name="DESCRIPCION_DIAS" ColumnName="DESCRIPCION_DIAS" />
+          <ScalarProperty Name="HORA" ColumnName="HORA" />
+          <ScalarProperty Name="DESCRIPCION_PERIODO" ColumnName="DESCRIPCION_PERIODO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_ObtenerNota" FunctionName="CAS_DataModel.Store.ObtenerNota">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CAS_DataModel.ObtenerNota_Result">
+          <ScalarProperty Name="ID_NOTA" ColumnName="ID_NOTA" />
+          <ScalarProperty Name="DESCRIPCION_NOTA" ColumnName="DESCRIPCION_NOTA" />
+          <ScalarProperty Name="ID_TIPO_INTERVALO" ColumnName="ID_TIPO_INTERVALO" />
+          <ScalarProperty Name="DESCRIPCION_TIPO_INVERTALO" ColumnName="DESCRIPCION_TIPO_INVERTALO" />
+          <ScalarProperty Name="ID_CARRERA" ColumnName="ID_CARRERA" />
+          <ScalarProperty Name="DESCRIPCION_CARRERA" ColumnName="DESCRIPCION_CARRERA" />
+          <ScalarProperty Name="ID_PERIODO" ColumnName="ID_PERIODO" />
+          <ScalarProperty Name="DESCRIPCION_PERIODO" ColumnName="DESCRIPCION_PERIODO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_ObtenerNotaDetalle" FunctionName="CAS_DataModel.Store.ObtenerNotaDetalle">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CAS_DataModel.ObtenerNotaDetalle_Result">
+          <ScalarProperty Name="ID_NOTA" ColumnName="ID_NOTA" />
+          <ScalarProperty Name="DESCRIPCION_NOTA" ColumnName="DESCRIPCION_NOTA" />
+          <ScalarProperty Name="ID_NOTA_DETALLE" ColumnName="ID_NOTA_DETALLE" />
+          <ScalarProperty Name="DESCRIPCION_NOTA_DETALLE" ColumnName="DESCRIPCION_NOTA_DETALLE" />
+          <ScalarProperty Name="VALOR_DETALLE" ColumnName="VALOR_DETALLE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_EstudianteObtenerCarreraReporteDocente" FunctionName="CAS_DataModel.Store.EstudianteObtenerCarreraReporteDocente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CAS_DataModel.EstudianteObtenerCarreraReporteDocente_Result">
+          <ScalarProperty Name="ID_ESTUDIANTE" ColumnName="ID_ESTUDIANTE" />
+          <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+          <ScalarProperty Name="ID_CARRERA" ColumnName="ID_CARRERA" />
+          <ScalarProperty Name="DESCRIPCION_CARRERA" ColumnName="DESCRIPCION_CARRERA" />
+          <ScalarProperty Name="ID_PARALELO" ColumnName="ID_PARALELO" />
+          <ScalarProperty Name="ID_INTERVALO_DETALLE" ColumnName="ID_INTERVALO_DETALLE" />
+          <ScalarProperty Name="ID_TIPO_INTERVALO" ColumnName="ID_TIPO_INTERVALO" />
+          <ScalarProperty Name="ID_PERIODO" ColumnName="ID_PERIODO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

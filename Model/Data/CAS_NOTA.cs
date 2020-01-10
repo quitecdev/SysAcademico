@@ -18,5 +18,6 @@ namespace Model.Data
         public string DESCRIPCION_NOTA { get; set; }
         public Nullable<int> ID_TIPO_INTERVALO { get; set; }
         public Nullable<int> ID_CARRERA { get; set; }
+        public Nullable<int> ID_PERIODO { get; set; }
     }
 }

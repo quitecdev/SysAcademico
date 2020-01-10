@@ -47,16 +47,30 @@
                                                     {
                                                         <ul class="list-group m-b-0 user-list">
                                                             <li class="list-group-item">
-                                                                <a href="@adjunto.RUTA_ADJUNTO" class="user-list-item" target="_blank">
-                                                                    <div class="avatar text-center">
-                                                                        <i class="@adjunto.ICONO_ADJUNTO text-custom"></i>
-                                                                    </div>
-                                                                    <div class="user-desc">
-                                                                        <span class="name" style="font-weight: bold;">Temática : @adjunto.TEMATICA</span>
-                                                                        <span class="name">@adjunto.NOMBRE_ADJUNTO</span>
-                                                                        <span class="desc"> @adjunto.PESO_ADJUNTO</span>
-                                                                    </div>
-                                                                </a>
+                                                                @if (adjunto.ICONO_ADJUNTO != "zmdi zmdi-collection-video")
+                                                                {
+                                                                    <a href="@Url.Content(@adjunto.RUTA_ADJUNTO)" class="user-list-item" target="_blank">
+                                                                        <div class="avatar text-center">
+                                                                            <i class="@adjunto.ICONO_ADJUNTO text-custom"></i>
+                                                                        </div>
+                                                                        <div class="user-desc">
+                                                                            <span class="name">@adjunto.NOMBRE_ADJUNTO</span>
+                                                                            <span class="desc"> @adjunto.PESO_ADJUNTO</span>
+                                                                        </div>
+                                                                    </a>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <a href="javascript:ModalVideo('@Url.Action("Video","Visualizador")/@adjunto.ID_CRONOGRAMA_ADJUNTO');" class="user-list-item">
+                                                                        <div class="avatar text-center">
+                                                                            <i class="@adjunto.ICONO_ADJUNTO text-custom"></i>
+                                                                        </div>
+                                                                        <div class="user-desc">
+                                                                            <span class="name">@adjunto.NOMBRE_ADJUNTO</span>
+                                                                            <span class="desc"> @adjunto.PESO_ADJUNTO</span>
+                                                                        </div>
+                                                                    </a>
+                                                                }
                                                             </li>
                                                         </ul>
 
@@ -75,3 +89,7 @@
         </div>
     }
 }
+
+<div id="full-width-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="full-width-modalLabel" aria-hidden="true" style="display: none;">
+
+</div><!-- /.modal -->

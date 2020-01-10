@@ -18,6 +18,7 @@ namespace Model.Data
         public string APELLIDOS { get; set; }
         public string NOMBRES { get; set; }
         public string ADJUNTO_TAREA { get; set; }
+        public string ADJUNTO_NOMBRE { get; set; }
         public Nullable<decimal> NOTA_TAREA { get; set; }
     }
 }

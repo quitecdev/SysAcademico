@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "Notas";
+}
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">@ViewBag.Title</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="m-t-25"></div>
+        <button type="button" onclick="ModalForm('@Url.Action("CreaNotas", "Notas", new { id = string.Empty })')" cla class="btn btn-custom waves-effect waves-light m-b-5"> <i class="fa fa-plus-circle m-r-5"></i> <span>Añadir</span> </button>
+        <div class="m-t-25"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
+            <table id="tbl_Nota" class="table-datatable table dt-responsive table-striped jambo_table bulk_action tblInscripcion" style="width:100%">
+                <thead>
+                    <tr class="headings">
+                        <th class="column-title">#</th>
+                        <th class="column-title">Descripción</th>
+                        <th class="column-title">Tip. Intervalo</th>
+                        <th class="column-title">Carrera</th>
+                        <th class="column-title">Paralelo</th>
+                        <th class="column-title"></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+@* MODAL *@
+<div class="modal fade modal-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+
+</div>
+<!-- /.modal -->
+
+@section scripts
+{
+    <script>
+        var datatable;
+        $(document).ready(function () {
+            datatable = $('#tbl_Nota').DataTable({
+                "ajax": "@Url.Action("getTableNota", "Notas")",
+                "columns": [
+                  { 'data': 'ID_NOTA' },
+                  { 'data': 'DESCRIPCION_NOTA' },
+                  { 'data': 'DESCRIPCION_TIPO_INVERTALO' },
+                  { 'data': 'DESCRIPCION_CARRERA' },
+                  { 'data': 'DESCRIPCION_PERIODO' },
+                  {
+                      'data': 'ID_NOTA', 'render': function (data, type, row, meta) {
+                          return "<button  title='Editar'  type='button' onclick=ModalForm('@Url.Action("CreaNotas", "Notas")/" + row.ID_NOTA + "')  class='btn btn-icon waves-effect waves-light btn-custom btn-xs m-b-5'><em class='zmdi zmdi-edit'></em></button> " +
+                                 "<button  title='Crea Detalle' onclick=Detalle('@Url.Action("NotaDetalle", "Notas")/" + row.ID_NOTA + "')  class='btn btn-icon waves-effect waves-light btn-primary btn-xs m-b-5'><em class='zmdi zmdi-puzzle-piece'></em></button> " +
+                                 "<button title='Eliminar' onclick='EliminarDetalle(" + row.ID_NOTA + ")' class='btn btn-icon waves-effect waves-light btn-custom btn-xs m-b-5'> <i class='fa fa-trash-o'></i> </button>";
+                      },
+                      'orderable': false,
+                      "className": "actions",
+                      'width': '80px'
+                  }
+                ],
+                "processing": true,
+                "language": {
+                    "url": "../assets/plugins/datatables/Spanish.json",
+                },
+                "order": [[0, 'asc']],
+            });
+        });
+
+        function ActualizarDetalle() {
+            datatable.ajax.reload();
+        }
+
+
+        @*function EliminarDetalle(ID_CARRERA) {
+            if (confirm("¿Está seguro que desea eliminar este registro?")) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("EliminarCarrera", "Carrera")',
+                    content: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: { ID_CARRERA: ID_CARRERA },
+                    success: function (response) {
+                        if (response.success) {
+                            ActualizarDetalle();
+                            toastr.success('Correcto', response.message, { timeOut: 5000 })
+                        }
+                        else {
+                            toastr.error(response.message, { timeOut: 5000 })
+                        }
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        //alert('Error!!');
+                    }
+                });
+            }
+        }*@
+
+        function Detalle(url) {
+            document.location = url;
+        }
+    </script>
+}

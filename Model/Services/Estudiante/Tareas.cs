@@ -21,6 +21,7 @@ namespace Model.Services.Estudiante
         public string TEMA_TAREA { get; set; }
         public Nullable<System.DateTime> FECHA_FIN_TAREA { get; set; }
         public Nullable<decimal> NOTA_TAREA { get; set; }
+                public string ADJUNTO_TAREA { get; set; }
 
         public List<Tareas> ObtenerDetalleTarea(string ID_ESTUDIANTE)
         {
@@ -45,7 +46,8 @@ namespace Model.Services.Estudiante
                                            DESCRIPCION_MATERIA = x.DESCRIPCION_MATERIA,
                                            TEMA_TAREA = x.TEMA_TAREA,
                                            FECHA_FIN_TAREA = x.FECHA_FIN_TAREA,
-                                           NOTA_TAREA=x.NOTA_TAREA
+                                           NOTA_TAREA=x.NOTA_TAREA,
+                                           ADJUNTO_TAREA=x.ADJUNTO_TAREA
                                        }).ToList();
                 }
 

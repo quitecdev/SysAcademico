@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Model.Services.Admin;
 using CAS_ADMIN.Models;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace CAS_ADMIN.Controllers
 {
@@ -47,7 +48,8 @@ namespace CAS_ADMIN.Controllers
                 if (ModelState.IsValid)
                 {
                     _cronograma.GuardarCronograma(cronograma);
-                    return Json(new { success = true, message = "Cronograma creado exitosamente" }, JsonRequestBehavior.AllowGet);
+                    //return Json(new { success = true, message = "Cronograma creado exitosamente" }, JsonRequestBehavior.AllowGet);
+                    return RedirectToAction("Index", "Cronograma");
                 }
                 return Json(new { success = true, message = "Error" }, JsonRequestBehavior.AllowGet);
             }
@@ -143,7 +145,8 @@ namespace CAS_ADMIN.Controllers
                 {
                     foreach (var archivo in adjunto.Files)
                     {
-                        upload.GuardarArchivoRepositorio(archivo,adjunto.ID_CARPETA.Value,adjunto.ID_CRONOGRAMA_DETALLE.Value);
+                        upload.GuardarArchivoRepositorio(archivo, adjunto.ID_CARPETA.Value, adjunto.ID_CRONOGRAMA_DETALLE.Value);
+                        
                     }
 
                     return Json(new { success = true, message = "Adjunto subido exitosamente" }, JsonRequestBehavior.AllowGet);
@@ -156,6 +159,26 @@ namespace CAS_ADMIN.Controllers
                 return Json(new { success = false, message = ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
+
+        public ActionResult AdjuntoCronogramaLink(CronogramaAdjunto adjunto)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _adjunto.GuardarAdjuntoLink(adjunto);
+                    return Json(new { success = true, message = "Adjunto subido exitosamente" }, JsonRequestBehavior.AllowGet);
+                }
+                return View(_adjunto);
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return Json(new { success = false, message = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
         public ActionResult DetalleAdjunto(int id)
         {
             return PartialView("_DetalleAdjunto", _adjunto.ObtenerAdjunto(id));
@@ -173,6 +196,23 @@ namespace CAS_ADMIN.Controllers
                 ServicesTrackError.RegistrarError(ex);
                 return Json(new { success = false, message = ex.Message }, JsonRequestBehavior.AllowGet);
             }
+        }
+        #endregion
+
+        #region CronogramaVista
+        RepositorioAdmin repositorio = new RepositorioAdmin();
+        public ActionResult CronogramaVista(int id)
+        {
+            try
+            {
+                return View(repositorio.ObtenerRepositorio(id));
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return View();
+            }
+
         }
         #endregion
     }

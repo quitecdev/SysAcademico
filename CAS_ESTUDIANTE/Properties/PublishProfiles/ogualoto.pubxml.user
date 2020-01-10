@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\COMPILADOS\CAS_ESTUDIANTE_27-05-2019</_PublishTargetUrl>
+    <_PublishTargetUrl>D:\COMPILADOS\CAS_ESTUDIANTE_07-01-2020</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
@@ -83,6 +83,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="assets/images/cursos/coc1-700x330.jpg">
       <publishTime>11/13/2018 09:31:08</publishTime>
+    </File>
+    <File Include="assets/images/cursos/CURSO-MANUEL-SMITH.jpg">
+      <publishTime>11/06/2018 10:11:17</publishTime>
     </File>
     <File Include="assets/images/cursos/emp-700x330.jpg">
       <publishTime>11/13/2018 09:31:08</publishTime>
@@ -184,7 +187,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2018 09:31:09</publishTime>
     </File>
     <File Include="assets/js/jquery.app.js">
-      <publishTime>12/04/2018 13:08:29</publishTime>
+      <publishTime>10/24/2019 11:03:06</publishTime>
     </File>
     <File Include="assets/js/jquery.blockUI.js">
       <publishTime>11/13/2018 09:31:09</publishTime>
@@ -859,13 +862,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2018 09:31:09</publishTime>
     </File>
     <File Include="assets/plugins/jquery.filer/css/jquery.filer.css">
-      <publishTime>11/13/2018 09:31:09</publishTime>
+      <publishTime>09/20/2019 09:20:20</publishTime>
     </File>
     <File Include="assets/plugins/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css">
       <publishTime>11/13/2018 09:31:09</publishTime>
     </File>
     <File Include="assets/plugins/jquery.filer/js/jquery.filer.min.js">
-      <publishTime>11/13/2018 09:31:09</publishTime>
+      <publishTime>09/20/2019 09:20:20</publishTime>
     </File>
     <File Include="assets/plugins/magnific-popup/dist/jquery.magnific-popup.min.js">
       <publishTime>11/13/2018 09:31:17</publishTime>
@@ -905,6 +908,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="assets/plugins/parsleyjs/dist/parsley.min.js">
       <publishTime>11/13/2018 09:31:17</publishTime>
+    </File>
+    <File Include="assets/plugins/plyr/plyr.css">
+      <publishTime>10/22/2019 15:43:12</publishTime>
+    </File>
+    <File Include="assets/plugins/plyr/plyr.js">
+      <publishTime>10/22/2019 15:06:53</publishTime>
     </File>
     <File Include="assets/plugins/raphael/raphael-min.js">
       <publishTime>11/13/2018 09:31:11</publishTime>
@@ -963,14 +972,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="assets/plugins/waypoints/lib/jquery.waypoints.js">
       <publishTime>11/13/2018 09:31:12</publishTime>
     </File>
+    <File Include="bin/AfsEncripta.dll">
+      <publishTime>04/03/2017 12:36:50</publishTime>
+    </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>11/13/2018 09:32:07</publishTime>
     </File>
     <File Include="bin/ApplicationInsights.config">
       <publishTime>11/13/2018 09:31:04</publishTime>
     </File>
+    <File Include="bin/BarcodeLib.dll">
+      <publishTime>04/15/2018 20:22:24</publishTime>
+    </File>
     <File Include="bin/CAS_ESTUDIANTE.dll">
-      <publishTime>05/27/2019 12:44:00</publishTime>
+      <publishTime>01/07/2020 16:37:53</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>11/13/2018 09:31:58</publishTime>
@@ -1042,7 +1057,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2018 09:31:52</publishTime>
     </File>
     <File Include="bin/Model.dll">
-      <publishTime>05/27/2019 12:43:52</publishTime>
+      <publishTime>01/07/2020 16:37:43</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>11/13/2018 09:31:50</publishTime>
@@ -1186,7 +1201,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2018 09:31:02</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>12/20/2018 12:54:29</publishTime>
+      <publishTime>10/24/2019 11:06:33</publishTime>
     </File>
     <File Include="Views/Account/ChangePassword.cshtml">
       <publishTime>11/13/2018 09:31:06</publishTime>
@@ -1210,7 +1225,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2018 09:30:45</publishTime>
     </File>
     <File Include="Views/Encuestas/evalucionDocentes.cshtml">
-      <publishTime>05/27/2019 12:34:53</publishTime>
+      <publishTime>01/07/2020 16:18:01</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>11/13/2018 09:31:06</publishTime>
@@ -1219,7 +1234,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2018 09:31:06</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>11/19/2018 10:32:05</publishTime>
+      <publishTime>07/09/2019 11:09:14</publishTime>
     </File>
     <File Include="Views/Home/PreguntasFrecuentes.cshtml">
       <publishTime>11/13/2018 09:31:06</publishTime>
@@ -1231,7 +1246,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2018 09:31:06</publishTime>
     </File>
     <File Include="Views/RepositorioEstudiante/Index.cshtml">
-      <publishTime>03/07/2019 10:27:18</publishTime>
+      <publishTime>10/24/2019 11:00:32</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>11/13/2018 09:31:06</publishTime>
@@ -1243,13 +1258,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/06/2018 10:05:38</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>12/04/2018 11:55:58</publishTime>
+      <publishTime>10/24/2019 11:03:40</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>11/13/2018 09:31:06</publishTime>
     </File>
     <File Include="Views/Shared/_Menu.cshtml">
-      <publishTime>11/13/2018 09:31:06</publishTime>
+      <publishTime>09/20/2019 09:20:20</publishTime>
     </File>
     <File Include="Views/Shared/_Notificacion.cshtml">
       <publishTime>12/19/2018 12:11:20</publishTime>
@@ -1263,6 +1278,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Shared/_Toastr.cshtml">
       <publishTime>11/13/2018 09:31:06</publishTime>
     </File>
+    <File Include="Views/Tareas/Detalle.cshtml">
+      <publishTime>09/23/2019 11:56:21</publishTime>
+    </File>
+    <File Include="Views/Tareas/Index.cshtml">
+      <publishTime>11/28/2019 15:54:30</publishTime>
+    </File>
+    <File Include="Views/Visualizador/Video.cshtml">
+      <publishTime>10/24/2019 11:02:41</publishTime>
+    </File>
     <File Include="Views/Web.config">
       <publishTime>11/13/2018 09:31:06</publishTime>
     </File>
@@ -1270,7 +1294,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2018 09:31:06</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/24/2019 15:32:44</publishTime>
+      <publishTime>10/24/2019 11:09:15</publishTime>
     </File>
   </ItemGroup>
 </Project>

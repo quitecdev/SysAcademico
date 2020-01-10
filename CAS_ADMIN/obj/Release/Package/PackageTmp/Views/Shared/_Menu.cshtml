@@ -76,6 +76,12 @@
                     <li class="has_sub">
                         <a href="@Url.Action("DatosPersonales", "Inscripciones",new { id = string.Empty })" class="waves-effect"><i class="zmdi zmdi-account-add"></i> <span> Inscripciones </span> </a>
                     </li>
+                    @if (Session["ID_USUARIO"].ToString() == "1721540365")
+                    {
+                        <li class="has_sub">
+                            <a href="@Url.Action("Index", "Estudiante")" class="waves-effect"><i class="zmdi zmdi-accounts-list-alt"></i> <span> Estudiante </span> </a>
+                        </li>
+                    }
                     @if (Session["DESCRIPCION_ROL"].ToString() == "Administrador")
                     {
                         <li class="has_sub">

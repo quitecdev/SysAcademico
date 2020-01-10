@@ -24,5 +24,6 @@ namespace Model.Data
         public string TEMA_TAREA { get; set; }
         public Nullable<System.DateTime> FECHA_FIN_TAREA { get; set; }
         public Nullable<decimal> NOTA_TAREA { get; set; }
+        public string ADJUNTO_TAREA { get; set; }
     }
 }

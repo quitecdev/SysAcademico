@@ -33,7 +33,7 @@ namespace CAS_WEB_PAGE.Controllers
                 registro.CEL_INSCRIP = inscripcion.CEL_INSCRIP;
                 registro.CORREO = inscripcion.CORREO;
                 registro.DIRECCION = inscripcion.DIRECCION;
-                //funcion.GuardarInscripcion(registro);
+                funcion.GuardarInscripcion(registro);
                 ViewBag.TheResult = true;
                 _inscripcion = new ModelInscripcion();
                 return View(_inscripcion);

@@ -44,6 +44,7 @@ namespace Model.Services.Docente
                                                   Adjunto = ctx.SP_DocenteRepositorioAdjunto(ID_SEDE, ID_CARRERA, x.SEMANA_CRONOGRAMA, ID_TIPO_INTERVALO, b.ID_CARPETA, null,x.ID_CRONOGRAMA, outMensaje, outID)
                                                            .Select(y => new RepositorioAdjunto
                                                            {
+                                                               ID_CRONOGRAMA_ADJUNTO=y.ID_CRONOGRAMA_ADJUNTO,
                                                                RUTA_ADJUNTO = y.RUTA_ADJUNTO,
                                                                ICONO_ADJUNTO = y.ICONO_ADJUNTO,
                                                                PESO_ADJUNTO = y.PESO_ADJUNTO,
@@ -86,6 +87,7 @@ namespace Model.Services.Docente
 
     public class RepositorioAdjunto
     {
+        public int ID_CRONOGRAMA_ADJUNTO { get; set; }
         public string RUTA_ADJUNTO { get; set; }
         public string ICONO_ADJUNTO { get; set; }
         public string PESO_ADJUNTO { get; set; }

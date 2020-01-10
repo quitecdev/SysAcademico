@@ -241,5 +241,15 @@ namespace Model.Services.Admin
             }
         }
 
+        public List<CAS_TIPO_INVERTALO> ObtenerTipoIntervalo()
+        {
+            List<CAS_TIPO_INVERTALO> intervalo = new List<CAS_TIPO_INVERTALO>();
+            using (var ctx = new CAS_DataEntities())
+            {
+                intervalo = ctx.CAS_TIPO_INVERTALO.ToList();
+            }
+                return intervalo;
+        }
+
     }
 }

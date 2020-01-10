@@ -41,7 +41,7 @@ namespace Model.Services.Admin
                              .Select(x => new CronogramaAdjunto {
                                  ID_CRONOGRAMA_ADJUNTO = x.ID_CRONOGRAMA_ADJUNTO,
                                  ID_CRONOGRAMA_DETALLE = x.ID_CRONOGRAMA_DETALLE,
-                                 RUTA_ADJUNTO = x.RUTA_ADJUNTO,
+                                 RUTA_ADJUNTO = x.RUTA_ADJUNTO.Replace(@"_ \",@"_\").ToString(),
                                  ICONO_ADJUNTO = x.ICONO_ADJUNTO,
                                  PESO_ADJUNTO = x.PESO_ADJUNTO,
                                  NOMBRE_ADJUNTO = x.NOMBRE_ADJUNTO,
@@ -77,6 +77,30 @@ namespace Model.Services.Admin
                 }
             }
             catch (Exception ex )
+            {
+                ServicesTrackError.RegistrarError(ex);
+            }
+        }
+
+        public void GuardarAdjuntoLink(CronogramaAdjunto adjunto)
+        {
+            CAS_CRONOGRAMA_ADJUNTO _adjunto = new CAS_CRONOGRAMA_ADJUNTO();
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    _adjunto.ID_CRONOGRAMA_ADJUNTO = adjunto.ID_CRONOGRAMA_ADJUNTO;
+                    _adjunto.ID_CRONOGRAMA_DETALLE = adjunto.ID_CRONOGRAMA_DETALLE;
+                    _adjunto.RUTA_ADJUNTO = adjunto.RUTA_ADJUNTO;
+                    _adjunto.ICONO_ADJUNTO = "zmdi zmdi-link";
+                    _adjunto.NOMBRE_ADJUNTO = adjunto.NOMBRE_ADJUNTO;
+                    _adjunto.PESO_ADJUNTO = "0 MB";
+                    _adjunto.ID_CARPETA = adjunto.ID_CARPETA;
+                    ctx.Entry(_adjunto).State = EntityState.Added;
+                    ctx.SaveChanges();
+                }
+            }
+            catch (Exception ex)
             {
                 ServicesTrackError.RegistrarError(ex);
             }

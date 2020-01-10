@@ -185,6 +185,7 @@
     <Compile Include="Controllers\HorarioController.cs" />
     <Compile Include="Controllers\RepositorioController.cs" />
     <Compile Include="Controllers\TareasController.cs" />
+    <Compile Include="Controllers\VisualizadorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -575,6 +576,7 @@
     <Content Include="Views\Tareas\Crear.cshtml" />
     <Content Include="Views\Tareas\DetalleTareas.cshtml" />
     <Content Include="Views\Tareas\CalificarTareas.cshtml" />
+    <Content Include="Views\Visualizador\Video.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

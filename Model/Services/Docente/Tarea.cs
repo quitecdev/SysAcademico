@@ -12,6 +12,7 @@ using System.Web.Mvc;
 using System.Web;
 using System.IO;
 using AfsEncripta;
+using System.Security.Cryptography;
 
 namespace Model.Services.Docente
 {
@@ -96,7 +97,7 @@ namespace Model.Services.Docente
 
                 if (file != null && file.ContentLength > 0)
                 {
-                    string directorio = "~/Adjuntos/" + _enc.HashString(ID_DOCENTE);
+                    string directorio = "~/Adjuntos/" + MD5(ID_DOCENTE);
 
                     string verificar = HttpContext.Current.Server.MapPath(directorio);
                     if (!Directory.Exists(verificar))
@@ -128,6 +129,16 @@ namespace Model.Services.Docente
 
         }
 
+        private string MD5(string input)
+        {
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+
+            byte[] originalBytes = ASCIIEncoding.Default.GetBytes(input);
+            byte[] encodedBytes = md5.ComputeHash(originalBytes);
+
+            return BitConverter.ToString(encodedBytes).Replace("-", "");
+        }
+
         public void GenerarTareaEstudiante(int ID_TAREA)
         {
             try
@@ -136,6 +147,21 @@ namespace Model.Services.Docente
                 {
 
                     ctx.SP_GenerarTareaEstudiante(ID_TAREA);
+                }
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+            }
+        }
+
+        public void EliminarTarea(int ID_TAREA)
+        {
+            try
+            {
+                using (var ctx = new CAS_DataEntities())
+                {
+                    ctx.SP_EliminarTareas(ID_TAREA);
                 }
             }
             catch (Exception ex)

@@ -17,5 +17,6 @@ namespace Model.Data
         public int ID_HORARIO_DETALLE { get; set; }
         public Nullable<int> ID_PARALELO_MATERIA { get; set; }
         public Nullable<int> ID_HORARIO { get; set; }
+        public Nullable<int> ID_PERIODO { get; set; }
     }
 }

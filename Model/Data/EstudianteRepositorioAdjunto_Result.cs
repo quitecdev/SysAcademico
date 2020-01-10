@@ -13,6 +13,7 @@ namespace Model.Data
     
     public partial class EstudianteRepositorioAdjunto_Result
     {
+        public int ID_CRONOGRAMA_ADJUNTO { get; set; }
         public string RUTA_ADJUNTO { get; set; }
         public string ICONO_ADJUNTO { get; set; }
         public string PESO_ADJUNTO { get; set; }

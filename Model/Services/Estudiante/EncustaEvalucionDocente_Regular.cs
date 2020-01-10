@@ -69,7 +69,8 @@ namespace Model.Services.Estudiante
                                          ID_PARALELO = x.ID_PARALELO,
                                          ID_INTERVALO_DETALLE = x.ID_INTERVALO_DETALLE,
                                          ID_TIPO_INTERVALO = x.ID_TIPO_INTERVALO,
-                                         DOCENTE = ctx.SP_DocenteObtenerDatosReporteDocente(x.ID_SEDE, x.ID_CARRERA, null, x.ID_PARALELO, x.ID_INTERVALO_DETALLE, outMensaje, outID)
+                                         ID_PERIODO=x.ID_PERIODO.Value,
+                                         DOCENTE = ctx.SP_DocenteObtenerDatosReporteDocente(x.ID_SEDE, x.ID_CARRERA, x.ID_PERIODO, x.ID_PARALELO, x.ID_INTERVALO_DETALLE, outMensaje, outID)
                                                    .Select(y => new DatosEncuesta_Docente()
                                                    {
                                                        ID_DOCENTE = y.ID_DOCENTE,
@@ -92,7 +93,7 @@ namespace Model.Services.Estudiante
                                                                         ID_ENCUESTA_PREGUNTA = g.ID_ENCUESTA_PREGUNTA,
                                                                         ID_ENCUESTA = g.ID_ENCUESTA,
                                                                         DESCRIPCION_PREGUNTA = g.DESCRIPCION_PREGUNTA,
-                                                                        //Opciones=ctx.CAS_ENCUESTA_OPCION.Where(n=>n.ID_ENCUESTA_PREGUNTA==g.ID_ENCUESTA_PREGUNTA).ToList()
+                                                                       // Opciones=ctx.CAS_ENCUESTA_OPCION.Where(n=>n.ID_ENCUESTA_PREGUNTA==g.ID_ENCUESTA_PREGUNTA).ToList()
                                                                     }).ToList()
 
                                                    }).ToList(),
@@ -119,6 +120,7 @@ namespace Model.Services.Estudiante
         public Nullable<int> ID_PARALELO { get; set; }
         public Nullable<int> ID_INTERVALO_DETALLE { get; set; }
         public Nullable<int> ID_TIPO_INTERVALO { get; set; }
+        public int ID_PERIODO { get; set; }
         public List<DatosEncuesta_Docente> DOCENTE { get; set; }
         public List<DatosEncuesta_Docente> INFRAESTRUCTURA { get; set; }
 
