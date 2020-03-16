@@ -51,5 +51,35 @@ namespace CAS_ADMIN.Controllers
                 return Json(new { success = false, message = ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
+
+        HorarioIntensivo _intensivo = new HorarioIntensivo();
+        [HttpGet]
+        public JsonResult getTableIntensivo()
+        {
+            try
+            {
+                return Json(new { data = _intensivo.ObtenerHorarioIntensivo() }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return Json(new { success = false, message = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public JsonResult EliminarDocenteHorario(int ID_DOCENTE_MATERIA_PARALELO)
+        {
+            try
+            {
+                _intensivo.EliminarDocenteHorario(ID_DOCENTE_MATERIA_PARALELO);
+                return Json(new { success = true, message = "Horario eliminado correctamente." }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                ServicesTrackError.RegistrarError(ex);
+                return Json(new { success = false, message = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
     }
 }

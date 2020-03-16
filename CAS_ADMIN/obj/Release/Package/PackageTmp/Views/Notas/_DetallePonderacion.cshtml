@@ -1,0 +1,48 @@
+﻿@model List<Model.Services.Admin.NotaPonderacion>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
+            <table id="tbl_Nota" class="table-datatable table dt-responsive table-striped jambo_table bulk_action tblInscripcion" style="width:100%">
+                <thead>
+                    <tr class="headings">
+                        <th class="column-title">#</th>
+                        <th class="column-title">Descripción</th>
+                        <th class="column-title">Valor</th>
+                        <th class="column-title"></th>
+                    </tr>
+                </thead>
+                @if (Model != null)
+                {
+                    <tbody>
+                        @{ decimal valor = 0M; }
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID_PONDERACION</td>
+                                <td>@item.DESCRIPCION_PONDERACION</td>
+                                <td>@item.VALOR_PONDERACION</td>
+                                <td>
+                                    <button title='Editar Datos' type='button' onclick="ModalForm('@Url.Action("CrearNotaPonderacion", "Notas")/@item.ID_NOTA_DETALLE/@item.ID_PONDERACION')" class='btn btn-icon waves-effect waves-light btn-custom btn-xs m-b-5'><em class='zmdi zmdi-edit'></em></button>
+                                    @*<button title='Ponderación' type='button' onclick="Detalle('@Url.Action("NotaPonderacion", "Notas" )/@item.ID_NOTA_DETALLE')" class='btn btn-icon waves-effect waves-light btn-primary btn-xs m-b-5'><em class='zmdi zmdi-puzzle-piece'></em></button>*@
+                                </td>
+                            </tr>
+                            valor = valor + item.VALOR_PONDERACION.Value;
+                        }
+                        <tr>
+                            <th></th>
+                            <th>Total</th>
+                            <th>@valor %</th>
+                            <th></th>
+                        </tr>
+                    </tbody>
+                            }
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function Detalle(url) {
+        document.location = url;
+    }
+</script>

@@ -570,12 +570,6 @@
       <Parameter Name="outMensaje" Mode="InOut" Type="String" />
       <Parameter Name="outID" Mode="InOut" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="SP_DocenteObtenerNotas" ReturnType="Collection(CAS_DataModel.DocenteObtenerNotas_Result)">
-      <Parameter Name="ID_DOCENTE" Mode="In" Type="String" />
-      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
-      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
-      <Parameter Name="outID" Mode="InOut" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="SP_DocenteObtenerParciales">
       <Parameter Name="ID_DOCENTE" Mode="In" Type="String" />
       <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
@@ -799,11 +793,6 @@
       <Parameter Name="outMensaje" Mode="InOut" Type="String" />
       <Parameter Name="outID" Mode="InOut" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="SP_ObtenerEstudianteAsistenciaCarrera" ReturnType="Collection(CAS_DataModel.ObtenerEstudianteAsistenciaCarrera_Result)">
-      <Parameter Name="ID_INSCRIP_DETALLE_CARRERA" Mode="In" Type="Int32" />
-      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
-      <Parameter Name="outID" Mode="InOut" Type="Int32" />
-    </FunctionImport>
     <EntitySet Name="CAS_GENERO" EntityType="CAS_DataModel.CAS_GENERO" />
     <EntitySet Name="CAS_DESTINATARIO" EntityType="CAS_DataModel.CAS_DESTINATARIO" />
     <EntitySet Name="CAS_INSCRIPCION" EntityType="CAS_DataModel.CAS_INSCRIPCION" />
@@ -1001,6 +990,39 @@
       <Parameter Name="outMensaje" Mode="InOut" Type="String" />
       <Parameter Name="outID" Mode="InOut" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="SP_DocenteObtenerNotas" ReturnType="Collection(CAS_DataModel.DocenteObtenerNotas_Result)">
+      <Parameter Name="ID_DOCENTE" Mode="In" Type="String" />
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ObtenerEstudianteAsistenciaCarrera" ReturnType="Collection(CAS_DataModel.ObtenerEstudianteAsistenciaCarrera_Result)">
+      <Parameter Name="ID_INSCRIP_DETALLE_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="CAS_ESTUDIANTE_ASISTENCIA_JUSTIFICACION" EntityType="CAS_DataModel.CAS_ESTUDIANTE_ASISTENCIA_JUSTIFICACION" />
+    <FunctionImport Name="SP_ObtenerNotaPonderacion" ReturnType="Collection(CAS_DataModel.ObtenerNotaPonderacion_Result)">
+      <Parameter Name="ID_NOTA_DETALLE" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ObtenerHorarioIntensivos" ReturnType="Collection(CAS_DataModel.ObtenerHorarioIntensivos_Result)" />
+    <FunctionImport Name="SP_ObtenerNotaDocente" ReturnType="Collection(CAS_DataModel.ObtenerNotaDocente_Result)">
+      <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+      <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_NOTA" Mode="In" Type="Int32" />
+      <Parameter Name="ID_NOTA_DETALLE" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ObtenerNotaPonderacionNoAsignada" ReturnType="Collection(CAS_DataModel.ObtenerNotaPonderacionNoAsignada_Result)">
+      <Parameter Name="ID_NOTA_DETALLE" Mode="In" Type="Int32" />
+      <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
+      <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+      <Parameter Name="outID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="DocenteObtenerCarreraMateria_Result">
     <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
@@ -1072,16 +1094,6 @@
   <ComplexType Name="DocenteRepositorioCarpeta_Result">
     <Property Type="Int32" Name="ID_CARPETA" Nullable="false" />
     <Property Type="String" Name="DESCRIPCION_CARPETA" Nullable="true" MaxLength="250" />
-  </ComplexType>
-  <ComplexType Name="DocenteObtenerNotas_Result">
-    <Property Type="Int32" Name="ID_SEDE" Nullable="false" />
-    <Property Type="String" Name="DESCRIPCION_UNIVERSIDAD" Nullable="true" MaxLength="250" />
-    <Property Type="Int32" Name="ID_CARRERA" Nullable="false" />
-    <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
-    <Property Type="Int32" Name="ID_NOTA" Nullable="false" />
-    <Property Type="String" Name="DESCRIPCION_NOTA" Nullable="true" MaxLength="250" />
-    <Property Type="Int32" Name="ID_INTERVALO_DETALLE" Nullable="false" />
-    <Property Type="String" Name="HORA" Nullable="true" MaxLength="63" />
   </ComplexType>
   <ComplexType Name="DocenteObtenerEstudianteNota_Result">
     <Property Type="String" Name="ID_ESTUDIANTE" Nullable="false" MaxLength="20" />
@@ -1297,16 +1309,6 @@
     <Property Type="String" Name="DESCRIPCION_PONDERACION" Nullable="true" MaxLength="150" />
     <Property Type="Decimal" Name="VALOR_NOTA" Nullable="true" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="NOTA" Nullable="true" Precision="18" Scale="2" />
-  </ComplexType>
-  <ComplexType Name="ObtenerEstudianteAsistenciaCarrera_Result">
-    <Property Type="Int32" Name="ID_ASISTENCIA" Nullable="false" />
-    <Property Type="String" Name="DESCRIPCION_UNIVERSIDAD" Nullable="true" MaxLength="250" />
-    <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
-    <Property Type="String" Name="DESCRIPCION_MATERIA" Nullable="true" MaxLength="500" />
-    <Property Type="String" Name="DESCRIPCION_PARALELO" Nullable="true" MaxLength="10" />
-    <Property Type="DateTime" Name="FECHA" Nullable="true" />
-    <Property Type="String" Name="HORA" Nullable="true" MaxLength="13" />
-    <Property Type="Boolean" Name="ESTADO" Nullable="true" />
   </ComplexType>
   <EntityType Name="CAS_GENERO">
     <Key>
@@ -1745,5 +1747,77 @@
     <Property Type="Int32" Name="ID_INTERVALO_DETALLE" Nullable="true" />
     <Property Type="Int32" Name="ID_TIPO_INTERVALO" Nullable="true" />
     <Property Type="Int32" Name="ID_PERIODO" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="DocenteObtenerNotas_Result">
+    <Property Type="Int32" Name="ID_PERIODO" Nullable="true" />
+    <Property Type="String" Name="DESCRIPCION_PERIODO" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="ID_SEDE" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_UNIVERSIDAD" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="ID_CARRERA" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="ID_NOTA" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_NOTA" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="ID_INTERVALO_DETALLE" Nullable="false" />
+    <Property Type="String" Name="HORA" Nullable="true" MaxLength="63" />
+    <Property Type="String" Name="ID_DOCENTE" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="1003" />
+  </ComplexType>
+  <ComplexType Name="ObtenerEstudianteAsistenciaCarrera_Result">
+    <Property Type="Int32" Name="ID_ASISTENCIA" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_UNIVERSIDAD" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="DESCRIPCION_MATERIA" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="DESCRIPCION_PARALELO" Nullable="true" MaxLength="10" />
+    <Property Type="DateTime" Name="FECHA" Nullable="true" />
+    <Property Type="String" Name="HORA" Nullable="true" MaxLength="13" />
+    <Property Type="Boolean" Name="ESTADO" Nullable="true" />
+    <Property Type="Int32" Name="ID_ASISTENCIA_JUSTIFICADA" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="CAS_ESTUDIANTE_ASISTENCIA_JUSTIFICACION">
+    <Key>
+      <PropertyRef Name="ID_ASISTENCIA_JUSTIFICADA" />
+    </Key>
+    <Property Name="ID_ASISTENCIA_JUSTIFICADA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_ASISTENCIA" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="ObtenerNotaPonderacion_Result">
+    <Property Type="Int32" Name="ID_PONDERACION" Nullable="false" />
+    <Property Type="Int32" Name="ID_NOTA_DETALLE" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_PONDERACION" Nullable="true" MaxLength="150" />
+    <Property Type="Decimal" Name="VALOR_PONDERACION" Nullable="true" Precision="18" Scale="4" />
+  </ComplexType>
+  <ComplexType Name="ObtenerHorarioIntensivos_Result">
+    <Property Type="Int32" Name="ID_DOCENTE_MATERIA_PARALELO" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_PERIODO" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DESCRIPCION_UNIVERSIDAD" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="HORA" Nullable="true" MaxLength="13" />
+    <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="DESCRIPCION_MATERIA" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="DESCRIPCION_PARALELO" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="ID_DOCENTE" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="501" />
+  </ComplexType>
+  <ComplexType Name="ObtenerNotaDocente_Result">
+    <Property Type="Int32" Name="ID_DOCENTE_NOTA" Nullable="false" />
+    <Property Type="Int32" Name="ID_SEDE" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_UNIVERSIDAD" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="ID_CARRERA" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="ID_NOTA" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_NOTA" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="ID_NOTA_DETALLE" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_NOTA_DETALLE" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="ID_PONDERACION" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_PONDERACION" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="FECHA_INICIO" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="FECHA_FIN" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="ID_DOCENTE" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="1003" />
+  </ComplexType>
+  <ComplexType Name="ObtenerNotaPonderacionNoAsignada_Result">
+    <Property Type="Int32" Name="ID_PONDERACION" Nullable="false" />
+    <Property Type="Int32" Name="ID_NOTA_DETALLE" Nullable="false" />
+    <Property Type="String" Name="DESCRIPCION_PONDERACION" Nullable="true" MaxLength="150" />
+    <Property Type="Decimal" Name="VALOR_PONDERACION" Nullable="true" Precision="18" Scale="4" />
   </ComplexType>
 </Schema>

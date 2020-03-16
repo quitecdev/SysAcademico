@@ -230,6 +230,13 @@
     <Property Name="ID_HORARIO_DETALLE" Type="int" />
     <Property Name="ID_PERIODO" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="CAS_ESTUDIANTE_ASISTENCIA_JUSTIFICACION">
+    <Key>
+      <PropertyRef Name="ID_ASISTENCIA_JUSTIFICADA" />
+    </Key>
+    <Property Name="ID_ASISTENCIA_JUSTIFICADA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_ASISTENCIA" Type="int" />
+  </EntityType>
   <EntityType Name="CAS_ESTUDIANTE_DETALLE">
     <Key>
       <PropertyRef Name="ID_ESTUDIANTE_DETALLE" />
@@ -780,6 +787,7 @@
     <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
     <Parameter Name="outID" Type="int" Mode="InOut" />
   </Function>
+  <Function Name="ObtenerHorarioIntensivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN" />
   <Function Name="ObtenerHorarioMateria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
     <Parameter Name="ID_SEDE" Type="int" Mode="In" />
     <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
@@ -827,6 +835,26 @@
     <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
     <Parameter Name="outID" Type="int" Mode="InOut" />
   </Function>
+  <Function Name="ObtenerNotaDocente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+    <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+    <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+    <Parameter Name="ID_NOTA" Type="int" Mode="In" />
+    <Parameter Name="ID_NOTA_DETALLE" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerNotaPonderacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_NOTA_DETALLE" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerNotaPonderacionNoAsignada" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+    <Parameter Name="ID_NOTA_DETALLE" Type="int" Mode="In" />
+    <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+    <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+    <Parameter Name="outID" Type="int" Mode="InOut" />
+  </Function>
   <Function Name="ObtenerParaleloSedeCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
     <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
     <Parameter Name="ID_SEDE" Type="int" Mode="In" />
@@ -844,6 +872,7 @@
     <Parameter Name="ID_ESTUDIANTE" Type="varchar" Mode="In" />
     <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
     <Parameter Name="ID_TIPO_INTERVALO" Type="int" Mode="In" />
+    <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
   </Function>
   <Function Name="NotificadorEnviaClave" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID_USUARIO" Type="varchar" Mode="In" />
@@ -1131,6 +1160,7 @@
     <EntitySet Name="CAS_ESTADO_CIVIL" EntityType="Self.CAS_ESTADO_CIVIL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAS_ESTUDIANTE" EntityType="Self.CAS_ESTUDIANTE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAS_ESTUDIANTE_ASISTENCIA" EntityType="Self.CAS_ESTUDIANTE_ASISTENCIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAS_ESTUDIANTE_ASISTENCIA_JUSTIFICACION" EntityType="Self.CAS_ESTUDIANTE_ASISTENCIA_JUSTIFICACION" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAS_ESTUDIANTE_DETALLE" EntityType="Self.CAS_ESTUDIANTE_DETALLE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAS_ESTUDIANTE_NOTA" EntityType="Self.CAS_ESTUDIANTE_NOTA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CAS_ESTUDIANTE_TAREA" EntityType="Self.CAS_ESTUDIANTE_TAREA" Schema="dbo" store:Type="Tables" />

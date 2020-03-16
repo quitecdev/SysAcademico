@@ -23,11 +23,11 @@ namespace CAS_DOCENTE.Controllers
 
         Calificar _calificar = new Calificar();
 
-        public ActionResult Nota(int ID_SEDE, int ID_CARRERA, int ID_NOTA, int ID_INTERVALO_DETALLE)
+        public ActionResult Nota(int ID_PERIODO,int ID_SEDE, int ID_CARRERA, int ID_NOTA, int ID_INTERVALO_DETALLE)
         {
             try
             {
-                return View(_calificar.ObtenerLibreta(ID_SEDE, ID_CARRERA, ID_NOTA, ID_INTERVALO_DETALLE, User.Identity.Name));
+                return View(_calificar.ObtenerLibreta(ID_PERIODO,ID_SEDE, ID_CARRERA, ID_NOTA, ID_INTERVALO_DETALLE, User.Identity.Name));
             }
             catch (Exception ex)
             {

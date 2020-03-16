@@ -122,7 +122,7 @@ namespace Model.Services.Admin
                     {
                         var a = ctx.sp_GenerarDetalleCronograma_Regular(cronograma.FECHA_INICIO, cronograma.FECHA_FIN, id);
                     }
-                    else if (cronograma.ID_TIPO_INTERVALO == 1)
+                    else if (cronograma.ID_TIPO_INTERVALO == 2)
                     {
                         var a = ctx.sp_GenerarDetalleCronograma_Intensivo(cronograma.FECHA_INICIO, cronograma.FECHA_FIN, id);
                     }

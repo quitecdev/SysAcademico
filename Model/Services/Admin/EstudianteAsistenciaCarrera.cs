@@ -19,6 +19,7 @@ namespace Model.Services.Admin
         public Nullable<System.DateTime> FECHA { get; set; }
         public string HORA { get; set; }
         public Nullable<bool> ESTADO { get; set; }
+        public int ID_ASISTENCIA_JUSTIFICADA { get; set; }
 
         public List<EstudianteAsistenciaCarrera> ObtenerAsistenciaCarrera(int ID_INSCRIP_DETALLE_CARRERA)
         {
@@ -38,7 +39,8 @@ namespace Model.Services.Admin
                                    DESCRIPCION_PARALELO = x.DESCRIPCION_PARALELO,
                                    FECHA = x.FECHA,
                                    HORA = x.HORA,
-                                   ESTADO = x.ESTADO
+                                   ESTADO = x.ESTADO,
+                                   ID_ASISTENCIA_JUSTIFICADA=x.ID_ASISTENCIA_JUSTIFICADA.Value
                                }).ToList();
                 }
                 return asistencia;
@@ -53,6 +55,7 @@ namespace Model.Services.Admin
         public void JustificarFalta(int ID_ASISTENCIA)
         {
             CAS_ESTUDIANTE_ASISTENCIA _asistencia = new CAS_ESTUDIANTE_ASISTENCIA();
+            CAS_ESTUDIANTE_ASISTENCIA_JUSTIFICACION _justificar = new CAS_ESTUDIANTE_ASISTENCIA_JUSTIFICACION();
             try
             {
                 using (var ctx = new CAS_DataEntities())
@@ -61,6 +64,11 @@ namespace Model.Services.Admin
                     _asistencia.ESTADO = true;
                     ctx.Entry(_asistencia).State = EntityState.Modified;
                     ctx.SaveChanges();
+
+                    _justificar.ID_ASISTENCIA = ID_ASISTENCIA;
+                    ctx.Entry(_justificar).State = EntityState.Added;
+                    ctx.SaveChanges();
+
                 }
             }
             catch (Exception ex)

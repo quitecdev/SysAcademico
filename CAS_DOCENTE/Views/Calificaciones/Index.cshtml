@@ -30,6 +30,7 @@
                     <table class="table table-hover table-striped m-0">
                         <thead>
                             <tr>
+                                <th>Periodo</th>
                                 <th>Sede</th>
                                 <th>Carrera</th>
                                 <th>Nota</th>
@@ -41,11 +42,12 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
+                                    <td>@item.DESCRIPCION_PERIODO</td>
                                     <td>@item.DESCRIPCION_UNIVERSIDAD</td>
                                     <td>@item.DESCRIPCION_CARRERA</td>
                                     <td>@item.DESCRIPCION_NOTA</td>
                                     <td>@item.HORA</td>
-                                    <td><a href='@Url.Action("Nota","Calificaciones")/@item.ID_SEDE/@item.ID_CARRERA/@item.ID_NOTA/@item.ID_INTERVALO_DETALLE' class="on-default edit-row text-danger"><i class="fa fa-edit"></i></a></td>
+                                    <td><a href='@Url.Action("Nota","Calificaciones")/@item.ID_PERIODO/@item.ID_SEDE/@item.ID_CARRERA/@item.ID_NOTA/@item.ID_INTERVALO_DETALLE' class="on-default edit-row text-custom"><i class="fa fa-pencil"></i></a></td>
                                 </tr>
                             }
                         </tbody>

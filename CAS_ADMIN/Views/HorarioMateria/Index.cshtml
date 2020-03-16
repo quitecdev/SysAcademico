@@ -19,52 +19,60 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="card-box">
+            <div class="dropdown pull-right">
+                <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
+                    <i class="zmdi zmdi-more-vert"></i>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#" data-toggle="modal" data-target="#con-close-modal3">Intensivos</a></li>
+                </ul>
+            </div>
             <div class="row">
                 <div class="col-lg-12">
                     @using (Html.BeginForm("Index", "HorarioMateria", FormMethod.Post, new { @class = "form-horizontal", id = "formHorario" }))
                     {
-                        @Html.AntiForgeryToken()
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Sede</label>
-                            <div class="col-md-6">
-                                @Html.DropDownListFor(m => m.ID_SEDE, new SelectList(new Model.Services.Admin.Sede().ObtenerSede(), "ID_SEDE", "DESCRIPCION_UNIVERSIDAD"), " ", new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.ID_SEDE, "", new { @class = "text-custom" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Carrera</label>
-                            <div class="col-md-6">
-                                @Html.DropDownListFor(m => m.ID_CARRERA, new SelectList(string.Empty, "ID_CARRERA", "DESCRIPCION_CARRERA"), " ", new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.ID_CARRERA, "", new { @class = "text-custom" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Materia</label>
-                            <div class="col-md-6">
-                                @Html.DropDownListFor(m => m.ID_MATERIA, new SelectList(string.Empty, "ID_MATERIA", "DESCRIPCION_MATERIA"), " ", new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.ID_MATERIA, "", new { @class = "text-custom" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Paralelo</label>
-                            <div class="col-md-6">
-                                @Html.DropDownListFor(m => m.ID_PARALELO, new SelectList(string.Empty, "ID_PARALELO", "DESCRIPCION_PARALELO"), " ", new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.ID_PARALELO, "", new { @class = "text-custom" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Tipo Horario</label>
-                            <div class="col-md-6">
-                                @Html.DropDownListFor(m => m.ID_INTERVALO, new SelectList(string.Empty, "ID_INTERVALO", "DESCRIPCION_INTERVALO"), " ", new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.ID_INTERVALO, "", new { @class = "text-custom" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label"></label>
-                            <div class="col-md-9">
-                                <button id="btn_buscar" type="button" class="btn btn-custom waves-effect waves-light m-b-5" data-loading-text="<span class='btn-label'><i class='fa fa-circle-o-notch fa-spin'></i></span> Espera<span class='md-ripple'></span>"><span class="btn-label"><i class="fa fa-search"></i></span> Buscar<span class="md-ripple"></span></button>
-                            </div>
-                        </div>
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Sede</label>
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(m => m.ID_SEDE, new SelectList(new Model.Services.Admin.Sede().ObtenerSede(), "ID_SEDE", "DESCRIPCION_UNIVERSIDAD"), " ", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ID_SEDE, "", new { @class = "text-custom" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Carrera</label>
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(m => m.ID_CARRERA, new SelectList(string.Empty, "ID_CARRERA", "DESCRIPCION_CARRERA"), " ", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ID_CARRERA, "", new { @class = "text-custom" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Materia</label>
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(m => m.ID_MATERIA, new SelectList(string.Empty, "ID_MATERIA", "DESCRIPCION_MATERIA"), " ", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ID_MATERIA, "", new { @class = "text-custom" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Paralelo</label>
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(m => m.ID_PARALELO, new SelectList(string.Empty, "ID_PARALELO", "DESCRIPCION_PARALELO"), " ", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ID_PARALELO, "", new { @class = "text-custom" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Tipo Horario</label>
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(m => m.ID_INTERVALO, new SelectList(string.Empty, "ID_INTERVALO", "DESCRIPCION_INTERVALO"), " ", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ID_INTERVALO, "", new { @class = "text-custom" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label"></label>
+                    <div class="col-md-9">
+                        <button id="btn_buscar" type="button" class="btn btn-custom waves-effect waves-light m-b-5" data-loading-text="<span class='btn-label'><i class='fa fa-circle-o-notch fa-spin'></i></span> Espera<span class='md-ripple'></span>"><span class="btn-label"><i class="fa fa-search"></i></span> Buscar<span class="md-ripple"></span></button>
+                    </div>
+                </div>
                     }
                 </div><!-- end col -->
                 <div class="col-sm-12">
@@ -94,6 +102,34 @@
 </div>
 <!-- /.modal -->
 
+<div id="con-close-modal3" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" style="width: 85%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Horario Intensivo</h4>
+            </div>
+            <div class="modal-body">
+                <table id="tbl_HorarioIntensivos" class="table-datatable table dt-responsive table-striped jambo_table bulk_action tblInscripcion" style="width:100%">
+                    <thead>
+                        <tr class="headings">
+                            <th class="column-title">#</th>
+                            <th class="column-title">Periodo</th>
+                            <th class="column-title">Sede</th>
+                            <th class="column-title">Hora</th>
+                            <th class="column-title">Carrera</th>
+                            <th class="column-title">Materia</th>
+                            <th class="column-title">Paralelo</th>
+                            <th class="column-title">Docente</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section scripts
 {
     <script>
@@ -109,6 +145,66 @@
 
         function ActualizarDetalle() {
             datatable.ajax.reload();
+        }
+
+
+        var datatable2;
+        $(document).ready(function () {
+            datatable2 = $('#tbl_HorarioIntensivos').DataTable({
+                "ajax": "@Url.Action("getTableIntensivo", "HorarioMateria")",
+                "columns": [
+                  { 'data': 'ID_DOCENTE_MATERIA_PARALELO' },
+                  { 'data': 'DESCRIPCION_PERIODO' },
+                  { 'data': 'DESCRIPCION_UNIVERSIDAD' },
+                  { 'data': 'HORA' },
+                  { 'data': 'DESCRIPCION_CARRERA' },
+                  { 'data': 'DESCRIPCION_MATERIA' },
+                  { 'data': 'DESCRIPCION_PARALELO' },
+                  { 'data': 'NOMBRE' },
+                          {
+                              'data': 'ID_DOCENTE_MATERIA_PARALELO', 'render': function (data, type, row, meta) {
+                                  return "<button  title='Editar'  type='button' onclick=EliminarDocenteHorario('" + row.ID_DOCENTE_MATERIA_PARALELO + "')  class='btn btn-icon  waves-effect waves-light btn-custom btn-xs m-b-5'><em class='fa fa-trash-o'></em></button>"
+                              },
+                              'orderable': false,
+                              "className": "actions",
+                              'width': '150px'
+                          }
+                ],
+                "order": [[2, "desc"], [3, "desc"]],
+                "processing": true,
+                "language": {
+                    "url": "../assets/plugins/datatable2s/Spanish.json",
+                },
+                "order": [[1, 'asc']],
+            });
+        });
+
+        function ActualizarDetalle2() {
+            datatable2.ajax.reload();
+        }
+
+        function EliminarDocenteHorario(ID_DOCENTE_MATERIA_PARALELO) {
+            if (confirm("¿Está seguro que desea eliminar este registro?")) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("EliminarDocenteHorario", "HorarioMateria")',
+                    content: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: { ID_DOCENTE_MATERIA_PARALELO: ID_DOCENTE_MATERIA_PARALELO },
+                    success: function (response) {
+                        if (response.success) {
+                            ActualizarDetalle2();
+                            toastr.success('Correcto', response.message, { timeOut: 5000 })
+                        }
+                        else {
+                            toastr.error(response.message, { timeOut: 5000 })
+                        }
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        //alert('Error!!');
+                    }
+                });
+            }
         }
 
 
@@ -149,12 +245,11 @@
                           'width': '85px'
                       }
                     ],
-                    "order": [[2, "desc"], [3, "desc"]],
                     "processing": true,
                     "language": {
                         "url": "../assets/plugins/datatables/Spanish.json",
                     },
-                    "order": [[1, 'asc']],
+                    "order": [[0, 'desc']],
                 });
             }
             setTimeout(function () {

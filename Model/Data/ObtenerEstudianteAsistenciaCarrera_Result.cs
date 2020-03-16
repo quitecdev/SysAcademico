@@ -21,5 +21,6 @@ namespace Model.Data
         public Nullable<System.DateTime> FECHA { get; set; }
         public string HORA { get; set; }
         public Nullable<bool> ESTADO { get; set; }
+        public Nullable<int> ID_ASISTENCIA_JUSTIFICADA { get; set; }
     }
 }

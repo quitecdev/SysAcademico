@@ -148,7 +148,7 @@ namespace Model.Services.Admin
                                     CLAVE_USUARIO = x.CLAVE_USUARIO,
                                     MODIFICAR_CLAVE = x.MODIFICAR_CLAVE,
                                     ESTADO_ELIMINAR =EstadoDocente(x.ID_DOCENTE)
-                                }).ToList();
+                                }).OrderBy(x=>x.APELLIDO_PATERNO_DOCENTE).ToList();
 
                 }
                 return _docente;

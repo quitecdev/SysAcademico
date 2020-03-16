@@ -26,16 +26,19 @@
               { 'data': 'HORA' },
               {
                   "data": "ESTADO", 'render': function (data, type, row, meta) {
-                      if (row.ESTADO == 0) {
-                          return "<span class='label label-danger'>Sin Asistencia</span>"
+                      if (row.ID_ASISTENCIA_JUSTIFICADA != 0) {
+                          return "<span class='label label-warning'>Justificada</span>"
                       }
-                      else if(row.ESTADO==1)
-                      {
-                          return "<span class='label label-success'>Asistencia</span>"
-                      }
-                      else
-                      {
-                          return " <span class='label label-danger'>Sin Asistencia</span>"
+                      else {
+                          if (row.ESTADO == 0) {
+                              return "<span class='label label-danger'>Sin Asistencia</span>"
+                          }
+                          else if (row.ESTADO == 1) {
+                              return "<span class='label label-success'>Asistencia</span>"
+                          }
+                          else {
+                              return " <span class='label label-danger'>Sin Asistencia</span>"
+                          }
                       }
                   },
                   'width': '80px'

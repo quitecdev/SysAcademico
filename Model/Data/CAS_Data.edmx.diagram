@@ -71,6 +71,7 @@
         <EntityTypeShape EntityType="CAS_DataModel.CAS_TAREAS" Width="1.5" PointX="7.375" PointY="22.75" />
         <EntityTypeShape EntityType="CAS_DataModel.CAS_TAREA_ADJUNTO" Width="1.5" PointX="11.375" PointY="22.75" />
         <EntityTypeShape EntityType="CAS_DataModel.CAS_ESTUDIANTE_TAREA" Width="1.5" PointX="13.375" PointY="22.75" />
+        <EntityTypeShape EntityType="CAS_DataModel.CAS_ESTUDIANTE_ASISTENCIA_JUSTIFICACION" Width="1.5" PointX="15.375" PointY="22.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

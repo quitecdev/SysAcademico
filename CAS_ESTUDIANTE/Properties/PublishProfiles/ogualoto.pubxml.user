@@ -985,7 +985,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/15/2018 20:22:24</publishTime>
     </File>
     <File Include="bin/CAS_ESTUDIANTE.dll">
-      <publishTime>01/07/2020 16:37:53</publishTime>
+      <publishTime>03/02/2020 09:38:49</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>11/13/2018 09:31:58</publishTime>
@@ -1057,7 +1057,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2018 09:31:52</publishTime>
     </File>
     <File Include="bin/Model.dll">
-      <publishTime>01/07/2020 16:37:43</publishTime>
+      <publishTime>02/27/2020 10:23:51</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>11/13/2018 09:31:50</publishTime>
@@ -1243,7 +1243,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2018 09:31:06</publishTime>
     </File>
     <File Include="Views/NotaEstudiante/Index.cshtml">
-      <publishTime>11/13/2018 09:31:06</publishTime>
+      <publishTime>01/22/2020 14:49:57</publishTime>
     </File>
     <File Include="Views/RepositorioEstudiante/Index.cshtml">
       <publishTime>10/24/2019 11:00:32</publishTime>

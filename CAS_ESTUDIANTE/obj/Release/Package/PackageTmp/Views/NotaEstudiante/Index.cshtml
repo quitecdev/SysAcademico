@@ -42,9 +42,9 @@
                                 {
                                     if (parcial.TOTAL > 1)
                                     {
-                                <li role="presentation" class="">
-                                    <a href="#parcial_@(parcial.ID_NOTA_DETALLE)" role="tab" data-toggle="tab">@parcial.DESCRIPCION_NOTA_DETALLE</a>
-                                </li>
+                                        <li role="presentation" class="">
+                                            <a href="#parcial_@(parcial.ID_NOTA_DETALLE)" role="tab" data-toggle="tab">@parcial.DESCRIPCION_NOTA_DETALLE</a>
+                                        </li>
                                     }
                                 }
 
@@ -64,11 +64,11 @@
                                                 @{ decimal final = 0M; }
                                                 @foreach (var promedio in item.PROMEDIO_ESTUDIANTE)
                                                 {
-                                                <tr>
-                                                    <td scope="row">@promedio.DESCRIPCION_NOTA_DETALLE</td>
-                                                    <td class="text-center">@promedio.PROMEDIO.Value</td>
-                                                    <td class="text-center">@promedio.NOTA.Value</td>
-                                                </tr>
+                                                    <tr>
+                                                        <td scope="row">@promedio.DESCRIPCION_NOTA_DETALLE</td>
+                                                        <td class="text-center">@promedio.PROMEDIO.Value</td>
+                                                        <td class="text-center">@promedio.NOTA.Value</td>
+                                                    </tr>
 
                                                     final = promedio.NOTA_FINAL.Value;
                                                 }
@@ -98,16 +98,16 @@
                                                     </thead>
                                                     <tbody>
                                                         @{
-                                                                    decimal a = 0M;
+                                                            decimal a = 0M;
                                                         }
                                                         @foreach (var detalle in parcial.NOTA_DETALLE)
-                                                                {
-                                                                <tr>
-                                                                    <td scope="row">@detalle.DESCRIPCION_PONDERACION</td>
-                                                                    <td class="text-center">@detalle.VALOR_NOTA.Value</td>
-                                                                </tr>
-                                                                    a = detalle.PARCIAL.Value;
-                                                                }
+                                                        {
+                                                            <tr>
+                                                                <td scope="row">@detalle.DESCRIPCION_PONDERACION</td>
+                                                                <td class="text-center">@detalle.VALOR_NOTA.Value</td>
+                                                            </tr>
+                                                            a = detalle.PARCIAL.Value;
+                                                        }
 
                                                         <tr>
                                                             <th scope="row">PROMEDIO</th>
@@ -120,8 +120,8 @@
                                                 </table>
                                             </div>
                                         </div>
-                                    }
-                                 }
+                                                                }
+                                                            }
 
                             </div>
                         </div>
@@ -131,5 +131,5 @@
                 </div>
             </div><!-- end col -->
         </div>
-    }
-}
+                                                                }
+                                                            }

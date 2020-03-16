@@ -158,6 +158,9 @@
     <Compile Include="Data\CAS_ESTUDIANTE_ASISTENCIA.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\CAS_ESTUDIANTE_ASISTENCIA_JUSTIFICACION.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\CAS_ESTUDIANTE_DETALLE.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
@@ -434,6 +437,9 @@
     <Compile Include="Data\ObtenerHorarioDetalle_Result.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\ObtenerHorarioIntensivos_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\ObtenerHorarioMateria_Result.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
@@ -453,6 +459,15 @@
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\ObtenerNotaDetalle_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ObtenerNotaDocente_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ObtenerNotaPonderacionNoAsignada_Result.cs">
+      <DependentUpon>CAS_Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ObtenerNotaPonderacion_Result.cs">
       <DependentUpon>CAS_Data.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\ObtenerNota_Result.cs">
@@ -483,6 +498,7 @@
     <Compile Include="Services\Admin\ForgotPassword.cs" />
     <Compile Include="Services\Admin\Horario.cs" />
     <Compile Include="Services\Admin\HorarioDetalleMateria.cs" />
+    <Compile Include="Services\Admin\HorarioIntensivo.cs" />
     <Compile Include="Services\Admin\HorarioMateria.cs" />
     <Compile Include="Services\Admin\Inscipcion.cs" />
     <Compile Include="Services\Admin\InscripcionDetalle.cs" />
@@ -494,6 +510,8 @@
     <Compile Include="Services\Admin\Materia.cs" />
     <Compile Include="Services\Admin\Nota.cs" />
     <Compile Include="Services\Admin\NotaDetalle.cs" />
+    <Compile Include="Services\Admin\NotaDocente.cs" />
+    <Compile Include="Services\Admin\NotaPonderacion.cs" />
     <Compile Include="Services\Admin\Notificacion.cs" />
     <Compile Include="Services\Admin\Paralelo.cs" />
     <Compile Include="Services\Admin\Perfil.cs" />

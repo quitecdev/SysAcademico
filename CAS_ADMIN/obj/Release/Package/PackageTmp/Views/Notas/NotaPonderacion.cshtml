@@ -1,0 +1,63 @@
+﻿@model List<Model.Services.Admin.NotaPonderacion>
+
+@{
+    ViewBag.Title = "Nota Ponderación";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="page-title">@TempData["DESCRIPCION_NOTA"] <small>@TempData["DESCRIPCION_NOTA_DETALLE"]</small>  </h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="m-t-25"></div>
+        @if (Model != null)
+        {
+            <button type="button" onclick="ModalForm('@Url.Action("CrearNotaPonderacion", "Notas")/@TempData["ID_NOTA_DETALLE"]/0')" cla class="btn btn-custom waves-effect waves-light m-b-5"> <i class="fa fa-plus-circle m-r-5"></i> <span>Añadir</span> </button>
+        }
+
+        <div class="m-t-25"></div>
+    </div>
+</div>
+<div id="myPartialViewDiv">
+    @if (Model != null)
+    {
+        Html.RenderPartial("_DetallePonderacion", Model);
+    }
+</div>
+
+@* MODAL *@
+<div class="modal fade modal-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+
+</div>
+
+@section scripts
+{
+    <script>
+            function ActualizarDetalle() {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("DetallePonderacion", "Notas")',
+                    data: '{ID_NOTA_DETALLE: "' +@TempData["ID_NOTA_DETALLE"] + '" }',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                        $('#myPartialViewDiv').html(response);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            }
+
+            function Redirect(url) {
+                window.location.href = url;
+            }
+    </script>
+
+}

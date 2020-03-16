@@ -1,0 +1,120 @@
+﻿@model List<Model.Data.ObtenerNotaDocente_Result>
+<table id="tbl_DocenteNota" class="table-datatable table dt-responsive table-striped jambo_table bulk_action tblInscripcion" style="width:100%">
+    <thead>
+        <tr class="headings">
+            <th class="column-title">#</th>
+            <th class="column-title">Ponderación</th>
+            <th class="column-title">CI</th>
+            <th class="column-title">Docente</th>
+            <th class="column-title">Fecha Inicio</th>
+            <th class="column-title">Fecha Fin</th>
+        </tr>
+    </thead>
+    @if (Model != null)
+    {
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ID_DOCENTE_NOTA</td>
+                    <td>@item.DESCRIPCION_PONDERACION</td>
+                    <td>@item.ID_DOCENTE</td>
+                    <td>@item.NOMBRE</td>
+                    <td>
+                        <div class="input-group">
+                            <input id="@item.ID_DOCENTE_NOTA" type="text" class="form-control fechaInicio" value="@item.FECHA_INICIO" placeholder="mm/dd/yyyy">
+                            <span class="input-group-addon bg-primary b-0 text-white"><i class="ti-calendar"></i></span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <input id="@item.ID_DOCENTE_NOTA" type="text" class="form-control fechaFin" value="@item.FECHA_FIN" placeholder="mm/dd/yyyy">
+                            <span class="input-group-addon bg-primary b-0 text-white"><i class="ti-calendar"></i></span>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    }
+</table>
+
+
+<script>
+    $(document).ready(function () {
+
+        $.validator.methods.date = function (value, element) {
+            Globalize.culture("en-AU");
+            // you can alternatively pass the culture to parseDate instead of
+            // setting the culture above, like so:
+            // parseDate(value, null, "en-AU")
+            return this.optional(element) || Globalize.parseDate(value) !== null;
+        }
+
+        $(".fechaInicio").datepicker({
+            format: "dd/mm/yyyy"
+        }).on('changeDate', function (e) {
+
+            ///console.log(e.format());
+            var myId = $(this).attr('id');
+            var valor = $(this).val()
+
+            ActualizarFechaInicio(myId, valor);
+        });
+
+        function ActualizarFechaInicio(id, valor) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("ActualizarFechaInicio", "Notas")',
+                content: "application/json; charset=utf-8",
+                dataType: "json",
+                data: { ID_DOCENTE_NOTA: id, FECHA_INICIO: valor },
+                success: function (response) {
+                    if (response.success) {
+                        toastr.success('Correcto', response.message, { timeOut: 5000 })
+                    }
+                    else {
+                        toastr.error(response.message, { timeOut: 5000 })
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    //alert('Error!!');
+                }
+            });
+        }
+
+
+        $(".fechaFin").datepicker({
+            format: "dd/mm/yyyy"
+        }).on('changeDate', function (e) {
+
+            ///console.log(e.format());
+            var myId = $(this).attr('id');
+            var valor = $(this).val()
+
+            ActualizarFechaFin(myId, valor);
+        });
+
+        function ActualizarFechaFin(id, valor) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("ActualizarFechaFin", "Notas")',
+                content: "application/json; charset=utf-8",
+                dataType: "json",
+                data: { ID_DOCENTE_NOTA: id, FECHA_FIN: valor },
+                success: function (response) {
+                    if (response.success) {
+                        toastr.success('Correcto', response.message, { timeOut: 5000 })
+                    }
+                    else {
+                        toastr.error(response.message, { timeOut: 5000 })
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    //alert('Error!!');
+                }
+            });
+        }
+
+
+    });
+</script>

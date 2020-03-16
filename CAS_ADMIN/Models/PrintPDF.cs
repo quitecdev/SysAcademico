@@ -203,7 +203,7 @@ namespace CAS_ADMIN.Models
         #endregion
 
         #region ImprimirNotaDocente
-        public byte[] ImprimirNotaDocente(int ID_SEDE, int ID_CARRERA, int ID_NOTA, int ID_INTERVALO_DETALLE, string ID_DOCENTE)
+        public byte[] ImprimirNotaDocente(int ID_PERIODO,int ID_SEDE, int ID_CARRERA, int ID_NOTA, int ID_INTERVALO_DETALLE, string ID_DOCENTE)
         {
             Sede sede = new Sede();
             Carrera carrera = new Carrera();
@@ -219,7 +219,7 @@ namespace CAS_ADMIN.Models
                 intervalo = intervalo.ObtenerIntervalo(ID_INTERVALO_DETALLE);
                 docente = docente.ObtenerDocente(ID_DOCENTE);
                 periodo = periodo.ObtenerPeriodoActivo();
-                nota = nota.ObtenerLibreta(ID_SEDE, ID_CARRERA, ID_NOTA, ID_INTERVALO_DETALLE, ID_DOCENTE);
+                nota = nota.ObtenerLibreta(ID_PERIODO,ID_SEDE, ID_CARRERA, ID_NOTA, ID_INTERVALO_DETALLE, ID_DOCENTE);
                 Document document = new Document(PageSize.A3.Rotate(), 20f, 20f, 25f, 25f);
                 using (System.IO.MemoryStream memoryStream = new System.IO.MemoryStream())
                 {

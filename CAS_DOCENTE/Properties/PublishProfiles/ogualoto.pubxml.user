@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\COMPILADOS\CAS_DOCENTE_02-12-2019</_PublishTargetUrl>
+    <_PublishTargetUrl>D:\COMPILADOS\CAS_DOCENTE_10-01-2020</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
@@ -955,7 +955,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/15/2018 20:22:24</publishTime>
     </File>
     <File Include="bin/CAS_DOCENTE.dll">
-      <publishTime>12/02/2019 11:09:11</publishTime>
+      <publishTime>01/10/2020 09:34:50</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>11/13/2018 09:31:55</publishTime>
@@ -1021,7 +1021,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2018 09:31:52</publishTime>
     </File>
     <File Include="bin/Model.dll">
-      <publishTime>12/02/2019 10:51:33</publishTime>
+      <publishTime>01/10/2020 09:34:43</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>11/13/2018 09:31:50</publishTime>
@@ -1213,10 +1213,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2018 09:30:43</publishTime>
     </File>
     <File Include="Views/Calificaciones/Index.cshtml">
-      <publishTime>11/13/2018 09:30:43</publishTime>
+      <publishTime>01/10/2020 09:20:49</publishTime>
     </File>
     <File Include="Views/Calificaciones/Nota.cshtml">
-      <publishTime>09/20/2019 09:20:20</publishTime>
+      <publishTime>01/10/2020 09:25:28</publishTime>
     </File>
     <File Include="Views/Ejemplos/Index.cshtml">
       <publishTime>10/22/2019 14:54:58</publishTime>

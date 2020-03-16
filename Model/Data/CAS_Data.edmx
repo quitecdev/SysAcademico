@@ -235,6 +235,13 @@
           <Property Name="ID_HORARIO_DETALLE" Type="int" />
           <Property Name="ID_PERIODO" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="CAS_ESTUDIANTE_ASISTENCIA_JUSTIFICACION">
+          <Key>
+            <PropertyRef Name="ID_ASISTENCIA_JUSTIFICADA" />
+          </Key>
+          <Property Name="ID_ASISTENCIA_JUSTIFICADA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_ASISTENCIA" Type="int" />
+        </EntityType>
         <EntityType Name="CAS_ESTUDIANTE_DETALLE">
           <Key>
             <PropertyRef Name="ID_ESTUDIANTE_DETALLE" />
@@ -785,6 +792,7 @@
           <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
           <Parameter Name="outID" Type="int" Mode="InOut" />
         </Function>
+        <Function Name="ObtenerHorarioIntensivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN" />
         <Function Name="ObtenerHorarioMateria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
           <Parameter Name="ID_SEDE" Type="int" Mode="In" />
           <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
@@ -832,6 +840,26 @@
           <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
           <Parameter Name="outID" Type="int" Mode="InOut" />
         </Function>
+        <Function Name="ObtenerNotaDocente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+          <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
+          <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+          <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
+          <Parameter Name="ID_NOTA" Type="int" Mode="In" />
+          <Parameter Name="ID_NOTA_DETALLE" Type="int" Mode="In" />
+          <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+          <Parameter Name="outID" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="ObtenerNotaPonderacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+          <Parameter Name="ID_NOTA_DETALLE" Type="int" Mode="In" />
+          <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+          <Parameter Name="outID" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="ObtenerNotaPonderacionNoAsignada" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
+          <Parameter Name="ID_NOTA_DETALLE" Type="int" Mode="In" />
+          <Parameter Name="ID_SEDE" Type="int" Mode="In" />
+          <Parameter Name="outMensaje" Type="varchar" Mode="InOut" />
+          <Parameter Name="outID" Type="int" Mode="InOut" />
+        </Function>
         <Function Name="ObtenerParaleloSedeCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ADMIN">
           <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
           <Parameter Name="ID_SEDE" Type="int" Mode="In" />
@@ -849,6 +877,7 @@
           <Parameter Name="ID_ESTUDIANTE" Type="varchar" Mode="In" />
           <Parameter Name="ID_CARRERA" Type="int" Mode="In" />
           <Parameter Name="ID_TIPO_INTERVALO" Type="int" Mode="In" />
+          <Parameter Name="ID_PERIODO" Type="int" Mode="In" />
         </Function>
         <Function Name="NotificadorEnviaClave" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID_USUARIO" Type="varchar" Mode="In" />
@@ -1136,6 +1165,7 @@
           <EntitySet Name="CAS_ESTADO_CIVIL" EntityType="Self.CAS_ESTADO_CIVIL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_ESTUDIANTE" EntityType="Self.CAS_ESTUDIANTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_ESTUDIANTE_ASISTENCIA" EntityType="Self.CAS_ESTUDIANTE_ASISTENCIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAS_ESTUDIANTE_ASISTENCIA_JUSTIFICACION" EntityType="Self.CAS_ESTUDIANTE_ASISTENCIA_JUSTIFICACION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_ESTUDIANTE_DETALLE" EntityType="Self.CAS_ESTUDIANTE_DETALLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_ESTUDIANTE_NOTA" EntityType="Self.CAS_ESTUDIANTE_NOTA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAS_ESTUDIANTE_TAREA" EntityType="Self.CAS_ESTUDIANTE_TAREA" Schema="dbo" store:Type="Tables" />
@@ -1978,11 +2008,6 @@
             <Parameter Name="outMensaje" Mode="InOut" Type="String" />
             <Parameter Name="outID" Mode="InOut" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_ObtenerEstudianteAsistenciaCarrera" ReturnType="Collection(CAS_DataModel.ObtenerEstudianteAsistenciaCarrera_Result)">
-            <Parameter Name="ID_INSCRIP_DETALLE_CARRERA" Mode="In" Type="Int32" />
-            <Parameter Name="outMensaje" Mode="InOut" Type="String" />
-            <Parameter Name="outID" Mode="InOut" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="CAS_GENERO" EntityType="CAS_DataModel.CAS_GENERO" />
           <EntitySet Name="CAS_DESTINATARIO" EntityType="CAS_DataModel.CAS_DESTINATARIO" />
           <EntitySet Name="CAS_INSCRIPCION" EntityType="CAS_DataModel.CAS_INSCRIPCION" />
@@ -2183,6 +2208,33 @@
           <FunctionImport Name="SP_DocenteObtenerNotas" ReturnType="Collection(CAS_DataModel.DocenteObtenerNotas_Result)">
             <Parameter Name="ID_DOCENTE" Mode="In" Type="String" />
             <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+            <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+            <Parameter Name="outID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ObtenerEstudianteAsistenciaCarrera" ReturnType="Collection(CAS_DataModel.ObtenerEstudianteAsistenciaCarrera_Result)">
+            <Parameter Name="ID_INSCRIP_DETALLE_CARRERA" Mode="In" Type="Int32" />
+            <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+            <Parameter Name="outID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="CAS_ESTUDIANTE_ASISTENCIA_JUSTIFICACION" EntityType="CAS_DataModel.CAS_ESTUDIANTE_ASISTENCIA_JUSTIFICACION" />
+          <FunctionImport Name="SP_ObtenerNotaPonderacion" ReturnType="Collection(CAS_DataModel.ObtenerNotaPonderacion_Result)">
+            <Parameter Name="ID_NOTA_DETALLE" Mode="In" Type="Int32" />
+            <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+            <Parameter Name="outID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ObtenerHorarioIntensivos" ReturnType="Collection(CAS_DataModel.ObtenerHorarioIntensivos_Result)" />
+          <FunctionImport Name="SP_ObtenerNotaDocente" ReturnType="Collection(CAS_DataModel.ObtenerNotaDocente_Result)">
+            <Parameter Name="ID_PERIODO" Mode="In" Type="Int32" />
+            <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
+            <Parameter Name="ID_CARRERA" Mode="In" Type="Int32" />
+            <Parameter Name="ID_NOTA" Mode="In" Type="Int32" />
+            <Parameter Name="ID_NOTA_DETALLE" Mode="In" Type="Int32" />
+            <Parameter Name="outMensaje" Mode="InOut" Type="String" />
+            <Parameter Name="outID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ObtenerNotaPonderacionNoAsignada" ReturnType="Collection(CAS_DataModel.ObtenerNotaPonderacionNoAsignada_Result)">
+            <Parameter Name="ID_NOTA_DETALLE" Mode="In" Type="Int32" />
+            <Parameter Name="ID_SEDE" Mode="In" Type="Int32" />
             <Parameter Name="outMensaje" Mode="InOut" Type="String" />
             <Parameter Name="outID" Mode="InOut" Type="Int32" />
           </FunctionImport>
@@ -2472,16 +2524,6 @@
           <Property Type="String" Name="DESCRIPCION_PONDERACION" Nullable="true" MaxLength="150" />
           <Property Type="Decimal" Name="VALOR_NOTA" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="NOTA" Nullable="true" Precision="18" Scale="2" />
-        </ComplexType>
-        <ComplexType Name="ObtenerEstudianteAsistenciaCarrera_Result">
-          <Property Type="Int32" Name="ID_ASISTENCIA" Nullable="false" />
-          <Property Type="String" Name="DESCRIPCION_UNIVERSIDAD" Nullable="true" MaxLength="250" />
-          <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="DESCRIPCION_MATERIA" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="DESCRIPCION_PARALELO" Nullable="true" MaxLength="10" />
-          <Property Type="DateTime" Name="FECHA" Nullable="true" />
-          <Property Type="String" Name="HORA" Nullable="true" MaxLength="13" />
-          <Property Type="Boolean" Name="ESTADO" Nullable="true" />
         </ComplexType>
         <EntityType Name="CAS_GENERO">
           <Key>
@@ -2934,6 +2976,64 @@
           <Property Type="String" Name="HORA" Nullable="true" MaxLength="63" />
           <Property Type="String" Name="ID_DOCENTE" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="1003" />
+        </ComplexType>
+        <ComplexType Name="ObtenerEstudianteAsistenciaCarrera_Result">
+          <Property Type="Int32" Name="ID_ASISTENCIA" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_UNIVERSIDAD" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="DESCRIPCION_MATERIA" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="DESCRIPCION_PARALELO" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="FECHA" Nullable="true" />
+          <Property Type="String" Name="HORA" Nullable="true" MaxLength="13" />
+          <Property Type="Boolean" Name="ESTADO" Nullable="true" />
+          <Property Type="Int32" Name="ID_ASISTENCIA_JUSTIFICADA" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="CAS_ESTUDIANTE_ASISTENCIA_JUSTIFICACION">
+          <Key>
+            <PropertyRef Name="ID_ASISTENCIA_JUSTIFICADA" />
+          </Key>
+          <Property Name="ID_ASISTENCIA_JUSTIFICADA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_ASISTENCIA" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="ObtenerNotaPonderacion_Result">
+          <Property Type="Int32" Name="ID_PONDERACION" Nullable="false" />
+          <Property Type="Int32" Name="ID_NOTA_DETALLE" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_PONDERACION" Nullable="true" MaxLength="150" />
+          <Property Type="Decimal" Name="VALOR_PONDERACION" Nullable="true" Precision="18" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="ObtenerHorarioIntensivos_Result">
+          <Property Type="Int32" Name="ID_DOCENTE_MATERIA_PARALELO" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_PERIODO" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPCION_UNIVERSIDAD" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="HORA" Nullable="true" MaxLength="13" />
+          <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="DESCRIPCION_MATERIA" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="DESCRIPCION_PARALELO" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ID_DOCENTE" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="501" />
+        </ComplexType>
+        <ComplexType Name="ObtenerNotaDocente_Result">
+          <Property Type="Int32" Name="ID_DOCENTE_NOTA" Nullable="false" />
+          <Property Type="Int32" Name="ID_SEDE" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_UNIVERSIDAD" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="ID_CARRERA" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_CARRERA" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="ID_NOTA" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_NOTA" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="ID_NOTA_DETALLE" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_NOTA_DETALLE" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="ID_PONDERACION" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_PONDERACION" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="FECHA_INICIO" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="FECHA_FIN" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="ID_DOCENTE" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="1003" />
+        </ComplexType>
+        <ComplexType Name="ObtenerNotaPonderacionNoAsignada_Result">
+          <Property Type="Int32" Name="ID_PONDERACION" Nullable="false" />
+          <Property Type="Int32" Name="ID_NOTA_DETALLE" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_PONDERACION" Nullable="true" MaxLength="150" />
+          <Property Type="Decimal" Name="VALOR_PONDERACION" Nullable="true" Precision="18" Scale="4" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3849,20 +3949,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_ObtenerEstudianteAsistenciaCarrera" FunctionName="CAS_DataModel.Store.ObtenerEstudianteAsistenciaCarrera">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="CAS_DataModel.ObtenerEstudianteAsistenciaCarrera_Result">
-                <ScalarProperty Name="ID_ASISTENCIA" ColumnName="ID_ASISTENCIA" />
-                <ScalarProperty Name="DESCRIPCION_UNIVERSIDAD" ColumnName="DESCRIPCION_UNIVERSIDAD" />
-                <ScalarProperty Name="DESCRIPCION_CARRERA" ColumnName="DESCRIPCION_CARRERA" />
-                <ScalarProperty Name="DESCRIPCION_MATERIA" ColumnName="DESCRIPCION_MATERIA" />
-                <ScalarProperty Name="DESCRIPCION_PARALELO" ColumnName="DESCRIPCION_PARALELO" />
-                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
-                <ScalarProperty Name="HORA" ColumnName="HORA" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="CAS_GENERO">
             <EntityTypeMapping TypeName="CAS_DataModel.CAS_GENERO">
               <MappingFragment StoreEntitySet="CAS_GENERO">
@@ -4439,6 +4525,85 @@
                 <ScalarProperty Name="HORA" ColumnName="HORA" />
                 <ScalarProperty Name="ID_DOCENTE" ColumnName="ID_DOCENTE" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ObtenerEstudianteAsistenciaCarrera" FunctionName="CAS_DataModel.Store.ObtenerEstudianteAsistenciaCarrera">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CAS_DataModel.ObtenerEstudianteAsistenciaCarrera_Result">
+                <ScalarProperty Name="ID_ASISTENCIA" ColumnName="ID_ASISTENCIA" />
+                <ScalarProperty Name="DESCRIPCION_UNIVERSIDAD" ColumnName="DESCRIPCION_UNIVERSIDAD" />
+                <ScalarProperty Name="DESCRIPCION_CARRERA" ColumnName="DESCRIPCION_CARRERA" />
+                <ScalarProperty Name="DESCRIPCION_MATERIA" ColumnName="DESCRIPCION_MATERIA" />
+                <ScalarProperty Name="DESCRIPCION_PARALELO" ColumnName="DESCRIPCION_PARALELO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="HORA" ColumnName="HORA" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="ID_ASISTENCIA_JUSTIFICADA" ColumnName="ID_ASISTENCIA_JUSTIFICADA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="CAS_ESTUDIANTE_ASISTENCIA_JUSTIFICACION">
+            <EntityTypeMapping TypeName="CAS_DataModel.CAS_ESTUDIANTE_ASISTENCIA_JUSTIFICACION">
+              <MappingFragment StoreEntitySet="CAS_ESTUDIANTE_ASISTENCIA_JUSTIFICACION">
+                <ScalarProperty Name="ID_ASISTENCIA" ColumnName="ID_ASISTENCIA" />
+                <ScalarProperty Name="ID_ASISTENCIA_JUSTIFICADA" ColumnName="ID_ASISTENCIA_JUSTIFICADA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_ObtenerNotaPonderacion" FunctionName="CAS_DataModel.Store.ObtenerNotaPonderacion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CAS_DataModel.ObtenerNotaPonderacion_Result">
+                <ScalarProperty Name="ID_PONDERACION" ColumnName="ID_PONDERACION" />
+                <ScalarProperty Name="ID_NOTA_DETALLE" ColumnName="ID_NOTA_DETALLE" />
+                <ScalarProperty Name="DESCRIPCION_PONDERACION" ColumnName="DESCRIPCION_PONDERACION" />
+                <ScalarProperty Name="VALOR_PONDERACION" ColumnName="VALOR_PONDERACION" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ObtenerHorarioIntensivos" FunctionName="CAS_DataModel.Store.ObtenerHorarioIntensivos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CAS_DataModel.ObtenerHorarioIntensivos_Result">
+                <ScalarProperty Name="ID_DOCENTE_MATERIA_PARALELO" ColumnName="ID_DOCENTE_MATERIA_PARALELO" />
+                <ScalarProperty Name="DESCRIPCION_PERIODO" ColumnName="DESCRIPCION_PERIODO" />
+                <ScalarProperty Name="DESCRIPCION_UNIVERSIDAD" ColumnName="DESCRIPCION_UNIVERSIDAD" />
+                <ScalarProperty Name="HORA" ColumnName="HORA" />
+                <ScalarProperty Name="DESCRIPCION_CARRERA" ColumnName="DESCRIPCION_CARRERA" />
+                <ScalarProperty Name="DESCRIPCION_MATERIA" ColumnName="DESCRIPCION_MATERIA" />
+                <ScalarProperty Name="DESCRIPCION_PARALELO" ColumnName="DESCRIPCION_PARALELO" />
+                <ScalarProperty Name="ID_DOCENTE" ColumnName="ID_DOCENTE" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ObtenerNotaDocente" FunctionName="CAS_DataModel.Store.ObtenerNotaDocente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CAS_DataModel.ObtenerNotaDocente_Result">
+                <ScalarProperty Name="ID_DOCENTE_NOTA" ColumnName="ID_DOCENTE_NOTA" />
+                <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+                <ScalarProperty Name="DESCRIPCION_UNIVERSIDAD" ColumnName="DESCRIPCION_UNIVERSIDAD" />
+                <ScalarProperty Name="ID_CARRERA" ColumnName="ID_CARRERA" />
+                <ScalarProperty Name="DESCRIPCION_CARRERA" ColumnName="DESCRIPCION_CARRERA" />
+                <ScalarProperty Name="ID_NOTA" ColumnName="ID_NOTA" />
+                <ScalarProperty Name="DESCRIPCION_NOTA" ColumnName="DESCRIPCION_NOTA" />
+                <ScalarProperty Name="ID_NOTA_DETALLE" ColumnName="ID_NOTA_DETALLE" />
+                <ScalarProperty Name="DESCRIPCION_NOTA_DETALLE" ColumnName="DESCRIPCION_NOTA_DETALLE" />
+                <ScalarProperty Name="ID_PONDERACION" ColumnName="ID_PONDERACION" />
+                <ScalarProperty Name="DESCRIPCION_PONDERACION" ColumnName="DESCRIPCION_PONDERACION" />
+                <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+                <ScalarProperty Name="FECHA_FIN" ColumnName="FECHA_FIN" />
+                <ScalarProperty Name="ID_DOCENTE" ColumnName="ID_DOCENTE" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ObtenerNotaPonderacionNoAsignada" FunctionName="CAS_DataModel.Store.ObtenerNotaPonderacionNoAsignada">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CAS_DataModel.ObtenerNotaPonderacionNoAsignada_Result">
+                <ScalarProperty Name="ID_PONDERACION" ColumnName="ID_PONDERACION" />
+                <ScalarProperty Name="ID_NOTA_DETALLE" ColumnName="ID_NOTA_DETALLE" />
+                <ScalarProperty Name="DESCRIPCION_PONDERACION" ColumnName="DESCRIPCION_PONDERACION" />
+                <ScalarProperty Name="VALOR_PONDERACION" ColumnName="VALOR_PONDERACION" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

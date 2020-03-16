@@ -95,6 +95,7 @@ namespace Model.Services.Admin
                 {
                     if (inscripcionDetalle.ID_INSCRIP_DETALLE_CARRERA == 0)
                     {
+
                         _inscripcion.ID_INSCRIP_DETALLE_CARRERA = inscripcionDetalle.ID_INSCRIP_DETALLE_CARRERA;
                         _inscripcion.ID_INSCRIP = inscripcionDetalle.ID_INSCRIP;
                         _inscripcion.ID_SEDE = inscripcionDetalle.ID_SEDE;

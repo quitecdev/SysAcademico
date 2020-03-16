@@ -37,7 +37,7 @@ namespace Model.Services.Estudiante
                         {
                             ID_CARRERA = item.ID_CARRERA,
                             DESCRIPCION_CARRERA = item.DESCRIPCION_CARRERA,
-                            PROMEDIO_ESTUDIANTE = ctx.SP_EstudianteObtenerPromedio(ID_ESTUDIANTE, null, item.ID_CARRERA, outMensaje, outID)
+                            PROMEDIO_ESTUDIANTE = ctx.SP_EstudianteObtenerPromedio(ID_ESTUDIANTE, item.ID_PERIODO, item.ID_CARRERA, outMensaje, outID)
                                                 .Select(x => new Promedio
                                                 {
                                                     ID_NOTA_DETALLE = x.ID_NOTA_DETALLE,
@@ -48,14 +48,14 @@ namespace Model.Services.Estudiante
                                                     NOTA_FINAL=x.NOTA_FINAL
 
                                                 }).ToList(),
-                            PARCIAL = ctx.SP_EstudianteObtenerNotaParciales(item.ID_CARRERA, item.ID_TIPO_INTERVALO, null, outMensaje, outID)
+                            PARCIAL = ctx.SP_EstudianteObtenerNotaParciales(item.ID_CARRERA, item.ID_TIPO_INTERVALO, item.ID_PERIODO, outMensaje, outID)
                                     .Select(x => new Parcial
                                     {
                                         ID_NOTA = x.ID_NOTA,
                                         ID_NOTA_DETALLE = x.ID_NOTA_DETALLE,
                                         DESCRIPCION_NOTA_DETALLE = x.DESCRIPCION_NOTA_DETALLE,
                                         TOTAL = x.TOTAL,
-                                        NOTA_DETALLE = ctx.SP_EstudianteObtenerNotaDetalle(x.ID_NOTA_DETALLE, ID_ESTUDIANTE, null, outMensaje, outID)
+                                        NOTA_DETALLE = ctx.SP_EstudianteObtenerNotaDetalle(x.ID_NOTA_DETALLE, ID_ESTUDIANTE, item.ID_PERIODO, outMensaje, outID)
                                                      .Select(y => new NotaDetalle
                                                      {
                                                          ID_ESTUDIANTE_NOTA = y.ID_ESTUDIANTE_NOTA,

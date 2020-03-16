@@ -684,10 +684,16 @@
     <Content Include="Views\Visualizador\Video.cshtml" />
     <Content Include="Views\Cronograma\CronogramaVista.cshtml" />
     <Content Include="Views\Notas\Index.cshtml" />
-    <Content Include="Views\Notas\CreaNotas.cshtml" />
+    <Content Include="Views\Notas\CrearAsignacion.cshtml" />
     <Content Include="Views\Notas\NotaDetalle.cshtml" />
     <Content Include="Views\Notas\CrearNotaDetalle.cshtml" />
     <Content Include="Views\Notas\Asignacion.cshtml" />
+    <Content Include="Views\Notas\_DetalleNota.cshtml" />
+    <Content Include="Views\Notas\NotaPonderacion.cshtml" />
+    <Content Include="Views\Notas\_DetallePonderacion.cshtml" />
+    <Content Include="Views\Notas\CrearNotaPonderacion.cshtml" />
+    <Content Include="Views\Notas\_DetalleAsignacion.cshtml" />
+    <Content Include="Views\Notas\CreaNotas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

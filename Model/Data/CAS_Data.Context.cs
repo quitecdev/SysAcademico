@@ -93,6 +93,7 @@ namespace Model.Data
         public virtual DbSet<CAS_TAREAS> CAS_TAREAS { get; set; }
         public virtual DbSet<CAS_TAREA_ADJUNTO> CAS_TAREA_ADJUNTO { get; set; }
         public virtual DbSet<CAS_ESTUDIANTE_TAREA> CAS_ESTUDIANTE_TAREA { get; set; }
+        public virtual DbSet<CAS_ESTUDIANTE_ASISTENCIA_JUSTIFICACION> CAS_ESTUDIANTE_ASISTENCIA_JUSTIFICACION { get; set; }
     
         public virtual int SP_EstudianteNotaParcial(string iD_ESTUDIANTE, Nullable<int> iD_CARRERA, Nullable<int> iD_PERIODO, ObjectParameter outMensaje, ObjectParameter outID)
         {
@@ -787,15 +788,6 @@ namespace Model.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ObtenerEstudianteNotaDetalleCarrera_Result>("SP_ObtenerEstudianteNotaDetalleCarrera", iD_INSCRIP_DETALLE_CARRERAParameter, iD_NOTA_DETALLEParameter, outMensaje, outID);
         }
     
-        public virtual ObjectResult<ObtenerEstudianteAsistenciaCarrera_Result> SP_ObtenerEstudianteAsistenciaCarrera(Nullable<int> iD_INSCRIP_DETALLE_CARRERA, ObjectParameter outMensaje, ObjectParameter outID)
-        {
-            var iD_INSCRIP_DETALLE_CARRERAParameter = iD_INSCRIP_DETALLE_CARRERA.HasValue ?
-                new ObjectParameter("ID_INSCRIP_DETALLE_CARRERA", iD_INSCRIP_DETALLE_CARRERA) :
-                new ObjectParameter("ID_INSCRIP_DETALLE_CARRERA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ObtenerEstudianteAsistenciaCarrera_Result>("SP_ObtenerEstudianteAsistenciaCarrera", iD_INSCRIP_DETALLE_CARRERAParameter, outMensaje, outID);
-        }
-    
         public virtual ObjectResult<DocenteObtenerDatosReporteDocente_Result> SP_DocenteObtenerDatosReporteDocente(Nullable<int> iD_SEDE, Nullable<int> iD_CARRERA, Nullable<int> iD_PERIODO, Nullable<int> iD_PARALELO, Nullable<int> iD_INTERVALO_DETALLE, ObjectParameter outMensaje, ObjectParameter outID)
         {
             var iD_SEDEParameter = iD_SEDE.HasValue ?
@@ -1234,6 +1226,67 @@ namespace Model.Data
                 new ObjectParameter("ID_PERIODO", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocenteObtenerNotas_Result>("SP_DocenteObtenerNotas", iD_DOCENTEParameter, iD_PERIODOParameter, outMensaje, outID);
+        }
+    
+        public virtual ObjectResult<ObtenerEstudianteAsistenciaCarrera_Result> SP_ObtenerEstudianteAsistenciaCarrera(Nullable<int> iD_INSCRIP_DETALLE_CARRERA, ObjectParameter outMensaje, ObjectParameter outID)
+        {
+            var iD_INSCRIP_DETALLE_CARRERAParameter = iD_INSCRIP_DETALLE_CARRERA.HasValue ?
+                new ObjectParameter("ID_INSCRIP_DETALLE_CARRERA", iD_INSCRIP_DETALLE_CARRERA) :
+                new ObjectParameter("ID_INSCRIP_DETALLE_CARRERA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ObtenerEstudianteAsistenciaCarrera_Result>("SP_ObtenerEstudianteAsistenciaCarrera", iD_INSCRIP_DETALLE_CARRERAParameter, outMensaje, outID);
+        }
+    
+        public virtual ObjectResult<ObtenerNotaPonderacion_Result> SP_ObtenerNotaPonderacion(Nullable<int> iD_NOTA_DETALLE, ObjectParameter outMensaje, ObjectParameter outID)
+        {
+            var iD_NOTA_DETALLEParameter = iD_NOTA_DETALLE.HasValue ?
+                new ObjectParameter("ID_NOTA_DETALLE", iD_NOTA_DETALLE) :
+                new ObjectParameter("ID_NOTA_DETALLE", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ObtenerNotaPonderacion_Result>("SP_ObtenerNotaPonderacion", iD_NOTA_DETALLEParameter, outMensaje, outID);
+        }
+    
+        public virtual ObjectResult<ObtenerHorarioIntensivos_Result> SP_ObtenerHorarioIntensivos()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ObtenerHorarioIntensivos_Result>("SP_ObtenerHorarioIntensivos");
+        }
+    
+        public virtual ObjectResult<ObtenerNotaDocente_Result> SP_ObtenerNotaDocente(Nullable<int> iD_PERIODO, Nullable<int> iD_SEDE, Nullable<int> iD_CARRERA, Nullable<int> iD_NOTA, Nullable<int> iD_NOTA_DETALLE, ObjectParameter outMensaje, ObjectParameter outID)
+        {
+            var iD_PERIODOParameter = iD_PERIODO.HasValue ?
+                new ObjectParameter("ID_PERIODO", iD_PERIODO) :
+                new ObjectParameter("ID_PERIODO", typeof(int));
+    
+            var iD_SEDEParameter = iD_SEDE.HasValue ?
+                new ObjectParameter("ID_SEDE", iD_SEDE) :
+                new ObjectParameter("ID_SEDE", typeof(int));
+    
+            var iD_CARRERAParameter = iD_CARRERA.HasValue ?
+                new ObjectParameter("ID_CARRERA", iD_CARRERA) :
+                new ObjectParameter("ID_CARRERA", typeof(int));
+    
+            var iD_NOTAParameter = iD_NOTA.HasValue ?
+                new ObjectParameter("ID_NOTA", iD_NOTA) :
+                new ObjectParameter("ID_NOTA", typeof(int));
+    
+            var iD_NOTA_DETALLEParameter = iD_NOTA_DETALLE.HasValue ?
+                new ObjectParameter("ID_NOTA_DETALLE", iD_NOTA_DETALLE) :
+                new ObjectParameter("ID_NOTA_DETALLE", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ObtenerNotaDocente_Result>("SP_ObtenerNotaDocente", iD_PERIODOParameter, iD_SEDEParameter, iD_CARRERAParameter, iD_NOTAParameter, iD_NOTA_DETALLEParameter, outMensaje, outID);
+        }
+    
+        public virtual ObjectResult<ObtenerNotaPonderacionNoAsignada_Result> SP_ObtenerNotaPonderacionNoAsignada(Nullable<int> iD_NOTA_DETALLE, Nullable<int> iD_SEDE, ObjectParameter outMensaje, ObjectParameter outID)
+        {
+            var iD_NOTA_DETALLEParameter = iD_NOTA_DETALLE.HasValue ?
+                new ObjectParameter("ID_NOTA_DETALLE", iD_NOTA_DETALLE) :
+                new ObjectParameter("ID_NOTA_DETALLE", typeof(int));
+    
+            var iD_SEDEParameter = iD_SEDE.HasValue ?
+                new ObjectParameter("ID_SEDE", iD_SEDE) :
+                new ObjectParameter("ID_SEDE", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ObtenerNotaPonderacionNoAsignada_Result>("SP_ObtenerNotaPonderacionNoAsignada", iD_NOTA_DETALLEParameter, iD_SEDEParameter, outMensaje, outID);
         }
     }
 }

@@ -38,15 +38,15 @@ namespace Model.Services.Admin
                                             HORA = x.HORA,
                                             ID_PARALELO = x.ID_PARALELO,
                                             DESCRIPCION_PARALELO = x.DESCRIPCION_PARALELO,
-                                            DatosEncuesta = ctx.SP_DocenteDatosEncuestaRespuesta(id_docente, x.ID_CARRERA, x.ID_MATERIA, x.ID_INTERVALO_DETALLE, x.ID_PARALELO, outMensaje, outID)
-                                                          .Select(a => new DatosEncuesta() {
-                                                              DESCRIPCION_PREGUNTA=a.DESCRIPCION_PREGUNTA,
-                                                              Muy_Malo = a.Muy_Malo.Value,
-                                                              Malo=a.Malo.Value,
-                                                              Regular=a.Regular.Value,
-                                                              Bueno=a.Bueno.Value,
-                                                              Muy_Bueno=a.Muy_Bueno.Value,
-                                                          }).ToList()
+                                            //DatosEncuesta = ctx.SP_DocenteDatosEncuestaRespuesta(id_docente, x.ID_CARRERA, x.ID_MATERIA, x.ID_INTERVALO_DETALLE, x.ID_PARALELO, outMensaje, outID)
+                                            //              .Select(a => new DatosEncuesta() {
+                                            //                  DESCRIPCION_PREGUNTA=a.DESCRIPCION_PREGUNTA,
+                                            //                  Muy_Malo = a.Muy_Malo.Value,
+                                            //                  Malo=a.Malo.Value,
+                                            //                  Regular=a.Regular.Value,
+                                            //                  Bueno=a.Bueno.Value,
+                                            //                  Muy_Bueno=a.Muy_Bueno.Value,
+                                            //              }).ToList()
                                         }).ToList();
 
                 //docenteMateria.ListaDocente = ctx.SP_DocenteHorarioMateria(_ID_DOCENTE, outMensaje, outID)

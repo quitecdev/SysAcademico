@@ -33,11 +33,12 @@ namespace CAS_ADMIN
 
             routes.MapRoute(
                 "NotasDocente",
-                "Docente/NotasDocenteVista/{ID_SEDE}/{ID_CARRERA}/{ID_NOTA}/{ID_INTERVALO_DETALLE}/{ID_DOCENTE}",
+                "Docente/NotasDocenteVista/{ID_PERIODO}/{ID_SEDE}/{ID_CARRERA}/{ID_NOTA}/{ID_INTERVALO_DETALLE}/{ID_DOCENTE}",
                 new
                 {
                     controller = "Docente",
                     action = "NotasDocenteVista",
+                    ID_PERIODO = UrlParameter.Optional,
                     ID_SEDE = UrlParameter.Optional,
                     ID_CARRERA = UrlParameter.Optional,
                     ID_NOTA = UrlParameter.Optional,
@@ -73,13 +74,24 @@ namespace CAS_ADMIN
 
             routes.MapRoute(
             "CreaNotasDetalle",
-            "Notas/CreaNotasDetalle/{ID_NOTA}/{ID_NOTA_DETALLE}",
+            "Notas/CrearNotaDetalle/{ID_NOTA}/{ID_NOTA_DETALLE}",
             new
             {
                 controller = "Notas",
-                action = "CreaNotasDetalle",
+                action = "CrearNotaDetalle",
                 ID_NOTA = UrlParameter.Optional,
                 ID_NOTA_DETALLE = UrlParameter.Optional
+            });
+
+            routes.MapRoute(
+            "CrearNotasPonderacion",
+            "Notas/CrearNotaPonderacion/{ID_NOTA_DETALLE}/{ID_PONDERACION}",
+            new
+            {
+                controller = "Notas",
+                action = "CrearNotaPonderacion",
+                ID_NOTA_DETALLE = UrlParameter.Optional,
+                ID_PONDERACION = UrlParameter.Optional
             });
 
 

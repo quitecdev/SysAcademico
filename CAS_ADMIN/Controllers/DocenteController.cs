@@ -192,13 +192,15 @@ namespace CAS_ADMIN.Controllers
         Model.Services.Docente.NotasAsignadas notasAsiganadas = new Model.Services.Docente.NotasAsignadas();
         public ActionResult NotasDocente(string id)
         {
+            var data = _docente.ObtenerDocente(id);
             TempData["ID_DOCENTE"] = id;
+            TempData["NOMBRE"] = data.APELLIDO_PATERNO_DOCENTE+" "+ data.PRIMER_NOMBRE_DOCENTE;
             return View(notasAsiganadas.Obtener(id));
         }
 
         Model.Services.Docente.Notas _notas = new Model.Services.Docente.Notas();
         Model.Services.Docente.Calificar _calificar = new Model.Services.Docente.Calificar();
-        public ActionResult NotasDocenteVista(int ID_SEDE, int ID_CARRERA, int ID_NOTA, int ID_INTERVALO_DETALLE,string ID_DOCENTE)
+        public ActionResult NotasDocenteVista(int ID_PERIODO,int ID_SEDE, int ID_CARRERA, int ID_NOTA, int ID_INTERVALO_DETALLE,string ID_DOCENTE)
         {
             try
             {
@@ -207,7 +209,7 @@ namespace CAS_ADMIN.Controllers
                 TempData["ID_NOTA"] = ID_NOTA;
                 TempData["ID_INTERVALO_DETALLE"] = ID_INTERVALO_DETALLE;
                 TempData["ID_DOCENTE"] = ID_DOCENTE;
-                return View(_calificar.ObtenerLibreta(ID_SEDE, ID_CARRERA, ID_NOTA, ID_INTERVALO_DETALLE, ID_DOCENTE));
+                return View(_calificar.ObtenerLibreta(ID_PERIODO,ID_SEDE, ID_CARRERA, ID_NOTA, ID_INTERVALO_DETALLE, ID_DOCENTE));
             }
             catch (Exception ex)
             {
@@ -217,11 +219,11 @@ namespace CAS_ADMIN.Controllers
             }
         }
 
-        public FileContentResult ImprimirNotaDocente(int ID_SEDE, int ID_CARRERA, int ID_NOTA, int ID_INTERVALO_DETALLE, string ID_DOCENTE)
+        public FileContentResult ImprimirNotaDocente(int ID_PERIODO,int ID_SEDE, int ID_CARRERA, int ID_NOTA, int ID_INTERVALO_DETALLE, string ID_DOCENTE)
         {
             PrintPDF print = new PrintPDF();
             Helper helper = new Helper();
-            byte[] bytes = print.ImprimirNotaDocente(ID_SEDE, ID_CARRERA, ID_NOTA, ID_INTERVALO_DETALLE, ID_DOCENTE);
+            byte[] bytes = print.ImprimirNotaDocente(ID_PERIODO,ID_SEDE, ID_CARRERA, ID_NOTA, ID_INTERVALO_DETALLE, ID_DOCENTE);
             return File(bytes, "application/pdf", helper.CrearAlfaNumerico(10).ToString() + ".pdf");
         }
         #endregion
@@ -266,6 +268,20 @@ namespace CAS_ADMIN.Controllers
             Helper helper = new Helper();
             byte[] bytes = print.ImprimirAsistenciaDocente(id);
             return File(bytes, "application/pdf", helper.CrearAlfaNumerico(10).ToString() + ".pdf");
+        }
+        #endregion
+
+        #region getCarreraSede
+        public JsonResult getDocentes()
+        {
+            List<SelectListItem> licities = new List<SelectListItem>();
+
+            foreach (var x in _docente.ObtenerDocentes())
+            {
+                //licities.Add(new SelectListItem { Text = x.DESCRIPCION_INTERVALO, Value = x.ID_INTERVALO.ToString() });
+                licities.Add(new SelectListItem { Text = x.APELLIDO_PATERNO_DOCENTE+" "+x.APELLIDO_MATERNO_DOCENTE+" "+x.PRIMER_NOMBRE_DOCENTE+" "+x.PRIMER_NOMBRE_DOCENTE, Value = x.ID_DOCENTE.ToString() });
+            }
+            return Json(new SelectList(licities, "Value", "Text", JsonRequestBehavior.AllowGet));
         }
         #endregion
 

@@ -34,11 +34,12 @@ namespace CAS_DOCENTE
 
             routes.MapRoute(
                 "Notas",
-                "Calificaciones/Nota/{ID_SEDE}/{ID_CARRERA}/{ID_NOTA}/{ID_INTERVALO_DETALLE}",
+                "Calificaciones/Nota/{ID_PERIODO}/{ID_SEDE}/{ID_CARRERA}/{ID_NOTA}/{ID_INTERVALO_DETALLE}",
                 new
                 {
                     controller = "Calificaciones",
                     action = "Nota",
+                    ID_PERIODO= UrlParameter.Optional,
                     ID_SEDE = UrlParameter.Optional,
                     ID_CARRERA = UrlParameter.Optional,
                     ID_NOTA = UrlParameter.Optional,
